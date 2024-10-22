@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% set primaryNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+{% set questionName = "Check details and confirm route" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+
+      {{ govukInsetText({
+        text: "A professional status will be added when you confirm this route."
+      }) }}
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "QTS route"
+            },
+            value: {
+              text: data.chooseQtsRoute
+            },
+            actions: {
+              items: [
+                {
+                  href: "/change-qts-route",
+                  text: "Change",
+                  visuallyHiddenText: "QTS route"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/start-date?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form method="post" action="/itt/check-handler">
+        {{ govukButton({
+          text: "Confirm and add route"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/general" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

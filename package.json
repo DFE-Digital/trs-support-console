@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "dev": "govuk-prototype-kit dev",
+    "serve": "govuk-prototype-kit serve",
+    "start": "govuk-prototype-kit start",
+    "generate-data": "node ./scripts/generate-teachers.js"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.3",
+    "@govuk-prototype-kit/common-templates": "2.0.1",
+    "@x-govuk/govuk-prototype-components": "^3.0.9",
+    "@x-govuk/govuk-prototype-filters": "^1.4.3",
+    "accessible-autocomplete": "^3.0.1",
+    "connect-flash": "^0.1.1",
+    "govuk-frontend": "5.7.1",
+    "govuk-prototype-kit": "13.16.2",
+    "save": "^2.9.0"
+  }
+}

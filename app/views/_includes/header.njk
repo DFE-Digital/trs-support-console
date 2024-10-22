@@ -1,0 +1,28 @@
+{% if data.user %}
+  {% set serviceUrl = '/qualifications' %}
+{% else %}
+  {% set serviceUrl = '/account/sign-in' %}
+{% endif %}
+
+{{ govukHeader({
+  productName: serviceName,
+  serviceUrl: serviceUrl,
+  navigationClasses: "govuk-header__navigation--end",
+  navigation: [
+  {
+    href: 'gen',
+    text: 'Home',
+    current: (primaryNavId == "home")
+  },
+  {
+    href: 'find-record',
+    text: 'Find a record',
+    current: (primaryNavId == "findRecord")
+  },
+  {
+    href: '/account/sign-out',
+    text: 'Sign out',
+    current: (primaryNavId == "signOut")
+  }
+  ] if data.user
+}) }}

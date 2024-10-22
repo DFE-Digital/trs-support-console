@@ -1,0 +1,110 @@
+{% extends "layouts/main.html" %}
+
+{% set primaryNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="ggovuk-grid-column-full">
+
+    {% for teacher in data.teachers %}
+      <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
+
+      {{ data.teachers | log }}
+
+      {% include "_includes/secondary-navigation.njk" %}
+
+    
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal details"
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: teacher.fullName
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: teacher.dateOfBirth
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: teacher.gender
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: teacher.trn
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: teacher.nationalInsurance
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+               text: teacher.email
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+               text: teacher.mobile
+            }
+          }
+        ]
+      }) }}
+    {% endfor %}  
+
+
+  </div>
+</div>
+
+{% endblock %}

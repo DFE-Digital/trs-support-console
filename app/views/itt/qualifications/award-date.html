@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% set primaryNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a professional status - " + data.teachers[0].fullName %}
+{% set questionName = "Award date" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+      
+      <form method="post" novalidate>
+        {{ govukDateInput({
+          id: "ittAward",
+          namePrefix: "ittAwardDate",
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data['ittAwardDate-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data['ittAwardDate-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data['ittAwardDate-year']
+            }
+          ]
+        }) }}
+  
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body">
+        <a href="general" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "layouts/main.html" %}
+
+{% set primaryNavId = "findRecord" %} 
+{% set secondaryNavId = "route" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">'+flash+'</h2>'
+}) if flash.length }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-l">{{data.teachers[0].fullName}}</h1>
+
+    {% include "_includes/secondary-navigation.njk" %}
+
+
+    {% if not data.chooseQtsRoute %}
+
+        {{ govukInsetText({
+          text: "You must add a route before you can see any professional statuses."
+        }) }}
+        <h2 class="govuk-heading-m">Routes to QTS</h2>
+        <p class="govuk-body">No routes to show</p>
+
+        {{ govukButton({
+          text: "Add a QTS route",
+          href: "/all-qts-routes"
+        }) }}
+
+    {% else %}
+
+
+    {% include "_includes/itt-qual-table.njk" %}
+
+      {{ govukButton({
+        text: "Add a QTS route",
+        href: "/all-qts-routes"
+      }) }}
+
+    {% endif %}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Mandatory qualifications</h2>
+    <p class="govuk-body">No mandatory qualifications to show</p>
+    {{ govukButton({
+      text: "Add a mandatory qualification",
+      href: "#"
+    }) }}
+
+    {{ data.chooseQtsRoute | log }}
+
+  </div>
+</div>
+
+{% endblock %}

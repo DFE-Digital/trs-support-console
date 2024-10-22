@@ -1,0 +1,28 @@
+{% extends "layouts/main.html" %}
+
+{% set primaryNavId = "findRecord" %} 
+{% set secondaryNavId = "alerts" %}
+{% set pageName="[Person name]" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    
+      <h1 class="govuk-heading-l">{{data.teachers[0].fullName}}</h1>
+    
+
+    {% include "_includes/secondary-navigation.njk" %}
+    
+  </div>
+</div>
+
+{% endblock %}

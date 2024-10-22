@@ -1,0 +1,37 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Find a record" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+
+    <form method="post" novalidate>
+      {{ govukInput({
+        label: {
+          text: "Search",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "TRN, name or date of birth, for example 4/3/1975"
+        },
+        id: "find[trn]",
+        name: "find[trn]",
+        value: data.find.trn
+      }) }}
+
+      {{ govukButton({
+        text: "Search"
+      }) }}
+    </form>
+    
+  </div>
+</div>
+
+{% endblock %}
