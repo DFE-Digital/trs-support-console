@@ -47,17 +47,17 @@
           },
           {
             key: {
-              text: "Start date"
+              text: "Hss SET membership"
             },
             value: {
-              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+              text: data.hasSetMembership
             },
             actions: {
               items: [
                 {
-                  href: "/itt/start-date?returnUrl=/itt/check",
+                  href: "/qtls-and-set/set-member?returnUrl=/qtls-and-set/check",
                   text: "Change",
-                  visuallyHiddenText: "start date"
+                  visuallyHiddenText: "has set membership"
                 }
               ]
             }
@@ -65,7 +65,7 @@
         ]
       }) }}
 
-      <form method="post" action="/itt/check-handler">
+      <form method="post" action="/qtls-and-set/check-handler">
         {{ govukButton({
           text: "Confirm and add route"
         }) }}

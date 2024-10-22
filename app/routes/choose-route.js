@@ -6,7 +6,7 @@ module.exports = router => {
           res.redirect('/itt/start-date')
 
         } else if (req.body.chooseQtsRoute == 'Assessment only') {
-          res.redirect('/assessment')
+          res.redirect('/assessment-only/qualification-type')
 
         } else if (req.body.chooseQtsRoute == 'IQTS') {
           res.redirect('iqts')
@@ -18,7 +18,7 @@ module.exports = router => {
           res.redirect('legacy')
 
         } else {
-          res.redirect('qtls-set')
+          res.redirect('/qtls-and-set/set-member')
         }
         
     })

@@ -3,7 +3,7 @@
 {% set primaryNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Start date" %}
+{% set questionName = "Do you have an induction exemption" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -22,8 +22,22 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
       
+      <form method="post" novalidate>
+        {{ govukRadios({
+          name: "assessmentOnlyHasExemption",
+          value: data.assessmentOnlyHasExemption,    
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
   
-
         {{ govukButton({
           text: "Continue"
         }) }}

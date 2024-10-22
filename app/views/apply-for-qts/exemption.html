@@ -21,12 +21,11 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      
   
       <form method="post" novalidate>
         {{ govukRadios({
-          name: "applyForQtsExempt",
-          value: data.applyForQtsExempt,    
+          name: "applyForQtsHasExemption",
+          value: data.applyForQtsHasExemption,    
           items: [
             {
               value: "Yes",

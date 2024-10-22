@@ -3,7 +3,7 @@
 {% set primaryNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Start date" %}
+{% set questionName = "SET membership number" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,13 +21,20 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      
-  
-
-        {{ govukButton({
-          text: "Continue"
+      <form method="post">
+        {{ govukInput({
+          id: "setMemberNumber",
+          name: "setMemberNumber",
+          classes: "govuk-input--width-10",
+          inputmode: "numeric",
+          spellcheck: false,
+          hint: {
+            text: "Some guidance here? Where to find number etc?"
+          },
+          value: data.setMemberNumber
         }) }}
       </form>
+  
 
       <p class="govuk-body">
         <a href="general" class="govuk-link">Cancel and return to record</a>

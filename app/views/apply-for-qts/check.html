@@ -47,17 +47,34 @@
           },
           {
             key: {
-              text: "Start date"
+              text: "Country"
             },
             value: {
-              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+              text: data.applyQtsCountry
             },
             actions: {
               items: [
                 {
-                  href: "/itt/start-date?returnUrl=/itt/check",
+                  href: "/apply-for-qts/country?returnUrl=/apply-for-qts/check",
                   text: "Change",
-                  visuallyHiddenText: "start date"
+                  visuallyHiddenText: "country"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Has exemption"
+            },
+            value: {
+              text: data.applyForQtsHasExemption
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/exemption?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "country"
                 }
               ]
             }
@@ -65,7 +82,9 @@
         ]
       }) }}
 
-      <form method="post" action="/itt/check-handler">
+      
+
+      <form method="post" action="/apply-for-qts/check-handler">
         {{ govukButton({
           text: "Confirm and add route"
         }) }}

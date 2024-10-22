@@ -3,7 +3,7 @@
 {% set primaryNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Start date" %}
+{% set questionName = "Qualification type" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -23,7 +23,26 @@
       
       
   
-
+      <form method="post" novalidate>
+        {{ govukRadios({
+          name: "assessmentOnlyQualType",
+          value: data.assessmentOnlyQualType,    
+          items: [
+            {
+              value: "QTS",
+              text: "QTS"
+            },
+            {
+              value: "EYTS",
+              text: "EYTS"
+            },
+            {
+              value: "EPTS",
+              text: "EPTS"
+            }
+          ]
+        }) }}
+  
         {{ govukButton({
           text: "Continue"
         }) }}
