@@ -6,7 +6,7 @@ module.exports = router => {
           res.redirect('/itt/establishment')
 
         } else if (req.body.chooseQtsRoute == 'Assessment only') {
-          res.redirect('/assessment-only/qualification-type')
+          res.redirect('/assessment-only/establishment')
 
         } else if (req.body.chooseQtsRoute == 'IQTS') {
           res.redirect('iqts')
