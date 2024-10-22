@@ -1,12 +1,20 @@
 module.exports = router => {
 
 
-    router.post('/assessment-only/country', (req, res) => {
-      res.redirect('/assessment-only/qualification-type')
+    router.post('/assessment-only/qualification-type', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/assessment-only/exemption')  
+      }
     })
 
     router.post('/assessment-only/exemption', (req, res) => {
-      res.redirect('/assessment-only/exemption')
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/assessment-only/check')  
+      }
     })
 
 

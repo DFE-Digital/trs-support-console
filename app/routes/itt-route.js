@@ -1,7 +1,11 @@
 module.exports = router => {
 
     router.post('/itt/start-date', (req, res) => {
-      res.redirect('/itt/check')
+      if (req.query.returnUrl) {
+
+      } else {
+        res.redirect('/itt/check')  
+      }      
     })
 
     router.post('/itt/check-handler', (req, res) => {

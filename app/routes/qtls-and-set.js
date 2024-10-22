@@ -2,11 +2,19 @@ module.exports = router => {
 
 
     router.post('/qtls-and-set/set-member', (req, res) => {
-      res.redirect('/qtls-and-set/set-member-number')
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/qtls-and-set/set-member-number')  
+      }
     })
 
     router.post('/qtls-and-set/set-member-number', (req, res) => {
-      res.redirect('/qtls-and-set/check')
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/qtls-and-set/check') 
+      }
     })
 
 

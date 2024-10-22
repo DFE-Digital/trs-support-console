@@ -15,9 +15,9 @@
 
       {{ data.teachers | log }}
 
-      {% include "_includes/secondary-navigation.njk" %}
 
-    
+      {% include "_includes/secondary-navigation.njk" %}  
+
       {{ govukSummaryList({
         card: {
           title: {
@@ -103,7 +103,7 @@
       }) }}
       
 
-      {% if data.chooseQtsRoute %}
+      {% if data.chooseQtsRoute == '' %}
       {{ govukSummaryList({
         card: {
           title: {

@@ -47,7 +47,7 @@
           },
           {
             key: {
-              text: "Hss SET membership"
+              text: "Has SET membership"
             },
             value: {
               text: data.hasSetMembership
@@ -56,6 +56,23 @@
               items: [
                 {
                   href: "/qtls-and-set/set-member?returnUrl=/qtls-and-set/check",
+                  text: "Change",
+                  visuallyHiddenText: "has set membership"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "SET membership number"
+            },
+            value: {
+              text: data.setMemberNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "/qtls-and-set/set-member-number?returnUrl=/qtls-and-set/check",
                   text: "Change",
                   visuallyHiddenText: "has set membership"
                 }
@@ -72,7 +89,7 @@
       </form>    
 
       <p class="govuk-body">
-        <a href="/general" class="govuk-link">Cancel and return to record</a>
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
       </p>
 
     
