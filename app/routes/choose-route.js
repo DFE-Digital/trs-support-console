@@ -24,7 +24,7 @@ module.exports = router => {
     })
 
     router.get('/change-qts-route', (req, res) => {
-        req.session.data = {}
+        req.session.data.chooseQtsRoute = {}
         res.redirect('/all-qts-routes')
     })
 }

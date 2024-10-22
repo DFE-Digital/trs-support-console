@@ -2,6 +2,11 @@ module.exports = router => {
 
 
     router.post('/apply-for-qts/country', (req, res) => {
+      if (req.query) {
+        
+      } else {
+        
+      }
       res.redirect('/apply-for-qts/exemption')
     })
 

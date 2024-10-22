@@ -14,6 +14,7 @@
       <h1 class="govuk-heading-l">{{ data.teachers[0].fullName }}</h1>
 
       {{ data.teachers | log }}
+      {{ data.chooseQtsRoute | log }}
 
 
       {% include "_includes/secondary-navigation.njk" %}  
@@ -103,56 +104,10 @@
       }) }}
       
 
-      {% if data.chooseQtsRoute == '' %}
-      {{ govukSummaryList({
-        card: {
-          title: {
-            text: "Summary"
-          }
-        },
-        rows: [
-          {
-            key: {
-              text: "QTS award date"
-            },
-            value: {
-              text: "[awardDate]"
-            }
-          },
-          {
-            key: {
-              text: "Indcution status"
-            },
-            value: {
-              text: "[IndStatus]"
-            }
-          },
-          {
-            key: {
-              text: "Route type"
-            },
-            value: {
-              text: data.chooseQtsRoute
-            }
-          },
-          {
-            key: {
-              text: "Qualification type"
-            },
-            value: {
-              text: "[qualType]"
-            }
-          },
-          {
-            key: {
-              text: "Status"
-            },
-            value: {
-              text: "Working towards"
-            }
-          }
-        ]
-      }) }}
+      {% if data.chooseQtsRoute == 'Assessment only' %}
+      
+        
+        {% include "_includes/general-card.njk" %}
 
       {% endif %}
 
