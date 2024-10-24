@@ -7,6 +7,7 @@ module.exports = router => {
   
     router.get('/account/sign-out', (req, res) => {
       req.session.data.user = null
+      req.session.data = {}
       res.redirect('/account/sign-in')
     })
   

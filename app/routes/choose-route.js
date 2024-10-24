@@ -2,7 +2,7 @@ module.exports = router => {
 
     router.post('/all-qts-routes', (req, res) => {
 
-        if (req.body.chooseQtsRoute == 'Initial teacher training (postgraduate or undergraduate)') {
+        if (req.body.chooseQtsRoute == 'Initial teacher training') {
           res.redirect('/itt/establishment')
 
         } else if (req.body.chooseQtsRoute == 'Assessment only') {
