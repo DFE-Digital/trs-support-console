@@ -147,20 +147,25 @@
       
       {% if data.chooseQtsRoute  == 'Initial teacher training' %}
         {% include "_includes/summary/itt-card.njk" %}
+        {% endif %}
 
-      {% elif data.chooseQtsRoute  == 'Assessment only' %}
+      {% if data.chooseQtsRoute  == 'Assessment only' %}
         {% include "_includes/summary/assessment-only-card.njk" %}
-        
-      {% elif data.chooseQtsRoute  == 'IQTS' %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'IQTS' %}
          {% include "_includes/summary/iqts-only-card.njk" %}
+      {% endif %}
 
-      {% elif data.chooseQtsRoute  == 'Apply for qualified teacher status' %}
+      {% if data.chooseQtsRoute  == 'Apply for qualified teacher status' %}
          {% include "_includes/summary/apply-for-qts-card.njk" %}
+      {% endif %}
 
-      {% elif data.chooseQtsRoute  == 'QTLS +SET' %}
+      {% if data.chooseQtsRoute  == 'QTLS +SET' %}
          {% include "_includes/summary/qtls-and-set-only-card.njk" %}
+      {% endif %}
 
-      {% else %}
+      {% if data.chooseQtsRoute  == 'Another route' %}
         {% include "_includes/summary/legacy-route-card.njk" %}
       {% endif %}
 

@@ -14,11 +14,11 @@ module.exports = router => {
         } else if (req.body.chooseQtsRoute == 'Apply for qualified teacher status') {
           res.redirect('/apply-for-qts/country')
 
-        } else if (req.body.chooseQtsRoute == 'Legacy from migration') {
+        } else if (req.body.chooseQtsRoute == 'Another route') {
           res.redirect('legacy')
 
         } else {
-          res.redirect('/qtls-and-set/set-member')
+          res.redirect('/qtls-and-set/set-member-number')
         }
         
     })

@@ -1,15 +1,15 @@
 module.exports = router => {
 
 
-    router.post('/qtls-and-set/set-member', (req, res) => {
+    router.post('/qtls-and-set/set-member-number', (req, res) => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
-        res.redirect('/qtls-and-set/set-member-number')  
+        res.redirect('/qtls-and-set/start-date')  
       }
     })
 
-    router.post('/qtls-and-set/set-member-number', (req, res) => {
+    router.post('/qtls-and-set/start-date', (req, res) => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {

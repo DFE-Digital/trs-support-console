@@ -30,7 +30,7 @@
         rows: [
           {
             key: {
-              text: "QTS route"
+              text: "Route"
             },
             value: {
               text: data.chooseQtsRoute
@@ -47,23 +47,6 @@
           },
           {
             key: {
-              text: "SET membership number"
-            },
-            value: {
-              text: data.setMemberNumber
-            },
-            actions: {
-              items: [
-                {
-                  href: "/qtls-and-set/set-member-number?returnUrl=/qtls-and-set/check",
-                  text: "Change",
-                  visuallyHiddenText: "set membership number"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Start date"
             },
             value: {
@@ -72,9 +55,26 @@
             actions: {
               items: [
                 {
-                  href: "/qtls-and-set/start-date?returnUrl=/qtls-and-set/check",
+                  href: "/qtls-and-set/start-date?returnUrl=/itt/check",
                   text: "Change",
                   visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Establishment"
+            },
+            value: {
+              text: data.establishment
+            },
+            actions: {
+              items: [
+                {
+                  href: "/qtls-and-set/establishment?returnUrl=/qtls-and-set/check",
+                  text: "Change",
+                  visuallyHiddenText: "establishment"
                 }
               ]
             }
