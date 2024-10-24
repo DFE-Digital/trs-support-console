@@ -1,16 +1,22 @@
 {% extends "layouts/main.html" %}
 
-{% set primaryNavId = "findRecord" %} 
+{% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "general" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/find-teacher"
+  }) }}
+{% endblock %}
 
 
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="ggovuk-grid-column-full">
+  <div class="govuk-grid-column-full">
 
-    
       <h1 class="govuk-heading-l">{{ data.teachers[0].fullName }}</h1>
 
       {{ data.teachers | log }}

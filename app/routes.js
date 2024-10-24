@@ -26,3 +26,7 @@ router.get('/cancel-and-return', (req, res) => {
     req.session.data = {}
     res.redirect('/general')
 })
+
+router.post('/find-teacher', (req, res) => {
+    res.redirect('/general')
+  })

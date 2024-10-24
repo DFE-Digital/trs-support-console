@@ -1,28 +1,37 @@
 {% if data.user %}
-  {% set serviceUrl = '/qualifications' %}
+  {% set serviceUrl = '/general' %}
 {% else %}
   {% set serviceUrl = '/account/sign-in' %}
 {% endif %}
 
 {{ govukHeader({
-  productName: serviceName,
-  serviceUrl: serviceUrl,
-  navigationClasses: "govuk-header__navigation--end",
-  navigation: [
-  {
-    href: 'general',
-    text: 'Home',
-    current: (primaryNavId == "home")
-  },
-  {
-    href: 'find-record',
-    text: 'Find a record',
-    current: (primaryNavId == "findRecord")
-  },
-  {
-    href: '/account/sign-out',
-    text: 'Sign out',
-    current: (primaryNavId == "signOut")
-  }
-  ] if data.user
-}) }}
+    serviceUrl: serviceUrl,
+    navigationClasses: "govuk-header__navigation--end",
+    classes: "govuk-header--full-width-border",
+    navigation: [
+    {
+      href: '/account/sign-out',
+      text: 'Sign out',
+      current: (headerNavId == "signOut")
+    }
+    ] if data.user
+  })
+}}
+
+
+{{ govukServiceNavigation({
+    serviceName: serviceName,
+    navigation: [
+      {
+        href: '#',
+        text: 'Find a record',
+        current: (serviceNavId == "findRecord")
+      },{
+        href: '#',
+        text: 'Support tasks',
+        current: (serviceNavId == "supportTasks")
+      }
+    ] if data.user
+  }) 
+}}
+
