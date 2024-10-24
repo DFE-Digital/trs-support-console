@@ -1,5 +1,5 @@
 {% if data.user %}
-  {% set serviceUrl = '/general' %}
+  {% set serviceUrl = '/find-teacher' %}
 {% else %}
   {% set serviceUrl = '/account/sign-in' %}
 {% endif %}
@@ -18,7 +18,7 @@
   })
 }}
 
-
+{% if data.user %}
 {{ govukServiceNavigation({
     serviceName: serviceName,
     navigation: [
@@ -31,7 +31,7 @@
         text: 'Support tasks',
         current: (serviceNavId == "supportTasks")
       }
-    ] if data.user
+    ]
   }) 
 }}
-
+{% endif %}
