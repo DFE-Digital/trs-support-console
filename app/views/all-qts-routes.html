@@ -18,7 +18,9 @@
 
     
       <span class="govuk-caption-l">{{pageName}}</span>
-      <h1 class="govuk-heading-l"> {{data.teachers[0].fullName}}</h1>
+      <h1 class="govuk-heading-l">Select a route to professional status</h1>
+
+      <h3 class="govuk-heading-s">Initial teacher training</h3>
       
       <form method="post" novalidate>
       {{ govukRadios({
@@ -27,7 +29,15 @@
         items: [
           {
             value: "Initial teacher training (postgraduate or undergraduate)",
-            text: "Initial teacher training (postgraduate or undergraduate)"
+            text: "QTS"
+          },
+          {
+            value: "Initial teacher training (postgraduate or undergraduate)",
+            text: "EYTS"
+          },
+          {
+            value: "Initial teacher training (postgraduate or undergraduate)",
+            text: "EPTS"
           },
           {
             value: "Assessment only",
@@ -42,12 +52,15 @@
             text: "Apply for qualified teacher status"
           },
           {
-            value: "Legacy from migration",
-            text: "Legacy from migration"
-          },
-          {
             value: "QTLS +SET ",
             text: "QTLS +SET "
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "Another route",
+            text: "Another route"
           }
         ]
       }) }}
