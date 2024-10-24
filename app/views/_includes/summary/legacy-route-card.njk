@@ -1,0 +1,50 @@
+
+{{ govukSummaryList({
+	card: {
+		title: {
+			text: "Summary"
+		}
+	},
+	rows: [
+		{
+			key: {
+				text: "Award date" 
+			},
+			value: {
+				text: data.qtsAwardDate
+			}
+		},
+		{
+			key: {
+				text: "Qualification type"
+			},
+			value: {
+				text: data.assessmentOnlyQualType 
+			}
+		},
+		{
+			key: {
+				text: "Induction exemption"
+			},
+			value: {
+				text: data.assessmentOnlyHasExemption 
+			}
+		},
+		{
+			key: {
+				text: "Route type"
+			},
+			value: {
+				text: data.chooseQtsRoute
+			}
+		},
+		{
+			key: {
+				text: "Route status"
+			},
+			value: {
+				text: "Working towards"
+			}
+		}
+	]
+}) }}

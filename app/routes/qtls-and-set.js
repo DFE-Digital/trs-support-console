@@ -20,7 +20,7 @@ module.exports = router => {
 
     router.post('/qtls-and-set/check-handler', (req, res) => {
 
-      req.flash('success', 'QTS Route and professional status added')
+      req.flash('success', 'Route to professional status added')
 
       res.redirect('/route')
     })

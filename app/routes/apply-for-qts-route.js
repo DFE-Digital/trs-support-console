@@ -14,10 +14,10 @@ module.exports = router => {
       res.redirect('/apply-for-qts/check')
     })
 
-
+    /////////////  FLASH //////////////
     router.post('/apply-for-qts/check-handler', (req, res) => {
 
-      req.flash('success', 'QTS Route and professional status added')
+      req.flash('success', 'Route to professional status added')
 
       res.redirect('/route')
     })

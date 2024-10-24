@@ -30,7 +30,7 @@
         rows: [
           {
             key: {
-              text: "QTS route"
+              text: "Route"
             },
             value: {
               text: data.chooseQtsRoute
@@ -63,17 +63,17 @@
           },
           {
             key: {
-              text: "Qualification type"
+              text: "Start date"
             },
             value: {
-              text: data.assessmentOnlyQualType
+              text: data['assessmentOnlyStartDate-day'] + " " + data['assessmentOnlyStartDate-month'] + " " + data['assessmentOnlyStartDate-year']
             },
             actions: {
               items: [
                 {
-                  href: "/assessment-only/qualification-type?returnUrl=/assessment-only/check",
+                  href: "/assessment-only/start-date?returnUrl=/assessment-only/check",
                   text: "Change",
-                  visuallyHiddenText: "qualification type"
+                  visuallyHiddenText: "start date"
                 }
               ]
             }
@@ -84,6 +84,23 @@
             },
             value: {
               text: data.assessmentOnlyHasExemption
+            },
+            actions: {
+              items: [
+                {
+                  href: "/assessment-only/exemption?returnUrl=/assessment-only/check",
+                  text: "Change",
+                  visuallyHiddenText: "qualification type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Exemption reason"
+            },
+            value: {
+              text: "[dervived_from_routeType]"
             },
             actions: {
               items: [

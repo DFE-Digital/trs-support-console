@@ -145,12 +145,23 @@
         ]
       }) }}
       
+      {% if data.chooseQtsRoute  == 'Initial teacher training' %}
+        {% include "_includes/summary/itt-card.njk" %}
 
-      {% if data.chooseQtsRoute %}
-      
+      {% elif data.chooseQtsRoute  == 'Assessment only' %}
+        {% include "_includes/summary/assessment-only-card.njk" %}
         
-        {% include "_includes/summary/general-card.njk" %}
+      {% elif data.chooseQtsRoute  == 'IQTS' %}
+         {% include "_includes/summary/iqts-only-card.njk" %}
 
+      {% elif data.chooseQtsRoute  == 'Apply for qualified teacher status' %}
+         {% include "_includes/summary/apply-for-qts-card.njk" %}
+
+      {% elif data.chooseQtsRoute  == 'QTLS +SET' %}
+         {% include "_includes/summary/qtls-and-set-only-card.njk" %}
+
+      {% else %}
+        {% include "_includes/summary/legacy-route-card.njk" %}
       {% endif %}
 
 

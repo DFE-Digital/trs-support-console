@@ -16,6 +16,7 @@ module.exports = router => {
       }      
     })
 
+    /////////////  FLASH //////////////
     router.post('/itt/check-handler', (req, res) => {
 
       req.flash('success', 'Route to professional status added')
