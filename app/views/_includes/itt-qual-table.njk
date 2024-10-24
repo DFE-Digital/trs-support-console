@@ -1,10 +1,18 @@
 {{ govukSummaryList({
   card: {
     title: {
-      text: "Qualified teacher status (QTS)"
+      text: "Qualified teacher status (QTS) [**type will append here**]"
     }
   },
   rows: [
+    {
+      key: {
+        text: "Establishment"
+      },
+      value: {
+        text: data.establishment
+      }
+    },
     {
       key: {
         text: "Route"
@@ -13,7 +21,6 @@
         text: data.chooseQtsRoute
       }
     },
-    
     {
       key: {
         text: "Route start date"
@@ -25,10 +32,10 @@
 
     {
       key: {
-        text: "QTS Status"
+        text: "Status"
       },
       value: {
-        text: "Working towards"
+        text: "Working towards " + data.chooseQtsRoute + " route"
       }
     }
   ]
