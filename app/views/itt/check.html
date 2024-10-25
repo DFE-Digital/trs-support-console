@@ -47,23 +47,6 @@
           },
           {
             key: {
-              text: "Start date"
-            },
-            value: {
-              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/itt/start-date?returnUrl=/itt/check",
-                  text: "Change",
-                  visuallyHiddenText: "start date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Establishment"
             },
             value: {
@@ -78,7 +61,41 @@
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Establishment qualification"
+            },
+            value: {
+              text: data.establishmentQualification
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/establishment-qualification?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "establishment qualification"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/start-date?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          }          
         ]
       }) }}
 

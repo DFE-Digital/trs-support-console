@@ -4,6 +4,14 @@ module.exports = router => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
+        res.redirect('/itt/establishment-qualification')  
+      }      
+    })
+
+    router.post('/itt/establishment-qualification', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
         res.redirect('/itt/start-date')  
       }      
     })

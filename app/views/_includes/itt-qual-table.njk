@@ -41,6 +41,23 @@
     },
     {
       key: {
+        text: "Establishment qualification"
+      },
+      value: {
+        text: data.establishmentQualification
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/edit/establishment-qualification?returnUrl=/itt/edit/check",
+            text: "Change",
+            visuallyHiddenText: "establishment"
+          }
+        ]
+      }
+    },
+    {
+      key: {
         text: "Route start date"
       },
       value: {
@@ -67,7 +84,7 @@
       actions: {
         items: [
           {
-            href: "/itt/route-status?returnUrl=/itt/check",
+            href: "/itt/edit/route-status?returnUrl=/itt/edit/check",
             text: "Change",
             visuallyHiddenText: "route start date"
           }
