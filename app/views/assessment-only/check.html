@@ -44,7 +44,8 @@
                 }
               ]
             }
-          },{
+          },
+          {
             key: {
               text: "Establishment"
             },
@@ -57,6 +58,23 @@
                   href: "/assessment-only/establishment?returnUrl=/assessment-only/check",
                   text: "Change",
                   visuallyHiddenText: "establishment"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Establishment qualification"
+            },
+            value: {
+              text: data.establishmentQualification or data.someOtherEstQual
+            },
+            actions: {
+              items: [
+                {
+                  href: "/assessment-only/establishment-qualification?returnUrl=/assessment-only/check",
+                  text: "Change",
+                  visuallyHiddenText: "establishment qualification"
                 }
               ]
             }
@@ -77,41 +95,7 @@
                 }
               ]
             }
-          },
-          {
-            key: {
-              text: "Has exemption"
-            },
-            value: {
-              text: data.assessmentOnlyHasExemption
-            },
-            actions: {
-              items: [
-                {
-                  href: "/assessment-only/exemption?returnUrl=/assessment-only/check",
-                  text: "Change",
-                  visuallyHiddenText: "qualification type"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Exemption reason"
-            },
-            value: {
-              text: "[dervived_from_routeType]"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/assessment-only/exemption?returnUrl=/assessment-only/check",
-                  text: "Change",
-                  visuallyHiddenText: "qualification type"
-                }
-              ]
-            }
-          }
+          }          
         ]
       }) }}
 

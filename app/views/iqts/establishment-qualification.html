@@ -3,7 +3,9 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Do you have an induction exemption" %}
+{% set questionName = "Establishment qualification" %}
+
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,19 +23,39 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      
+      {% set anotherEstQuaHtml %}
+        {{ govukInput({
+          id: "some-other-est-qual",
+          name: "someOtherEstQual",
+          type: "text",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Name of other qualification"
+          }
+        }) }}
+      {% endset %}
+
       <form method="post" novalidate>
         {{ govukRadios({
-          name: "assessmentOnlyHasExemption",
-          value: data.assessmentOnlyHasExemption,    
+          name: "establishmentQualification",
+          value: data.establishmentQualification,    
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Undergraduate",
+              text: "Undergraduate"
             },
             {
-              value: "No",
-              text: "No"
+              value: "Postgraduate",
+              text: "Postgraduate"
+            },
+            {
+              divider: "or"
+            },
+            {
+              text: "Something else",
+              conditional: {
+                html: anotherEstQuaHtml
+              }
             }
           ]
         }) }}

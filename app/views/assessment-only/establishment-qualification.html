@@ -3,7 +3,9 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Qualification type" %}
+{% set questionName = "Establishment qualification" %}
+
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,24 +23,39 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      
-  
+      {% set anotherEstQuaHtml %}
+        {{ govukInput({
+          id: "some-other-est-qual",
+          name: "someOtherEstQual",
+          type: "text",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Name of other qualification"
+          }
+        }) }}
+      {% endset %}
+
       <form method="post" novalidate>
         {{ govukRadios({
-          name: "assessmentOnlyQualType",
-          value: data.assessmentOnlyQualType,    
+          name: "establishmentQualification",
+          value: data.establishmentQualification,    
           items: [
             {
-              value: "QTS",
-              text: "QTS"
+              value: "Undergraduate",
+              text: "Undergraduate"
             },
             {
-              value: "EYTS",
-              text: "EYTS"
+              value: "Postgraduate",
+              text: "Postgraduate"
             },
             {
-              value: "EPTS",
-              text: "EPTS"
+              divider: "or"
+            },
+            {
+              text: "Something else",
+              conditional: {
+                html: anotherEstQuaHtml
+              }
             }
           ]
         }) }}
