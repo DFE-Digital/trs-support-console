@@ -7,18 +7,36 @@
   rows: [
     {
       key: {
-        text: "Establishment"
-      },
-      value: {
-        text: data.establishment
-      }
-    },
-    {
-      key: {
         text: "Route"
       },
       value: {
         text: data.chooseQtsRoute
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/edit/start-date?returnUrl=/itt/edit/check",
+            text: "Change",
+            visuallyHiddenText: "route type"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Establishment"
+      },
+      value: {
+        text: data.establishment
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/edit/establishment?returnUrl=/itt/edit/check",
+            text: "Change",
+            visuallyHiddenText: "establishment"
+          }
+        ]
       }
     },
     {
@@ -27,6 +45,15 @@
       },
       value: {
         text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/start-date?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "route start date"
+          }
+        ]
       }
     },
 
@@ -36,6 +63,15 @@
       },
       value: {
         text: "Working towards route"
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/route-status?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "route start date"
+          }
+        ]
       }
     }
   ]

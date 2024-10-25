@@ -20,7 +20,7 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l">Select a route to professional status</h1>
 
-      <h3 class="govuk-heading-s">Initial teacher training</h3>
+      {# <h3 class="govuk-heading-s">Initial teacher training</h3> #}
       
       <form method="post" novalidate>
       {{ govukRadios({
@@ -29,15 +29,7 @@
         items: [
           {
             value: "Initial teacher training",
-            text: "QTS"
-          },
-          {
-            value: "Initial teacher training",
-            text: "EYTS"
-          },
-          {
-            value: "Initial teacher training",
-            text: "EPTS"
+            text: "ITT"
           },
           {
             value: "Assessment only",

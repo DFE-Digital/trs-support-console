@@ -2,8 +2,8 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a professional status -" + data.teachers[0].fullName %}
-{% set questionName = "Check details and confirm professional status" %}
+{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+{% set questionName = "Check details and confirm route" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,20 +21,24 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
 
+      {{ govukInsetText({
+        text: "A professional status will be added when you confirm this route."
+      }) }}
+
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
             key: {
-              text: "Professional status"
+              text: "Route"
             },
             value: {
-              text: data.ittProfessionalQualification
+              text: data.chooseQtsRoute
             },
             actions: {
               items: [
                 {
-                  href: "/itt/qualifications/qualification-type?returnUrl=/itt/qualifications/check",
+                  href: "/change-qts-route",
                   text: "Change",
                   visuallyHiddenText: "QTS route"
                 }
@@ -43,34 +47,34 @@
           },
           {
             key: {
-              text: "Award date"
+              text: "Start date"
             },
             value: {
-              text: data['ittAwardDate-day'] + " " + data['ittAwardDate-month'] + " " + data['ittAwardDate-year']
+              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
             },
             actions: {
               items: [
                 {
-                  href: "/itt/qualifications/award-date?returnUrl=/itt/qualifications/check",
+                  href: "/itt/start-date?returnUrl=/itt/check",
                   text: "Change",
-                  visuallyHiddenText: "award date"
+                  visuallyHiddenText: "start date"
                 }
               ]
             }
           },
           {
             key: {
-              text: "End date"
+              text: "Establishment"
             },
             value: {
-              text: data['ittEndDate-day'] + " " + data['ittEndDate-month'] + " " + data['ittEndDate-year']
+              text: data.establishment
             },
             actions: {
               items: [
                 {
-                  href: "/itt/qualifications/end-date?returnUrl=/itt/check",
+                  href: "/itt/establishment?returnUrl=/itt/check",
                   text: "Change",
-                  visuallyHiddenText: "end date"
+                  visuallyHiddenText: "establishment"
                 }
               ]
             }
@@ -78,14 +82,14 @@
         ]
       }) }}
 
-      <form method="post" action="/itt/qualifications/check-handler">
+      <form method="post" action="/itt/check-handler">
         {{ govukButton({
-          text: "Confirm and add professional status"
+          text: "Confirm and add route"
         }) }}
       </form>    
 
       <p class="govuk-body">
-        <a href="general" class="govuk-link">Cancel and return to record</a>
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
       </p>
 
     

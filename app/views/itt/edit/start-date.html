@@ -2,8 +2,8 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a professional status - " + data.teachers[0].fullName %}
-{% set questionName = "Professional qualification or status" %}
+{% set pageName = "Edit QTS route -" + data.teachers[0].fullName %}
+{% set questionName = "Start date" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -22,24 +22,28 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
       <form method="post" novalidate>
-        {{ govukRadios({
-          name: "ittProfessionalQualification",
-          value: data.ittProfessionalQualification,    
+        {{ govukDateInput({
+          id: "ittStart",
+          namePrefix: "ittStartDate",
           items: [
             {
-              value: "QTS",
-              text: "QTS"
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data['ittStartDate-day']
             },
             {
-              value: "EYTS",
-              text: "EYTS"
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data['ittStartDate-month']
             },
             {
-              value: "EYPS (Legacy)",
-              text: "EYPS (Legacy)"
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data['ittStartDate-year']
             }
           ]
         }) }}
+  
 
         {{ govukButton({
           text: "Continue"
@@ -47,7 +51,7 @@
       </form>
 
       <p class="govuk-body">
-        <a href="general" class="govuk-link">Cancel and return to record</a>
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
       </p>
 
     

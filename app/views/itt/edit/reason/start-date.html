@@ -2,8 +2,8 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a professional status - " + data.teachers[0].fullName %}
-{% set questionName = "End date" %}
+{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+{% set questionName = "Start date" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -24,22 +24,22 @@
       <form method="post" novalidate>
         {{ govukDateInput({
           id: "ittStart",
-          namePrefix: "ittEndDate",
+          namePrefix: "ittStartDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['ittEndDate-day']
+              value: data['ittStartDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['ittEndDate-month']
+              value: data['ittStartDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['ittEndDate-year']
+              value: data['ittStartDate-year']
             }
           ]
         }) }}
@@ -51,7 +51,7 @@
       </form>
 
       <p class="govuk-body">
-        <a href="general" class="govuk-link">Cancel and return to record</a>
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
       </p>
 
     
