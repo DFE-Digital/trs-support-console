@@ -29,4 +29,11 @@ router.get('/cancel-and-return', (req, res) => {
 
 router.post('/find-teacher', (req, res) => {
     res.redirect('/general')
-  })
+})
+
+
+router.get('/find-new-record', (req, res) => {
+    req.session.data = {}
+    res.redirect('/find-teacher')
+})
+  
