@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Check details and confirm route" %}
+{% set questionName = "Check details to confirm route and qualification" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -30,7 +30,7 @@
         rows: [
           {
             key: {
-              text: "QTS route"
+              text: "Route"
             },
             value: {
               text: data.chooseQtsRoute
@@ -78,6 +78,57 @@
                 }
               ]
             }
+          },
+          {
+            key: {
+              text: "Qualification awarded"
+            },
+            value: {
+              text: data.applyForQtsBeenAwarded
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/qualification-awarded?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "qualification awarded"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text: data['applyQtsStartDate-day'] + " " + data['applyQtsStartDate-month'] + " " + data['applyQtsStartDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/award-date?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "Award date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: data.applyForQtsBeenAgeRange
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/age?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "age"
+                }
+              ]
+            }
           }
         ]
       }) }}
@@ -86,7 +137,7 @@
 
       <form method="post" action="/apply-for-qts/check-handler">
         {{ govukButton({
-          text: "Confirm and add route"
+          text: "Confirm to add route and qualification"
         }) }}
       </form>    
 

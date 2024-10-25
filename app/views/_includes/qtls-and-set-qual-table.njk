@@ -1,0 +1,77 @@
+{{ govukSummaryList({
+  card: {
+    title: {
+      text: "Qualified teacher status (QTS) [**type will append here**]"
+    }
+  },
+  rows: [
+    {
+      key: {
+        text: "Route"
+      },
+      value: {
+        text: data.chooseQtsRoute
+      },
+      actions: {
+        items: [
+          {
+            href: "/change-qts-route",
+            text: "Change",
+            visuallyHiddenText: "QTS route"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "SET membership number"
+      },
+      value: {
+        text: data.setMemberNumber
+      },
+      actions: {
+        items: [
+          {
+            href: "/qtls-and-set/set-member-number?returnUrl=/qtls-and-set/check",
+            text: "Change",
+            visuallyHiddenText: "set membership number"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "SET membership start date"
+      },
+      value: {
+        text: data['qtlsAndSetMembershipStartDate-day'] + " " + data['qtlsAndSetMembershipStartDate-month'] + " " + data['qtlsAndSetMembershipStartDate-year']
+      },
+      actions: {
+        items: [
+          {
+            href: "/qtls-and-set/start-date?returnUrl=/qtls-and-set/check",
+            text: "Change",
+            visuallyHiddenText: "start date"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "QTS equivalent award date"
+      },
+      value: {
+        text: data['qtlsAndSetEquivalentDate-day'] + " " + data['qtlsAndSetEquivalentDate-month'] + " " + data['qtlsAndSetEquivalentDate-year']
+      },
+      actions: {
+        items: [
+          {
+            href: "/qtls-and-set/award-date?returnUrl=/qtls-and-set/check",
+            text: "Change",
+            visuallyHiddenText: "award date"
+          }
+        ]
+      }
+    }
+  ]
+}) }}

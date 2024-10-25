@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "SET Member" %}
+{% set questionName = "Qualification awarded" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,12 +21,11 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      
   
       <form method="post" novalidate>
         {{ govukRadios({
-          name: "hasSetMembership",
-          value: data.hasSetMembership,    
+          name: "applyForQtsBeenAwarded",
+          value: data.applyForQtsBeenAwarded,    
           items: [
             {
               value: "Yes",
@@ -45,7 +44,7 @@
       </form>
 
       <p class="govuk-body">
-        <a href="general" class="govuk-link">Cancel and return to record</a>
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
       </p>
 
     

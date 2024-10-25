@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Start date" %}
+{% set questionName = "Set membership start date" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -23,23 +23,23 @@
       
       <form method="post" novalidate>
         {{ govukDateInput({
-          id: "qtlsAndSetStart",
-          namePrefix: "qtlsAndSetStartDate",
+          id: "qtlsAndSetMembershipStart",
+          namePrefix: "qtlsAndSetMembershipStartDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['qtlsAndSetStartDate-day']
+              value: data['qtlsAndSetMembershipStartDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['qtlsAndSetStartDate-month']
+              value: data['qtlsAndSetMembershipStartDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['qtlsAndSetStartDate-year']
+              value: data['qtlsAndSetMembershipStartDate-year']
             }
           ]
         }) }}

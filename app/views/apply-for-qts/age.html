@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Is " + data.teachers[0].fullName + " exempt from statutory induction?" %}
+{% set questionName = "What age is " + data.teachers[0].fullName %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -24,16 +24,24 @@
   
       <form method="post" novalidate>
         {{ govukRadios({
-          name: "applyForQtsHasExemption",
-          value: data.applyForQtsHasExemption,    
+          name: "applyForQtsBeenAgeRange",
+          value: data.applyForQtsBeenAgeRange,    
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Between 20 and 30",
+              text: "Between 20 and 30"
             },
             {
-              value: "No",
-              text: "No"
+              value: "Between 30 and 40",
+              text: "Between 30 and 40"
+            },
+            {
+              value: "Between 40 and 50",
+              text: "Between 40 and 50"
+            },
+            {
+              value: "Between 50 and 60",
+              text: "Between 50 and 60"
             }
           ]
         }) }}

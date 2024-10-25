@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Is " + data.teachers[0].fullName + " exempt from statutory induction?" %}
+{% set questionName = "QTS equivalent Award date" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,23 +21,30 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-  
       <form method="post" novalidate>
-        {{ govukRadios({
-          name: "applyForQtsHasExemption",
-          value: data.applyForQtsHasExemption,    
+        {{ govukDateInput({
+          id: "qtlsAndSetEquivalentDate",
+          namePrefix: "qtlsAndSetEquivalentDate",
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data['qtlsAndSetEquivalentDate-day']
             },
             {
-              value: "No",
-              text: "No"
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data['qtlsAndSetEquivalentDate-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data['qtlsAndSetEquivalentDate-year']
             }
           ]
         }) }}
   
+
         {{ govukButton({
           text: "Continue"
         }) }}
