@@ -48,24 +48,23 @@
             {% endif %}
 
             {% if data.chooseQtsRoute  == 'Assessment only' %}
-              {% include "_includes/apply-qts-qual-table.njk" %}
+              {% include "_includes/assessment-only-qual-table.njk" %}
             {% endif %}
 
             {% if data.chooseQtsRoute  == 'Apply for qualified teacher status' %}
               {% include "_includes/apply-qts-qual-table.njk" %}
             {% endif %}
 
-            {% if data.chooseQtsRoute  == 'QTLS and SET' %}
+            {% if data.chooseQtsRoute  == 'qtls and set' %}
               {% include "_includes/qtls-and-set-qual-table.njk" %}
             {% endif %}
 
-            {% if data.chooseQtsRoute  == 'IQTS' %}
-              
+            {% if data.chooseQtsRoute  == 'iqts' %}
+              {% include "_includes/iqts-qual-table.njk" %}
             {% endif %}
 
-
             {% if data.chooseQtsRoute  == 'Another route' %}
-              
+              {% include "_includes/legacy-qual-table.njk" %}
             {% endif %}
             
 

@@ -20,7 +20,8 @@ require('./routes/choose-route')(router)
 require('./routes/itt-route')(router)
 require('./routes/apply-for-qts-route')(router)
 require('./routes/assessment-only')(router)
-require('./routes/qtls-and-set')(router)
+require('./routes/new-qtls-set')(router)
+require('./routes/another-route')(router)
 
 router.get('/cancel-and-return', (req, res) => {
     req.session.data = {}
@@ -32,8 +33,8 @@ router.post('/find-teacher', (req, res) => {
 })
 
 
-router.get('/find-new-record', (req, res) => {
-    req.session.data = {}
-    res.redirect('/find-teacher')
-})
+// router.get('/find-new-record', (req, res) => {
+//     req.session.data = {}
+//     res.redirect('/find-teacher')
+// })
   

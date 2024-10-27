@@ -4,21 +4,26 @@ module.exports = router => {
 
         if (req.body.chooseQtsRoute == 'Initial teacher training') {
           res.redirect('/itt/establishment')
+        }
 
-        } else if (req.body.chooseQtsRoute == 'Assessment only') {
+        if (req.body.chooseQtsRoute == 'Assessment only') {
           res.redirect('/assessment-only/establishment')
-
-        } else if (req.body.chooseQtsRoute == 'IQTS') {
-          res.redirect('iqts')
-
-        } else if (req.body.chooseQtsRoute == 'Apply for qualified teacher status') {
+        }
+        
+        if (req.body.chooseQtsRoute == 'iqts') {
+          res.redirect('/iqts/establishment')
+        }
+        
+        if (req.body.chooseQtsRoute == 'Apply for qualified teacher status') {
           res.redirect('/apply-for-qts/country')
+        }
 
-        } else if (req.body.chooseQtsRoute == 'QTLS and SET') {
-          res.redirect('/qtls-and-set/set-member-number')
-
-        } else {
-          res.redirect('legacy')
+        if (req.body.chooseQtsRoute == 'qtls and set') {
+          res.redirect('/new-qtls-set/set-member-number')
+        }
+        
+        if (req.body.chooseQtsRoute == 'Another route') {
+          res.redirect('/legacy')
         }
         
     })
