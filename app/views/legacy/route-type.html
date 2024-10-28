@@ -2,7 +2,7 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Legacy route" %}
+{% set questionName = "Route type" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -23,9 +23,17 @@
     
     <form method="post" novalidate>
 
-      {{ govukButton({
-        text: "Continue"
-      }) }}
+      {{ govukInput({
+        label: {
+          text: "What is the name of the event?"
+            },
+            id: "event-name",
+            name: "eventName"
+          }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
     </form>
 
 

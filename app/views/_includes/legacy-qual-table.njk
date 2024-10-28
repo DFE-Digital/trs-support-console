@@ -1,7 +1,16 @@
 {{ govukSummaryList({
   card: {
     title: {
-      text: "Qualified teacher status (QTS) [**type will append here**]"
+       text: "[Available/inferred qualification for selected route]"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Add qualification",
+          visuallyHiddenText: "route"
+        }
+      ]
     }
   },
   rows: [

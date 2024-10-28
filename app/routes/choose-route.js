@@ -23,7 +23,7 @@ module.exports = router => {
         }
         
         if (req.body.chooseQtsRoute == 'Another route') {
-          res.redirect('/legacy')
+          res.redirect('/legacy/route-type')
         }
         
     })
