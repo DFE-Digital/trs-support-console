@@ -47,15 +47,32 @@
           },
           {
             key: {
-              text: "Start date"
+              text: "Country"
             },
             value: {
-              text: data['qtlsAndSetStartDate-day'] + " " + data['qtlsAndSetStartDate-month'] + " " + data['qtlsAndSetStartDate-year']
+              text: data.iqtsCountry
             },
             actions: {
               items: [
                 {
-                  href: "/qtls-and-set/start-date?returnUrl=/itt/check",
+                  href: "/iqts/country?returnUrl=/iqts/check",
+                  text: "Change",
+                  visuallyHiddenText: "country"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: data['iqtsStartDate-day'] + " " + data['iqtsStartDate-month'] + " " + data['iqtsStartDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/iqts/start-date?returnUrl=/itt/check",
                   text: "Change",
                   visuallyHiddenText: "start date"
                 }
@@ -67,14 +84,48 @@
               text: "Establishment"
             },
             value: {
-              text: data.establishment
+              text: data.iqtsEstablishment
             },
             actions: {
               items: [
                 {
-                  href: "/qtls-and-set/establishment?returnUrl=/qtls-and-set/check",
+                  href: "/iqts/establishment?returnUrl=/iqts/check",
                   text: "Change",
                   visuallyHiddenText: "establishment"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Establishment Qualification"
+            },
+            value: {
+              text: data.iqtsEstablishmentQualification
+            },
+            actions: {
+              items: [
+                {
+                  href: "/iqts/establishment-qualification?returnUrl=/iqts/check",
+                  text: "Change",
+                  visuallyHiddenText: "establishment qualification"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Provider"
+            },
+            value: {
+              text: data.iqtsProvider
+            },
+            actions: {
+              items: [
+                {
+                  href: "/iqts/provider?returnUrl=/iqts/check",
+                  text: "Change",
+                  visuallyHiddenText: "Provider"
                 }
               ]
             }

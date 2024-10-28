@@ -1,10 +1,8 @@
-
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "findRecord" %} 
-{% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "QTS equivalent Award date" %}
+{% set questionName = "What country is " +data.teachers[0].fullName+ " from?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -22,34 +20,17 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
+      
       <form method="post" novalidate>
-        {{ govukDateInput({
-          id: "qtlsAndSetEquivalentDate",
-          namePrefix: "qtlsAndSetEquivalentDate",
-          items: [
-            {
-              name: "day",
-              classes: "govuk-input--width-2",
-              value: data['qtlsAndSetEquivalentDate-day']
-            },
-            {
-              name: "month",
-              classes: "govuk-input--width-2",
-              value: data['qtlsAndSetEquivalentDate-month']
-            },
-            {
-              name: "year",
-              classes: "govuk-input--width-4",
-              value: data['qtlsAndSetEquivalentDate-year']
-            }
-          ]
-        }) }}
-  
+      
+
+        {% include "_includes/autocomplete.njk" %}
 
         {{ govukButton({
           text: "Continue"
         }) }}
       </form>
+
 
       <p class="govuk-body">
         <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>

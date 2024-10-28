@@ -11,7 +11,7 @@ module.exports = router => {
         }
         
         if (req.body.chooseQtsRoute == 'iqts') {
-          res.redirect('/iqts/establishment')
+          res.redirect('/iqts/country')
         }
         
         if (req.body.chooseQtsRoute == 'Apply for qualified teacher status') {

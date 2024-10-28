@@ -20,6 +20,7 @@ require('./routes/choose-route')(router)
 require('./routes/itt-route')(router)
 require('./routes/apply-for-qts-route')(router)
 require('./routes/assessment-only')(router)
+require('./routes/iqts-route')(router)
 require('./routes/new-qtls-set')(router)
 require('./routes/another-route')(router)
 
