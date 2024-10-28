@@ -50,7 +50,7 @@
               text: "Country"
             },
             value: {
-              text: data.iqtsCountry
+              text: data.applyQtsCountry
             },
             actions: {
               items: [
@@ -72,7 +72,7 @@
             actions: {
               items: [
                 {
-                  href: "/iqts/start-date?returnUrl=/itt/check",
+                  href: "/iqts/start-date?returnUrl=/iqts/check",
                   text: "Change",
                   visuallyHiddenText: "start date"
                 }
@@ -84,7 +84,7 @@
               text: "Establishment"
             },
             value: {
-              text: data.iqtsEstablishment
+              text: data.establishment
             },
             actions: {
               items: [
@@ -101,7 +101,7 @@
               text: "Establishment Qualification"
             },
             value: {
-              text: data.iqtsEstablishmentQualification
+              text: data.establishmentQualification
             },
             actions: {
               items: [
@@ -133,7 +133,7 @@
         ]
       }) }}
 
-      <form method="post" action="/qtls-and-set/check-handler">
+      <form method="post" action="/iqts/check-handler">
         {{ govukButton({
           text: "Confirm and add route"
         }) }}

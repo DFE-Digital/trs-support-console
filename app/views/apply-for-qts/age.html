@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "What age is " + data.teachers[0].fullName %}
+{% set questionName = "Teaching age range for " + data.teachers[0].fullName %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -28,20 +28,20 @@
           value: data.applyForQtsBeenAgeRange,    
           items: [
             {
-              value: "Between 20 and 30",
-              text: "Between 20 and 30"
+              value: "Early Years (ages 0-5)",
+              text: "Early Years (ages 0-5)"
             },
             {
-              value: "Between 30 and 40",
-              text: "Between 30 and 40"
+              value: "Primary (ages 5-11)",
+              text: "Primary (ages 5-11)"
             },
             {
-              value: "Between 40 and 50",
-              text: "Between 40 and 50"
+              value: "Secondary (ages 11-16)",
+              text: "Secondary (ages 11-16)"
             },
             {
-              value: "Between 50 and 60",
-              text: "Between 50 and 60"
+              value: "Post-16 (ages 16-18)",
+              text: "Post-16 (ages 16-18)"
             }
           ]
         }) }}

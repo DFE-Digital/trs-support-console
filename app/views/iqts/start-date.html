@@ -23,23 +23,23 @@
       
       <form method="post" novalidate>
         {{ govukDateInput({
-          id: "ittStart",
-          namePrefix: "ittStartDate",
+          id: "iqtsStart",
+          namePrefix: "iqtsStartDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['ittStartDate-day']
+              value: data['iqtsStartDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['ittStartDate-month']
+              value: data['iqtsStartDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['ittStartDate-year']
+              value: data['iqtsStartDate-year']
             }
           ]
         }) }}

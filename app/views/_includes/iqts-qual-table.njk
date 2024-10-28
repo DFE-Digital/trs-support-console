@@ -1,5 +1,5 @@
 {{ govukSummaryList({
-  card: {
+   card: {
     title: {
       text: "Qualified teacher status (QTS) [**type will append here**]"
     }
@@ -15,9 +15,43 @@
       actions: {
         items: [
           {
-            href: "/itt/edit/start-date?returnUrl=/itt/edit/check",
+            href: "/change-qts-route",
             text: "Change",
-            visuallyHiddenText: "route type"
+            visuallyHiddenText: "QTS route"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Country"
+      },
+      value: {
+        text: data.applyQtsCountry
+      },
+      actions: {
+        items: [
+          {
+            href: "/iqts/country?returnUrl=/iqts/check",
+            text: "Change",
+            visuallyHiddenText: "country"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Start date"
+      },
+      value: {
+        text: data['iqtsStartDate-day'] + " " + data['iqtsStartDate-month'] + " " + data['iqtsStartDate-year']
+      },
+      actions: {
+        items: [
+          {
+            href: "/iqts/start-date?returnUrl=/iqts/check",
+            text: "Change",
+            visuallyHiddenText: "start date"
           }
         ]
       }
@@ -32,7 +66,7 @@
       actions: {
         items: [
           {
-            href: "/itt/edit/establishment?returnUrl=/itt/edit/check",
+            href: "/iqts/establishment?returnUrl=/iqts/check",
             text: "Change",
             visuallyHiddenText: "establishment"
           }
@@ -41,7 +75,7 @@
     },
     {
       key: {
-        text: "Establishment qualification"
+        text: "Establishment Qualification"
       },
       value: {
         text: data.establishmentQualification
@@ -49,44 +83,26 @@
       actions: {
         items: [
           {
-            href: "/itt/edit/establishment-qualification?returnUrl=/itt/edit/check",
+            href: "/iqts/establishment-qualification?returnUrl=/iqts/check",
             text: "Change",
-            visuallyHiddenText: "establishment"
+            visuallyHiddenText: "establishment qualification"
           }
         ]
       }
     },
     {
       key: {
-        text: "Route start date"
+        text: "Provider"
       },
       value: {
-        text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+        text: data.iqtsProvider
       },
       actions: {
         items: [
           {
-            href: "/itt/start-date?returnUrl=/itt/check",
+            href: "/iqts/provider?returnUrl=/iqts/check",
             text: "Change",
-            visuallyHiddenText: "route start date"
-          }
-        ]
-      }
-    },
-
-    {
-      key: {
-        text: "Route status"
-      },
-      value: {
-        text: "Working towards route"
-      },
-      actions: {
-        items: [
-          {
-            href: "/itt/edit/route-status?returnUrl=/itt/edit/check",
-            text: "Change",
-            visuallyHiddenText: "route start date"
+            visuallyHiddenText: "Provider"
           }
         ]
       }

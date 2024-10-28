@@ -13,16 +13,8 @@ module.exports = router => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
-        res.redirect('/apply-for-qts/qualification-awarded')  
+        res.redirect('/apply-for-qts/award-date')  
       }     
-    })
-
-    router.post('/apply-for-qts/qualification-awarded', (req, res) => {
-      if (req.query.returnUrl) {
-        res.redirect(req.query.returnUrl)     
-      } else {
-        res.redirect('/apply-for-qts/award-date') 
-      }
     })
 
     router.post('/apply-for-qts/award-date', (req, res) => {
