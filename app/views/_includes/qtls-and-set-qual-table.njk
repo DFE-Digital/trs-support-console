@@ -1,13 +1,13 @@
 {{ govukSummaryList({
-  card: {
+   card: {
     title: {
-       text: "[Available/inferred qualification for selected route]"
+       text: data.chooseQtsRoute
     },
     actions: {
       items: [
         {
-          href: "#",
-          text: "Add qualification",
+          href: "/itt/add-qualification/index",
+          text: "Add qualification to route",
           visuallyHiddenText: "route"
         }
       ]
