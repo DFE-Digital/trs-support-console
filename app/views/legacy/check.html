@@ -21,24 +21,20 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
 
-      {{ govukInsetText({
-        text: "A professional status will be added when you confirm this route."
-      }) }}
-
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
             key: {
-              text: "Route"
+              text: "Route type"
             },
             value: {
-              text: data.chooseQtsRoute
+              text: data.chooseLegacyRouteType
             },
             actions: {
               items: [
                 {
-                  href: "/change-qts-route",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "QTS route"
                 }
@@ -50,31 +46,14 @@
               text: "Country"
             },
             value: {
-              text: data.applyQtsCountry
+              text: data.legacyCountry
             },
             actions: {
               items: [
                 {
-                  href: "/iqts/country?returnUrl=/iqts/check",
+                  href: "/legacy/country?returnUrl=/legacy/check",
                   text: "Change",
                   visuallyHiddenText: "country"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Start date"
-            },
-            value: {
-              text: data['iqtsStartDate-day'] + " " + data['iqtsStartDate-month'] + " " + data['iqtsStartDate-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/iqts/start-date?returnUrl=/iqts/check",
-                  text: "Change",
-                  visuallyHiddenText: "start date"
                 }
               ]
             }
@@ -84,12 +63,12 @@
               text: "Establishment"
             },
             value: {
-              text: data.establishment
+              text: data.legacyEstablishment
             },
             actions: {
               items: [
                 {
-                  href: "/iqts/establishment?returnUrl=/iqts/check",
+                  href: "/legacy/establishment?returnUrl=/legacy/check",
                   text: "Change",
                   visuallyHiddenText: "establishment"
                 }
@@ -98,17 +77,68 @@
           },
           {
             key: {
-              text: "Establishment Qualification"
+              text: "Start date"
             },
             value: {
-              text: data.establishmentQualification
+              text: data['legacyStartDate-day'] + " " + data['legacyStartDate-month'] + " " + data['legacyStartDate-year']
             },
             actions: {
               items: [
                 {
-                  href: "/iqts/establishment-qualification?returnUrl=/iqts/check",
+                  href: "/legacy/start-date?returnUrl=/legacy/check",
                   text: "Change",
-                  visuallyHiddenText: "establishment qualification"
+                  visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "End date"
+            },
+            value: {
+              text: data['legacyEndDate-day'] + " " + data['legacyEndDate-month'] + " " + data['legacyEndDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/legacy/end-date?returnUrl=/legacy/check",
+                  text: "Change",
+                  visuallyHiddenText: "end date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Exemption"
+            },
+            value: {
+              text: data.legacyExemption
+            },
+            actions: {
+              items: [
+                {
+                  href: "/legacy/exemption?returnUrl=/legacy/check",
+                  text: "Change",
+                  visuallyHiddenText: "exemption"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Teaching age range"
+            },
+            value: {
+              text: data.legacyAgeRange
+            },
+            actions: {
+              items: [
+                {
+                  href: "/legacy/age-range?returnUrl=/legacy/check",
+                  text: "Change",
+                  visuallyHiddenText: "age range"
                 }
               ]
             }
@@ -118,12 +148,12 @@
               text: "Provider"
             },
             value: {
-              text: data.iqtsProvider
+              text: data.legacyProvider
             },
             actions: {
               items: [
                 {
-                  href: "/iqts/provider?returnUrl=/iqts/check",
+                  href: "/legacy/provider?returnUrl=/legacy/check",
                   text: "Change",
                   visuallyHiddenText: "Provider"
                 }
@@ -133,7 +163,7 @@
         ]
       }) }}
 
-      <form method="post" action="/iqts/check-handler">
+      <form method="post" action="/legacy/check-handler">
         {{ govukButton({
           text: "Confirm and add route"
         }) }}
