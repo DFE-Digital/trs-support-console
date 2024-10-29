@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Teaching age range for " + data.teachers[0].fullName %}
+{% set questionName = "What age range does " + data.teachers[0].fullName + " teach?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -23,28 +23,54 @@
       
   
       <form method="post" novalidate>
-        {{ govukRadios({
-          name: "applyForQtsBeenAgeRange",
-          value: data.applyForQtsBeenAgeRange,    
-          items: [
-            {
-              value: "Early Years (ages 0-5)",
-              text: "Early Years (ages 0-5)"
-            },
-            {
-              value: "Primary (ages 5-11)",
-              text: "Primary (ages 5-11)"
-            },
-            {
-              value: "Secondary (ages 11-16)",
-              text: "Secondary (ages 11-16)"
-            },
-            {
-              value: "Post-16 (ages 16-18)",
-              text: "Post-16 (ages 16-18)"
-            }
-          ]
-        }) }}
+        
+          <p class="govuk-body govuk-!-font-weight-bold">From</p>
+  
+          {{ govukDateInput({
+            id: "applyQtsAgeRangeFrom",
+            namePrefix: "applyQtsAgeRangeFromDate",
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data['applyQtsAgeRangeFromDate-day']
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data['applyQtsAgeRangeFromDate-month']
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data['applyQtsAgeRangeFromDate-year']
+              }
+            ]
+          }) }}
+  
+          <p class="govuk-body govuk-!-font-weight-bold">to</p>
+  
+          {{ govukDateInput({
+            id: "applyAtqAgeRangeTo",
+            namePrefix: "applyAtqAgeRangeToDate",
+            items: [
+              {
+                name: "day",
+                classes: "govuk-input--width-2",
+                value: data['applyAtqAgeRangeToDate-day']
+              },
+              {
+                name: "month",
+                classes: "govuk-input--width-2",
+                value: data['applyAtqAgeRangeToDate-month']
+              },
+              {
+                name: "year",
+                classes: "govuk-input--width-4",
+                value: data['applyAtqAgeRangeToDate-year']
+              }
+            ]
+          }) }}
   
         {{ govukButton({
           text: "Continue"
