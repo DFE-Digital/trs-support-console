@@ -1,119 +1,86 @@
 {{ govukSummaryList({
-  card: {
+        card: {
     title: {
-       text: "[Available/inferred qualification for selected route]"
+       text: data.chooseQtsRoute
     },
     actions: {
       items: [
         {
-          href: "#",
-          text: "Add qualification",
+          href: "/itt/add-qualification/index",
+          text: "Add qualification to route",
           visuallyHiddenText: "route"
         }
       ]
     }
-  },ws: [
-    {
-      key: {
-        text: "Route"
-      },
-      value: {
-        text: data.chooseQtsRoute
-      },
-      actions: {
-        items: [
-          {
-            href: "/change-qts-route",
-            text: "Change",
-            visuallyHiddenText: "QTS route"
-          }
-        ]
-      }
+  },
+rows: [
+  {
+    key: {
+      text: "Route"
     },
-    {
-      key: {
-        text: "Country"
-      },
-      value: {
-        text: data.applyQtsCountry
-      },
-      actions: {
-        items: [
-          {
-            href: "/apply-for-qts/country?returnUrl=/apply-for-qts/check",
-            text: "Change",
-            visuallyHiddenText: "country"
-          }
-        ]
-      }
+    value: {
+      text: data.chooseQtsRoute
     },
-    {
-      key: {
-        text: "Has exemption"
-      },
-      value: {
-        text: data.applyForQtsHasExemption
-      },
-      actions: {
-        items: [
-          {
-            href: "/apply-for-qts/exemption?returnUrl=/apply-for-qts/check",
-            text: "Change",
-            visuallyHiddenText: "country"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Qualification awarded"
-      },
-      value: {
-        text: data.applyForQtsBeenAwarded
-      },
-      actions: {
-        items: [
-          {
-            href: "/apply-for-qts/qualification-awarded?returnUrl=/apply-for-qts/check",
-            text: "Change",
-            visuallyHiddenText: "qualification awarded"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Award date"
-      },
-      value: {
-        text: data['applyQtsStartDate-day'] + " " + data['applyQtsStartDate-month'] + " " + data['applyQtsStartDate-year']
-      },
-      actions: {
-        items: [
-          {
-            href: "/apply-for-qts/award-date?returnUrl=/apply-for-qts/check",
-            text: "Change",
-            visuallyHiddenText: "Award date"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Age range"
-      },
-      value: {
-        text: data.applyForQtsBeenAgeRange
-      },
-      actions: {
-        items: [
-          {
-            href: "/apply-for-qts/age?returnUrl=/apply-for-qts/check",
-            text: "Change",
-            visuallyHiddenText: "age"
-          }
-        ]
-      }
+    actions: {
+      items: [
+        {
+          href: "/change-qts-route",
+          text: "Change",
+          visuallyHiddenText: "QTS route"
+        }
+      ]
     }
-  ]
+  },
+  {
+    key: {
+      text: "Establishment"
+    },
+    value: {
+      text: data.establishment
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/establishment?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "establishment"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Qualification"
+    },
+    value: {
+      text: data.establishmentQualification or data.someOtherEstQual
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/establishment-qualification?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "establishment qualification"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: data['assessmentOnlyStartDate-day'] + " " + data['assessmentOnlyStartDate-month'] + " " + data['assessmentOnlyStartDate-year']
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/start-date?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "start date"
+        }
+      ]
+    }
+  }          
+]
 }) }}
