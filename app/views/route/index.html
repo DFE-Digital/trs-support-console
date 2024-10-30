@@ -43,9 +43,16 @@
       {% else %}
 
     
-            {% if data.chooseQtsRoute  == 'Initial teacher training' %}
-              {% include "_includes/itt-qual-table.njk" %}
+            {% if data.ittQualAwardDate == 0 and data.chooseQtsRoute  == 'Initial teacher training' %}
+              {% include "_includes/itt-route-table.njk" %}  
+            {% else %}
+              {% if data.ittQualAwardDate != "" %}
+                {% include "_includes/itt-route-and-qual-table.njk" %}
+              {% endif %}  
             {% endif %}
+
+        
+
 
             {% if data.chooseQtsRoute  == 'Assessment only' %}
               {% include "_includes/assessment-only-qual-table.njk" %}

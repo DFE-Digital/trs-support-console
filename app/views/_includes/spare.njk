@@ -1,33 +1,70 @@
-{% extends "layouts/main.html" %}
-
-{% set serviceNavId = "findRecord" %} 
-{% set secondaryNavId = "routes" %}
-{% set pageName = "Add a QTS route - " + data.teachers[0].fullName %}
-{% set questionName = "Check details and confirm route" %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-{% endblock %}
-
-{% block content %}
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-
-      <span class="govuk-caption-l">{{pageName}}</span>
-      <h1 class="govuk-heading-l"> {{questionName}}</h1>
-
-
-      {{ govukInsetText({
-        text: "You can add a professional status once you confirm this route."
-      }) }}
-
-      {{ govukSummaryList({
-        classes: "govuk-!-margin-bottom-9",
-        rows: [
+{{ govukSummaryList({
+      card: {
+        title: {
+          text: "Qualified teacher status - " = data.chooseQtsRoute
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Delete",
+              visuallyHiddenText: "Qualification"
+            }
+          ]
+        }
+      },
+      rows: [
+          {
+            key: {
+              text: "Professional status"
+            },
+            value: {
+              text: data.professionalStatus
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "professional status"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Status"
+            },
+            value: {
+              text: "Awarded"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "professional status"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text: data['ittAddQualAwardDate-day'] + " " + data['ittAddQualAwardDate-month'] + " " + data['ittAddQualAwardDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/add-qualification/award-date?returnUrl=/itt/add-qualification/check",
+                  text: "Change",
+                  visuallyHiddenText: "award date"
+                }
+              ]
+            }
+          },  
           {
             key: {
               text: "Route"
@@ -131,21 +168,4 @@
             }
           }          
         ]
-      }) }}
-
-      <form method="post" action="/itt/check-handler">
-        {{ govukButton({
-          text: "Confirm and add route"
-        }) }}
-      </form>    
-
-      <p class="govuk-body">
-        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
-      </p>
-
-    
-    
-  </div>
-</div>
-
-{% endblock %}
+}) }}

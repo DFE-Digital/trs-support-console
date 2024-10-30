@@ -20,6 +20,22 @@ module.exports = router => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
+        res.redirect('/itt/age-restrictions')  
+      }      
+    })
+
+    router.post('/itt/age-restrictions', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/itt/subject-restrictions')  
+      }      
+    })
+
+    router.post('/itt/subject-restrictions', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
         res.redirect('/itt/check')  
       }      
     })
@@ -38,33 +54,17 @@ module.exports = router => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
-        res.redirect('/itt/add-qualification/qualification-type')  
-      }      
-    })
-
-     
-     router.post('/itt/add-qualification/qualification-type', (req, res) => {
-      if (req.query.returnUrl) {
-        res.redirect(req.query.returnUrl)
-      } else {
-        res.redirect('/itt/add-qualification/age-restrictions')  
-      }      
-    })
-
-    router.post('/itt/add-qualification/age-restrictions', (req, res) => {
-      if (req.query.returnUrl) {
-        res.redirect(req.query.returnUrl)
-      } else {
-        res.redirect('/itt/add-qualification/subject-restrictions')  
-      }      
-    })
-
-    router.post('/itt/add-qualification/subject-restrictions', (req, res) => {
-      if (req.query.returnUrl) {
-        res.redirect(req.query.returnUrl)
-      } else {
         res.redirect('/itt/add-qualification/check')  
       }      
     })
+
+    router.post('/itt/add-qualification/check-handler', (req, res) => {
+
+      req.flash('success', 'Professional status added')
+
+      res.redirect('/route')
+    })
+
+    
 
 }
