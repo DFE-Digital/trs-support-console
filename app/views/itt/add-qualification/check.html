@@ -2,7 +2,7 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+{% set pageName = "Add a qualification -" + data.teachers[0].fullName %}
 {% set questionName = "Check details and confirm route" %}
 
 {% block beforeContent %}
@@ -88,7 +88,7 @@
 
       <form method="post" action="/itt/check-handler">
         {{ govukButton({
-          text: "Confirm and add route"
+          text: "Confirm and add qualification"
         }) }}
       </form>    
 
