@@ -1,0 +1,104 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+{% set questionName = "Check details and confirm route" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Status"
+            },
+            value: {
+              text: "Awarded"
+            }
+          },         
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text: data['ittAddQualAwardDate-day'] + " " + data['ittAddQualAwardDate-month'] + " " + data['ittAddQualAwardDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/add-qualification/award-date?returnUrl=/itt/add-qualification/check",
+                  text: "Change",
+                  visuallyHiddenText: "award date"
+                }
+              ]
+            }
+        },  
+        {
+          key: {
+            text: "Qualification type"
+          },
+          value: {
+            text: data.addIttQualificationTypeOf
+          },
+          actions: {
+            items: [
+              {
+                href: "/itt/add-qualification/qualification-type?returnUrl=/itt/add-qualification/check",
+                text: "Change",
+                visuallyHiddenText: "qualification type"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Teaching age range"
+          },
+          value: {
+            text: data.legacyAgeRange
+          },
+          actions: {
+            items: [
+              {
+                href: "/itt/add-qualification/age-restriction?returnUrl=/itt/add-qualification/check",
+                text: "Change",
+                visuallyHiddenText: "age range"
+              }
+            ]
+          }
+        }       
+      ]
+    }) }}
+
+      <form method="post" action="/itt/check-handler">
+        {{ govukButton({
+          text: "Confirm and add route"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

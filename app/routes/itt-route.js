@@ -32,4 +32,39 @@ module.exports = router => {
       res.redirect('/route')
     })
 
+
+     /////////////  ADD QUALS ROUTES //////////////
+    router.post('/itt/add-qualification/award-date', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/itt/add-qualification/qualification-type')  
+      }      
+    })
+
+     
+     router.post('/itt/add-qualification/qualification-type', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/itt/add-qualification/age-restrictions')  
+      }      
+    })
+
+    router.post('/itt/add-qualification/age-restrictions', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/itt/add-qualification/subject-restrictions')  
+      }      
+    })
+
+    router.post('/itt/add-qualification/subject-restrictions', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/itt/add-qualification/check')  
+      }      
+    })
+
 }

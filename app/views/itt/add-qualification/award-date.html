@@ -2,8 +2,8 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Award date" %}
+{% set pageName = "Add qualification - " + data.teachers[0].fullName %}
+{% set questionName = "Enter qualification award date" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -23,23 +23,23 @@
       
       <form method="post" novalidate>
         {{ govukDateInput({
-          id: "applyQtsAwardDate",
-          namePrefix: "applyQtsStartDate",
+          id: "ittAddQualAwardDate",
+          namePrefix: "ittAddQualAwardDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['applyQtsStartDate-day']
+              value: data['ittAddQualAwardDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['applyQtsStartDate-month']
+              value: data['ittAddQualAwardDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['applyQtsStartDate-year']
+              value: data['ittAddQualAwardDate-year']
             }
           ]
         }) }}

@@ -1,0 +1,90 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a qualification -" + data.teachers[0].fullName %}
+{% set questionName = "Enter teaching age range" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+
+      
+      <form method="post" novalidate>
+        <p class="govuk-body govuk-!-font-weight-bold">From</p>
+
+        {{ govukDateInput({
+          id: "ittAddQualAgeRangeStart",
+          namePrefix: "ittAddQualAgeRangeStartDate",
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data['ittAddQualAgeRangeStartDate-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data['ittAddQualAgeRangeStartDate-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data['ittAddQualAgeRangeStartDate-year']
+            }
+          ]
+        }) }}
+
+        <p class="govuk-body govuk-!-font-weight-bold">to</p>
+
+        {{ govukDateInput({
+          id: "ittAddQualAgeRangeEnd",
+          namePrefix: "ittAddQualAgeRangeEndDate",
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data['ittAddQualAgeRangeEndDate-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data['ittAddQualAgeRangeEndDate-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data['ittAddQualAgeRangeEndDate-year']
+            }
+          ]
+        }) }}
+  
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

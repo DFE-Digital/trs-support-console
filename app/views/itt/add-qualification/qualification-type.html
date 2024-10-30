@@ -2,8 +2,8 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Establishment qualification" %}
+{% set pageName = "Add a qualification -" + data.teachers[0].fullName %}
+{% set questionName = "Select a qualification" %}
 
 
 
@@ -27,20 +27,20 @@
 
       <form method="post" novalidate>
         {{ govukRadios({
-          name: "addQualificationTypeOf",
-          value: data.addQualificationTypeOf,    
+          name: "addIttQualificationTypeOf",
+          value: data.addIttQualificationTypeOf,    
           items: [
             {
-              value: "QTS",
-              text: "QTS"
+              value: "Qualified teacher status (QTS)",
+              text: "Qualified teacher status (QTS)"
             },
             {
-              value: "EYTS",
-              text: "EYTS"
+              value: "Early years professional status (EYPS)",
+              text: "Early years professional status (EYPS)"
             },
             {
-              value: "EPTS",
-              text: "EPTS"
+              value: "Early years teacher status (EYTS)",
+              text: "Early years teacher status (EYTS)"
             }
           ]
         }) }}
