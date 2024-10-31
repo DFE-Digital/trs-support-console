@@ -19,7 +19,7 @@
               text: "Professional status"
             },
             value: {
-              text: data.professionalStatus
+              text: "Qualified teacher status (QTS)"
             },
             actions: {
               items: [
@@ -53,7 +53,7 @@
               text: "Award date"
             },
             value: {
-              text: data['ittAddQualAwardDate-day'] + " " + data['ittAddQualAwardDate-month'] + " " + data['ittAddQualAwardDate-year']
+              text: data.ittAddQualDate
             },
             actions: {
               items: [
@@ -138,7 +138,7 @@
               text: "Age restrictions"
             },
             value: {
-              text: data.legacyAgeRange
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
             },
             actions: {
               items: [
