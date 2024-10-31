@@ -50,12 +50,16 @@
                 {% include "_includes/itt-route-and-qual-table.njk" %} 
             {% endif %}
 
-        
 
-            {% if data.chooseQtsRoute  == 'Assessment only' %}
+            {% if not data.assOnlyAddQualDate and data.chooseQtsRoute  == 'Assessment only' %}
               {% include "_includes/assessment-only-route-table.njk" %}
+            {% elif data.assOnlyAddQualDate and data.chooseQtsRoute  == 'Assessment only' %}
+                {% include "_includes/assessment-only-route-and-qual-table.njk" %} 
             {% endif %}
 
+        
+
+          
             {% if data.chooseQtsRoute  == 'Overseas qualified' %}
               {% include "_includes/apply-qts-route-table.njk" %}
             {% endif %}
