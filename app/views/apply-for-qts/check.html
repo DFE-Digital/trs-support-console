@@ -101,18 +101,35 @@
               text: "Age range"
             },
             value: {
-              text: data.applyForQtsBeenAgeRange
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
             },
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/age?returnUrl=/apply-for-qts/check",
+                  href: "/apply-for-qts/age-restrictions?returnUrl=/apply-for-qts/check",
                   text: "Change",
-                  visuallyHiddenText: "age"
+                  visuallyHiddenText: "age restrictions"
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              text: data.ittQualSubjectRestrictions
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/subject-restrictions?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "subject restrictions"
+                }
+              ]
+            }
+          } 
         ]
       }) }}
 

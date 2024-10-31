@@ -21,10 +21,18 @@ module.exports = router => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)     
       } else {
-        res.redirect('/apply-for-qts/age') 
+        res.redirect('/apply-for-qts/age-restrictions') 
       }
     })
-    router.post('/apply-for-qts/age', (req, res) => {
+    router.post('/apply-for-qts/age-restrictions', (req, res) => {
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)     
+      } else {
+        res.redirect('/apply-for-qts/subject-restrictions') 
+      }
+    })
+
+    router.post('/apply-for-qts/subject-restrictions', (req, res) => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)     
       } else {
@@ -35,7 +43,7 @@ module.exports = router => {
     /////////////  FLASH //////////////
     router.post('/apply-for-qts/check-handler', (req, res) => {
 
-      req.flash('success', 'Route to professional status added')
+      req.flash('success', 'Route and Professional status added')
 
       res.redirect('/route')
     })
