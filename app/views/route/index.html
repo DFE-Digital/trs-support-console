@@ -4,6 +4,7 @@
 {% set secondaryNavId = "route" %}
 
 
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -43,12 +44,10 @@
       {% else %}
 
     
-            {% if data.ittQualAwardDate == 0 and data.chooseQtsRoute  == 'Initial teacher training' %}
-              {% include "_includes/itt-route-table.njk" %}  
-            {% else %}
-              {% if data.ittQualAwardDate != "" %}
-                {% include "_includes/itt-route-and-qual-table.njk" %}
-              {% endif %}  
+            {% if not data.ittAddQualDate and data.chooseQtsRoute  == 'Initial teacher training' %}
+              {% include "_includes/itt-route-table.njk" %} 
+            {% elif data.ittAddQualDate and data.chooseQtsRoute  == 'Initial teacher training' %}
+                {% include "_includes/itt-route-and-qual-table.njk" %} 
             {% endif %}
 
         
@@ -92,6 +91,8 @@
     }) }}
 
     {{ data.chooseQtsRoute | log }}
+    {{ data.ittAddQualDate | log }}
+    {{ data['ittAddQualDate'] | log }}
 
   </div>
 </div>

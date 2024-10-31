@@ -5,7 +5,7 @@
 {% set pageName = "Add a qualification -" + data.teachers[0].fullName %}
 {% set questionName = "Check details and add qualification" %}
 
-{% set ittQualAwardDate = data['ittAddQualAwardDate-day'] + " " + data['ittAddQualAwardDate-month'] + " " + data['ittAddQualAwardDate-year'] %}
+
  
 
 
@@ -33,7 +33,7 @@
               text: "Award date"
             },
             value: {
-              text: ittQualAwardDate
+              text: data['ittAddQualDate-day'] + " " + data['ittAddQualDate-month'] + " " + data['ittAddQualDate-year']
             },
             actions: {
               items: [
@@ -47,6 +47,8 @@
         }   
       ]
     }) }}
+
+    {{ data['ittAddQualDate'] | log }}
 
       <form method="post" action="/itt/add-qualification/check-handler">
         {{ govukButton({
