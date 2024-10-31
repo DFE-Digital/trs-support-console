@@ -64,23 +64,6 @@
           },
           {
             key: {
-              text: "Qualification"
-            },
-            value: {
-              text: data.establishmentQualification or data.someOtherEstQual
-            },
-            actions: {
-              items: [
-                {
-                  href: "/assessment-only/establishment-qualification?returnUrl=/assessment-only/check",
-                  text: "Change",
-                  visuallyHiddenText: "establishment qualification"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Start date"
             },
             value: {
@@ -92,6 +75,40 @@
                   href: "/assessment-only/start-date?returnUrl=/assessment-only/check",
                   text: "Change",
                   visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+            },
+            actions: {
+              items: [
+                {
+                  href: "/assessment-only/age-restrictions?returnUrl=/assessment-only/check",
+                  text: "Change",
+                  visuallyHiddenText: "age restrictions"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              text: data.ittQualSubjectRestrictions
+            },
+            actions: {
+              items: [
+                {
+                  href: "/assessment-only/subject-restrictions?returnUrl=/assessment-only/check",
+                  text: "Change",
+                  visuallyHiddenText: "subject restrictions"
                 }
               ]
             }
