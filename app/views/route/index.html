@@ -57,8 +57,13 @@
                 {% include "_includes/assessment-only-route-and-qual-table.njk" %} 
             {% endif %}
 
-        
+            {% if not data.iqtsAddQualDate and data.chooseQtsRoute  == 'iqts' %}
+              {% include "_includes/iqts-route-table.njk" %}
+            {% elif data.iqtsAddQualDate and data.chooseQtsRoute  == 'iqts' %}
+                {% include "_includes/iqts-route-and-qual-table.njk" %} 
+            {% endif %}
 
+      
           
             {% if data.chooseQtsRoute  == 'Overseas qualified' %}
               {% include "_includes/apply-qts-route-table.njk" %}
@@ -68,9 +73,7 @@
               {% include "_includes/qtls-and-set-qual-table.njk" %}
             {% endif %}
 
-            {% if data.chooseQtsRoute  == 'iqts' %}
-              {% include "_includes/iqts-qual-table.njk" %}
-            {% endif %}
+            
 
             {% if data.chooseQtsRoute  == 'Another route' %}
               {% include "_includes/legacy-qual-table.njk" %}
