@@ -63,6 +63,12 @@
                 {% include "_includes/iqts-route-and-qual-table.njk" %} 
             {% endif %}
 
+
+            {% if not data.legacyAddQualDate and data.chooseQtsRoute  == 'Legacy route' %}
+              {% include "_includes/legacy-route-table.njk" %}
+            {% elif data.legacyAddQualDate and data.chooseQtsRoute  == 'Legacy route' %}
+                {% include "_includes/legacy-route-and-qual-table.njk" %} 
+            {% endif %}
       
           
             {% if data.chooseQtsRoute  == 'Overseas qualified' %}
@@ -75,9 +81,6 @@
 
             
 
-            {% if data.chooseQtsRoute  == 'Another route' %}
-              {% include "_includes/legacy-qual-table.njk" %}
-            {% endif %}
             
 
       {{ govukButton({

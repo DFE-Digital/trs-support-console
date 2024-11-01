@@ -24,23 +24,23 @@
       
       <form method="post" novalidate>
         {{ govukDateInput({
-          id: "iqtsAddQualAwardDate",
-          namePrefix: "iqtsAddQualDate",
+          id: "legacyAddQualAwardDate",
+          namePrefix: "legacyAddQualDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['iqtsAddQualDate-day']
+              value: data['legacyAddQualDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['iqtsAddQualDate-month']
+              value: data['legacyAddQualDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['iqtsAddQualDate-year']
+              value: data['legacyAddQualDate-year']
             }
           ]
         }) }}

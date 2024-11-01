@@ -33,12 +33,12 @@
               text: "Award date"
             },
             value: {
-              text: data['iqtsAddQualDate-day'] + " " + data['iqtsAddQualDate-month'] + " " + data['iqtsAddQualDate-year']
+              text: data['legacyAddQualDate-day'] + " " + data['legacyAddQualDate-month'] + " " + data['legacyAddQualDate-year']
             },
             actions: {
               items: [
                 {
-                  href: "/iqts/add-qualification/award-date?returnUrl=/iqts/add-qualification/check",
+                  href: "/legacy/add-qualification/award-date?returnUrl=/legacy/add-qualification/check",
                   text: "Change",
                   visuallyHiddenText: "award date"
                 }
@@ -48,9 +48,9 @@
       ]
     }) }}
 
-    {{ data['ittAddQualDate'] | log }}
+    {{ data['legacyAddQualDate'] | log }}
 
-      <form method="post" action="/iqts/add-qualification/check-handler">
+      <form method="post" action="/legacy/add-qualification/check-handler">
         {{ govukButton({
           text: "Confirm and add qualification"
         }) }}
