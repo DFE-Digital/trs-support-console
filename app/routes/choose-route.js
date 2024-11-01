@@ -22,7 +22,7 @@ module.exports = router => {
           res.redirect('/new-qtls-set/set-member-number')
         }
         
-        if (req.body.chooseQtsRoute == 'Another route') {
+        if (req.body.chooseQtsRoute == 'Legacy route') {
           res.redirect('/legacy/route-type')
         }
         

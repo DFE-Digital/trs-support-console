@@ -2,8 +2,9 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Teaching age range" %}
+{% set pageName = "Add qualification - " + data.teachers[0].fullName %}
+{% set questionName = "Enter qualification award date" %}
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -20,54 +21,26 @@
     
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
-
-
       
       <form method="post" novalidate>
-        <p class="govuk-body govuk-!-font-weight-bold">From</p>
-
         {{ govukDateInput({
-          id: "legacyStart",
-          namePrefix: "legacyStartDate",
+          id: "iqtsAddQualAwardDate",
+          namePrefix: "iqtsAddQualDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['legacyStartDate-day']
+              value: data['iqtsAddQualDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['legacyStartDate-month']
+              value: data['iqtsAddQualDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['legacyStartDate-year']
-            }
-          ]
-        }) }}
-
-        <p class="govuk-body govuk-!-font-weight-bold">to</p>
-
-        {{ govukDateInput({
-          id: "legacyEnd",
-          namePrefix: "legacyEndDate",
-          items: [
-            {
-              name: "day",
-              classes: "govuk-input--width-2",
-              value: data['legacyEndDate-day']
-            },
-            {
-              name: "month",
-              classes: "govuk-input--width-2",
-              value: data['legacyEndDate-month']
-            },
-            {
-              name: "year",
-              classes: "govuk-input--width-4",
-              value: data['legacyEndDate-year']
+              value: data['iqtsAddQualDate-year']
             }
           ]
         }) }}

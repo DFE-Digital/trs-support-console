@@ -1,32 +1,50 @@
 {{ govukSummaryList({
-  card: {
-    title: {
-       text: "[Available/inferred qualification for selected route]"
-    },
-    actions: {
-      items: [
-        {
-          href: "#",
-          text: "Add qualification",
-          visuallyHiddenText: "route"
-        }
-      ]
-    }
-  },
+card: {
+title: {
+    text: data.chooseQtsRoute
+},
+  actions: {
+    items: [
+      {
+        href: "/legacy/add-qualification/award-date",
+        text: "Add qualification to route",
+        visuallyHiddenText: "route"
+      }
+    ]
+  }
+},
   rows: [
     {
       key: {
-        text: "Route"
+        text: "Route type"
       },
       value: {
-        text: data.chooseQtsRoute
+        text: data.legacyRouteType
       },
       actions: {
         items: [
           {
-            href: "/itt/edit/start-date?returnUrl=/itt/edit/check",
+            href: "#",
             text: "Change",
-            visuallyHiddenText: "route type"
+            visuallyHiddenText: "QTS route"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Country"
+      },
+      value: {
+        text: data.applyQtsCountry
+
+      },
+      actions: {
+        items: [
+          {
+            href: "/legacy/country?returnUrl=/legacy/check",
+            text: "Change",
+            visuallyHiddenText: "country"
           }
         ]
       }
@@ -41,7 +59,7 @@
       actions: {
         items: [
           {
-            href: "/itt/edit/establishment?returnUrl=/itt/edit/check",
+            href: "/legacy/establishment?returnUrl=/legacy/check",
             text: "Change",
             visuallyHiddenText: "establishment"
           }
@@ -50,52 +68,102 @@
     },
     {
       key: {
-        text: "Establishment qualification"
+        text: "Start date"
       },
       value: {
-        text: data.establishmentQualification
+        text: data['legacyStartDate-day'] + " " + data['legacyStartDate-month'] + " " + data['legacyStartDate-year']
       },
       actions: {
         items: [
           {
-            href: "/itt/edit/establishment-qualification?returnUrl=/itt/edit/check",
+            href: "/legacy/start-date?returnUrl=/legacy/check",
             text: "Change",
-            visuallyHiddenText: "establishment"
+            visuallyHiddenText: "start date"
           }
         ]
       }
     },
     {
       key: {
-        text: "Route start date"
+        text: "End date"
       },
       value: {
-        text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+        text: data['legacyEndDate-day'] + " " + data['legacyEndDate-month'] + " " + data['legacyEndDate-year']
       },
       actions: {
         items: [
           {
-            href: "/itt/start-date?returnUrl=/itt/check",
+            href: "/legacy/end-date?returnUrl=/legacy/check",
             text: "Change",
-            visuallyHiddenText: "route start date"
+            visuallyHiddenText: "end date"
           }
         ]
       }
     },
-
     {
       key: {
-        text: "Route status"
+        text: "Induction exemption"
       },
       value: {
-        text: "Working towards route"
+        text: data.legacyHasExemption
       },
       actions: {
         items: [
           {
-            href: "/itt/edit/route-status?returnUrl=/itt/edit/check",
+            href: "/legacy/induction?returnUrl=/legacy/check",
             text: "Change",
-            visuallyHiddenText: "route start date"
+            visuallyHiddenText: "exemption"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Age range"
+      },
+      value: {
+        text: "From " + data.legacyFromAgeRestriction + " to " + data.legacyToAgeRestriction
+      },
+      actions: {
+        items: [
+          {
+            href: "/legacy/age-restrictions?returnUrl=/legacy/check",
+            text: "Change",
+            visuallyHiddenText: "age restrictions"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Subjects"
+      },
+      value: {
+        text: data.legacyQualSubjectRestrictions
+      },
+      actions: {
+        items: [
+          {
+            href: "/legacy/subject-restrictions?returnUrl=/legacy/check",
+            text: "Change",
+            visuallyHiddenText: "subject restrictions"
+          }
+        ]
+      }
+    },  
+    {
+      key: {
+        text: "Provider"
+      },
+      value: {
+        text: data.iqtsProvider
+      },
+      actions: {
+        items: [
+          {
+            href: "/legacy/provider?returnUrl=/legacy/check",
+            text: "Change",
+            visuallyHiddenText: "Provider"
           }
         ]
       }

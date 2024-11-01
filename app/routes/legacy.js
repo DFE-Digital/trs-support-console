@@ -36,25 +36,34 @@ module.exports = router => {
         if (req.query.returnUrl) {
           res.redirect(req.query.returnUrl)
         } else {
-          res.redirect('/legacy/exemption')  
+          res.redirect('/legacy/induction')  
         }      
       })
 
-      router.post('/legacy/exemption', (req, res) => {
+      router.post('/legacy/induction', (req, res) => {
         if (req.query.returnUrl) {
           res.redirect(req.query.returnUrl)
         } else {
-          res.redirect('/legacy/age-range')  
+          res.redirect('/legacy/age-restrictions')  
         }      
       })
 
-      router.post('/legacy/age-range', (req, res) => {
+      router.post('/legacy/age-restrictions', (req, res) => {
+        if (req.query.returnUrl) {
+          res.redirect(req.query.returnUrl)
+        } else {
+          res.redirect('/legacy/subject-restrictions')  
+        }      
+      })
+
+      router.post('/legacy/subject-restrictions', (req, res) => {
         if (req.query.returnUrl) {
           res.redirect(req.query.returnUrl)
         } else {
           res.redirect('/legacy/provider')  
         }      
       })
+
 
       router.post('/legacy/provider', (req, res) => {
         if (req.query.returnUrl) {
@@ -68,6 +77,27 @@ module.exports = router => {
     router.post('/legacy/check-handler', (req, res) => {
 
       req.flash('success', 'Route to professional status added')
+
+      res.redirect('/route')
+    })
+
+
+    /////////////  ADD QUALS ROUTES //////////////
+    router.post('/legacy/add-qualification/award-date', (req, res) => {
+
+      if (req.query.returnUrl) {
+        res.redirect(req.query.returnUrl)
+      } else {
+        res.redirect('/legacy/add-qualification/check')  
+      }      
+    })
+
+    router.post('/legacy/add-qualification/check-handler', (req, res) => {
+
+      req.flash('success', 'Professional status added')
+
+      let data = req.session.data
+      data['legacyAddQualDate'] = data['legacyAddQualDate-day'] + " " + data['legacyAddQualDate-month'] + " " + data['legacyAddQualDate-year']
 
       res.redirect('/route')
     })

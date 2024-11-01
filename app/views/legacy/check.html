@@ -29,7 +29,7 @@
               text: "Route type"
             },
             value: {
-              text: data.chooseLegacyRouteType
+              text: data.legacyRouteType
             },
             actions: {
               items: [
@@ -46,7 +46,8 @@
               text: "Country"
             },
             value: {
-              text: data.legacyCountry
+              text: data.applyQtsCountry
+
             },
             actions: {
               items: [
@@ -63,7 +64,7 @@
               text: "Establishment"
             },
             value: {
-              text: data.legacyEstablishment
+              text: data.establishment
             },
             actions: {
               items: [
@@ -111,15 +112,15 @@
           },
           {
             key: {
-              text: "Exemption"
+              text: "Induction exemption"
             },
             value: {
-              text: data.legacyExemption
+              text: data.legacyHasExemption
             },
             actions: {
               items: [
                 {
-                  href: "/legacy/exemption?returnUrl=/legacy/check",
+                  href: "/legacy/induction?returnUrl=/legacy/check",
                   text: "Change",
                   visuallyHiddenText: "exemption"
                 }
@@ -128,27 +129,44 @@
           },
           {
             key: {
-              text: "Teaching age range"
+              text: "Age range"
             },
             value: {
-              text: data.legacyAgeRange
+              text: "From " + data.legacyFromAgeRestriction + " to " + data.legacyToAgeRestriction
             },
             actions: {
               items: [
                 {
-                  href: "/legacy/age-range?returnUrl=/legacy/check",
+                  href: "/legacy/age-restrictions?returnUrl=/legacy/check",
                   text: "Change",
-                  visuallyHiddenText: "age range"
+                  visuallyHiddenText: "age restrictions"
                 }
               ]
             }
           },
           {
             key: {
+              text: "Subjects"
+            },
+            value: {
+              text: data.legacyQualSubjectRestrictions
+            },
+            actions: {
+              items: [
+                {
+                  href: "/legacy/subject-restrictions?returnUrl=/legacy/check",
+                  text: "Change",
+                  visuallyHiddenText: "subject restrictions"
+                }
+              ]
+            }
+          },  
+          {
+            key: {
               text: "Provider"
             },
             value: {
-              text: data.legacyProvider
+              text: data.iqtsProvider
             },
             actions: {
               items: [
