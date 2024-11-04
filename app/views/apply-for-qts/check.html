@@ -5,6 +5,19 @@
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
 {% set questionName = "Check details to confirm route and qualification" %}
 
+{% set subjectChoices %}
+  {{ data.subjectChoiceOne }}<br>
+  
+    {% if data.subjectChoiceTwo %}
+      {{ data.subjectChoiceTwo }}<br>
+    {% endif %}
+
+    {% if data.subjectChoiceThree %}
+      {{ data.subjectChoiceThree }}<br>
+    {% endif %}
+{% endset %}
+
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -118,11 +131,7 @@
               text: "Subjects"
             },
             value: {
-              html: "<ul class='govuk-list govuk-list--bullet'>
-                      <li>" + data.subjectChoiceOne + "</li>
-                      <li>" + data.subjectChoiceTwo + "</li>
-                      <li>" + data.subjectChoiceThree + "</li>
-                    </ul>" 
+              html: subjectChoices 
             },
             actions: {
               items: [
