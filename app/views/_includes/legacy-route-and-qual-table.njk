@@ -1,176 +1,186 @@
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
 {{ govukSummaryList({
 card: {
 title: {
-    text: data.chooseQtsRoute
+  text: data.chooseQtsRoute
 },
-  actions: {
-    items: [
-      {
-        href: "#",
-        text: "Delete",
-        visuallyHiddenText: "route"
-      }
-    ]
-  }
-},
-  rows: [
+actions: {
+  items: [
     {
-      key: {
-        text: "Route type"
-      },
-      value: {
-        text: data.legacyRouteType
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "QTS route"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Country"
-      },
-      value: {
-        text: data.applyQtsCountry
-
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/country?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "country"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Establishment"
-      },
-      value: {
-        text: data.establishment
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/establishment?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "establishment"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Start date"
-      },
-      value: {
-        text: data['legacyStartDate-day'] + " " + data['legacyStartDate-month'] + " " + data['legacyStartDate-year']
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/start-date?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "start date"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "End date"
-      },
-      value: {
-        text: data['legacyEndDate-day'] + " " + data['legacyEndDate-month'] + " " + data['legacyEndDate-year']
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/end-date?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "end date"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Induction exemption"
-      },
-      value: {
-        text: data.legacyHasExemption
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/induction?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "exemption"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Age range"
-      },
-      value: {
-        text: "From " + data.legacyFromAgeRestriction + " to " + data.legacyToAgeRestriction
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/age-restrictions?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "age restrictions"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Subjects"
-      },
-      value: {
-        html: "<ul class='govuk-list govuk-list--bullet'>
-                <li>" + data.subjectChoiceOne + "</li>
-                <li>" + data.subjectChoiceTwo + "</li>
-                <li>" + data.subjectChoiceThree + "</li>
-              </ul>" 
-      },
-      actions: {
-        items: [
-          {
-          href: "/legacy/subjects?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "subjects"
-          }
-        ]
-      }
-    },  
-    {
-      key: {
-        text: "Provider"
-      },
-      value: {
-        text: data.iqtsProvider
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/provider?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "Provider"
-          }
-        ]
-      }
+      href: "#",
+      text: "Delete",
+      visuallyHiddenText: "route"
     }
   ]
+}
+},
+rows: [
+  {
+    key: {
+      text: "Route type"
+    },
+    value: {
+      text: data.legacyRouteType
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "QTS route"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Country"
+    },
+    value: {
+      text: data.applyQtsCountry
+
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/country?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "country"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Establishment"
+    },
+    value: {
+      text: data.establishment
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/establishment?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "establishment"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: data['legacyStartDate-day'] + " " + data['legacyStartDate-month'] + " " + data['legacyStartDate-year']
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/start-date?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "start date"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "End date"
+    },
+    value: {
+      text: data['legacyEndDate-day'] + " " + data['legacyEndDate-month'] + " " + data['legacyEndDate-year']
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/end-date?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "end date"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Induction exemption"
+    },
+    value: {
+      text: data.legacyHasExemption
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/induction?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "exemption"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Age range"
+    },
+    value: {
+      text: "From " + data.legacyFromAgeRestriction + " to " + data.legacyToAgeRestriction
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/age-restrictions?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "age restrictions"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Subjects"
+    },
+    value: {
+      html: subjectChoices 
+    },
+    actions: {
+      items: [
+        {
+        href: "/legacy/subjects?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "subjects"
+        }
+      ]
+    }
+  },  
+  {
+    key: {
+      text: "Provider"
+    },
+    value: {
+      text: data.iqtsProvider
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/provider?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "Provider"
+        }
+      ]
+    }
+  }
+]
 }) }}
