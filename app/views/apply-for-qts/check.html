@@ -118,18 +118,22 @@
               text: "Subjects"
             },
             value: {
-              text: data.ittQualSubjectRestrictions
+              html: "<ul class='govuk-list govuk-list--bullet'>
+                      <li>" + data.subjectChoiceOne + "</li>
+                      <li>" + data.subjectChoiceTwo + "</li>
+                      <li>" + data.subjectChoiceThree + "</li>
+                    </ul>" 
             },
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/subject-restrictions?returnUrl=/apply-for-qts/check",
+                  href: "/apply-for-qts/subjects?returnUrl=/apply-for-qts/check",
                   text: "Change",
-                  visuallyHiddenText: "subject restrictions"
+                  visuallyHiddenText: "subjects"
                 }
               ]
             }
-          } 
+          }     
         ]
       }) }}
 
