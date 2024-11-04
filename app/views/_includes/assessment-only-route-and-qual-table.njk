@@ -133,22 +133,26 @@
               ]
             }
           },
-          {
-            key: {
-              text: "Subjects"
-            },
-            value: {
-              text: data.ittQualSubjectRestrictions
-            },
-            actions: {
-              items: [
-                {
-                  href: "/assessment-only/subject-restriction?returnUrl=/assessment-only/check",
-                  text: "Change",
-                  visuallyHiddenText: "subject restrictions"
-                }
-              ]
-            }
-          }          
+      {
+    key: {
+      text: "Subjects"
+    },
+    value: {
+      html: "<ul class='govuk-list govuk-list--bullet'>
+              <li>" + data.subjectChoiceOne + "</li>
+              <li>" + data.subjectChoiceTwo + "</li>
+              <li>" + data.subjectChoiceThree + "</li>
+            </ul>" 
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/subjects?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "subjects"
+        }
+      ]
+    }
+  }          
         ]
 }) }}

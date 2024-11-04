@@ -104,14 +104,18 @@ rows: [
           text: "Subjects"
         },
         value: {
-          text: data.ittQualSubjectRestrictions
+          html: "<ul class='govuk-list govuk-list--bullet'>
+                  <li>" + data.subjectChoiceOne + "</li>
+                  <li>" + data.subjectChoiceTwo + "</li>
+                  <li>" + data.subjectChoiceThree + "</li>
+                </ul>" 
         },
         actions: {
           items: [
             {
-              href: "/itt/subject-restriction?returnUrl=/itt/check",
+              href: "/itt/subjects?returnUrl=/itt/check",
               text: "Change",
-              visuallyHiddenText: "subject restrictions"
+              visuallyHiddenText: "subjects"
             }
           ]
         }

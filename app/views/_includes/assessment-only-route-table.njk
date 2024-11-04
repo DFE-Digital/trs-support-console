@@ -1,18 +1,18 @@
 {{ govukSummaryList({
-        card: {
+  card: {
     title: {
-       text: data.chooseQtsRoute
-    },
-    actions: {
-      items: [
-        {
-          href: "/assessment-only/add-qualification/award-date",
-          text: "Add qualification to route",
-          visuallyHiddenText: "route"
-        }
-      ]
-    }
+      text: data.chooseQtsRoute
   },
+  actions: {
+    items: [
+      {
+        href: "/assessment-only/add-qualification/award-date",
+        text: "Add qualification to route",
+        visuallyHiddenText: "route"
+      }
+    ]
+  }
+},
 rows: [
   {
     key: {
@@ -87,17 +87,21 @@ rows: [
       text: "Subjects"
     },
     value: {
-      text: data.ittQualSubjectRestrictions
+      html: "<ul class='govuk-list govuk-list--bullet'>
+              <li>" + data.subjectChoiceOne + "</li>
+              <li>" + data.subjectChoiceTwo + "</li>
+              <li>" + data.subjectChoiceThree + "</li>
+            </ul>" 
     },
     actions: {
       items: [
         {
-          href: "/assessment-only/subject-restrictions?returnUrl=/itt/check",
+          href: "/assessment-only/subjects?returnUrl=/assessment-only/check",
           text: "Change",
-          visuallyHiddenText: "subject restrictions"
+          visuallyHiddenText: "subjects"
         }
       ]
     }
-  }          
+  }            
 ]
 }) }}

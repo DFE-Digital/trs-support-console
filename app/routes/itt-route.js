@@ -28,11 +28,11 @@ module.exports = router => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
-        res.redirect('/itt/subject-restrictions')  
+        res.redirect('/itt/subjects')  
       }      
     })
 
-    router.post('/itt/subject-restrictions', (req, res) => {
+    router.post('/itt/subjects', (req, res) => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
