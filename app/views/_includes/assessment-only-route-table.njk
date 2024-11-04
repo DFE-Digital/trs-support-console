@@ -1,3 +1,17 @@
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
 {{ govukSummaryList({
   card: {
     title: {
@@ -87,11 +101,7 @@ rows: [
       text: "Subjects"
     },
     value: {
-      html: "<ul class='govuk-list govuk-list--bullet'>
-              <li>" + data.subjectChoiceOne + "</li>
-              <li>" + data.subjectChoiceTwo + "</li>
-              <li>" + data.subjectChoiceThree + "</li>
-            </ul>" 
+      html: subjectChoices 
     },
     actions: {
       items: [

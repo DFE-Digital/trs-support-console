@@ -6,15 +6,17 @@
 {% set questionName = "Check details to confirm route and qualification" %}
 
 {% set subjectChoices %}
-  {{ data.subjectChoiceOne }}<br>
-  
-    {% if data.subjectChoiceTwo %}
-      {{ data.subjectChoiceTwo }}<br>
-    {% endif %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
 
-    {% if data.subjectChoiceThree %}
-      {{ data.subjectChoiceThree }}<br>
-    {% endif %}
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
 {% endset %}
 
 
