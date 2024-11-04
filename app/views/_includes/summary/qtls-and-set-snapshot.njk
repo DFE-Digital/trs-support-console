@@ -1,4 +1,3 @@
-
 {{ govukSummaryList({
 	card: {
 		title: {
@@ -11,7 +10,7 @@
 				text: "Award date" 
 			},
 			value: {
-				text: data.qtsAwardDate
+				text: data.ittAddQualDate or "none"
 			}
 		},
 		{
@@ -19,7 +18,7 @@
 				text: "Qualification type"
 			},
 			value: {
-				text: data.assessmentOnlyQualType 
+				text: data.establishmentQualification or "none"
 			}
 		},
 		{
@@ -27,7 +26,7 @@
 				text: "Induction exemption"
 			},
 			value: {
-				text: data.assessmentOnlyHasExemption 
+				text: data.assessmentOnlyHasExemption or "none"
 			}
 		},
 		{
@@ -35,7 +34,7 @@
 				text: "Route type"
 			},
 			value: {
-				text: data.chooseQtsRoute
+				text: data.chooseQtsRoute or "none"
 			}
 		},
 		{

@@ -146,27 +146,27 @@
       }) }}
       
       {% if data.chooseQtsRoute  == 'Initial teacher training' %}
-        {% include "_includes/summary/itt-card.njk" %}
-        {% endif %}
+        {% include "_includes/summary/itt-snapshot.njk" %}
+      {% endif %}
 
       {% if data.chooseQtsRoute  == 'Assessment only' %}
-        {% include "_includes/summary/assessment-only-card.njk" %}
+        {% include "_includes/summary/assessment-only-snapshot.njk" %}
       {% endif %}
 
-      {% if data.chooseQtsRoute  == 'IQTS' %}
-         {% include "_includes/summary/iqts-only-card.njk" %}
+      {% if data.chooseQtsRoute  == 'iqts' %}
+         {% include "_includes/summary/iqts-only-snapshot.njk" %}
       {% endif %}
 
-      {% if data.chooseQtsRoute  == 'Apply for qualified teacher status' %}
-         {% include "_includes/summary/apply-for-qts-card.njk" %}
+      {% if data.chooseQtsRoute  == 'Overseas qualified' %}
+         {% include "_includes/summary/apply-for-qts-snapshot.njk" %}
       {% endif %}
 
-      {% if data.chooseQtsRoute  == 'QTLS +SET' %}
-         {% include "_includes/summary/qtls-and-set-only-card.njk" %}
+      {% if data.chooseQtsRoute  == 'Qualified Teacher Learning and Skills status (QTLS)' %}
+         {% include "_includes/summary/qtls-and-set-only-snapshot.njk" %}
       {% endif %}
 
-      {% if data.chooseQtsRoute  == 'Another route' %}
-        {% include "_includes/summary/legacy-route-card.njk" %}
+      {% if data.chooseQtsRoute  == 'Legacy route' %}
+        {% include "_includes/summary/legacy-route-snapshot.njk" %}
       {% endif %}
 
 
