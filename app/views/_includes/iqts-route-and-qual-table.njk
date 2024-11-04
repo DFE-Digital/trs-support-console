@@ -138,14 +138,18 @@
               text: "Subjects"
             },
             value: {
-              text: data.ittQualSubjectRestrictions
+              html: "<ul class='govuk-list govuk-list--bullet'>
+                      <li>" + data.subjectChoiceOne + "</li>
+                      <li>" + data.subjectChoiceTwo + "</li>
+                      <li>" + data.subjectChoiceThree + "</li>
+                    </ul>" 
             },
             actions: {
               items: [
                 {
-                  href: "/iqts/subject-restriction?returnUrl=/iqts/check",
+                  href: "/iqts/subjects?returnUrl=/iqts/check",
                   text: "Change",
-                  visuallyHiddenText: "subject restrictions"
+                  visuallyHiddenText: "subjects"
                 }
               ]
             }

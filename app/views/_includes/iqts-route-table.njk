@@ -117,22 +117,26 @@ rows: [
     }
   },
   {
-    key: {
-      text: "Subjects"
-    },
-    value: {
-      text: data.ittQualSubjectRestrictions
-    },
-    actions: {
-      items: [
-        {
-          href: "/iqts/subject-restrictions?returnUrl=/iqts/check",
-          text: "Change",
-          visuallyHiddenText: "subject restrictions"
-        }
-      ]
-    }
-  },  
+  key: {
+    text: "Subjects"
+  },
+  value: {
+    html: "<ul class='govuk-list govuk-list--bullet'>
+            <li>" + data.subjectChoiceOne + "</li>
+            <li>" + data.subjectChoiceTwo + "</li>
+            <li>" + data.subjectChoiceThree + "</li>
+          </ul>" 
+  },
+  actions: {
+    items: [
+      {
+        href: "/iqts/subjects?returnUrl=/iqts/check",
+        text: "Change",
+        visuallyHiddenText: "subjects"
+      }
+    ]
+  }
+},     
   {
     key: {
       text: "Provider"
