@@ -52,11 +52,11 @@ module.exports = router => {
         if (req.query.returnUrl) {
           res.redirect(req.query.returnUrl)
         } else {
-          res.redirect('/legacy/subject-restrictions')  
+          res.redirect('/legacy/subjects')  
         }      
       })
 
-      router.post('/legacy/subject-restrictions', (req, res) => {
+      router.post('/legacy/subjects', (req, res) => {
         if (req.query.returnUrl) {
           res.redirect(req.query.returnUrl)
         } else {

@@ -134,39 +134,43 @@ title: {
         ]
       }
     },
-    {
-      key: {
-        text: "Subjects"
-      },
-      value: {
-        text: data.legacyQualSubjectRestrictions
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/subject-restrictions?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "subject restrictions"
-          }
-        ]
-      }
-    },  
-    {
-      key: {
-        text: "Provider"
-      },
-      value: {
-        text: data.iqtsProvider
-      },
-      actions: {
-        items: [
-          {
-            href: "/legacy/provider?returnUrl=/legacy/check",
-            text: "Change",
-            visuallyHiddenText: "Provider"
-          }
-        ]
-      }
+  {
+    key: {
+      text: "Subjects"
+    },
+    value: {
+      html: "<ul class='govuk-list govuk-list--bullet'>
+              <li>" + data.subjectChoiceOne + "</li>
+              <li>" + data.subjectChoiceTwo + "</li>
+              <li>" + data.subjectChoiceThree + "</li>
+            </ul>" 
+    },
+    actions: {
+      items: [
+        {
+        href: "/legacy/subjects?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "subjects"
+        }
+      ]
     }
-  ]
+  },
+  {
+    key: {
+      text: "Provider"
+    },
+    value: {
+      text: data.iqtsProvider
+    },
+    actions: {
+      items: [
+        {
+          href: "/legacy/provider?returnUrl=/legacy/check",
+          text: "Change",
+          visuallyHiddenText: "Provider"
+        }
+      ]
+    }
+  }
+]
 }) }}

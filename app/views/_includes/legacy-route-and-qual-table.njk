@@ -139,14 +139,18 @@ title: {
         text: "Subjects"
       },
       value: {
-        text: data.legacyQualSubjectRestrictions
+        html: "<ul class='govuk-list govuk-list--bullet'>
+                <li>" + data.subjectChoiceOne + "</li>
+                <li>" + data.subjectChoiceTwo + "</li>
+                <li>" + data.subjectChoiceThree + "</li>
+              </ul>" 
       },
       actions: {
         items: [
           {
-            href: "/legacy/subject-restrictions?returnUrl=/legacy/check",
+          href: "/legacy/subjects?returnUrl=/legacy/check",
             text: "Change",
-            visuallyHiddenText: "subject restrictions"
+            visuallyHiddenText: "subjects"
           }
         ]
       }
