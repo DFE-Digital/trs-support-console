@@ -1,0 +1,70 @@
+{{ govukSummaryList({
+card: {
+title: {
+  text: "Early Years Teacher Status"
+},
+actions: {
+  items: [
+    {
+      href: "#",
+      text: "Delete",
+      visuallyHiddenText: "route"
+    }
+  ]
+}
+},
+rows: [ 
+    {
+      key: {
+        text: "Status"
+      },
+      value: {
+        text: "Qualified"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "status"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Award date"
+      },
+      value: {
+        text: "31 May 2023"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "Award date"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Route type"
+      },
+      value: {
+        text: "Historic or Legacy"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "Induction exemption"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
