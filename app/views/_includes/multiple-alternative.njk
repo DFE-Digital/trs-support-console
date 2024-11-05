@@ -1,7 +1,7 @@
 {{ govukSummaryList({
 card: {
   title: {
-    text: "Early Years Teacher Status"
+    text: "Apply for QTS"
   },
   actions: {
     items: [
@@ -53,80 +53,29 @@ rows: [
         text: "Award date"
       },
       value: {
-        text: "15 October 2022"
+        text: "11 October 2023"
       },
       actions: {
         items: [
           {
-            href: "/itt/add-qualification/award-date?returnUrl=/itt/add-qualification/check",
+            href: "#",
             text: "Change",
             visuallyHiddenText: "award date"
           }
         ]
       }
-    },  
-    {
-      key: {
-        text: "Route"
-      },
-      value: {
-        text: data.chooseQtsRoute
-      },
-      actions: {
-        items: [
-          {
-            href: "/change-qts-route",
-            text: "Change",
-            visuallyHiddenText: "QTS route"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Establishment"
-      },
-      value: {
-        text: data.establishment
-      },
-      actions: {
-        items: [
-          {
-            href: "/itt/establishment?returnUrl=/itt/check",
-            text: "Change",
-            visuallyHiddenText: "establishment"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Qualification"
-      },
-      value: {
-        text: data.establishmentQualification
-      },
-      actions: {
-        items: [
-          {
-            href: "/itt/establishment-qualification?returnUrl=/itt/check",
-            text: "Change",
-            visuallyHiddenText: "establishment qualification"
-          }
-        ]
-      }
-    },
+    }, 
     {
       key: {
         text: "Start date"
       },
       value: {
-        text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+        text: "11 October 2023"
       },
       actions: {
         items: [
           {
-            href: "/itt/start-date?returnUrl=/itt/check",
+            href: "#",
             text: "Change",
             visuallyHiddenText: "start date"
           }
@@ -135,37 +84,165 @@ rows: [
     },
     {
       key: {
-        text: "Age restrictions"
+        text: "End date"
       },
       value: {
-        text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+        text: "11 October 2023"
       },
       actions: {
         items: [
           {
-            href: "/itt/age-restriction?returnUrl=/itt/check",
+            href: "#",
             text: "Change",
-            visuallyHiddenText: "age restrictions"
+            visuallyHiddenText: "subjects"
+          }
+        ]
+      }
+    },
+     {
+      key: {
+        text: "Induction exemption"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "subjects"
+          }
+        ]
+      }
+    }       
+  ]
+}) }}
+
+
+
+
+{{ govukSummaryList({
+card: {
+  title: {
+    text: "ITT Initial techer training"
+  },
+  actions: {
+    items: [
+      {
+        href: "#",
+        text: "Delete",
+        visuallyHiddenText: "Qualification"
+      }
+    ]
+  }
+},
+rows: [
+    {
+      key: {
+        text: "Professional status"
+      },
+      value: {
+        text: "Qualified teacher status (QTS)"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "professional status"
           }
         ]
       }
     },
     {
       key: {
-        text: "Subjects"
+        text: "Status"
       },
       value: {
-        html: subjectChoices
+        text: "Awarded"
       },
       actions: {
         items: [
           {
-            href: "/itt/subjects?returnUrl=/itt/check",
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "professional status"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Award date"
+      },
+      value: {
+        text: "15 September 2020"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "award date"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Start date"
+      },
+      value: {
+        text: "20 August 2018"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "start date"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "End date"
+      },
+      value: {
+        text: "15 September 2020"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
             text: "Change",
             visuallyHiddenText: "subjects"
           }
         ]
       }
-    }      
+    },
+     {
+      key: {
+        text: "Induction exemption"
+      },
+      value: {
+        text: "Yes"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "subjects"
+          }
+        ]
+      }
+    }       
   ]
 }) }}
+
+
+
+
