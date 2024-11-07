@@ -25,9 +25,9 @@
       
       <form method="post" novalidate>
         
-        {% include "_includes/autocomplete-subjects.njk" %}
+        {% include "_includes/autocompletes/autocomplete-subjects.njk" %}
 
-        {% include "_includes/autocomplete-additional-subjects.njk" %}
+        {% include "_includes/autocompletes/autocomplete-additional-subjects.njk" %}
   
         {{ govukButton({
           text: "Continue"
