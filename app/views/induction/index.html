@@ -3,6 +3,12 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "induction" %}
 
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -17,7 +23,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ data.teachers[0].fullName }}</h1>
+      <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}

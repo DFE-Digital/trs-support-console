@@ -3,6 +3,14 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "general" %}
 
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data.teachers %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -12,12 +20,14 @@
 
 
 
+
+
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ data.teachers[0].fullName }}</h1>
+      <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}
@@ -37,7 +47,7 @@
               text: "Name"
             },
             value: {
-              text: data.teachers[0].fullName
+              text: teacher['fullName']
             },
             actions: {
               items: [
@@ -54,7 +64,7 @@
               text: "Date of birth"
             },
             value: {
-              text: data.teachers[0].dateOfBirth
+              text: teacher['dateOfBirth']
             },
             actions: {
               items: [
@@ -71,7 +81,7 @@
               text: "Gender"
             },
             value: {
-              text: data.teachers[0].gender
+              text: teacher['gender']
             },
             actions: {
               items: [
@@ -88,7 +98,7 @@
               text: "Teacher reference number (TRN)"
             },
             value: {
-              text: data.teachers[0].trn
+              text: teacher['trn']
             }
           },
           {
@@ -96,7 +106,7 @@
               text: "National Insurance number"
             },
             value: {
-              text: data.teachers[0].nationalInsurance
+              text: teacher['nationalInsurance']
             },
             actions: {
               items: [
@@ -113,7 +123,7 @@
               text: "Email"
             },
             value: {
-               text: data.teachers[0].email
+               text: teacher['email']
             },
             actions: {
               items: [
@@ -130,7 +140,7 @@
               text: "Mobile number"
             },
             value: {
-               text: data.teachers[0].mobile
+               text: teacher['mobile']
             },
             actions: {
               items: [

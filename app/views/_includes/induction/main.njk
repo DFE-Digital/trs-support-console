@@ -11,7 +11,7 @@
           text: "Induction status"
         },
         value: {
-            text: data.teachers.inductionStatus
+            text: teacher['inductionStatus']
         },
         actions: {
             items: [
@@ -28,7 +28,7 @@
             text: "Induction start date"
         },
         value: {
-            text: data.teachers.inductionStartDate
+            text: teacher['inductionStartDate'] or "none"
         },
         actions: {
             items: [
@@ -45,7 +45,7 @@
             text: "Induction completion date"
         },
         value: {
-            text: data.teachers.inductionCompletionDate
+            text: teacher['inductionCompletionDate'] or "none"
         },
         actions: {
             items: [
