@@ -1,0 +1,36 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "induction" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">{{ data.teachers[0].fullName }}</h1>
+
+      {{ data.teachers | log }}
+      {{ data.chooseQtsRoute | log }}
+
+
+      {% include "_includes/secondary-navigation.njk" %}  
+
+      {% include "_includes/induction/main.njk" %}  
+
+      
+
+
+  </div>
+</div>
+
+{% endblock %}
