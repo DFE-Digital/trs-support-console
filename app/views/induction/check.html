@@ -12,14 +12,13 @@
 {% set questionName = "Check your answers" %}
 
 
-
-
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
     href: "javascript:window.history.back()"
   }) }}
 {% endblock %}
+
 
 {% block content %}
 
@@ -30,17 +29,17 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
       {{ data.newInductionStatus | log }}
+      {{ inductionStatus | log }}
       {{ data.inductionExemptionReason | log }}
 
 
-      {% if not data.newInductionStatus == 'Exempt' %}
-        <p class="govuk-body">Jobby</p>
+      {% if data.newInductionStatus == 'Exempt' %}
         {% include "_includes/induction/check-with-exemption.njk" %}   
-      {% elif data.newInductionStatus %}
+      {% else %}
         {% include "_includes/induction/check-no-exemption.njk" %}   
       {% endif %}
 
-      
+
       <form method="post" action="/induction/check-handler">
         {{ govukButton({
           text: "Confirm and add route"

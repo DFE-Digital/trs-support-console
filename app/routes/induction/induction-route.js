@@ -1,13 +1,14 @@
 module.exports = router => {
 
   router.post('/induction/status', (req, res) => {
+     req.body.newInductionStatus = null
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
-      if (req.body.newInductionStatus != "Exempt") {
-        res.redirect('/induction/check')
-      } else {
+      if (req.body.newInductionStatus == "Exempt") {
         res.redirect('/induction/reason')
+      } else {
+        res.redirect('/induction/check')
       }
     }      
   })
