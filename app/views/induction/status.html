@@ -32,48 +32,40 @@
       {{ data.chooseQtsRoute | log }}
  
       <form method="post" novalidate>
-      {{ govukRadios({
-        name: "changeInductionStatus",
-        fieldset: {
-          legend: {
-            text: "Select a status"
-          }
-        },
-        items: [
-          {
-            value: "None",
-            text: "None"
-          },
-          {
-            value: "Required to complete",
-            text: "Required to complete"
-          },
-          {
-            value: "Exempt",
-            text: "Exempt"
-          },
-          {
-            value: "In progress",
-            text: "In progress"
-          },
-          {
-            value: "Passed",
-            text: "Passed"
-          },
-          {
-            value: "Passed in Wales",
-            text: "Passed in Wales"
-          },
-          {
-            value: "Failed",
-            text: "Failed"
-          },
-          {
-            value: "Failed in Wales",
-            text: "Failed in Wales"
-          }
-        ]
-      }) }}
+
+        {% if teacher.trn  == '494612' %}
+          {% include "_includes/induction/statuses/none.njk" %}
+        {% endif %}
+
+        {% if teacher.trn  == '553092' %}
+          {% include "_includes/induction/statuses/required.njk" %}
+        {% endif %}
+
+        {% if teacher.trn  == '571028' %}
+          {% include "_includes/induction/statuses/exempt.njk" %}
+        {% endif %}
+
+        {% if teacher.trn  == '752394' %}
+          {% include "_includes/induction/statuses/in-progress.njk" %}
+        {% endif %}
+
+        {% if teacher.trn  == '764087' %}
+          {% include "_includes/induction/statuses/passed.njk" %}
+        {% endif %}
+
+        {% if teacher.trn  == '822123' %}
+          {% include "_includes/induction/statuses/passed-in-wales.njk" %}
+        {% endif %}
+
+        {% if teacher.trn  == '824781' %}
+          {% include "_includes/induction/statuses/failed.njk" %}
+        {% endif %}
+
+        {% if teacher.trn  == '869361' %}
+          {% include "_includes/induction/statuses/failed.njk" %}
+        {% endif %}
+
+
 
       {{ govukButton({
         text: "Continue"
