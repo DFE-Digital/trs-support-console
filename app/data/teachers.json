@@ -11,7 +11,8 @@
     "mobile": "+447978129757",
     "inductionStatus": "none",
     "inductionStartDate": null,
-    "inductionCompletionDAte": null
+    "inductionCompletionDAte": null,
+    "exepmptionReason": null
   },
   {
     "firstName": "Susan",
@@ -25,7 +26,8 @@
     "mobile": "+447458517176",
     "inductionStatus": "Required to complete",
     "inductionStartDate": null,
-    "inductionCompletionDAte": null
+    "inductionCompletionDAte": null,
+    "exepmptionReason": null
   },
   {
     "firstName": "Hugh",
@@ -39,7 +41,8 @@
     "mobile": "+447804479621",
     "inductionStatus": "Exempt",
     "inductionStartDate": null,
-    "inductionCompletionDAte": null
+    "inductionCompletionDAte": null,
+    "exepmptionReason": null
   },
   {
     "firstName": "Stuart",
@@ -53,7 +56,8 @@
     "mobile": "+447532953435",
     "inductionStatus": "In progress",
     "inductionStartDate": "14 March 2023",
-    "inductionCompletionDAte": null
+    "inductionCompletionDAte": null,
+    "exepmptionReason": null
   },
   {
     "firstName": "Amjad",
@@ -67,7 +71,8 @@
     "mobile": "+447441625918",
     "inductionStatus": "Passed",
     "inductionStartDate": "5 June 2021",
-    "inductionCompletionDAte": "18 March 2023"
+    "inductionCompletionDAte": "18 March 2023",
+    "exepmptionReason": null
   },
   {
     "firstName": "Diane",
@@ -81,7 +86,8 @@
     "mobile": "+447389646389",
     "inductionStatus": "Passed in Wales",
     "inductionStartDate": "2 October 2020",
-    "inductionCompletionDAte": "15 November 2022"
+    "inductionCompletionDAte": "15 November 2022",
+    "exepmptionReason": null
   },
   {
     "firstName": "Bruce",
@@ -95,7 +101,8 @@
     "mobile": "+447464782290",
     "inductionStatus": "Failed",
     "inductionStartDate": "10 December 2018",
-    "inductionCompletionDAte": "1 July 2020"
+    "inductionCompletionDAte": "1 July 2020",
+    "exepmptionReason": null
   },
   {
     "firstName": "Rana",
@@ -109,6 +116,7 @@
     "mobile": "+447559017911",
     "inductionStatus": "Failed in Wales",
     "inductionStartDate": "18 August 2019",
-    "inductionCompletionDAte": "23 September 2021"
+    "inductionCompletionDAte": "23 September 2021",
+    "exepmptionReason": null
   }
 ]

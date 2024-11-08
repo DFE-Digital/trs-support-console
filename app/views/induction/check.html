@@ -1,23 +1,17 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "findRecord" %} 
-{% set secondaryNavId = "routes" %}
-{% set pageName = "Add a QTS route - " + data.teachers[0].fullName %}
-{% set questionName = "Check details and confirm route" %}
 
-{% set subjectChoices %}
-  <ul class="govuk-list govuk-list--bullet">
-    <li>{{ data.subjectChoiceOne }}</li>
-    
-      {% if data.subjectChoiceTwo %}
-      <li>{{ data.subjectChoiceTwo }}</li>
-      {% endif %}
 
-      {% if data.subjectChoiceThree %}
-        <li>{{ data.subjectChoiceThree }}</li>
-      {% endif %}
-  </ul>
-{% endset %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Select induction status" %}
+
+{% set newInductionStatus = "" %}
 
 
 
@@ -37,10 +31,6 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
 
-      {{ govukInsetText({
-        text: "You can add a professional status once you confirm this route."
-      }) }}
-
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
@@ -49,7 +39,7 @@
               text: "Induction status"
             },
             value: {
-              text: ""
+              text: teacher.inductionStatus
             },
             actions: {
               items: [

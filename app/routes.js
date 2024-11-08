@@ -14,7 +14,7 @@ router.all('*', (req, res, next) => {
     next()
 })
 
-// Add your routes here
+// ADD QUALS & ROUTES 
 require('./routes/account')(router)
 require('./routes/choose-route')(router)
 require('./routes/itt-route')(router)
@@ -24,6 +24,7 @@ require('./routes/iqts-route')(router)
 require('./routes/new-qtls-set')(router)
 require('./routes/legacy')(router)
 
+
 router.get('/cancel-and-return', (req, res) => {
     req.session.data = {}
     res.redirect('/general')
@@ -32,6 +33,10 @@ router.get('/cancel-and-return', (req, res) => {
 router.post('/find-teacher', (req, res) => {
     res.redirect('/general')
 })
+
+
+////// INDUCTION ROUTES
+require('./routes/induction/induction-route')(router)
 
 
 // router.get('/find-new-record', (req, res) => {
