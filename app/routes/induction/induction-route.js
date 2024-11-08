@@ -1,7 +1,7 @@
 module.exports = router => {
 
   router.post('/induction/status', (req, res) => {
-     req.body.newInductionStatus = null
+    //  req.body.newInductionStatus = null
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
