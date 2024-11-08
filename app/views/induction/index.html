@@ -25,15 +25,16 @@
 
       <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
-      {{ data.teachers | log }}
-      {{ data.chooseQtsRoute | log }}
+     
 
 
       {% include "_includes/secondary-navigation.njk" %}  
 
       {% include "_includes/induction/main.njk" %}  
 
-      
+      {{ data.teachers | log }}
+      {{ data['inductionStatus'] | log }}
+      {{ data.chooseQtsRoute | log }}
 
 
   </div>

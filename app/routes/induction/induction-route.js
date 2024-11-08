@@ -4,9 +4,22 @@ module.exports = router => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
+      if (req.body.newInductionStatus != "Exempt") {
+        res.redirect('/induction/check')
+      } else {
+        res.redirect('/induction/reason')
+      }
+    }      
+  })
+
+  router.post('/induction/reason', (req, res) => {
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else {
       res.redirect('/induction/check')  
     }      
   })
+
 
   /////////////  FLASH //////////////
   router.post('/induction/check-handler', (req, res) => {

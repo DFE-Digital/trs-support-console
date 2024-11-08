@@ -1,0 +1,55 @@
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Induction status"
+      },
+      value: {
+        text: data["newInductionStatus"]
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/status?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction status"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Induction start date"
+      },
+      value: {
+        text: teacher["inductionStartDate"]
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/start-date?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "start-date"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Induction completion date"
+      },
+      value: {
+        text: teacher.inductionCompletionDAte
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/completion-date?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction completion date"
+          }
+        ]
+      }
+    }        
+  ]
+}) }}

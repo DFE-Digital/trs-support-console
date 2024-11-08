@@ -23,24 +23,24 @@
             ]
         }
       },
-        {
-        key: {
-            text: "Induction start date"
-        },
-        value: {
-            text: teacher['inductionStartDate'] or "none"
-        },
-        actions: {
-            items: [
-            {
-                href: "#",
-                text: "Change",
-                visuallyHiddenText: "induction start date"
-            }
-            ]
+      {
+      key: {
+          text: "Induction start date"
+      },
+      value: {
+          text: teacher['inductionStartDate'] or "none"
+      },
+      actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction start date"
+          }
+          ]
         }
       },
-        {
+      {
         key: {
             text: "Induction completion date"
         },
@@ -48,14 +48,31 @@
             text: teacher['inductionCompletionDAte'] or "none"
         },
         actions: {
-            items: [
-            {
-                href: "#",
-                text: "Change",
-                visuallyHiddenText: "induction completion date"
-            }
-            ]
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction completion date"
+          }
+          ]
         }
-      }
+      },
+      {
+        key: {
+            text: "Exemption change reason"
+        },
+        value: {
+            text: teacher['newExepmptionReason'] or "none"
+        },
+        actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "exemption reason"
+          }
+          ]
+        } 
+      } if not exepmptionReason == null
   ]
 }) }}

@@ -9,9 +9,8 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Induction  - " + teacher.fullName %}
-{% set questionName = "Select induction status" %}
+{% set questionName = "Check your answers" %}
 
-{% set newInductionStatus = "" %}
 
 
 
@@ -30,64 +29,18 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
+      {{ data.newInductionStatus | log }}
+      {{ data.inductionExemptionReason | log }}
 
-      {{ govukSummaryList({
-        classes: "govuk-!-margin-bottom-9",
-        rows: [
-          {
-            key: {
-              text: "Induction status"
-            },
-            value: {
-              text: teacher.inductionStatus
-            },
-            actions: {
-              items: [
-                {
-                  href: "/induction/status?returnUrl=/induction/check",
-                  text: "Change",
-                  visuallyHiddenText: "induction status"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Induction start date"
-            },
-            value: {
-              text: ""
-            },
-            actions: {
-              items: [
-                {
-                  href: "/induction/start-date?returnUrl=/induction/check",
-                  text: "Change",
-                  visuallyHiddenText: "start-date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Induction completion date"
-            },
-            value: {
-              text: ""
-            },
-            actions: {
-              items: [
-                {
-                  href: "/induction/completion-date?returnUrl=/induction/check",
-                  text: "Change",
-                  visuallyHiddenText: "induction completion date"
-                }
-              ]
-            }
-          }        
-        ]
-      }) }}
 
+      {% if not data.newInductionStatus == 'Exempt' %}
+        <p class="govuk-body">Jobby</p>
+        {% include "_includes/induction/check-with-exemption.njk" %}   
+      {% elif data.newInductionStatus %}
+        {% include "_includes/induction/check-no-exemption.njk" %}   
+      {% endif %}
+
+      
       <form method="post" action="/induction/check-handler">
         {{ govukButton({
           text: "Confirm and add route"
