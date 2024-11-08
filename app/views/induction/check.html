@@ -1,0 +1,167 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a QTS route - " + data.teachers[0].fullName %}
+{% set questionName = "Check details and confirm route" %}
+
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+
+      {{ govukInsetText({
+        text: "You can add a professional status once you confirm this route."
+      }) }}
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Route"
+            },
+            value: {
+              text: data.chooseQtsRoute
+            },
+            actions: {
+              items: [
+                {
+                  href: "/change-qts-route",
+                  text: "Change",
+                  visuallyHiddenText: "QTS route"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Establishment"
+            },
+            value: {
+              text: data.establishment
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/establishment?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "establishment"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Qualification"
+            },
+            value: {
+              text: data.establishmentQualification
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/establishment-qualification?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "establishment qualification"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/start-date?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/age-restriction?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "age restrictions"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/subjects?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          }          
+        ]
+      }) }}
+
+      <form method="post" action="/itt/check-handler">
+        {{ govukButton({
+          text: "Confirm and add route"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}
