@@ -46,110 +46,59 @@
         rows: [
           {
             key: {
-              text: "Route"
+              text: "Induction status"
             },
             value: {
-              text: data.chooseQtsRoute
+              text: ""
             },
             actions: {
               items: [
                 {
-                  href: "/change-qts-route",
+                  href: "/induction/status?returnUrl=/induction/check",
                   text: "Change",
-                  visuallyHiddenText: "QTS route"
+                  visuallyHiddenText: "induction status"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Establishment"
+              text: "Induction start date"
             },
             value: {
-              text: data.establishment
+              text: ""
             },
             actions: {
               items: [
                 {
-                  href: "/itt/establishment?returnUrl=/itt/check",
+                  href: "/induction/start-date?returnUrl=/induction/check",
                   text: "Change",
-                  visuallyHiddenText: "establishment"
+                  visuallyHiddenText: "start-date"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Qualification"
+              text: "Induction completion date"
             },
             value: {
-              text: data.establishmentQualification
+              text: ""
             },
             actions: {
               items: [
                 {
-                  href: "/itt/establishment-qualification?returnUrl=/itt/check",
+                  href: "/induction/completion-date?returnUrl=/induction/check",
                   text: "Change",
-                  visuallyHiddenText: "establishment qualification"
+                  visuallyHiddenText: "induction completion date"
                 }
               ]
             }
-          },
-          {
-            key: {
-              text: "Start date"
-            },
-            value: {
-              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/itt/start-date?returnUrl=/itt/check",
-                  text: "Change",
-                  visuallyHiddenText: "start date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Age range"
-            },
-            value: {
-              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
-            },
-            actions: {
-              items: [
-                {
-                  href: "/itt/age-restriction?returnUrl=/itt/check",
-                  text: "Change",
-                  visuallyHiddenText: "age restrictions"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Subjects"
-            },
-            value: {
-              html: subjectChoices
-            },
-            actions: {
-              items: [
-                {
-                  href: "/itt/subjects?returnUrl=/itt/check",
-                  text: "Change",
-                  visuallyHiddenText: "subjects"
-                }
-              ]
-            }
-          }          
+          }        
         ]
       }) }}
 
-      <form method="post" action="/itt/check-handler">
+      <form method="post" action="/induction/check-handler">
         {{ govukButton({
           text: "Confirm and add route"
         }) }}

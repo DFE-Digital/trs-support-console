@@ -36,6 +36,8 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
+      {{ data.chooseQtsRoute | log }}
+
 
       {{ govukInsetText({
         text: "You can add a professional status once you confirm this route."
@@ -49,7 +51,7 @@
               text: "Route"
             },
             value: {
-              text: data.chooseQtsRoute
+              text: data['chooseQtsRoute']
             },
             actions: {
               items: [

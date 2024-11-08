@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "findRecord" %} 
-{% set secondaryNavId = "induction" %}
+
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
@@ -31,7 +31,7 @@
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}
  
-
+      <form method="post" novalidate>
       {{ govukRadios({
         name: "changeInductionStatus",
         fieldset: {
@@ -75,6 +75,10 @@
         ]
       }) }}
 
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
   </div>
 </div>
 
