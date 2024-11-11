@@ -10,7 +10,7 @@
           text: "Induction status"
         },
         value: {
-            text: teacher['inductionStatus']
+            text: data.newInductionStatus
         },
         actions: {
             items: [
@@ -22,12 +22,12 @@
             ]
         }
       },
-        {
+      {
       key: {
           text: "Exemption reason"
       },
       value: {
-          text: data.inductionExemptionReason or "none"
+          text: data.inductionExemptionReason
       },
       actions: {
           items: [
@@ -38,7 +38,7 @@
           }
           ]
         }  
-      } if teacher.inductionStatus == "Exempt",
+      } if data.newInductionStatus == "Exempt",
       {
       key: {
           text: "Induction start date"

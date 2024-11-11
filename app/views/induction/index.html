@@ -20,6 +20,11 @@
 
 {% block content %}
 
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">'+flash+'</h2>'
+}) if flash.length }}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
@@ -30,7 +35,11 @@
 
       {% include "_includes/secondary-navigation.njk" %}  
 
-      {% include "_includes/induction/main.njk" %}  
+      {% if data.newInductionStatus %}
+        {% include "_includes/induction/main-status-change.njk" %}  
+      {% else %}
+        {% include "_includes/induction/main.njk" %}  
+      {% endif %}
 
       {{ data.teachers | log }}
       {{ data['inductionStatus'] | log }}
