@@ -25,6 +25,7 @@ module.exports = router => {
   })
 
   router.post('/induction/start-date', (req, res) => {
+    
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
