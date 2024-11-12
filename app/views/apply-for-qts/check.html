@@ -5,6 +5,21 @@
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
 {% set questionName = "Check details to confirm route and qualification" %}
 
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -101,18 +116,35 @@
               text: "Age range"
             },
             value: {
-              text: data.applyForQtsBeenAgeRange
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
             },
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/age?returnUrl=/apply-for-qts/check",
+                  href: "/apply-for-qts/age-restrictions?returnUrl=/apply-for-qts/check",
                   text: "Change",
-                  visuallyHiddenText: "age"
+                  visuallyHiddenText: "age restrictions"
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/subjects?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          }     
         ]
       }) }}
 

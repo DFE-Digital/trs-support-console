@@ -1,0 +1,78 @@
+{{ govukSummaryList({
+  card: {
+      title: {
+      text: "Induction details"
+      }
+  },
+  rows: [
+      {
+        key: {
+          text: "Induction status"
+        },
+        value: {
+            text: teacher['inductionStatus']
+        },
+        actions: {
+            items: [
+            {
+                href: "/induction/status",
+                text: "Change",
+                visuallyHiddenText: "name"
+            }
+            ]
+        }
+      },
+        {
+      key: {
+          text: "Exemption reason"
+      },
+      value: {
+          text: data.inductionExemptionReason or "none"
+      },
+      actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction start date"
+          }
+          ]
+        }  
+      } if teacher.inductionStatus == "Exempt",
+      {
+      key: {
+          text: "Induction start date"
+      },
+      value: {
+          text: teacher['inductionStartDate'] or "none"
+      },
+      actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction start date"
+          }
+          ]
+        }
+      },
+      {
+        key: {
+            text: "Induction completion date"
+        },
+        value: {
+            text: teacher['inductionCompletionDAte'] or "none"
+        },
+        actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction completion date"
+          }
+          ]
+        }
+      } 
+  ] 
+}) }}
+
