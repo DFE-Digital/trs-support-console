@@ -7,7 +7,7 @@ module.exports = router => {
     } else {
       if (req.body.newInductionStatus == "Exempt") {
         res.redirect('/induction/reason')
-      } else if (req.body.newInductionStatus == "Passed" || req.body.newInductionStatus == "Failed" || req.body.newInductionStatus == "Passed in Wales" || req.body.newInductionStatus == "Failed in Wales") {
+      } else if (req.body.newInductionStatus == "In progress" || req.body.newInductionStatus == "Passed" || req.body.newInductionStatus == "Failed" || req.body.newInductionStatus == "Passed in Wales" || req.body.newInductionStatus == "Failed in Wales") {
         res.redirect('/induction/start-date')
       } else {
         res.redirect('/induction/check')

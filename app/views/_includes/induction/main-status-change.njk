@@ -44,7 +44,7 @@
           text: "Induction start date"
       },
       value: {
-          text: teacher['inductionStartDate'] or "none"
+          text: data['inductionUpdateStartDate-day'] + " " + data['inductionUpdateStartDate-month'] + " " + data['inductionUpdateStartDate-year']
       },
       actions: {
           items: [
@@ -61,7 +61,7 @@
             text: "Induction completion date"
         },
         value: {
-            text: teacher['inductionCompletionDAte'] or "none"
+            text: data['inductionCompletionDate-day'] + " " + data['inductionCompletionDate-month'] + " " + data['inductionCompletionDate-year']
         },
         actions: {
           items: [
