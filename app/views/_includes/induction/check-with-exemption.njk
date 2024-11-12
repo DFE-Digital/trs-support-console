@@ -1,3 +1,15 @@
+{% set exemptionReasons %}
+ <ul class="govuk-list govuk-list--bullet">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
+{% endset %}
+
+
+
 {{ govukSummaryList({
   rows: [
     {
@@ -22,7 +34,7 @@
         text: "Exemption reason"
       },
       value: {
-        text: data["inductionExemptionReason"]
+        html: exemptionReasons
       },
       actions: {
         items: [
