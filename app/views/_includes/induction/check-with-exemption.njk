@@ -8,6 +8,12 @@
  </ul>
 {% endset %}
 
+{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
+{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+
+  {{ data.teachers.inductionStartDate | log }}
+
+  {{ data.teachers.inductionCompletionDate | log }}
 
 
 {{ govukSummaryList({
@@ -51,7 +57,7 @@
         text: "Induction start date"
       },
       value: {
-        text:  data | isoDateFromDateInput('inductionStartDate') | govukDate 
+        text: inductionStartDate
       },
       actions: {
         items: [
@@ -68,7 +74,7 @@
         text: "Induction completion date"
       },
       value: {
-        text:  data | isoDateFromDateInput('inductionCompletionDate') | govukDate
+        text:  inductionCompletionDate
       },
       actions: {
         items: [

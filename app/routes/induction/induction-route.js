@@ -20,6 +20,7 @@ module.exports = router => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
+      inductionStartDate = req.body.newInductionStartDate
       res.redirect('/induction/completion-date')  
     }      
   })

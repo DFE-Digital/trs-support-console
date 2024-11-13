@@ -27,7 +27,7 @@
           text: "Exemption reason"
       },
       value: {
-          text: data.inductionExemptionReason or "none"
+          text: data.inductionExemptionReason or "Some exemption reason"
       },
       actions: {
           items: [
@@ -44,7 +44,7 @@
           text: "Induction start date"
       },
       value: {
-          text: teacher['inductionStartDate'] or "none"
+          text: teacher['inductionStartDate'] or "Not applicable"
       },
       actions: {
           items: [
@@ -54,14 +54,14 @@
               visuallyHiddenText: "induction start date"
           }
           ]
-        }
+        } if not teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "Required to complete"
       },
       {
         key: {
             text: "Induction completion date"
         },
         value: {
-            text: teacher['inductionCompletionDAte'] or "none"
+            text: teacher['inductionCompletionDAte'] or "Not applicable"
         },
         actions: {
           items: [
@@ -71,7 +71,7 @@
               visuallyHiddenText: "induction completion date"
           }
           ]
-        }
+        } if not teacher.inductionStatus == "Exempt" 
       } 
   ] 
 }) }}

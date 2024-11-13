@@ -6,7 +6,8 @@
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
-{% set teacher = trn | find(teacherArray)  %}
+{% set teacher = trn | find(teacherArray) %}
+{% set inductionCompletionDate = "shabba" %}
 
 {% set pageName = "Induction  - " + teacher.fullName %}
 {% set questionName = "Check your answers" %}
@@ -31,6 +32,8 @@
       {{ data.newInductionStatus | log }}
       {{ inductionStatus | log }}
       {{ data.inductionExemptionReason | log }}
+
+      {{ inductionCompletionDate | log }}
 
 
       {% if data.newInductionStatus == 'Exempt' %}

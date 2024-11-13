@@ -1,3 +1,17 @@
+{% set exemptionReasons %}
+ <ul class="govuk-list govuk-list--bullet">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
+{% endset %}
+
+{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
+{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+{% set newInductionStartDate = data['newInductionStartDate']%}
+
 {{ govukSummaryList({
   card: {
       title: {
@@ -27,7 +41,7 @@
           text: "Exemption reason"
       },
       value: {
-          text: data.inductionExemptionReason
+          html: exemptionReasons
       },
       actions: {
           items: [
@@ -44,7 +58,7 @@
           text: "Induction start date"
       },
       value: {
-          text: data['inductionUpdateStartDate-day'] + " " + data['inductionUpdateStartDate-month'] + " " + data['inductionUpdateStartDate-year']
+          text: inductionStartDate
       },
       actions: {
           items: [
@@ -61,7 +75,7 @@
             text: "Induction completion date"
         },
         value: {
-            text: data['inductionCompletionDate-day'] + " " + data['inductionCompletionDate-month'] + " " + data['inductionCompletionDate-year']
+            text: inductionCompletionDate
         },
         actions: {
           items: [
@@ -71,7 +85,7 @@
               visuallyHiddenText: "induction completion date"
           }
           ]
-        }
+        } if teacher.inductionStatus == "Required to complete"
       } 
   ] 
 }) }}

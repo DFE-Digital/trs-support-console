@@ -1,3 +1,6 @@
+{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
+{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+
 {{ govukSummaryList({
   rows: [
     {
@@ -22,7 +25,7 @@
         text: "Induction start date"
       },
       value: {
-        text:  data | isoDateFromDateInput('inductionStartDate') | govukDate 
+        text:  data | isoDateFromDateInput('newInductionStartDate') | govukDate 
       },
       actions: {
         items: [
@@ -49,7 +52,7 @@
             visuallyHiddenText: "induction completion date"
           }
         ]
-      }
+      } if teacher.inductionStatus == "Required to complete"
     }        
   ]
 }) }}
