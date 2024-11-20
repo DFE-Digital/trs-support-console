@@ -33,7 +33,14 @@
      
 
 
-      {% include "_includes/secondary-navigation.njk" %}  
+      {% include "_includes/secondary-navigation.njk" %} 
+      
+      {% if teacher.trn == "494612"  %}
+        {{ govukWarningText({
+          text: "This teacher doesn't have QTS and therefore ineligible for induction.",
+          iconFallbackText: "Warning"
+        }) }}
+      {% endif %}
 
       {% if data.newInductionStatus %}
         {% include "_includes/induction/main-status-change.njk" %}  
