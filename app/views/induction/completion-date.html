@@ -33,22 +33,22 @@
       <form method="post" novalidate>
         {{ govukDateInput({
           id: "inductionCompletion",
-          namePrefix: "inductionCompletionDate",
+          namePrefix: "newInductionCompletionDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['inductionCompletionDate-day']
+              value: data['newInductionCompletionDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['inductionCompletionDate-month']
+              value: data['newInductionCompletionDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['inductionCompletionDate-year']
+              value: data['newInductionCompletionDate-year']
             }
           ]
         }) }}

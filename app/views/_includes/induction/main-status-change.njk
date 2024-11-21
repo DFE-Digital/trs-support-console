@@ -9,8 +9,8 @@
 {% endset %}
 
 {% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
-{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
-{% set newInductionStartDate = data['newInductionStartDate']%}
+{% set newInductionCompletionDate  = data['newInductionCompletionDate'] or "Not applicable" %}
+{% set newInductionStartDate = data['newInductionStartDate'] or "Not applicable" %}
 
 {{ govukSummaryList({
   card: {
@@ -34,8 +34,10 @@
                 visuallyHiddenText: "name"
             }
             ]
-        }
+        } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed in Wales"
       },
+
+
       {
       key: {
           text: "Exemption reason"
@@ -58,7 +60,7 @@
           text: "Induction start date"
       },
       value: {
-          text: inductionStartDate
+          text: newInductionStartDate
       },
       actions: {
           items: [
@@ -68,14 +70,17 @@
               visuallyHiddenText: "induction start date"
           }
           ]
-        }
-      },
+        } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+
+      } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
+
+
       {
         key: {
             text: "Induction completion date"
         },
         value: {
-            text: inductionCompletionDate
+            text: newInductionCompletionDate
         },
         actions: {
           items: [

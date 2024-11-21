@@ -36,7 +36,7 @@
             }
             ]
         } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed in Wales"
-      } ,
+      },
 
       {
         key: {
@@ -72,7 +72,27 @@
             }
             ]
           } if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
-      } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales" 
+
+      } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales",
+
+    	{
+				key: {
+					text: "Induction completion date"
+				},
+				value: {
+					text: teacher['inductionCompletionDAte'] or "Not applicable"
+				},
+				actions: {
+					items: [
+						{
+							href: "/induction/completion-date?returnUrl=/induction/check",
+							text: "Change",
+							visuallyHiddenText: "induction completion date"
+						}
+					]
+				} if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
+    } if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
   ] 
+
 }) }}
 
