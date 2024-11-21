@@ -8,7 +8,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Induction  - " + teacher.fullName %}
-{% set questionName = "Select exemption reason" %}
+{% set questionName = "Why are you making this change?" %}
 
 
 {% block beforeContent %}
@@ -28,12 +28,15 @@
     <span class="govuk-caption-l">{{pageName}}</span>
     <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
-      {{ data.teachers | log }}
-      {{ data.chooseQtsRoute | log }}
+    {{ data.teachers | log }}
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
  
       <form method="post" novalidate>
 
-        {% include "_includes/induction/exemption-reasons.njk" %}
+        {{ govukInsetText({
+          text: "Reason to change + evidence"
+        }) }}
 
       {{ govukButton({
         text: "Continue"

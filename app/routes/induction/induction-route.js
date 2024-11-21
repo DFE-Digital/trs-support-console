@@ -16,23 +16,29 @@ module.exports = router => {
   })
 
 
+
   router.post('/induction/start-date', (req, res) => {
+    trn = req.session.trn
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
-      inductionStartDate = req.body.newInductionStartDate
-      res.redirect('/induction/completion-date')  
+      if (trn == "553092" || trn == "752394" ) {
+        res.redirect('/induction/change-reason')
+      } else {
+        res.redirect('/induction/completion-date') 
+      } 
     }      
   })
 
-  router.post('/induction/start-date', (req, res) => {
-    
+  router.post('/induction/change-reason', (req, res) => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
-      res.redirect('/induction/completion-date')  
+      res.redirect('/induction/check')  
     }      
   })
+
+    
 
   router.post('/induction/completion-date', (req, res) => {
     if (req.query.returnUrl) {

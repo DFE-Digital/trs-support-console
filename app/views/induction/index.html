@@ -30,9 +30,6 @@
 
       <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
-     
-
-
       {% include "_includes/secondary-navigation.njk" %} 
       
       {% if teacher.trn == "494612"  %}
@@ -48,13 +45,10 @@
         {% include "_includes/induction/main.njk" %}  
       {% endif %}
 
+
       {{ data.teachers | log }}
-      {{ data['inductionStatus'] | log }}
-      {{ data.chooseQtsRoute | log }}
-
-      {{ teachers.inductionStartDate | log }}
-
-      {{ teachers.inductionCompletionDate | log }}
+      {{ teacher.inductionStatus | log }}
+      {{ teacher.trn | log }}
 
   </div>
 </div>

@@ -1,5 +1,6 @@
 {% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
 {% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+{% set newInductionStartDate = data['newInductionStartDate']%}
 
 {{ govukSummaryList({
   rows: [

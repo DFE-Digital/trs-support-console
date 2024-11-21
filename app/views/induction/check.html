@@ -35,6 +35,9 @@
 
       {{ inductionCompletionDate | log }}
 
+      {{ teacher.inductionStatus | log }}
+      {{ teacher.trn | log }}
+
 
       {% if data.newInductionStatus == 'Exempt' %}
         {% include "_includes/induction/check-with-exemption.njk" %}   
