@@ -36,7 +36,7 @@
             }
             ]
         } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Faile in Wales"
-      },
+      } ,
 
       {
         key: {
@@ -72,7 +72,7 @@
             }
             ]
           } if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
-      },
+      } if not teacher.inductionStatus == "Exempt",
       
       {
         key: {
@@ -90,7 +90,7 @@
           }
           ]
         } if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales" 
-      } 
+      } if not teacher.inductionStatus == "Exempt"
   ] 
 }) }}
 
