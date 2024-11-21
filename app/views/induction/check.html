@@ -29,14 +29,15 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
-      {{ data.newInductionStatus | log }}
-      {{ inductionStatus | log }}
-      {{ data.inductionExemptionReason | log }}
-
-      {{ inductionCompletionDate | log }}
-
+      
       {{ teacher.inductionStatus | log }}
       {{ teacher.trn | log }}
+
+      {{ data.newInductionStatus | log }}
+      {{ data.inductionExemptionReason | log }}
+      {{ data.inductionCompletionDate | log }}
+
+     
 
 
       {% if data.newInductionStatus == 'Exempt' %}
