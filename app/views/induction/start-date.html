@@ -6,6 +6,8 @@
 {% set teacherArray = data["teachers"] %}
 {% set teacher = trn | find(teacherArray)  %}
 
+
+
 {% set pageName = "Induction  - " + teacher.fullName %}
 {% set questionName = "Select start date" %}
 
@@ -25,6 +27,8 @@
     
     {{ teacher.inductionStatus | log }}
     {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
 
     
       <span class="govuk-caption-l">{{pageName}}</span>

@@ -1,34 +1,41 @@
 module.exports = router => {
 
   router.post('/induction/status', (req, res) => {
-    //  req.body.newInductionStatus = null
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
       if (req.body.newInductionStatus == "Exempt") {
         res.redirect('/induction/reason')
-      } else if (req.body.newInductionStatus == "In progress" || req.body.newInductionStatus == "Passed" || req.body.newInductionStatus == "Failed" || req.body.newInductionStatus == "Passed in Wales" || req.body.newInductionStatus == "Failed in Wales") {
-        res.redirect('/induction/start-date')
-      } else {
-        res.redirect('/induction/check')
       }
-    }      
+      res.redirect('/induction/start-date')
+    }
+    console.log(req.body.newInductionStatus)      
   })
-
 
 
   router.post('/induction/start-date', (req, res) => {
-    trn = req.session.trn
+    let data = req.session.data
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else if (data.newInductionStatus == "In progress" || data.newInductionStatus == "Required to complete") {
+      res.redirect('/induction/change-reason')
+    } else {
+      res.redirect('/induction/completion-date')
+    }
+      console.log(data.newInductionStatus)
+  })
+
+
+
+
+  router.post('/induction/completion-date', (req, res) => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
-      if (trn == "553092" || trn == "752394" ) {
-        res.redirect('/induction/change-reason')
-      } else {
-        res.redirect('/induction/completion-date') 
-      } 
+      res.redirect('/induction/change-reason')  
     }      
   })
+
 
   router.post('/induction/change-reason', (req, res) => {
     if (req.query.returnUrl) {
@@ -39,15 +46,6 @@ module.exports = router => {
   })
 
     
-
-  router.post('/induction/completion-date', (req, res) => {
-    if (req.query.returnUrl) {
-      res.redirect(req.query.returnUrl)
-    } else {
-      res.redirect('/induction/check')  
-    }      
-  })
-
   router.post('/induction/reason', (req, res) => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)

@@ -29,13 +29,22 @@
     <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
     {{ data.teachers | log }}
+    
     {{ teacher.inductionStatus | log }}
     {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
  
       <form method="post" novalidate>
 
-        {{ govukInsetText({
-          text: "Reason to change + evidence"
+        {{ govukTextarea({
+          id: "status-change-reason",
+          name: "statusChangeReason",
+          rows: "4",
+          label: {
+            text: "Reason for changing status",
+            classes: "govuk-visually-hidden"
+          }
         }) }}
 
       {{ govukButton({

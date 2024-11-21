@@ -54,7 +54,25 @@
             visuallyHiddenText: "induction completion date"
           }
         ]
-      } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales" 
-    }        
+      } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+    } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
+
+      {
+        key: {
+            text: "Reason for status change"
+        },
+        value: {
+            text: data['statusChangeReason'] 
+        },
+        actions: {
+          items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "reason for change"
+          }
+          ]
+        } 
+      }   
   ]
 }) }}
