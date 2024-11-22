@@ -1,17 +1,18 @@
 module.exports = router => {
 
+  // RESTRUCTURE LIKE ROUT BELOW WITH ELSEIF STATEMENT - DONE
+
   router.post('/induction/status', (req, res) => {
+    let data = req.session.data
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
+    } else if (data.newInductionStatus == "Exempt") {
+      res.redirect('/induction/reason')
     } else {
-      if (req.body.newInductionStatus == "Exempt") {
-        res.redirect('/induction/reason')
-      }
       res.redirect('/induction/start-date')
     }
-    console.log(req.body.newInductionStatus)      
+      console.log(data.newInductionStatus)
   })
-
 
   router.post('/induction/start-date', (req, res) => {
     let data = req.session.data
