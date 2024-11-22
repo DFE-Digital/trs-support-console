@@ -7,6 +7,9 @@
 {% set teacherArray = data["teachers"] %}
 {% set teacher = trn | find(teacherArray)  %}
 
+{% set newInductionCompletionDate  = data['newInductionCompletionDate']  %}
+{% set newInductionStartDate = data['newInductionStartDate']  %}
+
 
 
 {% block beforeContent %}
@@ -39,7 +42,7 @@
         }) }}
       {% endif %}
 
-      {% if data.newInductionStatus %}
+      {% if data.newInductionStatus or data.newInductionStartDate or data.newInductionCompletionDate %}
         {% include "_includes/induction/main-status-change.njk" %}  
       {% else %}
         {% include "_includes/induction/main.njk" %}  
@@ -49,6 +52,10 @@
       {{ data.teachers | log }}
       {{ teacher.inductionStatus | log }}
       {{ teacher.trn | log }}
+
+      {{ data.newInductionStartDate | log }}
+      {{ data.newInductionCompletionDate | log }}
+      
 
   </div>
 </div>

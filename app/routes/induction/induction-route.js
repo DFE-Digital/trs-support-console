@@ -58,8 +58,11 @@ module.exports = router => {
 
   /////////////  FLASH //////////////
   router.post('/induction/check-handler', (req, res) => {
-
+  
   req.flash('success', 'Induction status changed')
+  let data = req.session.data
+  newInductionStartDate = data.newInductionStatus
+  newInductionCompletionDate =  data.newInductionCompletionDate
 
   res.redirect('/induction')
 })    

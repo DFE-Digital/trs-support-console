@@ -9,8 +9,8 @@
 {% endset %}
 
 {% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
-{% set newInductionCompletionDate  = data['newInductionCompletionDate'] or "Not applicable" %}
-{% set newInductionStartDate = data['newInductionStartDate'] or "Not applicable" %}
+{% set newInductionCompletionDate  = data['newInductionCompletionDate'] %}
+{% set newInductionStartDate = data['newInductionStartDate']  %}
 
 {{ govukSummaryList({
   card: {
@@ -90,8 +90,9 @@
               visuallyHiddenText: "induction completion date"
           }
           ]
-        } if teacher.inductionStatus == "Required to complete"
-      } 
+        } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+      
+      } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
   ] 
 }) }}
 
