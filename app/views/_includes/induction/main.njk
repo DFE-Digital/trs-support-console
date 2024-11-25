@@ -12,6 +12,20 @@
 {% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
 {% set newInductionStartDate = data['newInductionStartDate']%}
 
+     
+{% if teacher.trn == "494612"  %}
+  {{ govukWarningText({
+    text: "This teacher doesn't have QTS and therefore ineligible for induction.",
+    iconFallbackText: "Warning"
+  }) }}
+{% else %}
+{{ govukWarningText({
+  text: "Have you checked CPD induction service before making any updates in TRS.",
+  iconFallbackText: "Warning"
+}) }}  
+{% endif %}
+
+
 
 {{ govukSummaryList({
   card: {
@@ -53,7 +67,7 @@
                 visuallyHiddenText: "induction start date"
             }
             ]
-          }  
+          } if not teacher.inductionStatus == "Exempt"
       } if teacher.inductionStatus == "Exempt",
 
       {
@@ -90,9 +104,9 @@
 							visuallyHiddenText: "induction completion date"
 						}
 					]
-				} if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
+				} if teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
 
-    } if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales" or teacher.inductionStatus == "In progress"
+    } if teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales" or teacher.inductionStatus == "In progress"
   ] 
 
 }) }}

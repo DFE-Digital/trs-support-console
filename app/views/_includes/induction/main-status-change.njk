@@ -9,8 +9,7 @@
 {% endset %}
 
 {% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
-{% set newInductionCompletionDate  = data['newInductionCompletionDate'] %}
-{% set newInductionStartDate = data['newInductionStartDate']  %}
+
 
 {{ govukSummaryList({
   card: {
@@ -60,7 +59,7 @@
           text: "Induction start date"
       },
       value: {
-          text: newInductionStartDate
+          text: data | isoDateFromDateInput('newInductionStartDate') | govukDate
       },
       actions: {
           items: [
@@ -80,7 +79,7 @@
             text: "Induction completion date"
         },
         value: {
-            text: newInductionCompletionDate
+            text: data | isoDateFromDateInput('newInductionCompletionDate') | govukDate
         },
         actions: {
           items: [
@@ -92,7 +91,25 @@
           ]
         } if data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
       
-      } if data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+      } if data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
+
+      {
+        key: {
+            text: "Reason for status change"
+        },
+        value: {
+            text: data['statusChangeReason'] 
+        },
+        actions: {
+          items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "reason for change"
+          }
+          ]
+        } 
+      } 
   ] 
 }) }}
 
