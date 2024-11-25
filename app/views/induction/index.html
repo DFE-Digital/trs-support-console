@@ -40,6 +40,11 @@
           text: "This teacher doesn't have QTS and therefore ineligible for induction.",
           iconFallbackText: "Warning"
         }) }}
+      {% else %}
+      {{ govukWarningText({
+        text: "Have you checked CPD induction service before making any updates in TRS.",
+        iconFallbackText: "Warning"
+      }) }}  
       {% endif %}
 
       {% if data.newInductionStatus or data.newInductionStartDate or data.newInductionCompletionDate %}
