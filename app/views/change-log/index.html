@@ -41,9 +41,7 @@
 
       {% else %}
 
-        {{ govukInsetText({
-          text: "No reasons recorded"
-        }) }}
+      {% include "_includes/induction/change-log/none.njk" %}
 
       {% endif %}
       
