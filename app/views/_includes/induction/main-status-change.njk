@@ -8,8 +8,8 @@
  </ul>
 {% endset %}
 
-{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
 
+{% set newInductionStatus = data['newInductionStatus']%}
 
 {{ govukSummaryList({
   card: {
@@ -109,7 +109,7 @@
           }
           ]
         } 
-      } 
+      } if not newInductionStatus == "Exempt"
   ] 
 }) }}
 
