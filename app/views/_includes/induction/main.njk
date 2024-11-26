@@ -18,11 +18,31 @@
     text: "This teacher doesn't have QTS and therefore ineligible for induction.",
     iconFallbackText: "Warning"
   }) }}
-{% else %}
-{{ govukWarningText({
-  text: "Have you checked CPD induction service before making any updates in TRS.",
-  iconFallbackText: "Warning"
-}) }}  
+{% elseif  teacher.trn == "553092"%}
+  {{ govukWarningText({
+    text: "Changing status to In Progess, Passed or Failed will be handled in CPD.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "752394"%}
+  {{ govukWarningText({
+    text: "Changing status to Required to complete, Passed or Failed will be handled in CPD.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "764087"%}
+  {{ govukWarningText({
+    text: "Changing status to Required to complete, In progress or Failed will be handled in CPD.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "824781"%}
+  {{ govukWarningText({
+    text: "Changing status to Required to complete, In progress or Passed will be handled in CPD.",
+    iconFallbackText: "Warning"
+  }) }}
+{% else %}  
+    {{ govukWarningText({
+    text: "Load of shite.",
+    iconFallbackText: "Warning"
+  }) }}
 {% endif %}
 
 
