@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Why are you making this change?" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    {{ data.teachers | log }}
+    
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
+ 
+      <form method="post" novalidate>
+
+        {{ govukTextarea({
+          id: "status-change-reason",
+          name: "statusChangeReason",
+          rows: "4",
+          label: {
+            text: "Reason for changing status",
+            classes: "govuk-visually-hidden"
+          }
+        }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

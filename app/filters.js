@@ -8,3 +8,7 @@ const addFilter = govukPrototypeKit.views.addFilter
 
 // Add your filters here
 
+addFilter("find", function (id, arr) {
+    return arr.find((element) => element.trn == id);
+  });
+
