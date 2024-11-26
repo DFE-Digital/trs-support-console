@@ -109,7 +109,7 @@
           }
           ]
         } 
-      } if not newInductionStatus == "Exempt"
+      } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales" 
   ] 
 }) }}
 
