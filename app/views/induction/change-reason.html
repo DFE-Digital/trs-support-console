@@ -37,14 +37,28 @@
  
       <form method="post" novalidate>
 
-        {{ govukTextarea({
-          id: "status-change-reason",
+        {{ govukRadios({
           name: "statusChangeReason",
-          rows: "4",
-          label: {
-            text: "Reason for changing status",
-            classes: "govuk-visually-hidden"
-          }
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Induction status recorded incorrectly",
+              text: "Induction status recorded incorrectly"
+            },
+            {
+              value: "No longer exempt from induction",
+              text: "No longer exempt from induction"
+            },
+            {
+              value: "Appropriate body provided incorrect induction end date",
+              text: "Appropriate body provided incorrect induction end date"
+            }
+          ]
         }) }}
 
       {{ govukButton({
