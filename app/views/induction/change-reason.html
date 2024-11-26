@@ -11,6 +11,7 @@
 {% set questionName = "Why are you making this change?" %}
 
 
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -37,6 +38,19 @@
  
       <form method="post" novalidate>
 
+        {% set changeReasonHtml %}
+          {{ govukInput({
+            id: "other-change-reason",
+            name: "otherChangeReason",
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Add another reason",
+              classes: "govuk-visually-hidden"
+            }
+          }) }}
+        {% endset -%}
+
+
         {{ govukRadios({
           name: "statusChangeReason",
           fieldset: {
@@ -57,6 +71,16 @@
             {
               value: "Appropriate body provided incorrect induction end date",
               text: "Appropriate body provided incorrect induction end date"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: changeReasonHtml
+              }
             }
           ]
         }) }}

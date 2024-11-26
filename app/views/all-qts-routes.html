@@ -4,6 +4,7 @@
 {% set secondaryNavId = "alerts" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
 
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -53,6 +54,9 @@
           {
             value: "Legacy route",
             text: "Another route"
+            conditional: {
+              html: changeReasonHtml
+            }
           }
         ]
       }) }}
