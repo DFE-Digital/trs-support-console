@@ -1,35 +1,35 @@
 {{ govukSummaryList({
-        card: {
-          title: {
-            text: "Initial teacher training (postgraduate or undergraduate)"
-          }
-        },
-        rows: [
-          
+  card: {
+    title: {
+      text: "Initial teacher training (postgraduate or undergraduate)"
+    }
+  },
+  rows: [
+    
+    {
+      key: {
+        text: "Route start date"
+      },
+      value: {
+        text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+      },
+      actions: {
+        items: [
           {
-            key: {
-              text: "Route start date"
-            },
-            value: {
-              text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/itt/start-date?returnUrl=/itt/check",
-                  text: "Change",
-                  visuallyHiddenText: "route start date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "QTS status"
-            },
-            value: {
-              text: "Working towards"
-            }
+            href: "/itt/start-date?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "route start date"
           }
         ]
-      }) }}
+      }
+    },
+    {
+      key: {
+        text: "QTS status"
+      },
+      value: {
+        text: "Working towards"
+      }
+    }
+  ]
+}) }}

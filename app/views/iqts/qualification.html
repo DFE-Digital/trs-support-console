@@ -1,0 +1,77 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+{% set questionName = "Select a qualification" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+      
+      {% set anotherEstQuaHtml %}
+        {{ govukInput({
+          id: "some-other-est-qual",
+          name: "someOtherEstQual",
+          type: "text",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Name of other qualification"
+          }
+        }) }}
+      {% endset %}
+
+      <form method="post" novalidate>
+        {{ govukRadios({
+          name: "establishmentQualification",
+          value: data.establishmentQualification,    
+          items: [
+            {
+              value: "Undergraduate",
+              text: "Undergraduate"
+            },
+            {
+              value: "Postgraduate",
+              text: "Postgraduate"
+            },
+            {
+              divider: "or"
+            },
+            {
+              text: "Something else",
+              conditional: {
+                html: anotherEstQuaHtml
+              }
+            }
+          ]
+        }) }}
+  
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

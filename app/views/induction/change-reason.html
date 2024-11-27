@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Why are you making this change?" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    {{ data.teachers | log }}
+    
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
+ 
+      <form method="post" novalidate>
+
+        {% set otherInput %}
+          {{ govukInput({
+            id: "other-reason",
+            name: "otherReason",
+            classes: "govuk-!-width-one-third",
+            label: {
+              text: "Other",
+              classes: "govuk-label--s"
+            },
+            value: data.otherReason
+          }) }}
+        {% endset %}
+
+
+        {{ govukRadios({
+          name: "statusChangeReason",
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Induction status recorded incorrectly",
+              text: "Induction status recorded incorrectly"
+            },
+            {
+              value: "No longer exempt from induction",
+              text: "No longer exempt from induction"
+            },
+            {
+              value: "Appropriate body provided incorrect induction end date",
+              text: "Appropriate body provided incorrect induction end date"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: otherInput
+              }
+            }
+          ]
+        }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

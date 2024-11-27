@@ -2,7 +2,13 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "changelog" %}
-{% set pageName="[Person name]" %}
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -11,17 +17,34 @@
   }) }}
 {% endblock %}
 
+
+
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    
-      <h1 class="govuk-heading-l">{{data.teachers[0].fullName}}</h1>
-    
+    <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
-    {% include "_includes/secondary-navigation.njk" %}
-    
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
+    {{ data.inductionExemptionReason | log }}
+    {{ data.newInductionCompletionDate | log }}
+ 
+      {% include "_includes/secondary-navigation.njk" %}  
+
+      {% if data.newInductionStatus %}
+
+      {% include "_includes/induction/change-log/new.njk" %}
+
+      {% else %}
+
+      {% include "_includes/induction/change-log/none.njk" %}
+
+      {% endif %}
+      
   </div>
 </div>
 

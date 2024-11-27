@@ -1,0 +1,120 @@
+<h2 class="govuk-heading-s">Administrative or miscellaneous criteria</h2>
+
+{{ govukCheckboxes({
+  name: "inductionExemptionReason",
+  classes: "govuk-checkboxes--small",
+  fieldset: {
+    legend: {
+      text: "Select exemption reasons",
+      classes: "govuk-fieldset__legend--s govuk-visually-hidden"
+
+    }
+  },
+  values: data.inductionExemptionReason,
+  items: [
+    {
+      value: "Exempt",
+      text: "Exempt"
+    },
+    {
+      value: "Exempt - Data Loss/Error Criteria",
+      text: "Exempt - Data Loss/Error Criteria"
+    },
+    {
+      value: "Has, or is eligible for, full registration in Scotland",
+      text: "Has, or is eligible for, full registration in Scotland"
+    },
+    {
+      value: "Registered Teacher (having at least two year's full time teaching experience)",
+      text: "Registered Teacher (having at least two year's full time teaching experience)"
+    },
+    {
+      value: "Registered Teacher (having at least two year's full time teaching experience)",
+      text: "Registered Teacher (having at least two year's full time teaching experience)"
+    },
+    {
+      value: "Teacher has been awarded QTLS and is exempt provided they maintain their membership with the Society for Education and Training",
+      text: "Teacher has been awarded QTLS and is exempt provided they maintain their membership with the Society for Education and Training"
+    },
+    {
+      value: "Overseas Trained Teacher",
+      text: "Overseas Trained Teacher"
+    }
+  ]
+}) }}
+
+
+<h2 class="govuk-heading-s">Exemptions for historical qualification routes</h2>
+
+{{ govukCheckboxes({
+  name: "inductionExemptionReason",
+  classes: "govuk-checkboxes--small",
+  fieldset: {
+    legend: {
+      text: "Select exemption reasons",
+      classes: "govuk-fieldset__legend--s govuk-visually-hidden"
+
+    }
+  },
+  values: data.inductionExemptionReason,
+  items: [
+    {
+      value: "Qualified before 07 May 199",
+      text: "Qualified before 07 May 199"
+    },
+    {
+      value: "Qualified between 07 May 1999 and 01 April 2003. First post was in Wales and lasted a minimum of two terms.",
+      text: "Qualified between 07 May 1999 and 01 April 2003. First post was in Wales and lasted a minimum of two terms."
+    },
+    {
+      value: "Qualified through FE route between 01 Sep 2001 and 01 Sep 2004",
+      text: "Qualified through FE route between 01 Sep 2001 and 01 Sep 2004"
+    }
+  ]
+}) }}
+
+
+<h2 class="govuk-heading-s">Exemptions for induction done outside England</h2>
+
+{{ govukCheckboxes({
+  name: "inductionExemptionReason",
+  classes: "govuk-checkboxes--small",
+  fieldset: {
+    legend: {
+      text: "Select exemption reasons",
+      classes: "govuk-fieldset__legend--s govuk-visually-hidden"
+
+    }
+  },
+  values: data.inductionExemptionReason,
+  items: [
+    {
+      value: "Successfully completed induction in Guernsey",
+      text: "Successfully completed induction in Guernsey"
+    },
+    {
+      value: "Successfully completed induction in Isle Of Man",
+      text: "Successfully completed induction in Isle Of Man"
+    },
+    {
+      value: "Successfully completed induction in Jersey",
+      text: "Successfully completed induction in Jersey"
+    },
+    {
+      value: "Successfully completed induction in Northern Ireland",
+      text: "Successfully completed induction in Northern Ireland"
+    },
+    {
+      value: "Successfully completed induction in Service Children's Education schools in Germany or Cyprus",
+      text: "Successfully completed induction in Service Children's Education schools in Germany or Cyprus"
+    },
+    {
+      value: "Successfully completed induction in Wales",
+      text: "Successfully completed induction in Wales"
+    },
+    {
+      value: "Successfully completed probationary period in Gibraltar",
+      text: "Successfully completed probationary period in Gibraltar"
+    }
+  ]
+}) }}
