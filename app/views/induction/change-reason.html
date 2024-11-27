@@ -38,17 +38,18 @@
  
       <form method="post" novalidate>
 
-        {% set changeReasonHtml %}
+        {% set otherInput %}
           {{ govukInput({
-            id: "other-change-reason",
-            name: "otherChangeReason",
+            id: "other-reason",
+            name: "otherReason",
             classes: "govuk-!-width-one-third",
             label: {
-              text: "Add another reason",
-              classes: "govuk-visually-hidden"
-            }
+              text: "Other",
+              classes: "govuk-label--s"
+            },
+            value: data.otherReason
           }) }}
-        {% endset -%}
+        {% endset %}
 
 
         {{ govukRadios({
@@ -76,10 +77,10 @@
               divider: "or"
             },
             {
-              value: "Another reason",
-              text: "Another reason",
+              value: "Other",
+              text: "Other",
               conditional: {
-                html: changeReasonHtml
+                html: otherInput
               }
             }
           ]
