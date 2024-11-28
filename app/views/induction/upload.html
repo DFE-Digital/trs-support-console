@@ -1,0 +1,89 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Upload evidence" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+{% set evidenceYes%}
+  {{ govukFileUpload({
+    id: "evidence[file]",
+    name: "evidence[file]",
+    label: {
+      text: "Upload a file",
+      classes: "govuk-label--m"
+    },
+    hint: {
+      text: "Must be smaller than 100MB"
+    }
+  }) }}
+{% endset %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    <p class="govuk-body">For example, a [types of evidence here]</p>
+
+    {{ data.teachers | log }}
+    
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
+ 
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "uploadEvidence",
+          fieldset: {
+            legend: {
+              text: "Do you want to upload evidence?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          value: data.uploadEvidence,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: evidenceYes
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

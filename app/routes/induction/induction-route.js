@@ -42,8 +42,14 @@ module.exports = router => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
-      res.redirect('/induction/check')  
+      res.redirect('/induction/upload')  
     }      
+  })
+
+  /////////////  EVIDENCE   //////////////
+  router.post('/induction/upload', (req, res) => {
+   
+      res.redirect('/induction/check')  
   })
 
     
