@@ -54,9 +54,9 @@ module.exports = router => {
 
       //// Create list of files
       let files = [
-        'evidence-1.jpg',
+        'evidence-1.txt',
         'more-evidence-2.jpg',
-        'even-more-evidence-3.jpg'
+        'even-more-evidence-3.csv'
       ]
 
       if(!req.session.data.evidence.files) {
@@ -64,20 +64,36 @@ module.exports = router => {
       }
 
       // Get the next file
-    let filesCount = _.size(req.session.data.evidence.files)
-    let nextFile = files[filesCount]
+      let filesCount = _.size(req.session.data.evidence.files)
+      let nextFile = files[filesCount]
 
-      req.session.data.evidence.files[uuidv4] = {
-        filename: nextFile
+      // storing that file in memory so we can present it in the view
+      if(nextFile) {
+        req.session.data.evidence.files[uuidv4()] = {
+          filename: nextFile
+        }
       }
-
-    // storing that file in memory so we can present it in the view
-    if(nextFile) {
-      req.session.data.evidence.files[uuidv4()] = {
-        filename: nextFile
-      }
-    }
       res.redirect('/induction/check-files')  
+  })
+
+  // Dynamic delete evidence route 
+  router.get('/induction/:fileId/delete', (req, res) => {
+    let file = req.session.data.evidence.files[req.params.fileId]
+    res.render('induction/delete', {
+      file
+    })
+  }) 
+
+  router.post('/induction/:fileId/delete', (req, res) => {
+    delete req.session.data.evidence.files[req.params.fileId]
+    let filesCount = _.size(req.session.data.evidence.files)
+
+      if (filesCount > 0) {
+        res.redirect('/induction/check-files')
+      }
+      else {
+        res.redirect('/induction/upload')
+      }
   })
 
   
@@ -87,8 +103,7 @@ module.exports = router => {
     } else {
       res.redirect('/induction/check')  
     }
-    
-})
+  })
 
   /////////////  EXEMPTION   //////////////    
   router.post('/induction/reason', (req, res) => {
