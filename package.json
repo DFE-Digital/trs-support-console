@@ -15,6 +15,8 @@
     "govuk-frontend": "5.7.1",
     "govuk-prototype-kit": "13.16.2",
     "home-office-kit": "^1.2.0",
-    "save": "^2.9.0"
+    "lodash": "^4.17.21",
+    "save": "^2.9.0",
+    "uuid": "^11.0.3"
   }
 }

@@ -1,3 +1,6 @@
+const _ = require('lodash')
+const { v4: uuidv4 } = require('uuid')
+
 module.exports = router => {
 
   // RESTRUCTURE LIKE ROUT BELOW WITH ELSEIF STATEMENT - DONE
@@ -48,11 +51,46 @@ module.exports = router => {
 
   /////////////  EVIDENCE   //////////////
   router.post('/induction/upload', (req, res) => {
-   
-      res.redirect('/induction/check')  
+
+      //// Create list of files
+      let files = [
+        'evidence-1.jpg',
+        'more-evidence-2.jpg',
+        'even-more-evidence-3.jpg'
+      ]
+
+      if(!req.session.data.evidence.files) {
+        req.session.data.evidence.files = {}
+      }
+
+      // Get the next file
+    let filesCount = _.size(req.session.data.evidence.files)
+    let nextFile = files[filesCount]
+
+      req.session.data.evidence.files[uuidv4] = {
+        filename: nextFile
+      }
+
+    // storing that file in memory so we can present it in the view
+    if(nextFile) {
+      req.session.data.evidence.files[uuidv4()] = {
+        filename: nextFile
+      }
+    }
+      res.redirect('/induction/check-files')  
   })
 
+  
+  router.post('/induction/check-files', (req, res) => {
+    if (req.session.data.addMoreEvidence == "Yes") {
+      res.redirect('/induction/upload')   
+    } else {
+      res.redirect('/induction/check')  
+    }
     
+})
+
+  /////////////  EXEMPTION   //////////////    
   router.post('/induction/reason', (req, res) => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
