@@ -87,6 +87,8 @@ module.exports = router => {
   router.post('/induction/:fileId/delete', (req, res) => {
     delete req.session.data.evidence.files[req.params.fileId]
     let filesCount = _.size(req.session.data.evidence.files)
+      
+      req.flash('success', 'Evidence deleted')
 
       if (filesCount > 0) {
         res.redirect('/induction/check-files')
