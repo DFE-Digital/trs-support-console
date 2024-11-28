@@ -52,6 +52,9 @@ module.exports = router => {
   /////////////  EVIDENCE   //////////////
   router.post('/induction/upload', (req, res) => {
 
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+
       //// Create list of files
       let files = [
         'evidence-1.txt',
@@ -73,7 +76,17 @@ module.exports = router => {
           filename: nextFile
         }
       }
+    } else {
       res.redirect('/induction/check-files')  
+    }
+  })
+
+  router.post('/induction/check-files', (req, res) => {
+    if (req.session.data.addMoreEvidence == "Yes") {
+      res.redirect('/induction/upload')   
+    } else {
+      res.redirect('/induction/check')  
+    }
   })
 
   // Dynamic delete evidence route 
@@ -98,14 +111,7 @@ module.exports = router => {
       }
   })
 
-  
-  router.post('/induction/check-files', (req, res) => {
-    if (req.session.data.addMoreEvidence == "Yes") {
-      res.redirect('/induction/upload')   
-    } else {
-      res.redirect('/induction/check')  
-    }
-  })
+
 
   /////////////  EXEMPTION   //////////////    
   router.post('/induction/reason', (req, res) => {

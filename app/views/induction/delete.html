@@ -8,7 +8,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Induction  - " + teacher.fullName %}
-{% set questionName = "Confirm delete " + file.filename %}
+{% set questionName = "Confirm delete evidence" %}
 
 
 
@@ -28,6 +28,10 @@
 
     <span class="govuk-caption-l">{{pageName}}</span>
     <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    <div class="govuk-inset-text">
+      {{file.filename}}
+    </div>
  
       <form method="post" novalidate>
         {{ govukButton({

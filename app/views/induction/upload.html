@@ -8,7 +8,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Induction  - " + teacher.fullName %}
-{% set questionName = "Upload evidence" %}
+{% set questionName = "Do you have evidence to upload?" %}
 
 
 
@@ -34,7 +34,7 @@
     <span class="govuk-caption-l">{{pageName}}</span>
     <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
-    <p class="govuk-body">For example, some evidence example here... </p>
+    {# <p class="govuk-body">For example, some evidence example here... </p> #}
 
     {{ data.teachers | log }}
     
@@ -60,10 +60,10 @@
         {% endset %}
 
         {{ govukRadios({
-          name: "uploadEvidence",
+          name: "evidence[hasEvidence]",
           fieldset: {
             legend: {
-              text: "Do you want to upload evidence?",
+              text: "Do you have evidence to upload?",
               classes: "govuk-visually-hidden"
             }
           },
