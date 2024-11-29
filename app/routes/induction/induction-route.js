@@ -55,7 +55,8 @@ module.exports = router => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
 
-    } else {
+    } else if (req.session.data.evidence.hasEvidence == "Yes") {  
+
       //// Create list of files
       let files = [
         'evidence-1.txt',
@@ -77,8 +78,12 @@ module.exports = router => {
           filename: nextFile
         }
       }
-      res.redirect('/induction/check-files')  
-    }   
+      res.redirect('/induction/check-files')
+
+    } else {
+      res.redirect('/induction/check')  
+    }  
+     
   })
 
   router.post('/induction/check-files', (req, res) => {
