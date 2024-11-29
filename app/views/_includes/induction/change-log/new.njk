@@ -13,10 +13,21 @@
     </p>
     <p class="hods-timeline__description">
       <b>Status chaged to: </b>{{ data["newInductionStatus"] }}<br>
-      {% if data.statusChangeReason %}
-        <b>Change reason: </b>{{ data["statusChangeReason"] }}
+    </p>
+
+    <p class="hods-timeline__description">
+      <b>Reason for change: </b>{{ data["statusChangeReason"] }}<br>
+    </p>
+
+    <p class="hods-timeline__description">
+      {% if data.evidence.files  %}
+          <b>Evidence: </b>
+          {% for fileId, file in data.evidence.files %}
+          <a class="govuk-link" href="#"> {{file.filename}} (Opens in new tab)</a><br>
+        {% endfor %}
       {% endif %}  
     </p>
+
   </div>
   <div class="hods-timeline__item">
     <h2 class="hods-timeline__title">
@@ -54,3 +65,9 @@
     </p>
   </div>
 </div>
+
+{{ data.teachers | log }}
+{{ teacher.inductionStatus | log }}
+{{ teacher.trn | log }}
+{{ data.newInductionStatus | log }}
+{{ data.file | log }}

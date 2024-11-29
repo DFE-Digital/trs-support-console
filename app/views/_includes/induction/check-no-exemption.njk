@@ -3,13 +3,13 @@
 {% set newInductionStartDate = data['newInductionStartDate']%}
 
 {% set files %}
-    <ul class="govuk-list govuk-list--bullet">
-      {% for fileId, file in data.evidence.files %}
-      <li>
-        <a href="#" class="govuk-link">{{file.filename}}</a>
-      </li>
-      {% endfor%}
-    </ul>
+  <ul class="govuk-list govuk-list--bullet">
+    {% for fileId, file in data.evidence.files %}
+    <li>
+      <a href="#" class="govuk-link">{{file.filename}}</a>
+    </li>
+    {% endfor%}
+  </ul>
 {% endset%}
 
 
