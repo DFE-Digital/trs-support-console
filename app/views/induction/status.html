@@ -35,6 +35,8 @@
     <span class="govuk-caption-l">{{pageName}}</span>
     <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
+    {% include "_includes/induction/status-warning.njk" %} 
+
       {{ data.teachers | log }}
       {{ teacher.inductionStatus | log }}
       {{ teacher.trn | log }}
