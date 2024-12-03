@@ -28,6 +28,13 @@
     <span class="govuk-caption-l">{{pageName}}</span>
     <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
+
+      {{ govukDetails({
+        summaryText: "Why can't I deselect some exemption reasons?",
+        text: "Some exemption reasons associated to a teacher are acquired from their route to QTS or QTLS and therefore can't be changed."
+      }) }}
+
+
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}
  
