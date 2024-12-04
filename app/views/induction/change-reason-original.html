@@ -30,36 +30,22 @@
     <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
     {{ data.teachers | log }}
+    
     {{ teacher.inductionStatus | log }}
     {{ teacher.trn | log }}
+
     {{ data.newInductionStatus | log }}
  
       <form method="post" novalidate>
-        {% set evidenceYes%}
-          {{ govukFileUpload({
-            id: "evidence[file]",
-            name: "evidence[file]",
-            label: {
-              text: "Upload files",
-              classes: "govuk-label--m"
-            },
-            hint: {
-              text: "Must be smaller than 100MB"
-            }
-          }) }}
-        {% endset %}
 
         {% set otherInput %}
-          {{ govukTextarea({
+          {{ govukInput({
             id: "other-reason",
             name: "otherReason",
-            classes: "govuk-!-width-two-third",
+            classes: "govuk-!-width-one-third",
             label: {
-              text: "Add more information",
+              text: "Enter a reason",
               classes: "govuk-label--s"
-            },
-            hint: {
-              text: "You can enter up to 4000 characters"
             },
             value: data.otherReason
           }) }}
@@ -100,61 +86,16 @@
               text: "Updating Induction start or completion dates after query about a teachers record"
             },
             {
-              value: "Another reason",
-              text: "Another reason"
-            }
-          ]
-        }) }}
-
-        <h2 class="govuk-heading-m">Do you want to add more information about why you're changing the details?</h2>
-
-        {{ govukRadios({
-          name: "evidence[moreInformation]",
-          fieldset: {
-            legend: {
-              text: "Add more information?",
-              classes: "govuk-visually-hidden"
-            }
-          },
-          items: [
+              divider: "or"
+            },
             {
-              value: "Yes",
-              text: "Yes",
+              value: "Enter a reason",
+              text: "Enter a reason",
               conditional: {
                 html: otherInput
               }
-            },
-            {
-              value: "No",
-              text: "No"
             }
-          ],
-          value: data.evidence.moreInformation
-        }) }}
-
-        <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
-        {{ govukRadios({
-          name: "evidence[hasEvidence]",
-          fieldset: {
-            legend: {
-              text: "Do you have evidence to upload?",
-              classes: "govuk-visually-hidden"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              conditional: {
-                html: evidenceYes
-              }
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ],
-          value: data.evidence.hasEvidence
+          ]
         }) }}
 
       {{ govukButton({
