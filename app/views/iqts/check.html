@@ -5,6 +5,20 @@
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
 {% set questionName = "Check details and confirm route" %}
 
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}s
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -64,23 +78,6 @@
           },
           {
             key: {
-              text: "Start date"
-            },
-            value: {
-              text: data['iqtsStartDate-day'] + " " + data['iqtsStartDate-month'] + " " + data['iqtsStartDate-year']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/iqts/start-date?returnUrl=/iqts/check",
-                  text: "Change",
-                  visuallyHiddenText: "start date"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Establishment"
             },
             value: {
@@ -98,7 +95,7 @@
           },
           {
             key: {
-              text: "Establishment Qualification"
+              text: "Qualification"
             },
             value: {
               text: data.establishmentQualification
@@ -106,13 +103,64 @@
             actions: {
               items: [
                 {
-                  href: "/iqts/establishment-qualification?returnUrl=/iqts/check",
+                  href: "/iqts/qualification?returnUrl=/iqts/check",
                   text: "Change",
                   visuallyHiddenText: "establishment qualification"
                 }
               ]
             }
           },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: data['iqtsStartDate-day'] + " " + data['iqtsStartDate-month'] + " " + data['iqtsStartDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/iqts/start-date?returnUrl=/iqts/check",
+                  text: "Change",
+                  visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+            },
+            actions: {
+              items: [
+                {
+                  href: "/iqts/age-restrictions?returnUrl=/iqts/check",
+                  text: "Change",
+                  visuallyHiddenText: "age restrictions"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/iqts/subjects?returnUrl=/iqts/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          },     
           {
             key: {
               text: "Provider"

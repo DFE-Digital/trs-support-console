@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a QTS route - " + data.teachers[0].fullName %}
+{% set questionName = "What subjects can " + data.teachers[0].fullName + " teach in England?" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+
+      
+      <form method="post" novalidate>
+        {{ govukCheckboxes({
+          name: "ittQualSubjectRestrictions",
+          hint: {
+            text: "You can enter up to three"
+          },
+          items: [
+            {
+              value: "Maths",
+              text: "Maths"
+            },
+            {
+              value: "English",
+              text: "English"
+            },
+            {
+              value: "History",
+              text: "History"
+            },
+            {
+              value: "Geography",
+              text: "Geography"
+            },
+            {
+              value: "Chemistry",
+              text: "Chemistry"
+            },
+            {
+              value: "Science",
+              text: "Science"
+            },
+            {
+              value: "French",
+              text: "French"
+            },
+            {
+              value: "Spanish",
+              text: "Spanish"
+            }
+          ]
+        }) }}
+  
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

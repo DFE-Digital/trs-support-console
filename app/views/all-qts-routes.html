@@ -4,6 +4,7 @@
 {% set secondaryNavId = "alerts" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
 
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -41,7 +42,7 @@
           },
           {
             value: "Overseas qualified",
-            text: "Overseas qualified"
+            text: "Overseas qualified (Apply for QTS)"
           },
           {
             value: "Qualified Teacher Learning and Skills status (QTLS)",
@@ -51,8 +52,11 @@
             divider: "or"
           },
           {
-            value: "Another route",
-            text: "Another route"
+            value: "Legacy route",
+            text: "Another route",
+            conditional: {
+              html: changeReasonHtml
+            }
           }
         ]
       }) }}

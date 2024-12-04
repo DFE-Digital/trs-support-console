@@ -1,0 +1,67 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray) %}
+{% set inductionCompletionDate = "shabba" %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Check your answers" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+      
+      {{ teacher.inductionStatus | log }}
+      {{ teacher.trn | log }}
+
+      {{ data.newInductionStatus | log }}
+      {{ data.inductionExemptionReason | log }}
+      {{ data.inductionCompletionDate | log }}
+
+      {{ data.evidence.hasEvidence | log }}
+
+     
+
+
+      {% if data.newInductionStatus == 'Exempt' %}
+        {% include "_includes/induction/check-with-exemption.njk" %}   
+      {% else %}
+        {% include "_includes/induction/check-no-exemption.njk" %}   
+      {% endif %}
+
+
+      <form method="post" action="/induction/check-handler">
+        {{ govukButton({
+          text: "Confirm induction details"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}
