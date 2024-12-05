@@ -53,13 +53,10 @@
           {{ govukTextarea({
             id: "other-reason",
             name: "otherReason",
-            classes: "govuk-!-width-two-third",
+            classes: "govuk-!-width-one-half",
             label: {
               text: "Add more information",
               classes: "govuk-label--s"
-            },
-            hint: {
-              text: "You can enter up to 4000 characters"
             },
             value: data.otherReason
           }) }}
@@ -100,37 +97,18 @@
               text: "Updating Induction start or completion dates after query about a teachers record"
             },
             {
+              divider: "or"
+            },
+            {
               value: "Another reason",
-              text: "Another reason"
+              text: "Another reason",
+              conditional: {
+                html: otherInput
+              }
             }
           ]
         }) }}
 
-        <h2 class="govuk-heading-m">Do you want to add more information about why you're changing the details?</h2>
-
-        {{ govukRadios({
-          name: "evidence[moreInformation]",
-          fieldset: {
-            legend: {
-              text: "Add more information?",
-              classes: "govuk-visually-hidden"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              conditional: {
-                html: otherInput
-              }
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ],
-          value: data.evidence.moreInformation
-        }) }}
 
         <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
         {{ govukRadios({

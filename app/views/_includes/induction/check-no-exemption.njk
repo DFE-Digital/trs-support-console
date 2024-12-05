@@ -85,23 +85,41 @@
           ]
         } 
       },
+
       {
         key: {
-            text: "Do you have evidence to upload?"
+            text: "More information"
         },
         value: {
-            text: data.evidence.hasEvidence
+            text: data.otherReason
         },
         actions: {
           items: [
           {
-              href: "/induction/upload?returnUrl=/induction/check",
+              href: "/induction/change-reason?returnUrl=/induction/check",
               text: "Change",
-              visuallyHiddenText: "if you have evidence"
+              visuallyHiddenText: "More information on reason for change"
           }
           ]
         } 
       },
+      {
+        key: {
+              text: "Do you have evidence to upload?"
+          },
+          value: {
+              text: data.evidence.hasEvidence
+          },
+          actions: {
+            items: [
+            {
+                href: "/induction/change-reason?returnUrl=/induction/check",
+                text: "Change",
+                visuallyHiddenText: "if you have evidence"
+            }
+            ]
+        }  
+      } if data.evidence.hasEvidence == "Yes",
       {
         key: {
             text: "Uploaded evidence"
@@ -112,12 +130,12 @@
         actions: {
           items: [
             {
-                href: "/induction/check-files?returnUrl=/induction/check",
-                text: "Change",
+                href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
                 visuallyHiddenText: "uploaded evidence"
             }
           ]
         } 
-      } if data.evidence.hasEvidence == "Yes"  
+      } if data.files  
   ]
 }) }}

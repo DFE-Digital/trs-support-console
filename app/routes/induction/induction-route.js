@@ -41,58 +41,43 @@ module.exports = router => {
   })
 
 
+
+  /////////////  CHANGE REASON & EVIDENCE   //////////////
   router.post('/induction/change-reason', (req, res) => {
+
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
-      res.redirect('/induction/upload')  
-    }      
-  })
+      if (req.session.data.evidence.hasEvidence == "Yes") {  
 
-  /////////////  EVIDENCE   //////////////
-  router.post('/induction/upload', (req, res) => {
-
-    if (req.query.returnUrl) {
-      res.redirect(req.query.returnUrl)
-
-    } else if (req.session.data.evidence.hasEvidence == "Yes") {  
-
-      //// Create list of files
-      let files = [
-        'evidence-1.txt',
-        'more-evidence-2.jpg',
-        'even-more-evidence-3.csv'
-      ]
-
-      if(!req.session.data.evidence.files) {
-        req.session.data.evidence.files = {}
-      }
-
-      // Get the next file
-      let filesCount = _.size(req.session.data.evidence.files)
-      let nextFile = files[filesCount]
-
-      // storing that file in memory so we can present it in the view
-      if(nextFile) {
-        req.session.data.evidence.files[uuidv4()] = {
-          filename: nextFile
+        //// Create list of files
+        let files = [
+          'evidence-1.txt',
+          'more-evidence-2.jpg',
+          'even-more-evidence-3.csv'
+        ]
+  
+        if(!req.session.data.evidence.files) {
+          req.session.data.evidence.files = {}
         }
-      }
-      res.redirect('/induction/check-files')
-
-    } else {
-      res.redirect('/induction/check')  
+  
+        // Get the next file
+        let filesCount = _.size(req.session.data.evidence.files)
+        let nextFile = files[filesCount]
+  
+        // storing that file in memory so we can present it in the view
+        if(nextFile) {
+          req.session.data.evidence.files[uuidv4()] = {
+            filename: nextFile
+          }
+        }
+      
+      } 
     }  
-     
+      res.redirect('/induction/check')  
   })
 
-  router.post('/induction/check-files', (req, res) => {
-    if (req.session.data.addMoreEvidence == "Yes") {
-      res.redirect('/induction/upload')   
-    } else {
-      res.redirect('/induction/check')  
-    }
-  })
+  
 
   // Dynamic delete evidence route 
   router.get('/induction/:fileId/delete', (req, res) => {
