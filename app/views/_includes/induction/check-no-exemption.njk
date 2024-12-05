@@ -32,6 +32,8 @@
         ]
       } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed in Wales"
     },
+
+
     {
       key: {
         text: "Induction start date"
@@ -49,6 +51,8 @@
         ]
       } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales" or data.newInductionStatus == "Required to complete"
     },
+
+
     {
       key: {
         text: "Induction completion date"
@@ -68,74 +72,79 @@
       
     } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
 
-      {
-        key: {
-            text: "Reason for changing induction details"
-        },
-        value: {
-            text: data['statusChangeReason']
-        },
-        actions: {
-          items: [
-          {
-              href: "/induction/change-reason?returnUrl=/induction/check",
-              text: "Change",
-              visuallyHiddenText: "reason for change"
-          }
-          ]
-        } 
-      },
 
-      {
-        key: {
-            text: "More information"
+    {
+      key: {
+          text: "Reason for changing induction details"
+      },
+      value: {
+          text: data['statusChangeReason']
+      },
+      actions: {
+        items: [
+        {
+            href: "/induction/change-reason?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "reason for change"
+        }
+        ]
+      } 
+    },
+
+    {
+      key: {
+          text: "More information"
+      },
+      value: {
+          text: data.otherReason
+      },
+      actions: {
+        items: [
+        {
+            href: "/induction/change-reason?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "More information on reason for change"
+        }
+        ]
+      } 
+    } if data['statusChangeReason'] == 'Another reason',
+
+
+    {
+      key: {
+            text: "Do you have evidence to upload?"
         },
         value: {
-            text: data.otherReason
+            text: data.evidence.hasEvidence
         },
         actions: {
           items: [
           {
               href: "/induction/change-reason?returnUrl=/induction/check",
               text: "Change",
-              visuallyHiddenText: "More information on reason for change"
+              visuallyHiddenText: "if you have evidence"
           }
           ]
-        } 
+      }  
+    } if data.evidence.hasEvidence == "Yes",
+
+
+    {
+      key: {
+          text: "Uploaded evidence"
       },
-      {
-        key: {
-              text: "Do you have evidence to upload?"
-          },
-          value: {
-              text: data.evidence.hasEvidence
-          },
-          actions: {
-            items: [
-            {
-                href: "/induction/change-reason?returnUrl=/induction/check",
-                text: "Change",
-                visuallyHiddenText: "if you have evidence"
-            }
-            ]
-        }  
-      } if data.evidence.hasEvidence == "Yes",
-      {
-        key: {
-            text: "Uploaded evidence"
-        },
-        value: {
-            html: files
-        },
-        actions: {
-          items: [
-            {
-                href: "/induction/change-reason?returnUrl=/induction/check",
-              text: "Change",
-                visuallyHiddenText: "uploaded evidence"
-            }
-          ]
-        } 
-      } if data.files  
+      value: {
+          html: files
+      },
+      actions: {
+        items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+            text: "Change",
+              visuallyHiddenText: "uploaded evidence"
+          }
+        ]
+      } 
+    } if data.files  
   ]
 }) }}
