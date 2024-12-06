@@ -1,0 +1,150 @@
+{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
+{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+{% set newInductionStartDate = data['newInductionStartDate']%}
+
+{% set files %}
+  <ul class="govuk-list govuk-list--bullet">
+    {% for fileId, file in data.evidence.files %}
+    <li>
+      <a href="#" class="govuk-link">{{file.filename}}</a>
+    </li>
+    {% endfor%}
+  </ul>
+{% endset%}
+
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Induction status"
+      },
+      value: {
+        text: data["newInductionStatus"]
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/status?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction status"
+          }
+        ]
+      } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed in Wales"
+    },
+
+
+    {
+      key: {
+        text: "Induction start date"
+      },
+      value: {
+        text:  data | isoDateFromDateInput('newInductionStartDate') | govukDate 
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/start-date?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "start-date"
+          }
+        ]
+      } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales" or data.newInductionStatus == "Required to complete"
+    },
+
+
+    {
+      key: {
+        text: "Induction completion date"
+      },
+      value: {
+        text:  data | isoDateFromDateInput('newInductionCompletionDate') | govukDate
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/completion-date?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction completion date"
+          }
+        ]
+      } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+      
+    } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
+
+
+    {
+      key: {
+          text: "Reason for changing induction details"
+      },
+      value: {
+          text: data['statusChangeReason']
+      },
+      actions: {
+        items: [
+        {
+            href: "/induction/change-reason?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "reason for change"
+        }
+        ]
+      } 
+    },
+
+    {
+      key: {
+          text: "More information"
+      },
+      value: {
+          text: data.otherReason
+      },
+      actions: {
+        items: [
+        {
+            href: "/induction/change-reason?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "More information on reason for change"
+        }
+        ]
+      } 
+    } if data['statusChangeReason'] == 'Another reason',
+
+
+    {
+      key: {
+            text: "Do you have evidence to upload?"
+        },
+        value: {
+            text: data.evidence.hasEvidence
+        },
+        actions: {
+          items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "if you have evidence"
+          }
+          ]
+      }  
+    } if data.evidence.hasEvidence == "Yes",
+
+
+    {
+      key: {
+          text: "Uploaded evidence"
+      },
+      value: {
+          html: files
+      },
+      actions: {
+        items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+            text: "Change",
+              visuallyHiddenText: "uploaded evidence"
+          }
+        ]
+      } 
+    } if data.files  
+  ]
+}) }}

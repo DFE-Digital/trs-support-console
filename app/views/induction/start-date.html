@@ -1,0 +1,78 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Select start date" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ data.teachers | log }}
+    
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
+
+    
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+      
+      <form method="post" novalidate>
+        {{ govukDateInput({
+          id: "inductionUpdateStartDate",
+          namePrefix: "newInductionStartDate",
+          hint: {
+            text: "For example, 27 3 2023"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data['newInductionStartDate-day']
+            },
+            {
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data['newInductionStartDate-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data['newInductionStartDate-year']
+            }
+          ]
+        }) }}
+  
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

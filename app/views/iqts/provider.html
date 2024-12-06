@@ -3,7 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "Provider" %}
+{% set questionName = "Select a provider" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -25,7 +25,7 @@
       <form method="post" novalidate>
       
 
-        {% include "_includes/autocomplete-provider.njk" %}
+        {% include "_includes/autocompletes/autocomplete-provider.njk" %}
 
         {{ govukButton({
           text: "Continue"
