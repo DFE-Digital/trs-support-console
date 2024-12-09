@@ -11,6 +11,12 @@
 {% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
 {% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
 
+{% if data['statusChangeReason'] == 'Another reason' %}
+  {% set changeReason = data['otherReason'] %}
+{% else %}
+  {% set changeReason = data['statusChangeReason'] %}
+{% endif %}
+
   {{ data.teachers.inductionStartDate | log }}
 
   {{ data.teachers.inductionCompletionDate | log }}
@@ -57,15 +63,15 @@
           text: "Reason for changing induction details"
       },
       value: {
-          text: data['statusChangeReason']
+          text: changeReason 
       },
       actions: {
         items: [
-        {
-            href: "/induction/change-reason?returnUrl=/induction/check",
-            text: "Change",
-            visuallyHiddenText: "reason for change"
-        }
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "reason for change"
+          }
         ]
       } 
     }       
