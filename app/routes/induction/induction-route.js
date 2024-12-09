@@ -17,6 +17,15 @@ module.exports = router => {
       console.log(data.newInductionStatus)
   })
 
+  /////////////  EXEMPTION   //////////////    
+  router.post('/induction/reason', (req, res) => {
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else {
+      res.redirect('/induction/change-reason')  
+    }      
+  })
+
   router.post('/induction/start-date', (req, res) => {
     let data = req.session.data
     if (req.query.returnUrl) {
@@ -100,14 +109,7 @@ module.exports = router => {
 
 
 
-  /////////////  EXEMPTION   //////////////    
-  router.post('/induction/reason', (req, res) => {
-    if (req.query.returnUrl) {
-      res.redirect(req.query.returnUrl)
-    } else {
-      res.redirect('/induction/check')  
-    }      
-  })
+  
 
 
   /////////////  FLASH //////////////
