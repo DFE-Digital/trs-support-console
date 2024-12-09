@@ -1,0 +1,171 @@
+{{ govukSummaryList({
+card: {
+  title: {
+    text: "Qualified Teacher Status"
+  },
+  actions: {
+    items: [
+      {
+        href: "#",
+        text: "Delete",
+        visuallyHiddenText: "Qualification"
+      }
+    ]
+  }
+},
+rows: [
+    {
+      key: {
+        text: "Professional status"
+      },
+      value: {
+        text: "Qualified teacher status (QTS)"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "professional status"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Status"
+      },
+      value: {
+        text: "Awarded"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "professional status"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Award date"
+      },
+      value: {
+        text: "15 October 2018"
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/add-qualification/award-date?returnUrl=/itt/add-qualification/check",
+            text: "Change",
+            visuallyHiddenText: "award date"
+          }
+        ]
+      }
+    },  
+    {
+      key: {
+        text: "Route"
+      },
+      value: {
+        text: data.chooseQtsRoute
+      },
+      actions: {
+        items: [
+          {
+            href: "/change-qts-route",
+            text: "Change",
+            visuallyHiddenText: "QTS route"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Establishment"
+      },
+      value: {
+        text: data.establishment
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/establishment?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "establishment"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Qualification"
+      },
+      value: {
+        text: data.establishmentQualification
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/establishment-qualification?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "establishment qualification"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Start date"
+      },
+      value: {
+        text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/start-date?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "start date"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Age restrictions"
+      },
+      value: {
+        text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/age-restriction?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "age restrictions"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Subjects"
+      },
+      value: {
+        html: subjectChoices
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt/subjects?returnUrl=/itt/check",
+            text: "Change",
+            visuallyHiddenText: "subjects"
+          }
+        ]
+      }
+    }      
+  ]
+}) }}

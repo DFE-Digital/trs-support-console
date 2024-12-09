@@ -1,0 +1,47 @@
+{% set profileTable %}
+  {% include "_includes/multiple-profile-table.njk" %} 
+{% endset %}
+
+{% set multipleQualTable %}
+  {% include "_includes/multiple-qual-table.njk" %} 
+{% endset %}
+
+{% set earlyYearsQualTable %}
+  {% include "_includes/multiple-early-years-table.njk" %} 
+{% endset %}
+
+
+
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "Profile"
+      },
+      content: {
+        expanded: true,
+        html: profileTable
+      }
+    },
+    {
+      heading: {
+        text: "Qualified teacher status "
+      },
+      content: {
+        expanded: "true",
+        html: multipleQualTable
+      }
+    },
+    {
+      heading: {
+        text: "Early years teacher status"
+      },
+      content: {
+        html: earlyYearsQualTable
+      }
+    }
+  ]
+}) }}
+
+

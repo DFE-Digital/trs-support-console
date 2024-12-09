@@ -1,0 +1,26 @@
+{% if teacher.trn == "494612"  %}
+  {{ govukWarningText({
+    text: "This teacher doesn't have QTS and therefore ineligible for induction.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "553092"%}
+ {{ govukWarningText({
+    text: "To change a teacher's induction status to passed, failed, or in progress, use the Record inductions as an appropriate body service.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "752394"%}
+  {{ govukWarningText({
+    text: "To change a teacher's induction status to passed, failed, or required to complete, use the Record inductions as an appropriate body service.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "764087"%}
+  {{ govukWarningText({
+    text: "To change a teacher's induction status to to required to complete, in progress, or failed, use the Record inductions as an appropriate body service.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "824781"%}
+  {{ govukWarningText({
+    text: "Changing status to Required to complete, In progress or Passed must be handled in CPD.",
+    iconFallbackText: "Warning"
+  }) }}
+{% endif %}

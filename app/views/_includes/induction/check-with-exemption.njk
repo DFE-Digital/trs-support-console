@@ -1,0 +1,79 @@
+{% set exemptionReasons %}
+ <ul class="govuk-list">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
+{% endset %}
+
+{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
+{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+
+{% if data['statusChangeReason'] == 'Another reason' %}
+  {% set changeReason = data['otherReason'] %}
+{% else %}
+  {% set changeReason = data['statusChangeReason'] %}
+{% endif %}
+
+  {{ data.teachers.inductionStartDate | log }}
+
+  {{ data.teachers.inductionCompletionDate | log }}
+
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Induction status"
+      },
+      value: {
+        text: data["newInductionStatus"]
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/status?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction status"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Exemption reason"
+      },
+      value: {
+        html: exemptionReasons
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/reason?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction reason"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+          text: "Reason for changing induction details"
+      },
+      value: {
+          text: changeReason 
+      },
+      actions: {
+        items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "reason for change"
+          }
+        ]
+      } 
+    }       
+  ]
+}) }}

@@ -1,0 +1,73 @@
+<div class="hods-timeline">
+  <div class="hods-timeline__item">
+    <h2 class="hods-timeline__title">
+      Induction Status change
+    </h2>
+    <p class="hods-timeline__date">
+      <time
+        class="hods-date-time"
+        datetime="2021-03-15T16:27:00.000Z"
+      >
+        by Erica Francoise-Smith on {{ "now" | govukDateTime }} at  {{ "now" | govukTime }}
+      </time>
+    </p>
+    <p class="hods-timeline__description">
+      <b>Status chaged to: </b>{{ data["newInductionStatus"] }}<br>
+    </p>
+
+    <p class="hods-timeline__description">
+      <b>Reason for change: </b>{{ data["statusChangeReason"] }}<br>
+    </p>
+
+    <p class="hods-timeline__description">
+      {% if data.evidence.files  %}
+          <b>Evidence: </b>
+          {% for fileId, file in data.evidence.files %}
+          <a class="govuk-link" href="#"> {{file.filename}} (Opens in new tab)</a><br>
+        {% endfor %}
+      {% endif %}  
+    </p>
+
+  </div>
+  <div class="hods-timeline__item">
+    <h2 class="hods-timeline__title">
+      Alert details changed
+    </h2>
+    <p class="hods-timeline__by">
+    </p>
+    <p class="hods-timeline__date">
+      <time
+        class="hods-date-time"
+        datetime="2021-03-15T10:04:00.000Z"
+      >
+        By Komal Nazir on 2 January 2024 at 2:11pm
+      </time>
+    </p>
+    <p class="hods-timeline__description">
+      Teacher sanctioned in other EEA member state
+    </p>
+  </div>
+  <div class="hods-timeline__item">
+    <h2 class="hods-timeline__title">
+      Route to Professional Status changed
+    </h2>
+    <p class="hods-timeline__by"></p>
+    <p class="hods-timeline__date">
+      <time
+        class="hods-date-time"
+        datetime="2021-01-25T09:35:00.000Z"
+      >
+        By Komal Nazir 25 January 2021 at 9:35am
+      </time>
+    </p>
+    <p class="hods-timeline__description">
+      This is a description of the event.
+    </p>
+  </div>
+</div>
+
+{{ data.teachers | log }}
+{{ teacher.inductionStatus | log }}
+{{ teacher.trn | log }}
+{{ data.newInductionStatus | log }}
+{{ data.file | log }}

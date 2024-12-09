@@ -1,0 +1,85 @@
+{{ govukCheckboxes({
+  name: "inductionExemptionReason",
+  classes: "govuk-checkboxes--small",
+  fieldset: {
+    legend: {
+      text: "Select exemption reasons",
+      classes: "govuk-fieldset__legend--s govuk-visually-hidden"
+
+    }
+  },
+  hint: {
+    text: "Select all that apply"
+  },
+  values: data.inductionExemptionReason,
+  items: [
+    {
+      value: "Exempt",
+      text: "Exempt"
+    },
+    {
+      value: "Exempt - Data Loss/Error Criteria",
+      text: "Exempt - Data Loss/Error Criteria"
+    },
+    {
+      value: "Has, or is eligible for, full registration in Scotland",
+      text: "Has, or is eligible for, full registration in Scotland"
+    },
+    {
+      value: "Overseas Trained Teacher",
+      text: "Overseas Trained Teacher"
+    },
+    {
+      value: "Qualified before 07 May 199",
+      text: "Qualified before 07 May 199"
+    },
+    {
+      value: "Qualified between 07 May 1999 and 01 April 2003. First post was in Wales and lasted a minimum of two terms.",
+      text: "Qualified between 07 May 1999 and 01 April 2003. First post was in Wales and lasted a minimum of two terms."
+    },
+    {
+      value: "Qualified through EEA mutual recognition route",
+      text: "Qualified through EEA mutual recognition route"
+    },
+    {
+      value: "Qualified through FE route between 01 Sep 2001 and 01 Sep 2004",
+      text: "Qualified through FE route between 01 Sep 2001 and 01 Sep 2004"
+    },
+    {
+      value: "Registered Teacher (having at least two year's full time teaching experience)",
+      text: "Registered Teacher (having at least two year's full time teaching experience)"
+    },
+    {
+      value: "Successfully completed induction in Guernsey",
+      text: "Successfully completed induction in Guernsey"
+    },
+    {
+      value: "Successfully completed induction in Isle Of Man",
+      text: "Successfully completed induction in Isle Of Man"
+    },
+    {
+      value: "Successfully completed induction in Jersey",
+      text: "Successfully completed induction in Jersey"
+    },
+    {
+      value: "Successfully completed induction in Northern Ireland",
+      text: "Successfully completed induction in Northern Ireland"
+    },
+    {
+      value: "Successfully completed induction in Service Children's Education schools in Germany or Cyprus",
+      text: "Successfully completed induction in Service Children's Education schools in Germany or Cyprus"
+    },
+    {
+      value: "Successfully completed induction in Wales",
+      text: "Successfully completed induction in Wales"
+    },
+    {
+      value: "Successfully completed probationary period in Gibraltar",
+      text: "Successfully completed probationary period in Gibraltar"
+    },
+    {
+      value: "Teacher has been awarded QTLS and is exempt provided they maintain their membership with the Society for Education and Training",
+      text: "Teacher has been awarded QTLS and is exempt provided they maintain their membership with the Society for Education and Training"
+    }
+  ]
+}) }}

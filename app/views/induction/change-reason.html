@@ -1,0 +1,149 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Why are you changing the induction status?" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    {{ data.teachers | log }}
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+    {{ data.newInductionStatus | log }}
+ 
+      <form method="post" novalidate>
+        {% set evidenceYes%}
+          {{ govukFileUpload({
+            id: "evidence[file]",
+            name: "evidence[file]",
+            label: {
+              text: "Upload files",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "Must be smaller than 100MB"
+            }
+          }) }}
+        {% endset %}
+
+        {% set otherInput %}
+          {{ govukTextarea({
+            id: "other-reason",
+            name: "otherReason",
+            classes: "govuk-!-width-one-half",
+            label: {
+              text: "Add more information",
+              classes: "govuk-label--s"
+            },
+            value: data.otherReason
+          }) }}
+        {% endset %}
+
+
+        {{ govukRadios({
+          name: "statusChangeReason",
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Exempt from induction",
+              text: "Exempt from induction"
+            },
+            {
+              value: "No longer exempt from induction",
+              text: "No longer exempt from induction"
+            },
+            {
+              value: "Failed in Wales",
+              text: "Failed in Wales"
+            },
+            {
+              value: "Induction extended",
+              text: "Induction extended"
+            },
+            {
+              value: "Updating Induction status after query about a teachers record",
+              text: "Updating Induction status after query about a teachers record"
+            },
+            {
+              value: "Updating Induction start or completion dates after query about a teachers record",
+              text: "Updating Induction start or completion dates after query about a teachers record"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: otherInput
+              }
+            }
+          ]
+        }) }}
+
+
+        <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+        {{ govukRadios({
+          name: "evidence[hasEvidence]",
+          fieldset: {
+            legend: {
+              text: "Do you have evidence to upload?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: evidenceYes
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.evidence.hasEvidence
+        }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

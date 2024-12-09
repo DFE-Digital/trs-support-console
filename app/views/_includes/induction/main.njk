@@ -1,0 +1,128 @@
+{% set exemptionReasons %}
+ <ul class="govuk-list govuk-list--bullet">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
+{% endset %}
+
+{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
+{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+{% set newInductionStartDate = data['newInductionStartDate']%}
+
+     
+{% if teacher.trn == "494612"  %}
+  {{ govukWarningText({
+    text: "This teacher doesn't have QTS and therefore ineligible for induction.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "553092"%}
+  {{ govukWarningText({
+    text: "To change a teacher's induction status to passed, failed, or in progress, use the record inductions as an appropriate body service.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "752394"%}
+  {{ govukWarningText({
+    text: "To change a teacher's induction status to passed, failed, or required to complete, use the Record inductions as an appropriate body service.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "764087"%}
+  {{ govukWarningText({
+    text: "To change a teacher's induction status to to required to complete, in progress, or failed, use the Record inductions as an appropriate body service.",
+    iconFallbackText: "Warning"
+  }) }}
+{% elseif  teacher.trn == "824781"%}
+  {{ govukWarningText({
+    text: "Changing status to Required to complete, In progress or Passed will be handled in CPD.",
+    iconFallbackText: "Warning"
+  }) }}
+{% endif %}
+
+
+
+{{ govukSummaryList({
+  card: {
+      title: {
+      text: "Induction details"
+      }
+  },
+  rows: [
+      {
+        key: {
+          text: "Induction status"
+        },
+        value: {
+            text: teacher['inductionStatus']
+        },
+        actions: {
+            items: [
+            {
+                href: "/induction/status",
+                text: "Change",
+                visuallyHiddenText: "name"
+            }
+            ]
+        } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed in Wales"
+      },
+
+      {
+        key: {
+            text: "Exemption reason"
+        },
+        value: {
+            text: data.inductionExemptionReason or "Some exemption reason"
+        },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "induction start date"
+            }
+            ]
+          } if not teacher.inductionStatus == "Exempt"
+      } if teacher.inductionStatus == "Exempt",
+
+      {
+        key: {
+            text: "Induction start date"
+        },
+        value: {
+            text: teacher['inductionStartDate'] or "Not applicable"
+        },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "induction start date"
+            }
+            ]
+          } if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
+
+      } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales",
+
+    	{
+				key: {
+					text: "Induction completion date"
+				},
+				value: {
+					text: teacher['inductionCompletionDAte'] or "Not applicable"
+				},
+				actions: {
+					items: [
+						{
+							href: "/induction/completion-date?returnUrl=/induction/check",
+							text: "Change",
+							visuallyHiddenText: "induction completion date"
+						}
+					]
+				} if teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
+
+    } if teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales" or teacher.inductionStatus == "In progress"
+  ] 
+
+}) }}
+

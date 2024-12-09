@@ -1,0 +1,117 @@
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+{{ govukSummaryList({
+  card: {
+    title: {
+      text: data.chooseQtsRoute
+  },
+  actions: {
+    items: [
+      {
+        href: "/assessment-only/add-qualification/award-date",
+        text: "Add qualification to route",
+        visuallyHiddenText: "route"
+      }
+    ]
+  }
+},
+rows: [
+  {
+    key: {
+      text: "Route"
+    },
+    value: {
+      text: data.chooseQtsRoute
+    },
+    actions: {
+      items: [
+        {
+          href: "/change-qts-route",
+          text: "Change",
+          visuallyHiddenText: "QTS route"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Establishment"
+    },
+    value: {
+      text: data.establishment
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/establishment?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "establishment"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: data['assessmentOnlyStartDate-day'] + " " + data['assessmentOnlyStartDate-month'] + " " + data['assessmentOnlyStartDate-year']
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/start-date?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "start date"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Age range"
+    },
+    value: {
+      text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/age-restrictions?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "age range"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Subjects"
+    },
+    value: {
+      html: subjectChoices 
+    },
+    actions: {
+      items: [
+        {
+          href: "/assessment-only/subjects?returnUrl=/assessment-only/check",
+          text: "Change",
+          visuallyHiddenText: "subjects"
+        }
+      ]
+    }
+  }            
+]
+}) }}

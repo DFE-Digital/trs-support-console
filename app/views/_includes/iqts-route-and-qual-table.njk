@@ -1,0 +1,168 @@
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+{{ govukSummaryList({
+card: {
+title: {
+  text: "Qualified teacher status - " + data.chooseQtsRoute
+},
+actions: {
+  items: [
+    {
+      href: "#",
+      text: "Delete",
+      visuallyHiddenText: "Qualification"
+    }
+  ]
+}
+},
+rows: [
+  {
+    key: {
+      text: "Professional status"
+    },
+    value: {
+      text: "Qualified teacher status (QTS)"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "professional status"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Status"
+    },
+    value: {
+      text: "Awarded"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "professional status"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Award date"
+    },
+    value: {
+      text: data.iqtsAddQualDate
+    },
+    actions: {
+      items: [
+        {
+          href: "/iqts/add-qualification/award-date?returnUrl=/iqts/add-qualification/check",
+          text: "Change",
+          visuallyHiddenText: "award date"
+        }
+      ]
+    }
+  },  
+  {
+    key: {
+      text: "Route"
+    },
+    value: {
+      text: data.chooseQtsRoute
+    },
+    actions: {
+      items: [
+        {
+          href: "/change-qts-route",
+          text: "Change",
+          visuallyHiddenText: "QTS route"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Establishment"
+    },
+    value: {
+      text: data.establishment
+    },
+    actions: {
+      items: [
+        {
+          href: "/iqts/establishment?returnUrl=/iqts/check",
+          text: "Change",
+          visuallyHiddenText: "establishment"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Start date"
+    },
+    value: {
+      text: data['iqtsStartDate-day'] + " " + data['iqtsStartDate-month'] + " " + data['iqtsStartDate-year']
+    },
+    actions: {
+      items: [
+        {
+          href: "/iqts/start-date?returnUrl=/iqts/check",
+          text: "Change",
+          visuallyHiddenText: "start date"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Age range"
+    },
+    value: {
+      text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+    },
+    actions: {
+      items: [
+        {
+          href: "/iqts/age-restriction?returnUrl=/iqts/check",
+          text: "Change",
+          visuallyHiddenText: "age restrictions"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Subjects"
+    },
+    value: {
+      html: subjectChoices
+    },
+    actions: {
+      items: [
+        {
+          href: "/iqts/subjects?returnUrl=/iqts/check",
+          text: "Change",
+          visuallyHiddenText: "subjects"
+        }
+      ]
+    }
+  }          
+]
+}) }}

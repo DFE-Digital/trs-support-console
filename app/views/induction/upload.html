@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Do you have evidence to upload?" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    type: "success",
+    html: '<h2 class="govuk-heading-m">' + flash + '</h2>'
+  }) if flash.length }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    {# <p class="govuk-body">For example, some evidence example here... </p> #}
+
+    {{ data.teachers | log }}
+    
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+
+    {{ data.newInductionStatus | log }}
+ 
+      <form method="post" novalidate>
+
+        {% set evidenceYes%}
+          {{ govukFileUpload({
+            id: "evidence[file]",
+            name: "evidence[file]",
+            label: {
+              text: "Upload files",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "Must be smaller than 100MB"
+            }
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          name: "evidence[hasEvidence]",
+          fieldset: {
+            legend: {
+              text: "Do you have evidence to upload?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: evidenceYes
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.evidence.hasEvidence
+        }) }}
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

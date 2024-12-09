@@ -1,0 +1,19 @@
+{{ govukRadios({
+  name: "newInductionStatus",
+  fieldset: {
+      legend: {
+      classes: "govuk-visually-hidden",
+      text: "Select induction status"
+      }
+  },
+  items: [
+      {
+      value: "Exempt",
+      text: "Exempt"
+      },
+      {
+      value: "Failed in Wales",
+      text: "Failed in Wales"
+      }
+  ]
+}) }}

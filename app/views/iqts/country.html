@@ -2,7 +2,7 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
-{% set questionName = "What country is " +data.teachers[0].fullName+ " from?" %}
+{% set questionName = "Country of training" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -24,7 +24,7 @@
       <form method="post" novalidate>
       
 
-        {% include "_includes/autocomplete.njk" %}
+        {% include "_includes/autocompletes/autocomplete.njk" %}
 
         {{ govukButton({
           text: "Continue"

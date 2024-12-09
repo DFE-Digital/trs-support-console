@@ -3,6 +3,11 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "route" %}
 
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -22,7 +27,7 @@
   <div class="govuk-grid-column-full">
 
 
-    <h1 class="govuk-heading-l">{{data.teachers[0].fullName}}</h1>
+    <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
         {% include "_includes/secondary-navigation.njk" %}
 
@@ -43,29 +48,43 @@
       {% else %}
 
     
-            {% if data.chooseQtsRoute  == 'Initial teacher training' %}
-              {% include "_includes/itt-qual-table.njk" %}
+            {% if not data.ittAddQualDate and data.chooseQtsRoute  == 'Initial teacher training' %}
+              {% include "_includes/itt-route-table.njk" %} 
+            {% elif data.ittAddQualDate and data.chooseQtsRoute  == 'Initial teacher training' %}
+                {% include "_includes/itt-route-and-qual-table.njk" %} 
             {% endif %}
 
-            {% if data.chooseQtsRoute  == 'Assessment only' %}
-              {% include "_includes/assessment-only-qual-table.njk" %}
+
+            {% if not data.assOnlyAddQualDate and data.chooseQtsRoute  == 'Assessment only' %}
+              {% include "_includes/assessment-only-route-table.njk" %}
+            {% elif data.assOnlyAddQualDate and data.chooseQtsRoute  == 'Assessment only' %}
+                {% include "_includes/assessment-only-route-and-qual-table.njk" %} 
             {% endif %}
 
+            {% if not data.iqtsAddQualDate and data.chooseQtsRoute  == 'iqts' %}
+              {% include "_includes/iqts-route-table.njk" %}
+            {% elif data.iqtsAddQualDate and data.chooseQtsRoute  == 'iqts' %}
+                {% include "_includes/iqts-route-and-qual-table.njk" %} 
+            {% endif %}
+
+
+            {% if not data.legacyAddQualDate and data.chooseQtsRoute  == 'Legacy route' %}
+              {% include "_includes/legacy-route-table.njk" %}
+            {% elif data.legacyAddQualDate and data.chooseQtsRoute  == 'Legacy route' %}
+                {% include "_includes/legacy-route-and-qual-table.njk" %} 
+            {% endif %}
+      
+          
             {% if data.chooseQtsRoute  == 'Overseas qualified' %}
-              {% include "_includes/apply-qts-qual-table.njk" %}
+              {% include "_includes/apply-qts-route-table.njk" %}
             {% endif %}
 
             {% if data.chooseQtsRoute  == 'Qualified Teacher Learning and Skills status (QTLS)' %}
               {% include "_includes/qtls-and-set-qual-table.njk" %}
             {% endif %}
 
-            {% if data.chooseQtsRoute  == 'iqts' %}
-              {% include "_includes/iqts-qual-table.njk" %}
-            {% endif %}
+            
 
-            {% if data.chooseQtsRoute  == 'Another route' %}
-              {% include "_includes/legacy-qual-table.njk" %}
-            {% endif %}
             
 
       {{ govukButton({
@@ -85,6 +104,10 @@
     }) }}
 
     {{ data.chooseQtsRoute | log }}
+    
+    {{ data.ittAddQualDate | log }}
+    {{ data.assOnlyAddQualDate | log }}
+    {{ data.iqtsAddQualDate | log }}
 
   </div>
 </div>

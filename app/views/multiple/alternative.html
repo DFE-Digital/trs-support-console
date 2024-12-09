@@ -1,0 +1,45 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "route" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/find-teacher"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">{{ data.teachers[0].fullName }}</h1>
+
+      {{ data.teachers | log }}
+      {{ data.chooseQtsRoute | log }}
+
+
+      {% include "_includes/secondary-navigation.njk" %}  
+
+      {% include "_includes/multiple-alternative.njk" %} 
+
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Mandatory qualifications</h2>
+    <p class="govuk-body">No mandatory qualifications to show</p>
+    {{ govukButton({
+      text: "Add a mandatory qualification",
+      href: "#"
+    }) }}
+
+      
+
+  </div>
+</div>
+
+{% endblock %}

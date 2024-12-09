@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "routes" %}
+{% set pageName = "Add a qualification -" + data.teachers[0].fullName %}
+{% set questionName = "Check details and add qualification" %}
+
+
+ 
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [       
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text: data['legacyAddQualDate-day'] + " " + data['legacyAddQualDate-month'] + " " + data['legacyAddQualDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/legacy/add-qualification/award-date?returnUrl=/legacy/add-qualification/check",
+                  text: "Change",
+                  visuallyHiddenText: "award date"
+                }
+              ]
+            }
+        }   
+      ]
+    }) }}
+
+    {{ data['legacyAddQualDate'] | log }}
+
+      <form method="post" action="/legacy/add-qualification/check-handler">
+        {{ govukButton({
+          text: "Confirm and add qualification"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

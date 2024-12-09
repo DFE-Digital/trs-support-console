@@ -1,0 +1,115 @@
+{% set exemptionReasons %}
+ <ul class="govuk-list">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
+{% endset %}
+
+
+{% set newInductionStatus = data['newInductionStatus']%}
+
+{{ govukSummaryList({
+  card: {
+      title: {
+      text: "Induction details"
+      }
+  },
+  rows: [
+      {
+        key: {
+          text: "Induction status"
+        },
+        value: {
+            text: data.newInductionStatus
+        },
+        actions: {
+            items: [
+            {
+                href: "/induction/status",
+                text: "Change",
+                visuallyHiddenText: "name"
+            }
+            ]
+        } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed in Wales"
+      },
+
+
+      {
+      key: {
+          text: "Exemption reason"
+      },
+      value: {
+          html: exemptionReasons
+      },
+      actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction start date"
+          }
+          ]
+        }  
+      } if data.newInductionStatus == "Exempt",
+      {
+      key: {
+          text: "Induction start date"
+      },
+      value: {
+          text: data | isoDateFromDateInput('newInductionStartDate') | govukDate
+      },
+      actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction start date"
+          }
+          ]
+        } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+
+      } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
+
+
+      {
+        key: {
+            text: "Induction completion date"
+        },
+        value: {
+            text: data | isoDateFromDateInput('newInductionCompletionDate') | govukDate
+        },
+        actions: {
+          items: [
+          {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "induction completion date"
+          }
+          ]
+        } if data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+      
+      } if data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
+
+      {
+        key: {
+            text: "Reason for status change"
+        },
+        value: {
+            text: data['statusChangeReason'] 
+        },
+        actions: {
+          items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "reason for change"
+          }
+          ]
+        } 
+      } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales" 
+  ] 
+}) }}
+

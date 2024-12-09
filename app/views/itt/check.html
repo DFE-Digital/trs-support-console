@@ -2,8 +2,24 @@
 
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "routes" %}
-{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+{% set pageName = "Add a QTS route - " + data.teachers[0].fullName %}
 {% set questionName = "Check details and confirm route" %}
+
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -20,6 +36,8 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
+      {{ data.chooseQtsRoute | log }}
+
 
       {{ govukInsetText({
         text: "You can add a professional status once you confirm this route."
@@ -33,7 +51,7 @@
               text: "Route"
             },
             value: {
-              text: data.chooseQtsRoute
+              text: data['chooseQtsRoute']
             },
             actions: {
               items: [
@@ -64,7 +82,7 @@
           },
           {
             key: {
-              text: "Establishment"
+              text: "Qualification"
             },
             value: {
               text: data.establishmentQualification
@@ -92,6 +110,40 @@
                   href: "/itt/start-date?returnUrl=/itt/check",
                   text: "Change",
                   visuallyHiddenText: "start date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/age-restriction?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "age restrictions"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices
+            },
+            actions: {
+              items: [
+                {
+                  href: "/itt/subjects?returnUrl=/itt/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
                 }
               ]
             }

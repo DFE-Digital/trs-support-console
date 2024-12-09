@@ -5,6 +5,7 @@
 {% set pageName = "Add qualification - " + data.teachers[0].fullName %}
 {% set questionName = "Enter qualification award date" %}
 
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -24,22 +25,22 @@
       <form method="post" novalidate>
         {{ govukDateInput({
           id: "ittAddQualAwardDate",
-          namePrefix: "ittAddQualAwardDate",
+          namePrefix: "ittAddQualDate",
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['ittAddQualAwardDate-day']
+              value: data['ittAddQualDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['ittAddQualAwardDate-month']
+              value: data['ittAddQualDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['ittAddQualAwardDate-year']
+              value: data['ittAddQualDate-year']
             }
           ]
         }) }}
