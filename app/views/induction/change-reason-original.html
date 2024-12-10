@@ -39,13 +39,16 @@
       <form method="post" novalidate>
 
         {% set otherInput %}
-          {{ govukInput({
+          {{ govukTextarea({
             id: "other-reason",
             name: "otherReason",
-            classes: "govuk-!-width-one-third",
+            classes: "govuk-!-width-two-third",
             label: {
-              text: "Enter a reason",
+              text: "Add more information",
               classes: "govuk-label--s"
+            },
+            hint: {
+              text: "You can enter up to 4000 characters"
             },
             value: data.otherReason
           }) }}
