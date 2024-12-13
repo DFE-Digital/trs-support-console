@@ -10,7 +10,7 @@ module.exports = router => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else if (data.newInductionStatus == "Exempt") {
-      res.redirect('/induction/reason')
+      res.redirect('/induction/exemption-reason')
     } else {
       res.redirect('/induction/start-date')
     }
@@ -119,7 +119,7 @@ module.exports = router => {
 
 
   /////////////  EXEMPTION   //////////////    
-  router.post('/induction/reason', (req, res) => {
+  router.post('/induction/exemption-reason', (req, res) => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
