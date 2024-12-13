@@ -5,6 +5,20 @@
 {% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
 {% set questionName = "Check details and confirm route" %}
 
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -29,7 +43,7 @@
               text: "Route type"
             },
             value: {
-              text: data.chooseLegacyRouteType
+              text: data.legacyRouteType
             },
             actions: {
               items: [
@@ -46,7 +60,8 @@
               text: "Country"
             },
             value: {
-              text: data.legacyCountry
+              text: data.applyQtsCountry
+
             },
             actions: {
               items: [
@@ -63,7 +78,7 @@
               text: "Establishment"
             },
             value: {
-              text: data.legacyEstablishment
+              text: data.establishment
             },
             actions: {
               items: [
@@ -111,15 +126,15 @@
           },
           {
             key: {
-              text: "Exemption"
+              text: "Induction exemption"
             },
             value: {
-              text: data.legacyExemption
+              text: data.legacyHasExemption
             },
             actions: {
               items: [
                 {
-                  href: "/legacy/exemption?returnUrl=/legacy/check",
+                  href: "/legacy/induction?returnUrl=/legacy/check",
                   text: "Change",
                   visuallyHiddenText: "exemption"
                 }
@@ -128,27 +143,44 @@
           },
           {
             key: {
-              text: "Teaching age range"
+              text: "Age range"
             },
             value: {
-              text: data.legacyAgeRange
+              text: "From " + data.legacyFromAgeRestriction + " to " + data.legacyToAgeRestriction
             },
             actions: {
               items: [
                 {
-                  href: "/legacy/age-range?returnUrl=/legacy/check",
+                  href: "/legacy/age-restrictions?returnUrl=/legacy/check",
                   text: "Change",
-                  visuallyHiddenText: "age range"
+                  visuallyHiddenText: "age restrictions"
                 }
               ]
             }
           },
           {
             key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices
+            },
+            actions: {
+              items: [
+                {
+                href: "/legacy/subjects?returnUrl=/legacy/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          },    
+          {
+            key: {
               text: "Provider"
             },
             value: {
-              text: data.legacyProvider
+              text: data.iqtsProvider
             },
             actions: {
               items: [

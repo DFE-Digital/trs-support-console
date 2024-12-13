@@ -1,0 +1,97 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Induction  - " + teacher.fullName %}
+{% set questionName = "Uploaded evidence" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">' + flash + '</h2>'
+}) if flash.length }}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    <h2 class="govuk-heading-s">Files added</h2>
+
+    {{ data.teachers | log }}
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+    {{ data.newInductionStatus | log }}
+    {{ data.evidence.file | log }}
+ 
+      <form method="post" novalidate>
+
+        
+        <dl class="govuk-summary-list">
+          {% for fileId, file in data.evidence.files %}
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                File {{loop.index}}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a class="govuk-link" href="#">{{file.filename}}</a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/induction/{{fileId}}/delete">Delete<span class="govuk-visually-hidden"> {{file.filename}}</span></a>
+              </dd>
+            </div>
+          {% endfor %}
+        </dl>
+
+        {{ govukRadios({
+          name: "[addMoreEvidence]",
+          fieldset: {
+            legend: {
+              text: "Do you want to upload another file?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+      {{ govukButton({
+        text: "Save and continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

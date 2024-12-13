@@ -1,0 +1,127 @@
+{% set inductionStartDate  = teacher['inductionStartDate'] or "Not applicable" %}
+{% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
+{% set newInductionStartDate = data['newInductionStartDate']%}
+
+{% if data['statusChangeReason'] == "Enter a reason" %}
+  {% set additionalInfo = data['otherInput'] %}
+{% endif %}
+
+{% set files %}
+  <ul class="govuk-list govuk-list--bullet">
+    {% for fileId, file in data.evidence.files %}
+    <li>
+      <a href="#" class="govuk-link">{{file.filename}}</a>
+    </li>
+    {% endfor%}
+  </ul>
+{% endset%}
+
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Induction status"
+      },
+      value: {
+        text: data["newInductionStatus"]
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/status?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction status"
+          }
+        ]
+      } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed in Wales"
+    },
+    {
+      key: {
+        text: "Induction start date"
+      },
+      value: {
+        text:  data | isoDateFromDateInput('newInductionStartDate') | govukDate 
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/start-date?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "start-date"
+          }
+        ]
+      } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales" or data.newInductionStatus == "Required to complete"
+    },
+    {
+      key: {
+        text: "Induction completion date"
+      },
+      value: {
+        text:  data | isoDateFromDateInput('newInductionCompletionDate') | govukDate
+      },
+      actions: {
+        items: [
+          {
+            href: "/induction/completion-date?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "induction completion date"
+          }
+        ]
+      } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales"
+      
+    } if data.newInductionStatus == "Exempt" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales",
+
+      {
+        key: {
+            text: "Reason for changing induction details"
+        },
+        value: {
+            text: data['statusChangeReason']
+        } if not data.additionalInfo,
+        actions: {
+          items: [
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "reason for change"
+          }
+          ]
+        } 
+      },
+      {
+        key: {
+            text: "Do you have evidence to upload?"
+        },
+        value: {
+            text: data.evidence.hasEvidence
+        },
+        actions: {
+          items: [
+          {
+              href: "/induction/upload?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "if you have evidence"
+          }
+          ]
+        } 
+      },
+      {
+        key: {
+            text: "Uploaded evidence"
+        },
+        value: {
+            html: files
+        },
+        actions: {
+          items: [
+            {
+                href: "/induction/check-files?returnUrl=/induction/check",
+                text: "Change",
+                visuallyHiddenText: "uploaded evidence"
+            }
+          ]
+        } 
+      } if data.evidence.hasEvidence == "Yes"  
+  ]
+}) }}
