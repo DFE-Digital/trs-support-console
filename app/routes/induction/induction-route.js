@@ -45,7 +45,7 @@ module.exports = router => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {
-      res.redirect('/induction/upload')  
+      res.redirect('/induction/check')  
     }      
   })
 
@@ -120,6 +120,14 @@ module.exports = router => {
 
   /////////////  EXEMPTION   //////////////    
   router.post('/induction/exemption-reason', (req, res) => {
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else {
+      res.redirect('/induction/change-reason')  
+    }      
+  })
+
+  router.post('/induction/change-reason', (req, res) => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else {

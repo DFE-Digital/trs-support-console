@@ -11,13 +11,27 @@
         by Erica Francoise-Smith on {{ "now" | govukDateTime }} at  {{ "now" | govukTime }}
       </time>
     </p>
-    <p class="hods-timeline__description">
-      <b>Status chaged to: </b>{{ data["newInductionStatus"] }}<br>
-    </p>
 
-    <p class="hods-timeline__description">
-      <b>Reason for change: </b>{{ data["statusChangeReason"] }}<br>
-    </p>
+    {% if data.newInductionStatus %}
+      <p class="hods-timeline__description">
+        <b>Status chaged to: </b>{{ data["newInductionStatus"] }}<br>
+      </p>
+    {% endif %}
+
+    {% if data.statusChangeReason %}
+      <p class="hods-timeline__description">
+        <b>Reason for change: </b>{{ data["statusChangeReason"] }}<br>
+      </p>
+    {% endif %}
+
+    {% if data.inductionExemptionReason %}
+      <p class="hods-timeline__description">
+        {% for reason in data.inductionExemptionReason %}
+          <b>Exemption reason: </b>{{ reason }}<br>
+        {% endfor %}
+      </p>
+    {% endif %}
+
 
     <p class="hods-timeline__description">
       {% if data.evidence.files  %}
@@ -40,7 +54,7 @@
         class="hods-date-time"
         datetime="2021-03-15T10:04:00.000Z"
       >
-        By Komal Nazir on 2 January 2024 at 2:11pm
+         by Erica Francoise-Smith on 2 January 2024 at 2:11pm
       </time>
     </p>
     <p class="hods-timeline__description">
@@ -57,11 +71,11 @@
         class="hods-date-time"
         datetime="2021-01-25T09:35:00.000Z"
       >
-        By Komal Nazir 25 January 2021 at 9:35am
+        by Erica Francoise-Smith on 25 January 2021 at 9:35am
       </time>
     </p>
     <p class="hods-timeline__description">
-      This is a description of the event.
+      Route changed.
     </p>
   </div>
 </div>

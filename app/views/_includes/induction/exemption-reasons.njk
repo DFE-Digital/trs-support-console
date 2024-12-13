@@ -1,4 +1,4 @@
-<h2 class="govuk-heading-s">Miscellaneous exemptions</h2>
+<h2 class="govuk-heading-m">Miscellaneous exemptions</h2>
 
 {{ govukCheckboxes({
   name: "inductionExemptionReason",
@@ -9,6 +9,9 @@
       classes: "govuk-fieldset__legend--s govuk-visually-hidden"
 
     }
+  },
+  hint: {
+    text: "Select all that apply"
   },
   values: data.inductionExemptionReason,
   items: [
@@ -35,6 +38,10 @@
     {
       value: "Overseas Trained Teacher",
       text: "Overseas Trained Teacher"
+    },
+    {
+      value: "Qualified through EEA mutual recognition route",
+      text: "Qualified through EEA mutual recognition route"
     }
   ]
 }) }}
@@ -42,7 +49,7 @@
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-<h2 class="govuk-heading-s">Exemptions for historical qualification routes</h2>
+<h2 class="govuk-heading-m">Exemptions for historical qualification routes</h2>
 
 {{ govukCheckboxes({
   name: "inductionExemptionReason",
@@ -73,7 +80,7 @@
 
 <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-<h2 class="govuk-heading-s">Induction completed outside England</h2>
+<h2 class="govuk-heading-m">Induction completed outside England</h2>
 
 {{ govukCheckboxes({
   name: "inductionExemptionReason",

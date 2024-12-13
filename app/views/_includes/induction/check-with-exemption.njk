@@ -51,6 +51,23 @@
           }
         ]
       }
+    },
+    {
+      key: {
+          text: "Reason for changing induction details"
+      },
+      value: {
+          text: data['statusChangeReason']
+      },
+      actions: {
+        items: [
+        {
+            href: "/induction/change-reason?returnUrl=/induction/check",
+            text: "Change",
+            visuallyHiddenText: "reason for change"
+        }
+        ]
+      } 
     }       
   ]
 }) }}
