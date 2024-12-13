@@ -26,16 +26,17 @@
 
     {% if data.inductionExemptionReason %}
       <p class="hods-timeline__description">
+        <b>Exemption reason: </b><br>
         {% for reason in data.inductionExemptionReason %}
-          <b>Exemption reason: </b>{{ reason }}<br>
+          {{ reason }}<br>
         {% endfor %}
       </p>
     {% endif %}
 
 
     <p class="hods-timeline__description">
-      {% if data.evidence.files  %}
-          <b>Evidence: </b>
+      {% if data.evidence.hasEvidence == 'Yes' %}
+          <b>Evidence: </b> <a class="govuk-link" href="#">evidence_2022.pdf (Opens in new tab)</a>
           {% for fileId, file in data.evidence.files %}
           <a class="govuk-link" href="#"> {{file.filename}} (Opens in new tab)</a><br>
         {% endfor %}

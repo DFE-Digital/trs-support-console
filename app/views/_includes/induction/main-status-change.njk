@@ -99,17 +99,8 @@
         },
         value: {
             text: data['statusChangeReason'] 
-        },
-        actions: {
-          items: [
-          {
-              href: "/induction/change-reason?returnUrl=/induction/check",
-              text: "Change",
-              visuallyHiddenText: "reason for change"
-          }
-          ]
-        } 
-      } if data.newInductionStatus == "Required to complete" or data.newInductionStatus == "In progress" or data.newInductionStatus == "Passed" or data.newInductionStatus == "Failed" or data.newInductionStatus == "Failed in Wales" 
+        }
+      } 
   ] 
 }) }}
 

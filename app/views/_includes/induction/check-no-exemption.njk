@@ -2,6 +2,10 @@
 {% set inductionCompletionDate  = teacher['inductionCompletionDAte'] or "Not applicable" %}
 {% set newInductionStartDate = data['newInductionStartDate']%}
 
+{% if data['statusChangeReason'] == "Enter a reason" %}
+  {% set additionalInfo = data['otherInput'] %}
+{% endif %}
+
 {% set files %}
   <ul class="govuk-list govuk-list--bullet">
     {% for fileId, file in data.evidence.files %}
@@ -74,7 +78,7 @@
         },
         value: {
             text: data['statusChangeReason']
-        },
+        } if not data.additionalInfo,
         actions: {
           items: [
           {
