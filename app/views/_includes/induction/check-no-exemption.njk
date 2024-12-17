@@ -16,6 +16,22 @@
   </ul>
 {% endset%}
 
+{% set changeReason %}  
+  {% if data.statusChangeReason == "Another reason" %}
+     {{ data.otherReason }}
+  {% else %}
+    {{ data.statusChangeReason }}
+  {% endif %}
+{% endset %}
+
+{% set details %}  
+  {% if data.hasMoreInfo == "Yes" %}
+     {{ data.yesAdditionalInfo }}
+  {% else %}
+    {{ data.hasMoreInfo }}   
+  {% endif %}
+{% endset %}
+
 
 {{ govukSummaryList({
   rows: [
@@ -77,8 +93,8 @@
             text: "Reason for changing induction details"
         },
         value: {
-            text: data['statusChangeReason']
-        } if not data.additionalInfo,
+            text: changeReason
+        },
         actions: {
           items: [
           {
@@ -89,39 +105,44 @@
           ]
         } 
       },
+
       {
         key: {
-            text: "Do you have evidence to upload?"
+            text: "Addtional information"
         },
         value: {
-            text: data.evidence.hasEvidence
+            html: details
         },
         actions: {
           items: [
           {
-              href: "/induction/upload?returnUrl=/induction/check",
+              href: "/induction/change-reason?returnUrl=/induction/check",
               text: "Change",
               visuallyHiddenText: "if you have evidence"
           }
           ]
         } 
       },
+
+
       {
         key: {
-            text: "Uploaded evidence"
+            text: "Do you have evidence to upload?"
         },
         value: {
-            html: files
+            html: data.evidence.hasEvidence + '<p class="govuk-body"><a href="#" class="govuk-link">evidence-2024.pdf</a>.</p>'
         },
         actions: {
           items: [
-            {
-                href: "/induction/check-files?returnUrl=/induction/check",
-                text: "Change",
-                visuallyHiddenText: "uploaded evidence"
-            }
+          {
+              href: "/induction/change-reason?returnUrl=/induction/check",
+              text: "Change",
+              visuallyHiddenText: "if you have evidence"
+          }
           ]
         } 
-      } if data.evidence.hasEvidence == "Yes"  
+      } if data.evidence.hasEvidence == "Yes"
+
+      
   ]
 }) }}

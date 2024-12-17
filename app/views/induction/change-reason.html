@@ -64,8 +64,8 @@
 
         {% set moreDetailsTextArea %}
           {{ govukTextarea({
-            id: "other-details",
-            name: "otherDetails",
+            id: "yes-additional-info",
+            name: "yesAdditionalInfo",
             classes: "govuk-!-width-two-third",
             label: {
               text: "Add more information",
@@ -74,7 +74,7 @@
             hint: {
               text: "You can enter up to 4000 characters"
             },
-            value: data.evidence.moreDetails
+            value: data.yesAdditionalInfo
           }) }}
         {% endset %}
 
@@ -113,10 +113,10 @@
 
         <h2 class="govuk-heading-m">Do you want to add more information about why you're changing the details?</h2>
         {{ govukRadios({
-          name: "evidence[moreDetails]",
+          name: 'hasMoreInfo',
           fieldset: {
             legend: {
-              text: "Do you have evidence to upload?",
+              text: "Do you have more information",
               classes: "govuk-visually-hidden"
             }
           },
@@ -133,7 +133,7 @@
               text: "No"
             }
           ],
-          value: data.evidence.moreDetails
+          value: data.hasMoreInfo
         }) }}
 
         <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
