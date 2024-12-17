@@ -27,6 +27,10 @@
       <h1 class="govuk-heading-l">Select a route to professional status</h1>
 
       {# <h3 class="govuk-heading-s">Initial teacher training</h3> #}
+      {# <p class="govuk-body">Start typing the route.</p> #}
+      {{ govukInsetText({
+        html: "Start typing the route, For example:<br>Early Years ITT Graduate Entry."
+      }) }}
       
       <form method="post" novalidate>
         
