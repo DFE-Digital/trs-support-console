@@ -29,42 +29,8 @@
       {# <h3 class="govuk-heading-s">Initial teacher training</h3> #}
       
       <form method="post" novalidate>
-      {{ govukRadios({
-        name: "chooseQtsRoute",
-        value: data.chooseQtsRoute,    
-        items: [
-          {
-            value: "Initial teacher training",
-            text: "Initial teacher training (ITT)"
-          },
-          {
-            value: "Assessment only",
-            text: "Assessment only"
-          },
-          {
-            value: "iqts",
-            text: "International Qualified Teacher Status (IQTS)"
-          },
-          {
-            value: "Overseas qualified",
-            text: "Overseas qualified (Apply for QTS)"
-          },
-          {
-            value: "Qualified Teacher Learning and Skills status (QTLS)",
-            text: "Qualified Teacher Learning and Skills status (QTLS)"
-          },
-          {
-            divider: "or"
-          },
-          {
-            value: "Legacy route",
-            text: "Another route",
-            conditional: {
-              html: changeReasonHtml
-            }
-          }
-        ]
-      }) }}
+        
+        {% include "_includes/autocompletes/routes/route-type-autocomplete.njk" %}  
 
       {{ govukButton({
         text: "Continue"
