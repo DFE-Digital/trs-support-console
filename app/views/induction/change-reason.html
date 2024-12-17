@@ -8,7 +8,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Induction  - " + teacher.fullName %}
-{% set questionName = "Why are you changing the induction status?" %}
+{% set questionName = "Why are you changing the induction details?" %}
 
 
 
@@ -50,9 +50,22 @@
         {% endset %}
 
         {% set otherInput %}
-          {{ govukTextarea({
+        {{ govukInput({
             id: "other-reason",
             name: "otherReason",
+            classes: "govuk-!-width-two-third",
+            label: {
+              text: "Add reason",
+              classes: "govuk-label--s"
+            },
+            value: data.otherReason
+          }) }}
+        {% endset %}
+
+        {% set moreDetailsTextArea %}
+          {{ govukTextarea({
+            id: "other-details",
+            name: "otherDetails",
             classes: "govuk-!-width-two-third",
             label: {
               text: "Add more information",
@@ -61,7 +74,7 @@
             hint: {
               text: "You can enter up to 4000 characters"
             },
-            value: data.otherReason
+            value: data.evidence.moreDetails
           }) }}
         {% endset %}
 
@@ -76,35 +89,21 @@
           },
           items: [
             {
-              value: "Exempt from induction",
-              text: "Exempt from induction"
+              value: "Data loss or incomplete information",
+              text: "Data loss or incomplete information"
+            },
+            {
+              value: "New information received",
+              text: "New information received"
             },
             {
               value: "No longer exempt from induction",
               text: "No longer exempt from induction"
             },
+
             {
-              value: "Failed in Wales",
-              text: "Failed in Wales"
-            },
-            {
-              value: "Induction extended",
-              text: "Induction extended"
-            },
-            {
-              value: "Updating Induction status after query about a teachers record",
-              text: "Updating Induction status after query about a teachers record"
-            },
-            {
-              value: "Updating Induction start or completion dates after query about a teachers record",
-              text: "Updating Induction start or completion dates after query about a teachers record"
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "Enter a reason",
-              text: "Enter a reason",
+              value: "Another reason",
+              text: "Another reason",
               conditional: {
                 html: otherInput
               }
@@ -112,6 +111,30 @@
           ]
         }) }}
 
+        <h2 class="govuk-heading-m">Do you want to add more information about why you're changing the details?</h2>
+        {{ govukRadios({
+          name: "evidence[moreDetails]",
+          fieldset: {
+            legend: {
+              text: "Do you have evidence to upload?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: moreDetailsTextArea
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.evidence.moreDetails
+        }) }}
 
         <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
         {{ govukRadios({
