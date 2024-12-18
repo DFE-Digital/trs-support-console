@@ -7,7 +7,7 @@
 {% set teacherArray = data["teachers"] %}
 {% set teacher = trn | find(teacherArray)  %}
 
-{% set pageName = "Induction  - " + teacher.fullName %}
+{% set pageName = "Routes and professional status - " + teacher.fullName %}
 
 
 {% block beforeContent %}
@@ -28,9 +28,9 @@
 
       {# <h3 class="govuk-heading-s">Initial teacher training</h3> #}
       {# <p class="govuk-body">Start typing the route.</p> #}
-      {{ govukInsetText({
+      {# {{ govukInsetText({
         html: "Start typing the route, For example:<br>Early Years ITT Graduate Entry."
-      }) }}
+      }) }} #}
       
       <form method="post" novalidate>
         
