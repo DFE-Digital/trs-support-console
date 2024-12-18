@@ -28,7 +28,7 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      {% set anotherEstQuaHtml %}
+      {# {% set anotherEstQuaHtml %}
         {{ govukInput({
           id: "some-other-est-qual",
           name: "someOtherEstQual",
@@ -38,10 +38,25 @@
             text: "Name of other qualification"
           }
         }) }}
-      {% endset %}
+      {% endset %} #}
 
       <form method="post" novalidate>
         {{ govukRadios({
+          name: "establishmentQualification",
+          value: data.establishmentQualification,    
+          items: [
+            {
+              value: "Undergraduate",
+              text: "Undergraduate"
+            },
+            {
+              value: "Postgraduate",
+              text: "Postgraduate"
+            }
+          ]
+        }) }}
+
+        {# {{ govukRadios({
           name: "establishmentQualification",
           value: data.establishmentQualification,    
           items: [
@@ -63,7 +78,7 @@
               }
             }
           ]
-        }) }}
+        }) }} #}
   
         {{ govukButton({
           text: "Continue"
