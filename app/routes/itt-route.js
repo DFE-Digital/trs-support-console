@@ -1,14 +1,17 @@
+const _ = require('lodash')
+const { v4: uuidv4 } = require('uuid')
+
 module.exports = router => {
 
-    router.post('/itt/establishment', (req, res) => {
+    router.post('/itt/training-provider', (req, res) => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
-        res.redirect('/itt/establishment-qualification')  
+        res.redirect('/itt/degree-type')  
       }      
     })
 
-    router.post('/itt/establishment-qualification', (req, res) => {
+    router.post('/itt/degree-type', (req, res) => {
       if (req.query.returnUrl) {
         res.redirect(req.query.returnUrl)
       } else {
