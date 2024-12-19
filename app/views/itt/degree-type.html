@@ -28,17 +28,13 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      {# {% set anotherEstQuaHtml %}
-        {{ govukInput({
-          id: "some-other-est-qual",
-          name: "someOtherEstQual",
-          type: "text",
-          classes: "govuk-!-width-one-third",
-          label: {
-            text: "Name of other qualification"
-          }
-        }) }}
-      {% endset %} #}
+      {% set chooseUnderGradType %}
+        {% include "_includes/autocompletes/degree-type/undergrad.njk" %}
+      {% endset %}
+
+      {% set choosePostGradType %}
+        {% include "_includes/autocompletes/degree-type/postgrad.njk" %}
+      {% endset %}
 
       <form method="post" novalidate>
         {{ govukRadios({
@@ -47,11 +43,17 @@
           items: [
             {
               value: "Undergraduate",
-              text: "Undergraduate"
+              text: "Undergraduate",
+              conditional: {
+                html: chooseUnderGradType
+              }
             },
             {
               value: "Postgraduate",
-              text: "Postgraduate"
+              text: "Postgraduate",
+              conditional: {
+                html: choosePostGradType
+              }
             }
           ]
         }) }}
