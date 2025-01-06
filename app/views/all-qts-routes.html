@@ -34,7 +34,9 @@
       
       <form method="post" novalidate>
         
-        {% include "_includes/autocompletes/routes/route-type-autocomplete.njk" %}  
+        {% include "_includes/autocompletes/routes/route-type-autocomplete.njk" %} 
+        
+        {% include "_includes/autocompletes/routes/route-type-legacy-autocomplete.njk" %}
 
       {{ govukButton({
         text: "Continue"
