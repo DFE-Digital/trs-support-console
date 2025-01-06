@@ -24,28 +24,43 @@
 
     
       <span class="govuk-caption-l">{{pageName}}</span>
-      <h1 class="govuk-heading-l">Select a route to professional status</h1>
+      <h1 class="govuk-heading-l">Select route status</h1>
       
       <form method="post" novalidate>
         
         {{ govukRadios({
-          classes: "govuk-radios--small",
-          name: "changedName",
+          name: "routeStatus",
           fieldset: {
             legend: {
-              text: "Filter",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--m"
+              text: "Select route status",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m govuk-visually-hidden"
             }
           },
           items: [
             {
-              value: "month",
-              text: "Monthly"
+              value: "Awarded",
+              text: "Awarded"
             },
             {
-              value: "year",
-              text: "Yearly"
+              value: "Deferred",
+              text: "Deferred"
+            },
+            {
+              value: "Deferred for skills tests",
+              text: "Deferred for skills tests"
+            },
+            {
+              value: "Fail",
+              text: "Fail"
+            },
+            {
+              value: "In progress",
+              text: "In progress"
+            },
+            {
+              value: "Withdrawn",
+              text: "Withdrawn"
             }
           ]
         }) }}
