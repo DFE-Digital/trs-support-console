@@ -15,6 +15,9 @@ router.all('*', (req, res, next) => {
 })
 
 // ADD QUALS & ROUTES 
+require('./routes/prof-status/all-routes')(router)
+
+
 require('./routes/account')(router)
 require('./routes/choose-route')(router)
 require('./routes/itt-route')(router)
