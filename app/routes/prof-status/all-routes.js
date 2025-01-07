@@ -53,12 +53,12 @@ module.exports = (router) => {
 	})
 
 	router.post('/route-information/country', (req, res) => {
-			res.redirect('/route-information/age-range')
+			res.redirect('/route-information/age-to-from')
 	})
 
-	router.post('/route-information/age-range', (req, res) => {
-			res.redirect('/route-information/subjects')
-	})
+	router.post('/route-information/age-to-from', (req, res) => {
+		res.redirect('/route-information/subjects')
+})
 
 	router.post('/route-information/subjects', (req, res) => {
 			res.redirect('/check')

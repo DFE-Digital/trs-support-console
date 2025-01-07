@@ -1,16 +1,26 @@
 {% extends "layouts/main.html" %}
 
-{% set serviceNavId = "findRecord" %} 
-
-
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
-{% set teacher = trn | find(teacherArray) %}
-{% set inductionCompletionDate = "shabba" %}
+{% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Check your answers" %}
+{% set questionName = "Check details to confirm route and qualification" %}
+
+{% set subjectChoices %}
+  <ul class="govuk-list govuk-list--bullet">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
 
 
 {% block beforeContent %}
@@ -20,7 +30,6 @@
   }) }}
 {% endblock %}
 
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -29,29 +38,124 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
+
+      {{ govukInsetText({
+        text: "A professional status will be immediately added when you confirm this route."
+      }) }}
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Route"
+            },
+            value: {
+              text: data.chooseQtsRoute
+            },
+            actions: {
+              items: [
+                {
+                  href: "/change-qts-route",
+                  text: "Change",
+                  visuallyHiddenText: "QTS route"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Country"
+            },
+            value: {
+              text: data.applyQtsCountry
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/country?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "country"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Has exemption"
+            },
+            value: {
+              text: data.applyForQtsHasExemption
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/exemption?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "country"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text: data['applyQtsStartDate-day'] + " " + data['applyQtsStartDate-month'] + " " + data['applyQtsStartDate-year']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/award-date?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "Award date"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/age-restrictions?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "age restrictions"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/apply-for-qts/subjects?returnUrl=/apply-for-qts/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          }     
+        ]
+      }) }}
+
       
-      {{ teacher.inductionStatus | log }}
-      {{ teacher.trn | log }}
 
-      {{ data.newInductionStatus | log }}
-      {{ data.inductionExemptionReason | log }}
-      {{ data.inductionCompletionDate | log }}
-
-      {{ data.evidence.hasEvidence | log }}
-
-     
-
-
-      {% if data.newInductionStatus == 'Exempt' %}
-        {% include "_includes/induction/check-with-exemption.njk" %}   
-      {% else %}
-        {% include "_includes/induction/check-no-exemption.njk" %}   
-      {% endif %}
-
-
-      <form method="post" action="/induction/check-handler">
+      <form method="post" action="/apply-for-qts/check-handler">
         {{ govukButton({
-          text: "Confirm induction details"
+          text: "Confirm to add route and qualification"
         }) }}
       </form>    
 
