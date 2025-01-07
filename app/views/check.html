@@ -9,7 +9,7 @@
 {% set questionName = "Check details to confirm route and qualification" %}
 
 {% set subjectChoices %}
-  <ul class="govuk-list govuk-list--bullet">
+  <ul class="govuk-list">
     <li>{{ data.subjectChoiceOne }}</li>
     
       {% if data.subjectChoiceTwo %}
@@ -20,6 +20,16 @@
         <li>{{ data.subjectChoiceThree }}</li>
       {% endif %}
   </ul>
+{% endset %}
+
+{% set exemptionReasons %}
+ <ul class="govuk-list">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
 {% endset %}
 
 
@@ -51,82 +61,176 @@
               text: "Route"
             },
             value: {
-              text: data.chooseQtsRoute
+              text: data.activeRouteType or data.legacyRouteType
             },
             actions: {
               items: [
                 {
-                  href: "/change-qts-route",
+                  href: "/all-qts-routes",
                   text: "Change",
-                  visuallyHiddenText: "QTS route"
+                  visuallyHiddenText: "route type"
                 }
               ]
             }
           },
+
           {
             key: {
-              text: "Country"
+              text: "Status"
             },
             value: {
-              text: data.applyQtsCountry
+              text: data.routeStatus
             },
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/country?returnUrl=/apply-for-qts/check",
+                  href: "/route-status",
                   text: "Change",
-                  visuallyHiddenText: "country"
+                  visuallyHiddenText: "route status"
                 }
               ]
             }
           },
+
           {
             key: {
-              text: "Has exemption"
+              text: "End date"
             },
             value: {
-              text: data.applyForQtsHasExemption
+              text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
             },
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/exemption?returnUrl=/apply-for-qts/check",
+                  href: "/route-complete/end-date",
                   text: "Change",
-                  visuallyHiddenText: "country"
+                  visuallyHiddenText: "route status"
                 }
               ]
             }
           },
+
           {
             key: {
               text: "Award date"
             },
             value: {
-              text: data['applyQtsStartDate-day'] + " " + data['applyQtsStartDate-month'] + " " + data['applyQtsStartDate-year']
+              text:  data | isoDateFromDateInput('routeAwardDate') | govukDate
             },
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/award-date?returnUrl=/apply-for-qts/check",
+                  href: "/route-complete/award-date",
                   text: "Change",
-                  visuallyHiddenText: "Award date"
+                  visuallyHiddenText: "route status"
                 }
               ]
             }
           },
+
+          {
+            key: {
+              text: "Has exemption"
+            },
+            value: {
+              text: data.hasRouteExemption
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-complete/has-exemption",
+                  text: "Change",
+                  visuallyHiddenText: "if they have an exemption"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Exemption reason"
+            },
+            value: {
+              html: exemptionReasons
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-complete/exemption-reason",
+                  text: "Change",
+                  visuallyHiddenText: "exemption reason"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Training provider"
+            },
+            value: {
+              html: data.trainingProvider
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/training-provider",
+                  text: "Change",
+                  visuallyHiddenText: "Training provider"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Degree type"
+            },
+            value: {
+              html: data.degreeTypes
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/degree-type",
+                  text: "Change",
+                  visuallyHiddenText: "Degree type"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Country of training"
+            },
+            value: {
+              text: data.routeCountryOfTraining
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/country",
+                  text: "Change",
+                  visuallyHiddenText: "Country of training"
+                }
+              ]
+            }
+          },
+          
           {
             key: {
               text: "Age range"
             },
             value: {
-              text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
+              text: "From " + data.ageFromRestriction + " to " + data.ageToRestriction
             },
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/age-restrictions?returnUrl=/apply-for-qts/check",
+                  href: "/route-information/age-to-from",
                   text: "Change",
-                  visuallyHiddenText: "age restrictions"
+                  visuallyHiddenText: "teaching age range"
                 }
               ]
             }
@@ -141,7 +245,7 @@
             actions: {
               items: [
                 {
-                  href: "/apply-for-qts/subjects?returnUrl=/apply-for-qts/check",
+                  href: "/route-information/subjects",
                   text: "Change",
                   visuallyHiddenText: "subjects"
                 }

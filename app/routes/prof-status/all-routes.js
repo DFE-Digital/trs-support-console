@@ -27,12 +27,8 @@ module.exports = (router) => {
 		res.redirect('/route-complete/has-exemption')
 	})
 
-	router.post('/route-complete/award-date', (req, res) => {
-		res.redirect('/route-complete/has-exemption')
-	})
-
 	router.post('/route-complete/has-exemption', (req, res) => {
-		if (req.session.data.hasExemption == 'Yes') {
+		if (req.session.data.hasRouteExemption == 'Yes') {
 			res.redirect('/route-complete/exemption-reason')
 		} else {
 			res.redirect('/route-information/training-provider')

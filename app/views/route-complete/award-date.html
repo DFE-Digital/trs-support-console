@@ -27,8 +27,8 @@
       
       <form method="post" novalidate>
         {{ govukDateInput({
-          id: "applyQtsAwardDate",
-          namePrefix: "applyQtsStartDate",
+          id: "route-award-date",
+          namePrefix: "routeAwardDate",
           hint: {
             text: "For example, 27 3 2007"
           },
@@ -36,17 +36,17 @@
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['applyQtsStartDate-day']
+              value: data['routeAwardDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['applyQtsStartDate-month']
+              value: data['routeAwardDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['applyQtsStartDate-year']
+              value: data['routeAwardDate-year']
             }
           ]
         }) }}
