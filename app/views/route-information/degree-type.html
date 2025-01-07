@@ -1,7 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set serviceNavId = "findRecord" %} 
-{% set secondaryNavId = "routes" %}
+
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
@@ -28,59 +27,10 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
-      {% set chooseUnderGradType %}
-        {% include "_includes/autocompletes/degree-type/undergrad.njk" %}
-      {% endset %}
-
-      {% set choosePostGradType %}
-        {% include "_includes/autocompletes/degree-type/postgrad.njk" %}
-      {% endset %}
-
+     
       <form method="post" novalidate>
-        {{ govukRadios({
-          name: "establishmentQualification",
-          value: data.establishmentQualification,    
-          items: [
-            {
-              value: "Undergraduate",
-              text: "Undergraduate",
-              conditional: {
-                html: chooseUnderGradType
-              }
-            },
-            {
-              value: "Postgraduate",
-              text: "Postgraduate",
-              conditional: {
-                html: choosePostGradType
-              }
-            }
-          ]
-        }) }}
-
-        {# {{ govukRadios({
-          name: "establishmentQualification",
-          value: data.establishmentQualification,    
-          items: [
-            {
-              value: "Undergraduate",
-              text: "Undergraduate"
-            },
-            {
-              value: "Postgraduate",
-              text: "Postgraduate"
-            },
-            {
-              divider: "or"
-            },
-            {
-              text: "Something else",
-              conditional: {
-                html: anotherEstQuaHtml
-              }
-            }
-          ]
-        }) }} #}
+        
+        {% include "_includes/autocompletes/degree-type/degrees.njk" %}
   
         {{ govukButton({
           text: "Continue"

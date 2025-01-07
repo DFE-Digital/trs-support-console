@@ -1,7 +1,11 @@
 {% extends "layouts/main.html" %}
 
-{% set serviceNavId = "findRecord" %} 
-{% set pageName = "Add a QTS route -" + data.teachers[0].fullName %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Routes and professional status - " + teacher.fullName %}
 {% set questionName = "Country of training" %}
 
 {% block beforeContent %}
