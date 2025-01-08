@@ -62,9 +62,11 @@ module.exports = (router) => {
 
 
 
+	/////////////  FLASH //////////////
+  router.post('/check-handler', (req, res) => {
 
-	router.get('/change-qts-route', (req, res) => {
-			req.session.data.chooseQtsRoute = {}
-			res.redirect('/all-qts-routes')
+	req.flash('success', 'Route to professional status added')
+
+	res.redirect('/route')
 	})
 }

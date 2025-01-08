@@ -32,7 +32,7 @@
         {% include "_includes/secondary-navigation.njk" %}
 
 
-      {% if not data.chooseQtsRoute %}
+      {% if not data.activeRouteType or data.legacyRouteType %}
 
           {{ govukInsetText({
             text: "You must add a route before you can see any professional statuses."
@@ -47,67 +47,35 @@
 
       {% else %}
 
-    
-            {% if not data.ittAddQualDate and data.chooseQtsRoute  == 'Initial teacher training' %}
-              {% include "_includes/itt-route-table.njk" %} 
-            {% elif data.ittAddQualDate and data.chooseQtsRoute  == 'Initial teacher training' %}
-                {% include "_includes/itt-route-and-qual-table.njk" %} 
-            {% endif %}
 
+        {% if data.hasRouteExemption %}
+          {% include "_includes/autocompletes/routes/route-with-exemption-card.njk" %} 
+        {% elif not data.hasRouteExemption %}
+            {% include "_includes/autocompletes/routes/route-with-no-exemption-card.njk" %} 
+        {% endif %}
 
-            {% if not data.assOnlyAddQualDate and data.chooseQtsRoute  == 'Assessment only' %}
-              {% include "_includes/assessment-only-route-table.njk" %}
-            {% elif data.assOnlyAddQualDate and data.chooseQtsRoute  == 'Assessment only' %}
-                {% include "_includes/assessment-only-route-and-qual-table.njk" %} 
-            {% endif %}
+              
+        {{ govukButton({
+          text: "Add a route",
+          href: "/all-qts-routes"
+        }) }}
 
-            {% if not data.iqtsAddQualDate and data.chooseQtsRoute  == 'iqts' %}
-              {% include "_includes/iqts-route-table.njk" %}
-            {% elif data.iqtsAddQualDate and data.chooseQtsRoute  == 'iqts' %}
-                {% include "_includes/iqts-route-and-qual-table.njk" %} 
-            {% endif %}
-
-
-            {% if not data.legacyAddQualDate and data.chooseQtsRoute  == 'Legacy route' %}
-              {% include "_includes/legacy-route-table.njk" %}
-            {% elif data.legacyAddQualDate and data.chooseQtsRoute  == 'Legacy route' %}
-                {% include "_includes/legacy-route-and-qual-table.njk" %} 
-            {% endif %}
-      
-          
-            {% if data.chooseQtsRoute  == 'Overseas qualified' %}
-              {% include "_includes/apply-qts-route-table.njk" %}
-            {% endif %}
-
-            {% if data.chooseQtsRoute  == 'Qualified Teacher Learning and Skills status (QTLS)' %}
-              {% include "_includes/qtls-and-set-qual-table.njk" %}
-            {% endif %}
-
-            
-
-            
-
-      {{ govukButton({
-        text: "Add a route",
-        href: "/all-qts-routes"
-      }) }}
-
-    {% endif %}
+      {% endif %}
 
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-    <h2 class="govuk-heading-m">Mandatory qualifications</h2>
-    <p class="govuk-body">No mandatory qualifications to show</p>
-    {{ govukButton({
-      text: "Add a mandatory qualification",
-      href: "#"
-    }) }}
+      <h2 class="govuk-heading-m">Mandatory qualifications</h2>
+      <p class="govuk-body">No mandatory qualifications to show</p>
+      {{ govukButton({
+        text: "Add a mandatory qualification",
+        href: "#"
+      }) }}
 
-    {{ data.chooseQtsRoute | log }}
     
-    {{ data.ittAddQualDate | log }}
-    {{ data.assOnlyAddQualDate | log }}
-    {{ data.iqtsAddQualDate | log }}
+    
+    {{ data.hasRouteExemption | log }}
+    {{ data.activeRouteType | log }}
+    {{ data.legacyRouteType or 'none' | log }}
 
   </div>
 </div>
