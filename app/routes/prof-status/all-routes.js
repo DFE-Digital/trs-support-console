@@ -4,12 +4,16 @@ module.exports = (router) => {
 	})
 
 	router.post('/route-status', (req, res) => {
-			if (req.session.data.routeStatus == 'Awarded' || req.session.data.routeStatus == 'Failed') {
-				res.redirect('/route-complete/end-date')
-			} else {
-				res.redirect('/route-in-progress/start-date')
-			}
-	})
+    let data = req.session.data
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else if (data.routeStatus == 'Awarded' || data.routeStatus == 'Failed') {
+      res.redirect('/route-complete/end-date')
+    } else {
+      res.redirect('/route-in-progress/start-date')
+    }
+      console.log(data.routeStatus)
+  })
 
 	/// Route in progress
 	router.post('/route-in-progress/start-date', (req, res) => {

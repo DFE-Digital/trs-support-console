@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "route" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">'+flash+'</h2>'
+}) if flash.length }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
+
+        {% include "_includes/secondary-navigation.njk" %}
+
+
+      {% if not data.activeRouteType or data.legacyRouteType %}
+
+          {{ govukInsetText({
+            text: "You must add a route before you can see any professional statuses."
+          }) }}
+          <h2 class="govuk-heading-m">Routes to professional statuses</h2>
+          <p class="govuk-body">No routes to show</p>
+
+          {{ govukButton({
+            text: "Add a route",
+            href: "/all-qts-routes"
+          }) }}
+
+      {% else %}
+
+
+        {% if data.hasRouteExemption %}
+          {% include "_includes/autocompletes/routes/route-with-exemption-card.njk" %} 
+        {% elif not data.hasRouteExemption %}
+            {% include "_includes/autocompletes/routes/route-with-no-exemption-card.njk" %} 
+        {% endif %}
+
+              
+        {{ govukButton({
+          text: "Add a route",
+          href: "/all-qts-routes"
+        }) }}
+
+      {% endif %}
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Mandatory qualifications</h2>
+      <p class="govuk-body">No mandatory qualifications to show</p>
+      {{ govukButton({
+        text: "Add a mandatory qualification",
+        href: "#"
+      }) }}
+
+    
+    
+    {{ data.hasRouteExemption | log }}
+    {{ data.activeRouteType | log }}
+    {{ data.legacyRouteType | log }}
+
+  </div>
+</div>
+
+{% endblock %}
