@@ -1,6 +1,11 @@
 module.exports = (router) => {
+
 	router.post('/all-qts-routes', (req, res) => {
-			res.redirect('route-status')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('route-status')  
+		}      
 	})
 
 	router.post('/route-status', (req, res) => {
@@ -45,40 +50,68 @@ module.exports = (router) => {
 	})
 
 	router.post('/route-complete/has-exemption', (req, res) => {
-		if (req.session.data.hasRouteExemption == 'Yes') {
-			res.redirect('/route-complete/exemption-reason')
-		} else {
-			res.redirect('/route-information/training-provider')
-		}
-	})
+    let data = req.session.data
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else if (data.hasRouteExemption == 'Yes') {
+      res.redirect('/route-complete/exemption-reason')
+    } else {
+      res.redirect('/route-information/training-provider')
+    }
+      console.log(data.hasRouteExemption)
+  })
 
 	router.post('/route-complete/exemption-reason', (req, res) => {
-		res.redirect('/route-information/training-provider')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-information/training-provider')  
+		}      
 	})
+
 
 	/// Route Information
 	router.post('/route-information/training-provider', (req, res) => {
-			res.redirect('/route-information/degree-type')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-information/degree-type')  
+		}      
 	})
 
 	router.post('/route-information/degree-type', (req, res) => {
-			res.redirect('/route-information/country')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-information/country')  
+		}      
 	})
 
 	router.post('/route-information/country', (req, res) => {
-			res.redirect('/route-information/age-to-from')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {	
+			res.redirect('/route-information/age-to-from')  
+		}      
 	})
 
 	router.post('/route-information/age-to-from', (req, res) => {
-		res.redirect('/route-information/subjects')
-})
-
-	router.post('/route-information/subjects', (req, res) => {
-			res.redirect('/check')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {	
+			res.redirect('/route-information/subjects')  
+		}      
 	})
 
+	router.post('/route-information/subjects', (req, res) => {
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {	
+			res.redirect('/check')  
+		}      
+	})
 
-
+	
 	/////////////  FLASH //////////////
   router.post('/check-handler', (req, res) => {
 
