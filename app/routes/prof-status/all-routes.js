@@ -15,20 +15,33 @@ module.exports = (router) => {
       console.log(data.routeStatus)
   })
 
-	/// Route in progress
+	///////// Route in progress //////////////
+
 	router.post('/route-in-progress/start-date', (req, res) => {
-			res.redirect('/route-information/training-provider')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-information/training-provider')  
+		}      
 	})
 
 
-
-	/// Route complete
+	/////////// Route complete ///////////////
+	
 	router.post('/route-complete/end-date', (req, res) => {
-			res.redirect('/route-complete/award-date')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-complete/award-date')  
+		}      
 	})
 
 	router.post('/route-complete/award-date', (req, res) => {
-		res.redirect('/route-complete/has-exemption')
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-complete/has-exemption')  
+		}      
 	})
 
 	router.post('/route-complete/has-exemption', (req, res) => {
