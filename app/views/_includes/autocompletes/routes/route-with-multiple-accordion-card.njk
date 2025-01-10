@@ -1,0 +1,21 @@
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+		{
+      heading: {
+        text: "Early years teacher status (EYTS) awarded on 8 August 2016"
+      },
+      content: {
+        html: '<p class="govuk-body">This is the content for Writing well for specialists.</p>'
+      }
+    },
+    {
+      heading: {
+        text: "Qualified teacher status (QTS) awarded on " + data | isoDateFromDateInput('routeAwardDate') | govukDate
+      },
+      content: {
+        html: '<p class="govuk-body">This is the content for Writing well for the web.</p>'
+      }
+    }
+  ]
+}) }}

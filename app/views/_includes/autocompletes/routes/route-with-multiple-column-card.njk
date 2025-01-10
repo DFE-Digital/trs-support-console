@@ -1,20 +1,33 @@
 <div class="column-card">
 	<div class="column-card__item">
-			<div class="govuk-grid-row">
-				<div class="flexContainer">
-					<div class="govuk-grid-two-thirds">
-						<h2 class="govuk-heading-m">{{"Qualified teacher status (QTS) awarded on " + data | isoDateFromDateInput('routeAwardDate') | govukDate }}</h2>
-					</div>
-					<div class="govuk-grid-one-third">
-						<a href="#" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold">Edit</a>
-					</div>
+
+			<div class="govuk-grid-row">		
+				<div class="govuk-grid-column-full">
+					<h2 class="govuk-heading-m">{{"Qualified teacher status (QTS) on " + data | isoDateFromDateInput('routeAwardDate') | govukDate }}</h2>
 				</div>
 			</div>
-			<div class="flexContainer">
-				<div class="govuk-grid-row">
-					<strong class="govuk-tag govuk-tag--green">Awarded</strong>	
+
+			<div class="govuk-grid-row">
+				<strong class="govuk-tag govuk-tag--blue">Awarded</strong>	
+			</div>
+
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-full">
+				<div class="govuk-button-group govuk-!-margin-top-2 govuk-!-margin-bottom-2">
+					{{ govukButton({
+						text: "Mark route as complete"
+					}) }}
+
+					{{ govukButton({
+						text: "Edit",
+						classes: "govuk-button--secondary"
+					}) }}
 				</div>
-			</div>	
+				</div>
+			</div>
+			
+			
+			
 
 
 			<div class="govuk-grid-row">
@@ -25,26 +38,42 @@
 					<p class=" column-card__body-text">{{data | isoDateFromDateInput('routeCompleteEndDate') | govukDate}}</p>
 					<p class=" column-card__body-text-bold"><strong>Award date</strong></p>
 					<p class=" column-card__body-text">{{data | isoDateFromDateInput('routeAwardDate') | govukDate}}</p>
-					<p class=" column-card__body-text-bold"><strong>Award date</strong></p>
-					<p class=" column-card__body-text">17/10/2024</p>
 				</div>
 				<div class="govuk-grid-column-one-third">
 					<p class=" column-card__body-text-bold"><strong>Has exemption</strong></p>
-					<p class=" column-card__body-text">Manchester MC</p>
+					<p class=" column-card__body-text">{{data.hasRouteExemption}}</p>
 					<p class=" column-card__body-text-bold"><strong>Exemption reason</strong></p>
-					<p class=" column-card__body-text">Remanded in custody</p>
+
+					<ul class="govuk-list">
+						{% for reason in data.inductionExemptionReason%}
+						<li>
+							{{reason}}
+						</li>
+						{% endfor %}
+					</ul>
+
 					<p class=" column-card__body-text-bold"><strong>Training provider</strong></p>
-					<p class=" column-card__body-text">Remanded in custody</p>
-					<p class=" column-card__body-text-bold"><strong>Training provider</strong></p>
-					<p class=" column-card__body-text">Remanded in custody</p>
+					<p class=" column-card__body-text">{{data.trainingProvider}}</p>
+					<p class=" column-card__body-text-bold"><strong>Degree type</strong></p>
+					<p class=" column-card__body-text">{{data.degreeTypes}}</p>
 				</div>
 				<div class="govuk-grid-column-one-third">
-					<p class=" column-card__body-text-bold"><strong>Degree type</strong></p>
-					<p class=" column-card__body-text">Manchester MC</p>
-					<p class=" column-card__body-text-bold"><strong>Conutry of training</strong></p>
-					<p class=" column-card__body-text">Remanded in custody</p>
+					<p class=" column-card__body-text-bold"><strong>Country of training</strong></p>
+					<p class=" column-card__body-text">{{data.routeCountryOfTraining}}</p>
 					<p class=" column-card__body-text-bold"><strong>Age range</strong></p>
-					<p class=" column-card__body-text">Remanded in custody</p>
+					<p class=" column-card__body-text">From {{data.ageFromRestriction}} to {{data.ageToRestriction}}</p>
+					<p class=" column-card__body-text-bold"><strong>Subjects</strong></p>
+					<ul class="govuk-list">
+					<li>{{ data.subjectChoiceOne }}</li>
+					
+						{% if data.subjectChoiceTwo %}
+						<li>{{ data.subjectChoiceTwo }}</li>
+						{% endif %}
+
+						{% if data.subjectChoiceThree %}
+							<li>{{ data.subjectChoiceThree }}</li>
+						{% endif %}
+				</ul>
 				</div>
 			</div>
 	</div>
