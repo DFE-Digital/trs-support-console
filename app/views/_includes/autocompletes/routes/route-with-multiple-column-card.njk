@@ -3,7 +3,7 @@
 			<div class="govuk-grid-row">
 				<div class="flexContainer">
 					<div class="govuk-grid-two-thirds">
-						<h2 class="govuk-heading-m">63GD1757930 at Manchester MC on 17/10/2024</h2>
+						<h2 class="govuk-heading-m">{{"Qualified teacher status (QTS) awarded on " + data | isoDateFromDateInput('routeAwardDate') | govukDate }}</h2>
 					</div>
 					<div class="govuk-grid-one-third">
 						<a href="#" class="govuk-link govuk-!-font-size-24 govuk-!-font-weight-bold">Edit</a>
@@ -22,9 +22,9 @@
 					<p class=" column-card__body-text-bold"><strong>Route</strong></p>
 					<p class=" column-card__body-text">{{ data.activeRouteType or data.legacyRouteType }}</p>
 					<p class=" column-card__body-text-bold"><strong>End date</strong></p>
-					<p class=" column-card__body-text">17/10/2024</p>
+					<p class=" column-card__body-text">{{data | isoDateFromDateInput('routeCompleteEndDate') | govukDate}}</p>
 					<p class=" column-card__body-text-bold"><strong>Award date</strong></p>
-					<p class=" column-card__body-text">17/10/2024</p>
+					<p class=" column-card__body-text">{{data | isoDateFromDateInput('routeAwardDate') | govukDate}}</p>
 					<p class=" column-card__body-text-bold"><strong>Award date</strong></p>
 					<p class=" column-card__body-text">17/10/2024</p>
 				</div>
