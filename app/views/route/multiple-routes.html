@@ -46,14 +46,13 @@
           }) }}
 
       {% else %}
+        
 
-
-        {% if data.hasRouteExemption %}
-          {% include "_includes/autocompletes/routes/route-with-exemption-card.njk" %} 
-        {% elif not data.hasRouteExemption %}
-            {% include "_includes/autocompletes/routes/route-with-no-exemption-card.njk" %} 
-        {% endif %}
-
+      {% include "_includes/autocompletes/routes/route-with-multiple-column-card.njk" %}
+        
+        {% if data.activeRouteType or data.legacyRouteType %}
+          {% include "_includes/autocompletes/routes/route-with-exemption-card.njk" %}    
+        {% endif %} 
               
         {{ govukButton({
           text: "Add a route",

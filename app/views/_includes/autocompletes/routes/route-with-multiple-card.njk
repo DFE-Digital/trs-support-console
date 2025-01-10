@@ -1,0 +1,116 @@
+{{ govukSummaryList({
+card: {
+title: {
+  text: "Qualified teacher status (QTS) awarded on 10 September 2016",
+	classes: "govuk-!-font-size-22"
+},
+  actions: {
+    items: [
+      {
+        href: "/itt/add-qualification/award-date",
+        text: "Edit",
+        visuallyHiddenText: "route"
+      }
+    ]
+  }
+},
+rows: [
+		{
+			key: {
+				text: "Route"
+			},
+			value: {
+				text: "School Direct Training Programme Self Funded"
+			}
+		},
+
+		{
+			key: {
+				text: "Status"
+			},
+			value: {
+				text: "Awarded"
+			}
+		},
+
+		{
+			key: {
+				text: "End date"
+			},
+			value: {
+				text:  "2 August 2016"
+			}
+		},
+
+		{
+			key: {
+				text: "Award date"
+			},
+			value: {
+				text:  "10 September 2016"
+			}
+		},
+
+		{
+			key: {
+				text: "Has exemption"
+			},
+			value: {
+				html: "No"
+			}
+		},
+
+		{
+			key: {
+				text: "Exemption reason"
+			},
+			value: {
+				html: exemptionReasons or "None"
+			}
+		},
+
+		{
+			key: {
+				text: "Training provider"
+			},
+			value: {
+				html: "University of Edinburgh"
+			}
+		},
+
+		{
+			key: {
+				text: "Degree type"
+			},
+			value: {
+				html: "BEng (Hons)/Education"
+			}
+		},
+
+		{
+			key: {
+				text: "Country of training"
+			},
+			value: {
+				text: "	XK United Kingdom"
+			}
+		},
+		
+		{
+			key: {
+				text: "Age range"
+			},
+			value: {
+				text: "From 5 to 11"
+			}
+		},
+		{
+			key: {
+				text: "Subjects"
+			},
+			value: {
+				html: "English" 
+			}
+		}     
+	]
+}) }}

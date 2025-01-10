@@ -23,19 +23,17 @@
  </ul>
 {% endset %}
 
-{# comment #}
-
 {{ govukSummaryList({
 card: {
 title: {
-  html: "Qualified teacher status (QTS) awarded on " + data | isoDateFromDateInput('routeAwardDate') | govukDate,
+  text: data.activeRouteType,
 	classes: "govuk-!-font-size-22"
 },
   actions: {
     items: [
       {
         href: "/itt/add-qualification/award-date",
-        text: "Edit",
+        text: "Edit route",
         visuallyHiddenText: "route"
       }
     ]
@@ -48,6 +46,15 @@ rows: [
 					},
 					value: {
 						text: data.activeRouteType or data.legacyRouteType
+					},
+					actions: {
+						items: [
+							{
+								href: "/all-qts-routes",
+								text: "Change",
+								visuallyHiddenText: "route type"
+							}
+						]
 					}
 				},
 
@@ -57,6 +64,15 @@ rows: [
 					},
 					value: {
 						text: data.routeStatus
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-status",
+								text: "Change",
+								visuallyHiddenText: "route status"
+							}
+						]
 					}
 				},
 
@@ -66,6 +82,15 @@ rows: [
 					},
 					value: {
 						text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-complete/end-date",
+								text: "Change",
+								visuallyHiddenText: "route status"
+							}
+						]
 					}
 				},
 
@@ -75,6 +100,15 @@ rows: [
 					},
 					value: {
 						text:  data | isoDateFromDateInput('routeAwardDate') | govukDate
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-complete/award-date",
+								text: "Change",
+								visuallyHiddenText: "route status"
+							}
+						]
 					}
 				},
 
@@ -84,6 +118,15 @@ rows: [
 					},
 					value: {
 						html: data.hasRouteExemption
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-complete/has-exemption",
+								text: "Change",
+								visuallyHiddenText: "if they have an exemption"
+							}
+						]
 					}
 				},
 
@@ -93,6 +136,15 @@ rows: [
 					},
 					value: {
 						html: exemptionReasons
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-complete/exemption-reason",
+								text: "Change",
+								visuallyHiddenText: "exemption reason"
+							}
+						]
 					}
 				},
 
@@ -102,6 +154,15 @@ rows: [
 					},
 					value: {
 						html: data.trainingProvider
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-information/training-provider",
+								text: "Change",
+								visuallyHiddenText: "Training provider"
+							}
+						]
 					}
 				},
 
@@ -111,6 +172,15 @@ rows: [
 					},
 					value: {
 						html: data.degreeTypes
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-information/degree-type",
+								text: "Change",
+								visuallyHiddenText: "Degree type"
+							}
+						]
 					}
 				},
 
@@ -120,6 +190,15 @@ rows: [
 					},
 					value: {
 						text: data.routeCountryOfTraining
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-information/country",
+								text: "Change",
+								visuallyHiddenText: "Country of training"
+							}
+						]
 					}
 				},
 				
@@ -129,6 +208,15 @@ rows: [
 					},
 					value: {
 						text: "From " + data.ageFromRestriction + " to " + data.ageToRestriction
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-information/age-to-from",
+								text: "Change",
+								visuallyHiddenText: "teaching age range"
+							}
+						]
 					}
 				},
 				{
@@ -137,6 +225,15 @@ rows: [
 					},
 					value: {
 						html: subjectChoices 
+					},
+					actions: {
+						items: [
+							{
+								href: "/route-information/subjects",
+								text: "Change",
+								visuallyHiddenText: "subjects"
+							}
+						]
 					}
 				}     
 			]
