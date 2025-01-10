@@ -1,21 +1,145 @@
-{{ govukAccordion({
-  id: "accordion-default",
-  items: [
-		{
-      heading: {
-        text: "Early years teacher status (EYTS) awarded on 8 August 2016"
-      },
-      content: {
-        html: '<p class="govuk-body">This is the content for Writing well for specialists.</p>'
-      }
-    },
-    {
-      heading: {
-        text: "Qualified teacher status (QTS) awarded on " + data | isoDateFromDateInput('routeAwardDate') | govukDate
-      },
-      content: {
-        html: '<p class="govuk-body">This is the content for Writing well for the web.</p>'
-      }
-    }
-  ]
-}) }}
+<div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+  <div class="govuk-accordion__section">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+          Writing well for the web
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+      <div class="govuk-button-group">
+			<button type="submit" class="govuk-button" data-module="govuk-button">
+				Save and continue
+			</button>
+			<button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+				Save as draft
+			</button>
+		</div>
+    </div>
+  </div>
+  <div class="govuk-accordion__section govuk-!-margin-bottom-0">
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+         Qualified teacher status (QTS) {{data | isoDateFromDateInput('routeAwardDate') | govukDate}}
+        </span>
+      </h2>
+    </div>
+    <div id="accordion-default-content-2 govuk-!-margin-bottom-0" class="govuk-accordion__section-content">
+      <div class="govuk-button-group">
+			<button type="submit" class="govuk-button" data-module="govuk-button">
+				Mark route as complete
+			</button>
+			<button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+				Edit route details
+			</button>
+			<dl class="govuk-summary-list govuk-!-margin-bottom-0">
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Route
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{{data.activeRouteType or data.legacyRouteType}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Status
+					</dt>
+					<dd class="govuk-summary-list__value">
+						<strong class="govuk-tag govuk-tag--blue">{{data.routeStatus}}</strong>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						End date
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{{data | isoDateFromDateInput('routeCompleteEndDate') | govukDate}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Award date
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{{data | isoDateFromDateInput('routeAwardDate') | govukDate}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Has exemption
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{{data.hasRouteExemption}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Exemption reason
+					</dt>
+					<dd class="govuk-summary-list__value">
+						<ul class="govuk-list">
+							{% for reason in data.inductionExemptionReason%}
+							<li>
+								{{reason}}
+							</li>
+							{% endfor %}
+						</ul>
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Training provider
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{{data.trainingProvider}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Degree type
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{{data.degreeTypes}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Country of training
+					</dt>
+					<dd class="govuk-summary-list__value">
+						{{data.routeCountryOfTraining}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Age range
+					</dt>
+					<dd class="govuk-summary-list__value">
+						From {{data.ageFromRestriction}} to {{data.ageToRestriction}}
+					</dd>
+				</div>
+				<div class="govuk-summary-list__row">
+					<dt class="govuk-summary-list__key">
+						Subject specialism
+					</dt>
+					<dd class="govuk-summary-list__value">
+						<ul class="govuk-list">
+							<li>{{ data.subjectChoiceOne }}</li>
+							
+								{% if data.subjectChoiceTwo %}
+								<li>{{ data.subjectChoiceTwo }}</li>
+								{% endif %}
+
+								{% if data.subjectChoiceThree %}
+									<li>{{ data.subjectChoiceThree }}</li>
+								{% endif %}
+						</ul>
+					</dd>
+				</div>
+			</dl>
+		</div>
+  </div>
+</div>
