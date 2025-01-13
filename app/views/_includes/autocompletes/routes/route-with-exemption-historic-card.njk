@@ -8,6 +8,11 @@ title: {
     items: [
       {
         href: "/itt/add-qualification/award-date",
+        text: "Mark route as complete",
+        visuallyHiddenText: "route"
+      },
+			{
+        href: "/check",
         text: "Edit",
         visuallyHiddenText: "route"
       }
@@ -25,13 +30,13 @@ rows: [
 		},
 
 		{
-			key: {
-				text: "Status"
-			},
-			value: {
-				text: "Awarded"
-			}
-		},
+					key: {
+						text: "Status"
+					},
+					value: {
+						html: '<strong class="govuk-tag govuk-tag--blue">' + data.routeStatus + '</strong>'
+					}
+				},
 
 		{
 			key: {
