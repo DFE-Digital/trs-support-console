@@ -108,9 +108,29 @@ module.exports = (router) => {
 		if (req.query.returnUrl) {
 			res.redirect(req.query.returnUrl)
 		} else {	
-			res.redirect('/route-information/age-to-from')  
+			res.redirect('/route-information/key-stages')  
 		}      
 	})
+
+	router.post('/route-information/key-stages', (req, res) => {
+    let data = req.session.data
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else if (data.keyStageAgeRanges == "Age range") {
+      res.redirect('/route-information/age-to-from')
+    } else {
+      res.redirect('/route-information/subjects')
+    }
+      console.log(data.keyStageAgeRanges)
+  })
+
+	// router.post('/route-information/key-stages', (req, res) => {
+	// 	if (req.query.returnUrl) {
+	// 		res.redirect(req.query.returnUrl)
+	// 	} else {	
+	// 		res.redirect('/route-information/age-to-from')  
+	// 	}      
+	// })
 
 	router.post('/route-information/age-to-from', (req, res) => {
 		if (req.query.returnUrl) {

@@ -27,8 +27,8 @@
 
       
       <form method="post" novalidate>
-        {{ govukCheckboxes({
-          name: "waste",
+        {{ govukRadios({
+          name: "keyStageAgeRanges",
           fieldset: {
             legend: {
               text: questionName,
@@ -36,33 +36,34 @@
               classes: "govuk-fieldset__legend--s, govuk-visually-hidden"
             }
           },
-          {# hint: {
-            text: "Select all that apply"
-          }, #}
           items: [
             {
-              value: "0 to 2 years",
-              text: "0 to 2 years"
+              value: "Age range",
+              text: "Age range"
             },
             {
-              value: "3 to 5 years",
-              text: "3 to 5 years"
+              value: "Foundation stage",
+              text: "Foundation stage"
             },
             {
-              value: "6 to 11 years",
-              text: "6 to 11 years"
+              value: "Further education",
+              text: "Further education"
             },
             {
-              value: "12 to 15 years",
-              text: "12 to 15 years"
+              value: "Key stage 1",
+              text: "Key stage 1"
             },
             {
-              value: "16 to 18 years",
-              text: "16 to 18 years"
+              value: "Key stage 2",
+              text: "Key stage 2"
             },
             {
-              value: "19 to 24",
-              text: "19 to 24"
+              value: "Key stage 3",
+              text: "Key stage 3"
+            },
+            {
+              value: "Key stage 4",
+              text: "Key stage 4"
             }
           ]
         }) }}
