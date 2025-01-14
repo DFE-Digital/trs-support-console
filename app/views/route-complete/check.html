@@ -1,3 +1,13 @@
+{% extends "layouts/main.html" %}
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Routes and professional status - " + teacher.fullName %}
+{% set questionName = "Check details to complete route to professional status" %}
+
 {% set subjectChoices %}
   <ul class="govuk-list">
     <li>{{ data.subjectChoiceOne }}</li>
@@ -12,7 +22,6 @@
   </ul>
 {% endset %}
 
-
 {% set exemptionReasons %}
  <ul class="govuk-list">
   {% for reason in data.inductionExemptionReason%}
@@ -23,30 +32,26 @@
  </ul>
 {% endset %}
 
-{# comment #}
 
-{{ govukSummaryList({
-card: {
-title: {
-  html: "Qualified teacher status (QTS) &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; " + data | isoDateFromDateInput('routeAwardDate') | govukDate,
-	classes: "govuk-!-font-size-22"
-},
-  actions: {
-    items: [
-      {
-        href: "/route-complete/end-date",
-        text: "Mark route as complete",
-        visuallyHiddenText: "route"
-      } if not data.routeStatus == "Awarded",
-			{
-        href: "/check",
-        text: "Edit route",
-        visuallyHiddenText: "route"
-      }
-    ]
-  }
-},
-rows: [
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
 				{
 					key: {
 						text: "Route"
@@ -136,4 +141,25 @@ rows: [
 					}
 				}     
 			]
-}) }}
+      }) }}
+
+      
+
+      <form method="post" action="/check-handler">
+        {{ govukButton({
+          text: "Confirm and complete route"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+      {{ data.hasRouteExemption | log }}
+      {{ data.routeCompleteEndDate | log }}
+      {{ data.routeAwardDate | log }}
+    
+  </div>
+</div>
+
+{% endblock %}

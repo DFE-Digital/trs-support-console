@@ -49,23 +49,23 @@ module.exports = (router) => {
 		}      
 	})
 
-	router.post('/route-complete/has-exemption', (req, res) => {
-    let data = req.session.data
-    if (req.query.returnUrl) {
-      res.redirect(req.query.returnUrl)
-    } else if (data.hasRouteExemption == 'Yes') {
-      res.redirect('/route-complete/exemption-reason')
-    } else {
-      res.redirect('/route-information/training-provider')
-    }
-      console.log(data.hasRouteExemption)
-  })
+	// router.post('/route-complete/has-exemption', (req, res) => {
+  //   let data = req.session.data
+  //   if (req.query.returnUrl) {
+  //     res.redirect(req.query.returnUrl)
+  //   } else if (data.hasRouteExemption == 'Yes') {
+  //     res.redirect('/route-complete/exemption-reason')
+  //   } else {
+  //     res.redirect('/route-information/training-provider')
+  //   }
+  //     console.log(data.hasRouteExemption)
+  // })
 
-	router.post('/route-complete/exemption-reason', (req, res) => {
+	router.post('/route-complete/has-exemption', (req, res) => {
 		if (req.query.returnUrl) {
 			res.redirect(req.query.returnUrl)
 		} else {
-			res.redirect('/route-information/training-provider')  
+			res.redirect('/route-complete/check')  
 		}      
 	})
 
