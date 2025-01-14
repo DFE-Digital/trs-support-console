@@ -16,6 +16,7 @@ router.all('*', (req, res, next) => {
 
 // ADD QUALS & ROUTES 
 require('./routes/prof-status/all-routes')(router)
+require('./routes/prof-status/edit/edit-routes')(router)
 
 
 require('./routes/account')(router)

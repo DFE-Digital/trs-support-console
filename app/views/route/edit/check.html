@@ -63,7 +63,7 @@
             actions: {
               items: [
                 {
-                  href: "/all-qts-routes?returnUrl=/check",
+                  href: "/all-qts-routes?returnUrl=route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "route type"
                 }
@@ -76,12 +76,12 @@
               text: "Status"
             },
             value: {
-              text: data.routeStatus
+              html: "<strong class='govuk-tag govuk-tag--orange'>" + data.routeStatus + "</strong>"
             },
             actions: {
               items: [
                 {
-                  href: "/route-status?returnUrl=/check",
+                  href: "/route-status?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "route status"
                 }
@@ -99,7 +99,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-complete/end-date?returnUrl=/check",
+                  href: "/route-complete/end-date?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "route status"
                 }
@@ -117,7 +117,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-complete/award-date?returnUrl=/check",
+                  href: "/route-complete/award-date?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "route status"
                 }
@@ -135,7 +135,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-complete/has-exemption?returnUrl=/check",
+                  href: "/route-complete/has-exemption?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "if they have an exemption"
                 }
@@ -153,7 +153,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/training-provider?returnUrl=/check",
+                  href: "/route-information/training-provider?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "Training provider"
                 }
@@ -171,7 +171,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/degree-type?returnUrl=/check",
+                  href: "/route-information/degree-type?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "Degree type"
                 }
@@ -189,7 +189,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/country?returnUrl=/check",
+                  href: "/route-information/country?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "Country of training"
                 }
@@ -207,7 +207,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/age-to-from?returnUrl=/check",
+                  href: "/route-information/age-to-from?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "teaching age range"
                 }
@@ -224,7 +224,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/subjects?returnUrl=/check",
+                  href: "/route-information/subjects?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "subjects"
                 }
@@ -236,7 +236,7 @@
 
       
 
-      <form method="post" action="/check-handler">
+      <form method="post" action="/route/edit/check">
         {{ govukButton({
           text: "Continue"
         }) }}
