@@ -52,95 +52,60 @@
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
-				{
-					key: {
-						text: "Route"
-					},
-					value: {
-						text: data.activeRouteType or data.legacyRouteType
-					}
-				},
+          {
+            key: {
+              text: "End date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/subjects?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          },
 
-				{
-					key: {
-						text: "Status"
-					},
-					value: {
-						html: '<strong class="govuk-tag govuk-tag--blue">' + data.routeStatus + '</strong>'
-					}
-				},
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeAwardDate') | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/subjects?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          },
 
-				{
-					key: {
-						text: "End date"
-					},
-					value: {
-						text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
-					}
-				},
-
-				{
-					key: {
-						text: "Award date"
-					},
-					value: {
-						text:  data | isoDateFromDateInput('routeAwardDate') | govukDate
-					}
-				},
-
-				{
-					key: {
-						text: "Has exemption"
-					},
-					value: {
-						html: data.hasRouteExemption
-					}
-				},
-
-				{
-					key: {
-						text: "Training provider"
-					},
-					value: {
-						html: data.trainingProvider
-					}
-				},
-
-				{
-					key: {
-						text: "Degree type"
-					},
-					value: {
-						html: data.degreeTypes
-					}
-				},
-
-				{
-					key: {
-						text: "Country of training"
-					},
-					value: {
-						text: data.routeCountryOfTraining
-					}
-				},
-				
-				{
-					key: {
-						text: "Age range"
-					},
-					value: {
-						text: "From " + data.ageFromRestriction + " to " + data.ageToRestriction
-					}
-				},
-				{
-					key: {
-						text: "Subjects"
-					},
-					value: {
-						html: subjectChoices 
-					}
-				}     
-			]
+          {
+            key: {
+              text: "Has exemption"
+            },
+            value: {
+              html: data.hasRouteExemption
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/subjects?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          }
+			  ]
       }) }}
 
       
@@ -156,8 +121,9 @@
       </p>
 
       {{ data.hasRouteExemption | log }}
-      {{ data.routeCompleteEndDate | log }}
-      {{ data.routeAwardDate | log }}
+      {{ data | isoDateFromDateInput('routeAwardDate') | govukDate | log }}
+      {{ data | isoDateFromDateInput('routeCompleteEndDate') | govukDate | log }}
+
     
   </div>
 </div>

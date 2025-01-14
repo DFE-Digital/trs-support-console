@@ -22,6 +22,20 @@
   </ul>
 {% endset %}
 
+{% set statusTagType %}
+	{% if data | isoDateFromDateInput('routeAwardDate') | govukDate %}
+		<strong class='govuk-tag govuk-tag--green'>AWARDED</strong>
+	{% elseif data.routeStatus == "In progress" %}
+		<strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong>
+	{% elseif data.routeStatus == "Failed" %}
+		<strong class='govuk-tag govuk-tag--red'>FAILED</strong>
+	{% elseif data.routeStatus == "Withdrawn" %}
+		<strong class='govuk-tag govuk-tag--yellow'>AWARDED</strong>
+	{% elseif data.routeStatus == "Deferred" %}
+		<strong class='govuk-tag govuk-tag--blue'>DEFERRED</strong>	
+	{% endif%}
+{% endset %} 
+
 {% set exemptionReasons %}
  <ul class="govuk-list">
   {% for reason in data.inductionExemptionReason%}
@@ -63,7 +77,7 @@
             actions: {
               items: [
                 {
-                  href: "/all-qts-routes?returnUrl=route/edit/check",
+                  href: "/all-qts-routes?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "route type"
                 }
@@ -76,7 +90,7 @@
               text: "Status"
             },
             value: {
-              html: "<strong class='govuk-tag govuk-tag--orange'>" + data.routeStatus + "</strong>"
+              html: statusTagType
             },
             actions: {
               items: [
@@ -105,7 +119,7 @@
                 }
               ]
             }
-          } if data.routeCompleteEndDate,
+          } if data | isoDateFromDateInput('routeCompleteEndDate') | govukDate,
 
           {
             key: {
@@ -123,7 +137,7 @@
                 }
               ]
             }
-          } if data.routeAwardDate,
+          } if data | isoDateFromDateInput('routeAwardDate') | govukDate,
 
           {
             key: {
@@ -141,7 +155,7 @@
                 }
               ]
             }
-          } if not data.hasRouteExemption == "No",
+          } if data.hasRouteExemption,
 
           {
             key: {

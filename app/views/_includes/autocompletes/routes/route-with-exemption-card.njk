@@ -12,6 +12,20 @@
   </ul>
 {% endset %}
 
+{% set statusTagType %}
+	{% if data | isoDateFromDateInput('routeAwardDate') | govukDate %}
+		<strong class='govuk-tag govuk-tag--green'>AWARDED</strong>
+	{% elseif data.routeStatus == "In progress" %}
+		<strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong>
+	{% elseif data.routeStatus == "Failed" %}
+		<strong class='govuk-tag govuk-tag--red'>FAILED</strong>
+	{% elseif data.routeStatus == "Withdrawn" %}
+		<strong class='govuk-tag govuk-tag--yellow'>AWARDED</strong>
+	{% elseif data.routeStatus == "Deferred" %}
+		<strong class='govuk-tag govuk-tag--blue'>DEFERRED</strong>	
+	{% endif%}
+{% endset %}  
+
 
 {% set exemptionReasons %}
  <ul class="govuk-list">
@@ -28,18 +42,18 @@
 {{ govukSummaryList({
 card: {
 title: {
-  html: "Qualified teacher status (QTS) &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; " + data | isoDateFromDateInput('routeAwardDate') | govukDate,
+  html: "Qualified teacher status (QTS) &nbsp; " + statusTagType + " &nbsp; " + data | isoDateFromDateInput('routeAwardDate') | govukDate,
 	classes: "govuk-!-font-size-22"
 },
   actions: {
     items: [
       {
         href: "/route-complete/end-date",
-        text: "Mark route as complete",
+        text: "Complete route",
         visuallyHiddenText: "route"
-      } if not data.routeStatus == "Awarded",
+      } if not data.hasRouteExemption,
 			{
-        href: "/check",
+        href: "/route/edit/check",
         text: "Edit route",
         visuallyHiddenText: "route"
       }
@@ -56,14 +70,6 @@ rows: [
 					}
 				},
 
-				{
-					key: {
-						text: "Status"
-					},
-					value: {
-						html: '<strong class="govuk-tag govuk-tag--blue">' + data.routeStatus + '</strong>'
-					}
-				},
 
 				{
 					key: {

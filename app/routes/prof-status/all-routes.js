@@ -70,14 +70,31 @@ module.exports = (router) => {
 	})
 
 
-	/// Route Information
-	router.post('/route-information/training-provider', (req, res) => {
+	/// Route change reason
+	router.post('/route/edit/change-reason', (req, res) => {
 		if (req.query.returnUrl) {
 			res.redirect(req.query.returnUrl)
 		} else {
-			res.redirect('/route-information/degree-type')  
+			res.redirect('/route')  
 		}      
 	})
+
+	
+	router.post('/route-information/training-provider', (req, res) => {
+    let data = req.session.data
+    if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else if (data.hasRouteExemption) {
+      res.redirect('/route/edit/check')
+    } else {
+      res.redirect('/route-information/degree-type')
+    }
+      console.log(data.hasRouteExemption)
+  })
+
+
+
+
 
 	router.post('/route-information/degree-type', (req, res) => {
 		if (req.query.returnUrl) {

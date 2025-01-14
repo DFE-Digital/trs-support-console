@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Check details to confirm route and qualification" %}
+{% set questionName = "Check details to confirm route to professional status" %}
 
 {% set subjectChoices %}
   <ul class="govuk-list">
@@ -20,6 +20,20 @@
         <li>{{ data.subjectChoiceThree }}</li>
       {% endif %}
   </ul>
+{% endset %}
+
+{% set statusTagType %}
+	{% if data.routeStatus == "Awarded" %}
+		<strong class='govuk-tag govuk-tag--green'>AWARDED</strong>
+	{% elseif data.routeStatus == "In progress" %}
+		<strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong>
+	{% elseif data.routeStatus == "Failed" %}
+		<strong class='govuk-tag govuk-tag--red'>FAILED</strong>
+	{% elseif data.routeStatus == "Withdrawn" %}
+		<strong class='govuk-tag govuk-tag--yellow'>AWARDED</strong>
+	{% elseif data.routeStatus == "Deferred" %}
+		<strong class='govuk-tag govuk-tag--blue'>DEFERRED</strong>	
+	{% endif%}
 {% endset %}
 
 {% set exemptionReasons %}
@@ -79,7 +93,7 @@
               text: "Status"
             },
             value: {
-              html: "<strong class='govuk-tag govuk-tag--orange'>" + data.routeStatus + "</strong>"
+              html: statusTagType
             },
             actions: {
               items: [
