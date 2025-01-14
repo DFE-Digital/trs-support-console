@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Check details to confirm route and qualification" %}
+{% set questionName = "Edit route details" %}
 
 {% set subjectChoices %}
   <ul class="govuk-list">
@@ -49,9 +49,6 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
 
-      {{ govukInsetText({
-        text: "A professional status will be immediately added when you confirm this route."
-      }) }}
 
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
@@ -241,7 +238,7 @@
 
       <form method="post" action="/check-handler">
         {{ govukButton({
-          text: "Confirm and add route"
+          text: "Continue"
         }) }}
       </form>    
 

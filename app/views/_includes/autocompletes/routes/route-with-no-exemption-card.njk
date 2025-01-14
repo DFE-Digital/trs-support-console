@@ -12,16 +12,23 @@
   </ul>
 {% endset %}
 
+{% set inProgressDate = data | isoDateFromDateInput('routeInProgressStartDate') | govukDate %}
+
 {{ govukSummaryList({
 card: {
 title: {
-    text: data.chooseQtsRoute
+    html: "Qualified teacher status (QTS) &nbsp; <strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong> &nbsp; from " + inProgressDate
 },
   actions: {
     items: [
       {
         href: "/itt/add-qualification/award-date",
-        text: "Add qualification to route",
+        text: "Complete route",
+        visuallyHiddenText: "route"
+      },
+			{
+        href: "/route/edit/check",
+        text: "Edit route",
         visuallyHiddenText: "route"
       }
     ]
@@ -33,101 +40,61 @@ rows: [
           text: "Route"
         },
         value: {
-          text: data.chooseQtsRoute
-        },
-        actions: {
-          items: [
-            {
-              href: "/change-qts-route",
-              text: "Change",
-              visuallyHiddenText: "QTS route"
-            }
-          ]
+          text: data.activeRouteType
         }
       },
+
       {
         key: {
-          text: "Establishment"
+          text: "Training provider"
         },
         value: {
-          text: data.establishment
-        },
-        actions: {
-          items: [
-            {
-              href: "/itt/establishment?returnUrl=/itt/check",
-              text: "Change",
-              visuallyHiddenText: "establishment"
-            }
-          ]
+          text: data.trainingProvider
         }
       },
+
       {
         key: {
-          text: "Qualification"
+          text: "Degree type"
         },
         value: {
-          text: data.establishmentQualification
-        },
-        actions: {
-          items: [
-            {
-              href: "/itt/establishment-qualification?returnUrl=/itt/check",
-              text: "Change",
-              visuallyHiddenText: "establishment qualification"
-            }
-          ]
+          text: data.degreeTypes
         }
       },
+
+      {
+        key: {
+          text: "Country of training"
+        },
+        value: {
+          text: data.routeCountryOfTraining
+        }
+      },
+
       {
         key: {
           text: "Start date"
         },
         value: {
-          text: data['ittStartDate-day'] + " " + data['ittStartDate-month'] + " " + data['ittStartDate-year']
-        },
-        actions: {
-          items: [
-            {
-              href: "/itt/start-date?returnUrl=/itt/check",
-              text: "Change",
-              visuallyHiddenText: "start date"
-            }
-          ]
+          text: inProgressDate
         }
       },
+
       {
         key: {
           text: "Age range"
         },
         value: {
-          text: "From " + data.ittFromAgeRestriction + " to " + data.ittToAgeRestriction
-        },
-        actions: {
-          items: [
-            {
-              href: "/itt/age-restriction?returnUrl=/itt/check",
-              text: "Change",
-              visuallyHiddenText: "age restrictions"
-            }
-          ]
+          html: "From " + data.ageFromRestriction + " to " + data.ageToRestriction
         }
       },
+
       {
         key: {
           text: "Subjects"
         },
         value: {
           html: subjectChoices
-        },
-        actions: {
-          items: [
-            {
-              href: "/itt/subjects?returnUrl=/itt/check",
-              text: "Change",
-              visuallyHiddenText: "subjects"
-            }
-          ]
         }
       }          
     ]

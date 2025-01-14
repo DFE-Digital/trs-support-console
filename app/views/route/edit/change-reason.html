@@ -1,0 +1,175 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "alerts" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Routes and professional status - " + teacher.fullName %}
+{% set questionName = "Why are you changing the route details?" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    {{ data.teachers | log }}
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+    {{ data.newInductionStatus | log }}
+ 
+      <form method="post" novalidate>
+        {% set evidenceYes%}
+          {{ govukFileUpload({
+            id: "evidence[file]",
+            name: "evidence[file]",
+            label: {
+              text: "Upload files",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "Must be smaller than 100MB"
+            }
+          }) }}
+        {% endset %}
+
+        {% set otherInput %}
+        {{ govukInput({
+            id: "other-reason",
+            name: "otherReason",
+            classes: "govuk-!-width-two-third",
+            label: {
+              text: "Add reason",
+              classes: "govuk-label--s"
+            },
+            value: data.otherReason
+          }) }}
+        {% endset %}
+
+        {% set moreDetailsTextArea %}
+          {{ govukTextarea({
+            id: "yes-additional-info",
+            name: "yesAdditionalInfo",
+            classes: "govuk-!-width-two-third",
+            label: {
+              text: "Add more information",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "You can enter up to 4000 characters"
+            },
+            value: data.yesAdditionalInfo
+          }) }}
+        {% endset %}
+
+
+        {{ govukRadios({
+          name: "statusChangeReason",
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Data loss or incomplete information",
+              text: "Data loss or incomplete information"
+            },
+            {
+              value: "New information received",
+              text: "New information received"
+            },
+            {
+              value: "No longer exempt from induction",
+              text: "No longer exempt from induction"
+            },
+
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: otherInput
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">Do you want to add more information about why you're changing the details?</h2>
+        {{ govukRadios({
+          name: 'hasMoreInfo',
+          fieldset: {
+            legend: {
+              text: "Do you have more information",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: moreDetailsTextArea
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.hasMoreInfo
+        }) }}
+
+        <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+        {{ govukRadios({
+          name: "evidence[hasEvidence]",
+          fieldset: {
+            legend: {
+              text: "Do you have evidence to upload?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: evidenceYes
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.evidence.hasEvidence
+        }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

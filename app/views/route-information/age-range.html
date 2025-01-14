@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "What age range is this teacher qualified to teach?" %}
+{% set questionName = "Which age range do they specialise in teaching?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -36,9 +36,9 @@
               classes: "govuk-fieldset__legend--s, govuk-visually-hidden"
             }
           },
-          hint: {
+          {# hint: {
             text: "Select all that apply"
-          },
+          }, #}
           items: [
             {
               value: "0 to 2 years",

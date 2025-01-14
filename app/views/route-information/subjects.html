@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "What subjects can " + data.teachers[0].fullName + " teach in England?" %}
+{% set questionName = "Which subject do they specialise in teaching?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({

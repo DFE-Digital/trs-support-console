@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "What age range is " + teacher.fullName + " qualified to teach?" %}
+{% set questionName = "Which age range do they specialise in teaching?" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -31,9 +31,6 @@
 
         {{ govukInput({
           classes: "govuk-input--width-4",
-          hint: {
-            text: "Some hint text here..."
-          },
           id: "age-from-restriction",
           name: "ageFromRestriction",
           inputmode: "numeric",
