@@ -27,23 +27,26 @@
       
       <form method="post" novalidate>
         {{ govukDateInput({
-          id: "routeInProgressEnd",
-          namePrefix: "routeInProgressEndDate",
+          id: "routeCompleteEnd",
+          namePrefix: "routeCompleteEndDate",
+          hint: {
+            text: "For example, 27 3 2007"
+          },
           items: [
             {
               name: "day",
               classes: "govuk-input--width-2",
-              value: data['routeInProgressEndDate-day']
+              value: data['routeCompleteEndDate-day']
             },
             {
               name: "month",
               classes: "govuk-input--width-2",
-              value: data['routeInProgressEndDate-month']
+              value: data['routeCompleteEndDate-month']
             },
             {
               name: "year",
               classes: "govuk-input--width-4",
-              value: data['routeInProgressEndDate-year']
+              value: data['routeCompleteEndDate-year']
             }
           ]
         }) }}

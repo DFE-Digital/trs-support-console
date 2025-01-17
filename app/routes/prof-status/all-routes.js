@@ -13,22 +13,13 @@ module.exports = (router) => {
     if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
     } else if (data.routeStatus == 'Awarded' || data.routeStatus == 'Failed') {
-      res.redirect('/route-complete/end-date')
+      res.redirect('/route-complete/start-date')
     } else {
       res.redirect('/route-in-progress/start-date')
     }
       console.log(data.routeStatus)
   })
 
-	///////// Route in progress //////////////
-
-	router.post('/route-in-progress/start-date', (req, res) => {
-		if (req.query.returnUrl) {
-			res.redirect(req.query.returnUrl)
-		} else {
-			res.redirect('/route-information/training-provider')  
-		}      
-	})
 
 
 	/////////// Route complete ///////////////
@@ -69,16 +60,6 @@ module.exports = (router) => {
 		}      
 	})
 
-
-	/// Route change reason
-	router.post('/route/edit/change-reason', (req, res) => {
-		if (req.query.returnUrl) {
-			res.redirect(req.query.returnUrl)
-		} else {
-			res.redirect('/route')  
-		}      
-	})
-
 	
 	router.post('/route-information/training-provider', (req, res) => {
     let data = req.session.data
@@ -92,14 +73,41 @@ module.exports = (router) => {
       console.log(data.hasRouteExemption)
   })
 
+	///////// Route in progress //////////////
+
+	router.post('/route-in-progress/start-date', (req, res) => {
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-in-progress/end-date')  
+		}      
+	})
+
+
+	router.post('/route-in-progress/end-date', (req, res) => {
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-information/training-provider')  
+		}      
+	})
 
 
 
+/// Route Information
+
+	router.post('/route-information/training-provider', (req, res) => {
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route-information/degree-type')  
+		}      
+	})
 
 	router.post('/route-information/degree-type', (req, res) => {
 		if (req.query.returnUrl) {
 			res.redirect(req.query.returnUrl)
-		} else {
+		} else {	
 			res.redirect('/route-information/country')  
 		}      
 	})
@@ -148,12 +156,24 @@ module.exports = (router) => {
 		}      
 	})
 
+
+	/// Route change reason
+	router.post('/route/edit/change-reason', (req, res) => {
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route/edit/check')  
+		}      
+	})
+
+	router.post('/route/edit/check', (req, res) => {
+		req.flash('success', 'Route to professional status added')
+	res.redirect('/route')
+	})
 	
 	/////////////  FLASH //////////////
   router.post('/check-handler', (req, res) => {
-
-	req.flash('success', 'Route to professional status added')
-
+		req.flash('success', 'Route to professional status added')
 	res.redirect('/route')
 	})
 }

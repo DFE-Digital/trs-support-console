@@ -47,6 +47,11 @@
 
       {% else %}
 
+      {% if data.routeStatus == "In progress" %}
+        {{ govukWarningText({
+          html: "You must edit route status to &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; to attain Qualified Teacher Status (QTS)"
+        }) }}
+      {% endif %}
 
         {% if data.hasRouteExemption %}
           {% include "_includes/autocompletes/routes/route-with-exemption-card.njk" %} 

@@ -62,10 +62,12 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
-
-      {{ govukInsetText({
-        text: "A professional status will be immediately added when you confirm this route."
-      }) }}
+      {% if data.routeStatus == "In progress" %}
+        {{ govukWarningText({
+          html: "You must edit route status to &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; to attain Qualified Teacher Status (QTS)"
+        }) }}
+      {% endif %}
+      
 
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
@@ -108,6 +110,24 @@
 
           {
             key: {
+              text: "Start date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeInProgressStartDate') | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-complete/end-date?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "route status"
+                }
+              ]
+            }
+          } if data.routeInProgressStartDate or 'Not provided',
+
+          {
+            key: {
               text: "End date"
             },
             value: {
@@ -122,7 +142,7 @@
                 }
               ]
             }
-          } if data.routeCompleteEndDate,
+          } if data.routeCompleteEndDate or 'Not provided',
 
           {
             key: {
@@ -247,7 +267,25 @@
                 }
               ]
             }
-          }     
+          },
+          
+          {
+            key: {
+              text: "Reason for change"
+            },
+            value: {
+              html: data.statusChangeReason 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/edit/change-reason?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "Reason for change of details"
+                }
+              ]
+            }
+          } if data.statusChangeReason
         ]
       }) }}
 

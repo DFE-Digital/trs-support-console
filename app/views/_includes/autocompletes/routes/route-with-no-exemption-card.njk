@@ -31,17 +31,12 @@
 {{ govukSummaryList({
 card: {
 title: {
-    html: "Qualified teacher status (QTS) &nbsp; <strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong> &nbsp; from " + inProgressDate
+    html: "Qualified teacher status (QTS) in progress from " + inProgressDate
 },
   actions: {
     items: [
-      {
-        href: "/route-complete/end-date",
-        text: "Complete route",
-        visuallyHiddenText: "route"
-      } if not data.hasRouteExemption,
 			{
-        href: "/route/edit/check",
+        href: "/route/edit/change-reason",
         text: "Edit route",
         visuallyHiddenText: "route"
       }
@@ -57,6 +52,33 @@ rows: [
           text: data.activeRouteType
         }
       },
+
+      {
+        key: {
+          text: "Status"
+        },
+        value: {
+          html: statusTagType
+        }
+      },
+
+      {
+        key: {
+          text: "Start date"
+        },
+        value: {
+          text:  data | isoDateFromDateInput('routeInProgressStartDate') | govukDate
+        }
+      } if data.routeInProgressStartDate or 'Not provided',
+
+      {
+        key: {
+          text: "End date"
+        },
+        value: {
+          text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
+        }
+      } if data.routeCompleteEndDate or 'Not provided',
 
       {
         key: {

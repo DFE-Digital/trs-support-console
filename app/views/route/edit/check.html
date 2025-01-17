@@ -105,6 +105,24 @@
 
           {
             key: {
+              text: "Start date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeInProgressStartDate') | govukDate 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-in-progress/start-date?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "route status"
+                }
+              ]
+            }
+          } ,
+
+          {
+            key: {
               text: "End date"
             },
             value: {
@@ -244,7 +262,24 @@
                 }
               ]
             }
-          }     
+          },
+          {
+            key: {
+              text: "Reason for change"
+            },
+            value: {
+              html: data.statusChangeReason or data.otherReason or data.yesAdditionalInfo
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/edit/change-reason?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "Reason for change of details"
+                }
+              ]
+            }
+          } if data.statusChangeReason or data.otherReason  or data.yesAdditionalInfo  
         ]
       }) }}
 
