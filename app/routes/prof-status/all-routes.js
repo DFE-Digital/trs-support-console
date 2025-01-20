@@ -8,12 +8,24 @@ module.exports = (router) => {
 		}      
 	})
 
+	// router.post('/route-status', (req, res) => {
+  //   let data = req.session.data
+  //   if (req.query.returnUrl) {
+  //     res.redirect(req.query.returnUrl)
+  //   } else if (data.routeStatus == "Awarded" || data.routeStatus === 'Failed') {
+  //     res.redirect('/route-complete/end-date')
+  //   } else {
+  //     res.redirect('/route-in-progress/start-date')
+  //   }
+  //     console.log(data.routeStatus)
+  // })
+
 	router.post('/route-status', (req, res) => {
     let data = req.session.data
-    if (req.query.returnUrl) {
+    if (data.routeStatus == "Awarded" || data.routeStatus === 'Failed') {
+      res.redirect('/route-complete/end-date')
+    } else if (req.query.returnUrl) {
       res.redirect(req.query.returnUrl)
-    } else if (data.routeStatus == 'Awarded' || data.routeStatus == 'Failed') {
-      res.redirect('/route-complete/start-date')
     } else {
       res.redirect('/route-in-progress/start-date')
     }
@@ -40,25 +52,17 @@ module.exports = (router) => {
 		}      
 	})
 
-	// router.post('/route-complete/has-exemption', (req, res) => {
-  //   let data = req.session.data
-  //   if (req.query.returnUrl) {
-  //     res.redirect(req.query.returnUrl)
-  //   } else if (data.hasRouteExemption == 'Yes') {
-  //     res.redirect('/route-complete/exemption-reason')
-  //   } else {
-  //     res.redirect('/route-information/training-provider')
-  //   }
-  //     console.log(data.hasRouteExemption)
-  // })
+
 
 	router.post('/route-complete/has-exemption', (req, res) => {
-		if (req.query.returnUrl) {
-			res.redirect(req.query.returnUrl)
-		} else {
-			res.redirect('/route-complete/check')  
-		}      
-	})
+    let data = req.session.data
+    if (req.query.returnUrl) {
+					res.redirect(req.query.returnUrl)
+			} else {
+      res.redirect('/route/edit/check')
+    }
+      console.log(data.routeStatus)
+  })
 
 	
 	router.post('/route-information/training-provider', (req, res) => {
@@ -132,13 +136,6 @@ module.exports = (router) => {
       console.log(data.keyStageAgeRanges)
   })
 
-	// router.post('/route-information/key-stages', (req, res) => {
-	// 	if (req.query.returnUrl) {
-	// 		res.redirect(req.query.returnUrl)
-	// 	} else {	
-	// 		res.redirect('/route-information/age-to-from')  
-	// 	}      
-	// })
 
 	router.post('/route-information/age-to-from', (req, res) => {
 		if (req.query.returnUrl) {
@@ -167,7 +164,12 @@ module.exports = (router) => {
 	})
 
 	router.post('/route/edit/check', (req, res) => {
-		req.flash('success', 'Route to professional status added')
+		let data = req.session.data
+		if (data.routeStatus == "Awarded" || data.routeStatus === 'Failed') {
+			req.flash('success', 'Route to professional status complete')
+		} else {
+			req.flash('success', 'Route to professional status updated')
+		}
 	res.redirect('/route')
 	})
 	
