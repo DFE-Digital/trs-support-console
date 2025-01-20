@@ -47,11 +47,6 @@ title: {
 },
   actions: {
     items: [
-      {
-        href: "/route-complete/end-date",
-        text: "Complete route",
-        visuallyHiddenText: "route"
-      } if not data.hasRouteExemption,
 			{
         href: "/route/edit/check",
         text: "Edit route",
@@ -73,12 +68,21 @@ rows: [
 
 				{
 					key: {
+						text: "Start date"
+					},
+					value: {
+						text:  data | isoDateFromDateInput('routeInProgressStartDate') | govukDate
+					}
+				} if data.routeInProgressStartDate or 'Not provided',
+
+				{
+					key: {
 						text: "End date"
 					},
 					value: {
 						text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
 					}
-				},
+				} if data.routeCompleteEndDate or 'Not provided',
 
 				{
 					key: {

@@ -3,78 +3,112 @@
 
 			<div class="govuk-grid-row">		
 				<div class="govuk-grid-column-full">
-					<h2 class="govuk-heading-m">{{"Qualified teacher status (QTS) on " + data | isoDateFromDateInput('routeAwardDate') | govukDate }}</h2>
+					<h2 class="govuk-heading-m">Qualified teacher status (QTS) awarded on 10 September 2016</h2>
 				</div>
 			</div>
 
 			<div class="govuk-grid-row">
-				<strong class="govuk-tag govuk-tag--blue">Awarded</strong>	
+				<span><strong class='govuk-tag govuk-tag--blue'>AWARDED</strong></span>	
 			</div>
 
 			<div class="govuk-grid-row">
 				<div class="govuk-grid-column-full">
 				<div class="govuk-button-group govuk-!-margin-top-4 govuk-!-margin-bottom-4">
 					{{ govukButton({
-						text: "Mark route as complete"
+						text: "Edit route",
+						classes: "govuk-button--secondary"
 					}) }}
 
 					{{ govukButton({
-						text: "Edit",
-						classes: "govuk-button--secondary"
+						text: "Delete route",
+						classes: "govuk-button--warning"
 					}) }}
 				</div>
 				</div>
 			</div>
 			
-			
-			
-
-
 			<div class="govuk-grid-row">
 				<div class="govuk-grid-column-one-third">
 					<p class=" column-card__body-text-bold"><strong>Route</strong></p>
 					<p class=" column-card__body-text">{{ data.activeRouteType or data.legacyRouteType }}</p>
 					<p class=" column-card__body-text-bold"><strong>End date</strong></p>
-					<p class=" column-card__body-text">{{data | isoDateFromDateInput('routeCompleteEndDate') | govukDate}}</p>
+					<p class=" column-card__body-text">2 August 2016</p>
 					<p class=" column-card__body-text-bold"><strong>Award date</strong></p>
-					<p class=" column-card__body-text">{{data | isoDateFromDateInput('routeAwardDate') | govukDate}}</p>
+					<p class=" column-card__body-text">10 September 2016</p>
+				</div>
+				<div class="govuk-grid-column-one-third">
 					<p class=" column-card__body-text-bold"><strong>Has exemption</strong></p>
-					<p class=" column-card__body-text">{{data.hasRouteExemption}}</p>
-				</div>
-				<div class="govuk-grid-column-one-third">
-					<p class=" column-card__body-text-bold"><strong>Exemption reason</strong></p>
-
-					<ul class="govuk-list">
-						{% for reason in data.inductionExemptionReason%}
-						<li>
-							{{reason}}
-						</li>
-						{% endfor %}
-					</ul>
-
-					<p class=" column-card__body-text-bold"><strong>Training provider</strong></p>
-					<p class=" column-card__body-text">{{data.trainingProvider}}</p>
-					<p class=" column-card__body-text-bold"><strong>Degree type</strong></p>
-					<p class=" column-card__body-text">{{data.degreeTypes}}</p>
-				</div>
-				<div class="govuk-grid-column-one-third">
+					<p class=" column-card__body-text">Yes</p>
 					<p class=" column-card__body-text-bold"><strong>Country of training</strong></p>
-					<p class=" column-card__body-text">{{data.routeCountryOfTraining}}</p>
+					<p class=" column-card__body-text">United Kingdom</p>
 					<p class=" column-card__body-text-bold"><strong>Age range</strong></p>
-					<p class=" column-card__body-text">From {{data.ageFromRestriction}} to {{data.ageToRestriction}}</p>
+					<p class=" column-card__body-text">From 5 to 18</p>
+				</div>	
+				<div class="govuk-grid-column-one-third">	
 					<p class=" column-card__body-text-bold"><strong>Subjects</strong></p>
 					<ul class="govuk-list">
-						<li>{{ data.subjectChoiceOne }}</li>
-						
-							{% if data.subjectChoiceTwo %}
-							<li>{{ data.subjectChoiceTwo }}</li>
-							{% endif %}
-
-							{% if data.subjectChoiceThree %}
-								<li>{{ data.subjectChoiceThree }}</li>
-							{% endif %}
+						<li>English</li>
 					</ul>
 				</div>
 			</div>
+		
+	</div>
+</div>
+
+
+<div class="column-card">
+	<div class="column-card__item">
+
+			<div class="govuk-grid-row">		
+				<div class="govuk-grid-column-full">
+					<h2 class="govuk-heading-m">Qualified teacher status (QTS) awarded on 10 August 2023</h2>
+				</div>
+			</div>
+
+			<div class="govuk-grid-row">
+				<span><strong class='govuk-tag govuk-tag--blue'>AWARDED</strong></span>	
+			</div>
+
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-full">
+				<div class="govuk-button-group govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+					{{ govukButton({
+						text: "Edit route",
+						classes: "govuk-button--secondary"
+					}) }}
+
+					{{ govukButton({
+						text: "Delete route",
+						classes: "govuk-button--warning"
+					}) }}
+				</div>
+				</div>
+			</div>
+			
+			<div class="govuk-grid-row">
+				<div class="govuk-grid-column-one-third">
+					<p class=" column-card__body-text-bold"><strong>Route</strong></p>
+					<p class=" column-card__body-text">Early Years ITT Undergraduate</p>
+					<p class=" column-card__body-text-bold"><strong>End date</strong></p>
+					<p class=" column-card__body-text">9 September  2022</p>
+					<p class=" column-card__body-text-bold"><strong>Award date</strong></p>
+					<p class=" column-card__body-text">23 October 2016</p>
+				</div>
+				<div class="govuk-grid-column-one-third">
+					<p class=" column-card__body-text-bold"><strong>Has exemption</strong></p>
+					<p class=" column-card__body-text">Yes</p>
+					<p class=" column-card__body-text-bold"><strong>Country of training</strong></p>
+					<p class=" column-card__body-text">United Kingdom</p>
+					<p class=" column-card__body-text-bold"><strong>Age range</strong></p>
+					<p class=" column-card__body-text">From 5 to 11</p>
+				</div>	
+				<div class="govuk-grid-column-one-third">	
+					<p class=" column-card__body-text-bold"><strong>Subjects</strong></p>
+					<ul class="govuk-list">
+						<li>Art and design</li>
+					</ul>
+				</div>
+			</div>
+		
 	</div>
 </div>

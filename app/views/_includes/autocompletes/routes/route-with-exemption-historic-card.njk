@@ -1,19 +1,56 @@
+{% set subjectChoices %}
+  <ul class="govuk-list">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+{% set statusTagType %}
+	{% if data | isoDateFromDateInput('routeAwardDate') | govukDate %}
+		<strong class='govuk-tag govuk-tag--green'>AWARDED</strong>
+	{% elseif data.routeStatus == "In progress" %}
+		<strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong>
+	{% elseif data.routeStatus == "Failed" %}
+		<strong class='govuk-tag govuk-tag--red'>FAILED</strong>
+	{% elseif data.routeStatus == "Withdrawn" %}
+		<strong class='govuk-tag govuk-tag--yellow'>AWARDED</strong>
+	{% elseif data.routeStatus == "Deferred" %}
+		<strong class='govuk-tag govuk-tag--blue'>DEFERRED</strong>	
+	{% endif%}
+{% endset %}  
+
+
+{% set exemptionReasons %}
+ <ul class="govuk-list">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
+{% endset %}
+
+{# comment #}
+
+
 {{ govukSummaryList({
 card: {
 title: {
-  text: "Qualified teacher status (QTS) awarded on 10 September 2016",
+  html: "Qualified teacher status (QTS) &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong>&nbsp; on 10 September 2016",
 	classes: "govuk-!-font-size-22"
 },
   actions: {
     items: [
-      {
-        href: "/itt/add-qualification/award-date",
-        text: "Mark route as complete",
-        visuallyHiddenText: "route"
-      },
 			{
-        href: "/check",
-        text: "Edit",
+        href: "/route/edit/check",
+        text: "Edit route",
         visuallyHiddenText: "route"
       }
     ]
@@ -28,15 +65,6 @@ rows: [
 				text: "School Direct Training Programme Self Funded"
 			}
 		},
-
-		{
-					key: {
-						text: "Status"
-					},
-					value: {
-						html: '<strong class="govuk-tag govuk-tag--blue">' + data.routeStatus + '</strong>'
-					}
-				},
 
 		{
 			key: {
@@ -61,18 +89,10 @@ rows: [
 				text: "Has exemption"
 			},
 			value: {
-				html: "No"
+				html: "Yes"
 			}
 		},
 
-		{
-			key: {
-				text: "Exemption reason"
-			},
-			value: {
-				html: exemptionReasons or "None"
-			}
-		},
 
 		{
 			key: {
