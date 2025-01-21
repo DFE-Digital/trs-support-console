@@ -34,9 +34,10 @@
 
       {% if not data.activeRouteType or data.legacyRouteType %}
 
-          {{ govukInsetText({
+          {# {{ govukInsetText({
             text: "You must add a route before you can see any professional statuses."
-          }) }}
+          }) }} #}
+
           <h2 class="govuk-heading-m">Routes to professional statuses</h2>
           <p class="govuk-body">No routes to show</p>
 
@@ -48,9 +49,9 @@
       {% else %}
 
       {% if data.routeStatus == "In progress" %}
-        {{ govukWarningText({
+        {# {{ govukWarningText({
           html: "You must edit route status to &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; to attain Qualified Teacher Status (QTS)"
-        }) }}
+        }) }} #}
       {% endif %}
 
         {% if data.hasRouteExemption %}

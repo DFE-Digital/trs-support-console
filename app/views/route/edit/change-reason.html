@@ -35,10 +35,10 @@
     {{ data.newInductionStatus | log }}
  
       <form method="post" novalidate>
-        {% set evidenceYes%}
+        {% set evidenceYes %}
           {{ govukFileUpload({
-            id: "evidence[file]",
-            name: "evidence[file]",
+            id: "evidenceFile",
+            name: "evidenceFile",
             label: {
               text: "Upload files",
               classes: "govuk-label--m"
@@ -138,7 +138,7 @@
 
         <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
         {{ govukRadios({
-          name: "evidence[hasEvidence]",
+          name: "evidenceUploaded",
           fieldset: {
             legend: {
               text: "Do you have evidence to upload?",
@@ -158,7 +158,7 @@
               text: "No"
             }
           ],
-          value: data.evidence.hasEvidence
+          value: data.evidenceUploaded
         }) }}
 
           {{ govukButton({

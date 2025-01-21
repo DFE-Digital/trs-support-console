@@ -63,9 +63,9 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
       {% if data.routeStatus == "In progress" %}
-        {{ govukWarningText({
+        {# {{ govukWarningText({
           html: "You must edit route status to &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; to attain Qualified Teacher Status (QTS)"
-        }) }}
+        }) }} #}
       {% endif %}
 
 
@@ -269,6 +269,7 @@
               ]
             }
           },
+
           {
             key: {
               text: "Reason for change"
@@ -285,7 +286,43 @@
                 }
               ]
             }
-          } if data.statusChangeReason or data.otherReason  or data.yesAdditionalInfo  
+          } if data.statusChangeReason or data.otherReason  or data.yesAdditionalInfo,
+
+          {
+            key: {
+              text: "More information"
+            },
+            value: {
+              text: data.yesAdditionalInfo
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/edit/change-reason?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "More information"
+                }
+              ]
+            }
+          } if data.yesAdditionalInfo,
+          
+          {
+            key: {
+              text: "Evidence"
+            },
+            value: {
+              text: data.evidenceUploaded
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/edit/change-reason?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "Evidence"
+                }
+              ]
+            }
+          } if data.evidenceUploaded 
         ]
       }) }}
 
