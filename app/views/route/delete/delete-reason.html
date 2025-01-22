@@ -1,0 +1,99 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "alerts" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Routes and professional status - " + teacher.fullName %}
+{% set questionName = "Delete route" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+    {{ data.teachers | log }}
+    {{ teacher.inductionStatus | log }}
+    {{ teacher.trn | log }}
+    {{ data.newInductionStatus | log }}
+ 
+      <form method="post" novalidate>
+        
+
+        {% set anotherDeleteReason %}
+        {{ govukInput({
+            id: "another-delete-reason",
+            name: "anotherDeleteReason",
+            classes: "govuk-!-width-two-third",
+            label: {
+              text: "Add delete reason",
+              classes: "govuk-label--s"
+            },
+            value: data.anotherDeleteReason
+          }) }}
+        {% endset %}
+
+        
+
+
+        {{ govukRadios({
+          name: "deleteRouteReason",
+          fieldset: {
+            legend: {
+              text: "Reason for deleting route",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Delete reason A",
+              text: "Delete reason A"
+            },
+            {
+              value: "Delete reason B",
+              text: "Delete reason B"
+            },
+            {
+              value: "Delete reason C",
+              text: "Delete reason C"
+            },
+
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: anotherDeleteReason
+              }
+            }
+          ]
+        }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}
