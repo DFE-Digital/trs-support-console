@@ -8,6 +8,10 @@ module.exports = (router) => {
 		}      
 	})
 
+	router.post('/route/edit/change-reason', (req, res) => {
+			res.redirect(req.query.returnUrl)
+	})
+
 
 	
 	/////////////  FLASH //////////////

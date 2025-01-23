@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Which age range do they specialise in teaching?" %}
+{% set questionName = "Select the age range they specialise in teaching" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,65 +21,91 @@
   <div class="govuk-grid-column-full">
 
     
-      <span class="govuk-caption-l">{{pageName}}</span>
-      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+    <span class="govuk-caption-l">{{pageName}}</span>
+    <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
 
-      
-      <form method="post" novalidate>
-        {{ govukRadios({
-          name: "keyStageAgeRanges",
-          fieldset: {
-            legend: {
-              text: questionName,
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--s, govuk-visually-hidden"
-            }
+    
+    <form method="post" novalidate>
+
+      {% set fromToAgeRange%}
+      <p class="govuk-body govuk-!-font-weight-bold">From</p>
+
+        {{ govukInput({
+          classes: "govuk-input--width-4",
+          id: "age-from-restriction",
+          name: "ageFromRestriction",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+
+      <p class="govuk-body govuk-!-font-weight-bold">to</p>
+
+        {{ govukInput({
+          classes: "govuk-input--width-4",
+          id: "age-to-restriction",
+          name: "ageToRestriction",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "keyStageAgeRanges",
+        fieldset: {
+          legend: {
+            text: questionName,
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s, govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "Foundation stage",
+            text: "Foundation stage"
           },
-          items: [
-            {
-              value: "Foundation stage",
-              text: "Foundation stage"
-            },
-            {
-              value: "Further education",
-              text: "Further education"
-            },
-            {
-              value: "Key stage 1",
-              text: "Key stage 1"
-            },
-            {
-              value: "Key stage 2",
-              text: "Key stage 2"
-            },
-            {
-              value: "Key stage 3",
-              text: "Key stage 3"
-            },
-            {
-              value: "Key stage 4",
-              text: "Key stage 4"
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "Age range",
-              text: "I want to provide an age range"
+          {
+            value: "Further education",
+            text: "Further education"
+          },
+          {
+            value: "Key stage 1",
+            text: "Key stage 1"
+          },
+          {
+            value: "Key stage 2",
+            text: "Key stage 2"
+          },
+          {
+            value: "Key stage 3",
+            text: "Key stage 3"
+          },
+          {
+            value: "Key stage 4",
+            text: "Key stage 4"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "I want to provide an age range",
+            text: "I want to provide an age range",
+            conditional: {
+              html: fromToAgeRange
             }
-          ]
-        }) }}
-  
+          }
+        ]
+      }) }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-      </form>
 
-      <p class="govuk-body">
-        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
-      </p>
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
 
     
     

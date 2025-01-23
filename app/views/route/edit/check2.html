@@ -1,0 +1,346 @@
+{% extends "layouts/main.html" %}
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Routes and professional status - " + teacher.fullName %}
+{% set questionName = "Edit route details" %}
+
+{% set subjectChoices %}
+  <ul class="govuk-list">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+{% set statusTagType %}
+	{% if data.routeStatus == "Awarded" %}
+		<strong class='govuk-tag govuk-tag--green'>AWARDED</strong>
+	{% elseif data.routeStatus == "In progress" %}
+		<strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong>
+	{% elseif data.routeStatus == "Failed" %}
+		<strong class='govuk-tag govuk-tag--red'>FAILED</strong>
+	{% elseif data.routeStatus == "Withdrawn" %}
+		<strong class='govuk-tag govuk-tag--yellow'>AWARDED</strong>
+	{% elseif data.routeStatus == "Deferred" %}
+		<strong class='govuk-tag govuk-tag--blue'>DEFERRED</strong>	
+	{% endif%}
+{% endset %} 
+
+{% set exemptionReasons %}
+ <ul class="govuk-list">
+  {% for reason in data.inductionExemptionReason%}
+  <li>
+    {{reason}}
+  </li>
+  {% endfor %}
+ </ul>
+{% endset %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+      {% if data.routeStatus == "In progress" %}
+        {# {{ govukWarningText({
+          html: "You must edit route status to &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; to attain Qualified Teacher Status (QTS)"
+        }) }} #}
+      {% endif %}
+
+
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Route"
+            },
+            value: {
+              text: data.activeRouteType or data.legacyRouteType
+            },
+            actions: {
+              items: [
+                {
+                  href: "/all-qts-routes?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "route type"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Status"
+            },
+            value: {
+              html: statusTagType
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-status?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "route status"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeInProgressStartDate') | govukDate 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-in-progress/start-date?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "route status"
+                }
+              ]
+            }
+          } ,
+
+          {
+            key: {
+              text: "End date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-complete/end-date?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "route status"
+                }
+              ]
+            }
+          } if not data.routeCompleteEndDate,
+
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeAwardDate') | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-complete/award-date?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "route status"
+                }
+              ]
+            }
+          } if data.routeAwardDate,
+
+          {
+            key: {
+              text: "Has exemption"
+            },
+            value: {
+              text: data.hasRouteExemption
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-complete/has-exemption?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "if they have an exemption"
+                }
+              ]
+            }
+          } if data.hasRouteExemption,
+
+          {
+            key: {
+              text: "Training provider"
+            },
+            value: {
+              html: data.trainingProvider
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/training-provider?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "Training provider"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Degree type"
+            },
+            value: {
+              html: data.degreeTypes
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/degree-type?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "Degree type"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Country of training"
+            },
+            value: {
+              text: data.routeCountryOfTraining
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/country?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "Country of training"
+                }
+              ]
+            }
+          },
+          
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: "From " + data.ageFromRestriction + " to " + data.ageToRestriction
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/age-to-from?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "teaching age range"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route-information/subjects?returnUrl=/route/edit/check",
+                  text: "Change",
+                  visuallyHiddenText: "subjects"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Reason for change"
+            },
+            value: {
+              html: data.statusChangeReason or data.otherReason or data.yesAdditionalInfo
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/edit/change-reason?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "Reason for change of details"
+                }
+              ]
+            }
+          } if data.statusChangeReason or data.otherReason  or data.yesAdditionalInfo,
+
+          {
+            key: {
+              text: "More information"
+            },
+            value: {
+              text: data.yesAdditionalInfo
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/edit/change-reason?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "More information"
+                }
+              ]
+            }
+          } if data.yesAdditionalInfo,
+          
+          {
+            key: {
+              text: "Evidence"
+            },
+            value: {
+              text: data.evidenceUploaded
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/edit/change-reason?returnUrl=/check",
+                  text: "Change",
+                  visuallyHiddenText: "Evidence"
+                }
+              ]
+            }
+          } if data.evidenceUploaded 
+        ]
+      }) }}
+
+      
+
+      <form method="post" action="/route/edit/check">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}
