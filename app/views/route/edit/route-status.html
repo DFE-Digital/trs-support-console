@@ -1,12 +1,13 @@
 {% extends "layouts/main.html" %}
 
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "alerts" %}
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Does this route provide them with an induction exemption?" %}
 
 
 {% block beforeContent %}
@@ -23,12 +24,12 @@
 
     
       <span class="govuk-caption-l">{{pageName}}</span>
-      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+      <h1 class="govuk-heading-l">Select the route status</h1>
       
       <form method="post" novalidate>
+        
         {{ govukRadios({
-          classes: "govuk-radios",
-          name: "hasRouteExemption",
+          name: "routeStatus",
           fieldset: {
             legend: {
               text: "Select route status",
@@ -38,24 +39,39 @@
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Awarded",
+              text: "Awarded"
             },
             {
-              value: "No",
-              text: "No"
+              value: "Deferred",
+              text: "Deferred"
+            },
+            {
+              value: "Deferred for skills tests",
+              text: "Deferred for skills tests"
+            },
+            {
+              value: "Failed",
+              text: "Failed"
+            },
+            {
+              value: "In progress",
+              text: "In progress"
+            },
+            {
+              value: "Withdrawn",
+              text: "Withdrawn"
             }
           ]
         }) }}
-  
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-      </form>
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
 
       <p class="govuk-body">
-        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+        <a href="general" class="govuk-link">Cancel and return to record</a>
       </p>
 
     

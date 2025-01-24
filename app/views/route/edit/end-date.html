@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Does this route provide them with an induction exemption?" %}
+{% set questionName = "Enter the route end date" %}
 
 
 {% block beforeContent %}
@@ -26,24 +26,27 @@
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
       <form method="post" novalidate>
-        {{ govukRadios({
-          classes: "govuk-radios",
-          name: "hasRouteExemption",
-          fieldset: {
-            legend: {
-              text: "Select route status",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--m govuk-visually-hidden"
-            }
+        {{ govukDateInput({
+          id: "routeCompleteEnd",
+          namePrefix: "routeCompleteEndDate",
+          hint: {
+            text: "For example, 27 3 2007"
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              name: "day",
+              classes: "govuk-input--width-2",
+              value: data['routeCompleteEndDate-day']
             },
             {
-              value: "No",
-              text: "No"
+              name: "month",
+              classes: "govuk-input--width-2",
+              value: data['routeCompleteEndDate-month']
+            },
+            {
+              name: "year",
+              classes: "govuk-input--width-4",
+              value: data['routeCompleteEndDate-year']
             }
           ]
         }) }}

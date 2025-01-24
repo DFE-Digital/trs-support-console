@@ -1,13 +1,14 @@
 {% extends "layouts/main.html" %}
 
+{% set serviceNavId = "findRecord" %} 
+
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Does this route provide them with an induction exemption?" %}
-
+{% set questionName = "Enter the training provider for this route" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -25,34 +26,17 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
       
+      
       <form method="post" novalidate>
-        {{ govukRadios({
-          classes: "govuk-radios",
-          name: "hasRouteExemption",
-          fieldset: {
-            legend: {
-              text: "Select route status",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--m govuk-visually-hidden"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
-  
+      
+
+        {% include "_includes/autocompletes/autocomplete-establishments.njk" %}
 
         {{ govukButton({
           text: "Continue"
         }) }}
       </form>
+
 
       <p class="govuk-body">
         <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>

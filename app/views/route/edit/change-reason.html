@@ -8,7 +8,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Why are you changing the route details?" %}
+{% set questionName = "Why are you editing this route?" %}
 
 
 
@@ -35,19 +35,6 @@
     {{ data.newInductionStatus | log }}
  
       <form method="post" novalidate>
-        {% set evidenceYes %}
-          {{ govukFileUpload({
-            id: "evidenceFile",
-            name: "evidenceFile",
-            label: {
-              text: "Upload files",
-              classes: "govuk-label--m"
-            },
-            hint: {
-              text: "Must be smaller than 100MB"
-            }
-          }) }}
-        {% endset %}
 
         {% set otherInput %}
         {{ govukInput({
@@ -75,6 +62,20 @@
               text: "You can enter up to 4000 characters"
             },
             value: data.yesAdditionalInfo
+          }) }}
+        {% endset %}
+
+        {% set evidenceYes %}
+          {{ govukFileUpload({
+            id: "evidenceFile",
+            name: "evidenceFile",
+            label: {
+              text: "Upload files",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "Must be smaller than 100MB"
+            }
           }) }}
         {% endset %}
 
@@ -111,7 +112,7 @@
           ]
         }) }}
 
-        <h2 class="govuk-heading-m">Do you want to add more information about why you're changing the details?</h2>
+        <h2 class="govuk-heading-m">Do you want to provide more information?</h2>
         {{ govukRadios({
           name: 'hasMoreInfo',
           fieldset: {
