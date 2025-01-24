@@ -231,7 +231,7 @@
               text: "Age range"
             },
             value: {
-              html: data.keyStageAgeRanges or data.fromToAgeRange
+              html: data['keyStageAgeRanges'] or data['fromToAgeRange']
             },
             actions: {
               items: [
@@ -266,7 +266,7 @@
               text: "Reason for change"
             },
             value: {
-              html: data.statusChangeReason or data.yesAdditionalInfo
+              html: data.statusChangeReason or data.otherReason or data.yesAdditionalInfo
             },
             actions: {
               items: [
