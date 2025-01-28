@@ -30,23 +30,23 @@
 
       {% set fromToAgeRange%}
       <p class="govuk-body govuk-!-font-weight-bold">From</p>
-
         {{ govukInput({
           classes: "govuk-input--width-4",
           id: "age-from-restriction",
           name: "ageFromRestriction",
           inputmode: "numeric",
-          spellcheck: false
+          spellcheck: false,
+          value: data.ageFromRestriction
         }) }}
 
       <p class="govuk-body govuk-!-font-weight-bold">to</p>
-
         {{ govukInput({
           classes: "govuk-input--width-4",
           id: "age-to-restriction",
           name: "ageToRestriction",
           inputmode: "numeric",
-          spellcheck: false
+          spellcheck: false,
+          value: data.ageToRestriction
         }) }}
       {% endset %}
 

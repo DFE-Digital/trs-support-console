@@ -37,6 +37,14 @@
 {% endset %} 
 
 
+{% set ages %}
+  {% if data.keyStageAgeRanges === 'I want to provide an age range' %}
+    <td>From {{data.ageFromRestriction}} to {{data.ageToRestriction}}</td>
+  {% else %}
+    <td>{{data.keyStageAgeRanges}}</td>
+  {% endif %}
+{% endset %}
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -52,14 +60,6 @@
 
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
-
-      {% if data.routeStatus == "In progress" %}
-        {# {{ govukWarningText({
-          html: "You must edit route status to &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; to attain Qualified Teacher Status (QTS)"
-        }) }} #}
-      {% endif %}
-
-
 
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
@@ -231,7 +231,7 @@
               text: "Age range"
             },
             value: {
-              html: data['keyStageAgeRanges'] or data['fromToAgeRange']
+              html:  ages
             },
             actions: {
               items: [
