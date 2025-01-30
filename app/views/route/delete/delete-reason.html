@@ -38,10 +38,10 @@
         
 
         {% set anotherDeleteReason %}
-        {{ govukInput({
+        {{ govukTextarea({
             id: "another-delete-reason",
             name: "anotherDeleteReason",
-            classes: "govuk-!-width-two-third",
+            classes: "govuk-!-width-one-half",
             label: {
               text: "Add delete reason",
               classes: "govuk-label--s"
@@ -49,8 +49,6 @@
             value: data.anotherDeleteReason
           }) }}
         {% endset %}
-
-        
 
 
         {{ govukRadios({
@@ -63,21 +61,13 @@
           },
           items: [
             {
-              value: "Delete reason A",
-              text: "Delete reason A"
+              value: "The route was created in error",
+              text: "The route was created in error"
             },
+            
             {
-              value: "Delete reason B",
-              text: "Delete reason B"
-            },
-            {
-              value: "Delete reason C",
-              text: "Delete reason C"
-            },
-
-            {
-              value: "Another reason",
-              text: "Another reason",
+              value: "I have another reason to delete this route",
+              text: "I have another reason to delete this route",
               conditional: {
                 html: anotherDeleteReason
               }

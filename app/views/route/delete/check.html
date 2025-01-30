@@ -1,0 +1,202 @@
+{% extends "layouts/main.html" %}
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = "Routes and professional status - " + teacher.fullName %}
+{% set questionName = "Check details and delete route" %}
+
+{% set subjectChoices %}
+  <ul class="govuk-list">
+    <li>{{ data.subjectChoiceOne }}</li>
+    
+      {% if data.subjectChoiceTwo %}
+      <li>{{ data.subjectChoiceTwo }}</li>
+      {% endif %}
+
+      {% if data.subjectChoiceThree %}
+        <li>{{ data.subjectChoiceThree }}</li>
+      {% endif %}
+  </ul>
+{% endset %}
+
+{% set statusTagType %}
+	{% if data.routeStatus == "Awarded" %}
+		<strong class='govuk-tag govuk-tag--green'>AWARDED</strong>
+	{% elseif data.routeStatus == "In progress" %}
+		<strong class='govuk-tag govuk-tag--orange'>IN PROGRESS</strong>
+	{% elseif data.routeStatus == "Failed" %}
+		<strong class='govuk-tag govuk-tag--red'>FAILED</strong>
+	{% elseif data.routeStatus == "Withdrawn" %}
+		<strong class='govuk-tag govuk-tag--yellow'>AWARDED</strong>
+	{% elseif data.routeStatus == "Deferred" %}
+		<strong class='govuk-tag govuk-tag--blue'>DEFERRED</strong>	
+	{% endif%}
+{% endset %} 
+
+
+{% set ages %}
+  {% if data.keyStageAgeRanges === 'I want to provide an age range' %}
+    <td>From {{data.ageFromRestriction}} to {{data.ageToRestriction}}</td>
+  {% else %}
+    <td>{{data.keyStageAgeRanges}}</td>
+  {% endif %}
+{% endset %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{pageName}}</span>
+      <h1 class="govuk-heading-l"> {{questionName}}</h1>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Route"
+            },
+            value: {
+              text: data.activeRouteType or data.legacyRouteType
+            }
+          },
+
+          {
+            key: {
+              text: "Status"
+            },
+            value: {
+              html: statusTagType
+            }
+          },
+
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeInProgressStartDate') | govukDate 
+            }
+          },
+
+          {
+            key: {
+              text: "End date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
+            }
+          },
+
+          {
+            key: {
+              text: "Award date"
+            },
+            value: {
+              text:  data | isoDateFromDateInput('routeAwardDate') | govukDate
+            }
+          },
+
+          {
+            key: {
+              text: "Has exemption"
+            },
+            value: {
+              text: data.hasRouteExemption
+            }
+          } if data.hasRouteExemption,
+
+          {
+            key: {
+              text: "Training provider"
+            },
+            value: {
+              html: data.trainingProvider
+            }
+          },
+
+          {
+            key: {
+              text: "Degree type"
+            },
+            value: {
+              html: data.degreeTypes
+            }
+          },
+
+          {
+            key: {
+              text: "Country of training"
+            },
+            value: {
+              text: data.routeCountryOfTraining
+            }
+          },
+          
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              html:  ages
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              html: subjectChoices 
+            }
+          },
+
+          {
+            key: {
+              text: "Reason for deleting route"
+            },
+            value: {
+              html: data.deleteRouteReason
+            }
+          },
+
+          {
+            key: {
+              text: "Evidence"
+            },
+            value: {
+              text: data.evidenceUploaded
+            }
+          } if data.evidenceUploaded 
+        ]
+      }) }}
+
+      
+
+      <form method="post" action="/route/edit/check">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -29,7 +29,7 @@ module.exports = router => {
       console.log(data.newInductionStatus)
   })
 
-
+  
 
 
   router.post('/induction/completion-date', (req, res) => {
