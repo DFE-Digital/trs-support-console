@@ -167,9 +167,18 @@
               text: "Reason for deleting route"
             },
             value: {
-              html: data.deleteRouteReason
+              html: data.deleteRouteReason 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
+                  text: "Change",
+                  visuallyHiddenText: "Reason for deleting route"
+                }
+              ]
             }
-          },
+          } if data.deleteRouteReason,
 
           {
             key: {
@@ -184,9 +193,10 @@
 
       
 
-      <form method="post" action="/route/edit/check">
+      <form method="post" action="/route/delete/check">
         {{ govukButton({
-          text: "Continue"
+          text: "Delete route",
+          classes: "govuk-button--warning"
         }) }}
       </form>    
 
