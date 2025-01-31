@@ -161,7 +161,16 @@
             value: {
               html: subjectChoices 
             }
-          }         
+          },
+
+          {
+            key: {
+              text: "Evidence"
+            },
+            value: {
+              text: data.evidenceUploaded
+            }
+          } if data.evidenceUploaded 
         ]
       }) }}
 
@@ -173,7 +182,7 @@
         rows: [
           {
             key: {
-              text: "Reason for deleting"
+              text: "Reason"
             },
             value: {
               html: data.deleteRouteReason 
@@ -187,45 +196,7 @@
                 }
               ]
             }
-          } if data.deleteRouteReason,
-          
-          {
-            key: {
-              text: "More information"
-            },
-            value: {
-              html: data.yesAdditionalInfo 
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
-                  text: "Change",
-                  visuallyHiddenText: "Reason for deleting route"
-                }
-              ]
-            }
-          } if data.yesAdditionalInfo,
-
-          {
-            key: {
-              text: "Evidence"
-            },
-            value: {
-              html: '<p class="govuk-body">
-                <a href="#" class="govuk-link">' + data.evidenceFile + '</a>.
-              </p>'
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
-                  text: "Change",
-                  visuallyHiddenText: "Reason for deleting route"
-                }
-              ]
-            }
-          } if data.evidenceFile 
+          } if data.deleteRouteReason  
         ]
       }) }}
 
