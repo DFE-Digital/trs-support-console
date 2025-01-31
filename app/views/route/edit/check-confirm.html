@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Edit route details" %}
+{% set questionName = "Check details and edit route" %}
 
 {% set subjectChoices %}
   <ul class="govuk-list">
@@ -36,14 +36,13 @@
 	{% endif%}
 {% endset %} 
 
-{% set exemptionReasons %}
- <ul class="govuk-list">
-  {% for reason in data.inductionExemptionReason%}
-  <li>
-    {{reason}}
-  </li>
-  {% endfor %}
- </ul>
+
+{% set ages %}
+  {% if data.keyStageAgeRanges === 'I want to provide an age range' %}
+    <td>From {{data.ageFromRestriction}} to {{data.ageToRestriction}}</td>
+  {% else %}
+    <td>{{data.keyStageAgeRanges}}</td>
+  {% endif %}
 {% endset %}
 
 
@@ -62,14 +61,6 @@
       <span class="govuk-caption-l">{{pageName}}</span>
       <h1 class="govuk-heading-l"> {{questionName}}</h1>
 
-      {% if data.routeStatus == "In progress" %}
-        {# {{ govukWarningText({
-          html: "You must edit route status to &nbsp; <strong class='govuk-tag govuk-tag--green'>AWARDED</strong> &nbsp; to attain Qualified Teacher Status (QTS)"
-        }) }} #}
-      {% endif %}
-
-
-
       {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
@@ -83,7 +74,7 @@
             actions: {
               items: [
                 {
-                  href: "/all-qts-routes?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/all-qts-routes",
                   text: "Change",
                   visuallyHiddenText: "route type"
                 }
@@ -101,7 +92,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-status?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/route-status",
                   text: "Change",
                   visuallyHiddenText: "route status"
                 }
@@ -119,9 +110,9 @@
             actions: {
               items: [
                 {
-                  href: "/route-in-progress/start-date?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/start-date",
                   text: "Change",
-                  visuallyHiddenText: "route status"
+                  visuallyHiddenText: "start date"
                 }
               ]
             }
@@ -137,9 +128,9 @@
             actions: {
               items: [
                 {
-                  href: "/route-complete/end-date?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/end-date",
                   text: "Change",
-                  visuallyHiddenText: "route status"
+                  visuallyHiddenText: "end date"
                 }
               ]
             }
@@ -155,9 +146,9 @@
             actions: {
               items: [
                 {
-                  href: "/route-complete/award-date?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/award-date",
                   text: "Change",
-                  visuallyHiddenText: "route status"
+                  visuallyHiddenText: "award date"
                 }
               ]
             }
@@ -173,7 +164,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-complete/has-exemption?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/has-exemption",
                   text: "Change",
                   visuallyHiddenText: "if they have an exemption"
                 }
@@ -191,7 +182,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/training-provider?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/training-provider",
                   text: "Change",
                   visuallyHiddenText: "Training provider"
                 }
@@ -209,7 +200,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/degree-type?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/degree-type",
                   text: "Change",
                   visuallyHiddenText: "Degree type"
                 }
@@ -227,9 +218,9 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/country?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/country",
                   text: "Change",
-                  visuallyHiddenText: "Country of training"
+                  visuallyHiddenText: "Country where training was completed"
                 }
               ]
             }
@@ -240,14 +231,14 @@
               text: "Age range"
             },
             value: {
-              text: "From " + data.ageFromRestriction + " to " + data.ageToRestriction
+              html:  ages
             },
             actions: {
               items: [
                 {
-                  href: "/route-information/age-to-from?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/key-stages",
                   text: "Change",
-                  visuallyHiddenText: "teaching age range"
+                  visuallyHiddenText: "age range"
                 }
               ]
             }
@@ -262,7 +253,7 @@
             actions: {
               items: [
                 {
-                  href: "/route-information/subjects?returnUrl=/route/edit/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/subjects",
                   text: "Change",
                   visuallyHiddenText: "subjects"
                 }
@@ -280,13 +271,13 @@
             actions: {
               items: [
                 {
-                  href: "/route/edit/change-reason?returnUrl=/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "Reason for change of details"
                 }
               ]
             }
-          } if data.statusChangeReason or data.otherReason  or data.yesAdditionalInfo,
+          } if data.statusChangeReason or data.hasMoreInfo,
 
           {
             key: {
@@ -298,7 +289,7 @@
             actions: {
               items: [
                 {
-                  href: "/route/edit/change-reason?returnUrl=/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "More information"
                 }
@@ -316,13 +307,77 @@
             actions: {
               items: [
                 {
-                  href: "/route/edit/change-reason?returnUrl=/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
                   text: "Change",
                   visuallyHiddenText: "Evidence"
                 }
               ]
             }
           } if data.evidenceUploaded 
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m">Why are you editing this route?</h3>
+      <p class="govuk-body">If you edit this route it will...[advise on what happens here JK - (CD req) ]</p>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-4 govuk-!-margin-top-4",
+        rows: [
+          {
+            key: {
+              text: "Reason for deleting"
+            },
+            value: {
+              html: data.deleteRouteReason 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
+                  text: "Change",
+                  visuallyHiddenText: "Reason for deleting route"
+                }
+              ]
+            }
+          } if data.deleteRouteReason,
+          
+          {
+            key: {
+              text: "More information"
+            },
+            value: {
+              html: data.yesAdditionalInfo 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
+                  text: "Change",
+                  visuallyHiddenText: "Reason for deleting route"
+                }
+              ]
+            }
+          } if data.yesAdditionalInfo,
+
+          {
+            key: {
+              text: "Evidence"
+            },
+            value: {
+              html: '<p class="govuk-body">
+                <a href="#" class="govuk-link">' + data.evidenceFile + '</a>.
+              </p>'
+            },
+            actions: {
+              items: [
+                {
+                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
+                  text: "Change",
+                  visuallyHiddenText: "Reason for deleting route"
+                }
+              ]
+            }
+          } if data.evidenceFile 
         ]
       }) }}
 

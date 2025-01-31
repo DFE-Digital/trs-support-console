@@ -6,7 +6,7 @@
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set pageName = "Routes and professional status - " + teacher.fullName %}
-{% set questionName = "Edit route details" %}
+{% set questionName = "Check details and edit route" %}
 
 {% set subjectChoices %}
   <ul class="govuk-list">
@@ -259,61 +259,7 @@
                 }
               ]
             }
-          },
-
-          {
-            key: {
-              text: "Reason for change"
-            },
-            value: {
-              html: data.statusChangeReason or data.otherReason or data.yesAdditionalInfo
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
-                  text: "Change",
-                  visuallyHiddenText: "Reason for change of details"
-                }
-              ]
-            }
-          } if data.statusChangeReason or data.hasMoreInfo,
-
-          {
-            key: {
-              text: "More information"
-            },
-            value: {
-              text: data.yesAdditionalInfo
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
-                  text: "Change",
-                  visuallyHiddenText: "More information"
-                }
-              ]
-            }
-          } if data.yesAdditionalInfo,
-          
-          {
-            key: {
-              text: "Evidence"
-            },
-            value: {
-              text: data.evidenceUploaded
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
-                  text: "Change",
-                  visuallyHiddenText: "Evidence"
-                }
-              ]
-            }
-          } if data.evidenceUploaded 
+          }
         ]
       }) }}
 
