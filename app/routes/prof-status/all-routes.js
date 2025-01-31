@@ -153,25 +153,6 @@ module.exports = (router) => {
 		}      
 	})
 
-
-	/// Route change reason
-	router.post('/route/edit/change-reason', (req, res) => {
-		if (req.query.returnUrl) {
-			res.redirect(req.query.returnUrl)
-		} else {
-			res.redirect('/route/edit/check')  
-		}      
-	})
-
-	router.post('/route/edit/check', (req, res) => {
-		let data = req.session.data
-		if (data.routeStatus == "Awarded" || data.routeStatus === 'Failed') {
-			req.flash('success', 'Route to professional status complete')
-		} else {
-			req.flash('success', 'Route to professional status updated')
-		}
-	res.redirect('/route')
-	})
 	
 	/////////////  FLASH //////////////
   router.post('/check-handler', (req, res) => {

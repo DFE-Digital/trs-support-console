@@ -70,15 +70,6 @@
             },
             value: {
               text: data.activeRouteType or data.legacyRouteType
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/all-qts-routes",
-                  text: "Change",
-                  visuallyHiddenText: "route type"
-                }
-              ]
             }
           },
 
@@ -88,15 +79,6 @@
             },
             value: {
               html: statusTagType
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/route-status",
-                  text: "Change",
-                  visuallyHiddenText: "route status"
-                }
-              ]
             }
           },
 
@@ -106,17 +88,8 @@
             },
             value: {
               text:  data | isoDateFromDateInput('routeInProgressStartDate') | govukDate 
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/start-date",
-                  text: "Change",
-                  visuallyHiddenText: "start date"
-                }
-              ]
             }
-          } ,
+          },
 
           {
             key: {
@@ -124,17 +97,8 @@
             },
             value: {
               text:  data | isoDateFromDateInput('routeCompleteEndDate') | govukDate
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/end-date",
-                  text: "Change",
-                  visuallyHiddenText: "end date"
-                }
-              ]
             }
-          } if not data.routeCompleteEndDate,
+          },
 
           {
             key: {
@@ -142,17 +106,8 @@
             },
             value: {
               text:  data | isoDateFromDateInput('routeAwardDate') | govukDate
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/award-date",
-                  text: "Change",
-                  visuallyHiddenText: "award date"
-                }
-              ]
             }
-          } if data.routeAwardDate,
+          },
 
           {
             key: {
@@ -160,15 +115,6 @@
             },
             value: {
               text: data.hasRouteExemption
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/has-exemption",
-                  text: "Change",
-                  visuallyHiddenText: "if they have an exemption"
-                }
-              ]
             }
           } if data.hasRouteExemption,
 
@@ -178,15 +124,6 @@
             },
             value: {
               html: data.trainingProvider
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/training-provider",
-                  text: "Change",
-                  visuallyHiddenText: "Training provider"
-                }
-              ]
             }
           },
 
@@ -196,15 +133,6 @@
             },
             value: {
               html: data.degreeTypes
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/degree-type",
-                  text: "Change",
-                  visuallyHiddenText: "Degree type"
-                }
-              ]
             }
           },
 
@@ -214,15 +142,6 @@
             },
             value: {
               text: data.routeCountryOfTraining
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/country",
-                  text: "Change",
-                  visuallyHiddenText: "Country where training was completed"
-                }
-              ]
             }
           },
           
@@ -232,15 +151,6 @@
             },
             value: {
               html:  ages
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/key-stages",
-                  text: "Change",
-                  visuallyHiddenText: "age range"
-                }
-              ]
             }
           },
           {
@@ -249,71 +159,8 @@
             },
             value: {
               html: subjectChoices 
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/subjects",
-                  text: "Change",
-                  visuallyHiddenText: "subjects"
-                }
-              ]
             }
-          },
-
-          {
-            key: {
-              text: "Reason for change"
-            },
-            value: {
-              html: data.statusChangeReason or data.otherReason or data.yesAdditionalInfo
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
-                  text: "Change",
-                  visuallyHiddenText: "Reason for change of details"
-                }
-              ]
-            }
-          } if data.statusChangeReason or data.hasMoreInfo,
-
-          {
-            key: {
-              text: "More information"
-            },
-            value: {
-              text: data.yesAdditionalInfo
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
-                  text: "Change",
-                  visuallyHiddenText: "More information"
-                }
-              ]
-            }
-          } if data.yesAdditionalInfo,
-          
-          {
-            key: {
-              text: "Evidence"
-            },
-            value: {
-              text: data.evidenceUploaded
-            },
-            actions: {
-              items: [
-                {
-                  href: "/route/edit/change-reason?returnUrl=/route/edit/check",
-                  text: "Change",
-                  visuallyHiddenText: "Evidence"
-                }
-              ]
-            }
-          } if data.evidenceUploaded 
+          }         
         ]
       }) }}
 
@@ -325,21 +172,21 @@
         rows: [
           {
             key: {
-              text: "Reason for deleting"
+              text: "Reason for change"
             },
             value: {
-              html: data.deleteRouteReason 
+              html: data.statusChangeReason 
             },
             actions: {
               items: [
                 {
                   href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
                   text: "Change",
-                  visuallyHiddenText: "Reason for deleting route"
+                  visuallyHiddenText: "Reason for changing route"
                 }
               ]
             }
-          } if data.deleteRouteReason,
+          } if data.statusChangeReason,
           
           {
             key: {
@@ -383,9 +230,9 @@
 
       
 
-      <form method="post" action="/route/edit/check">
+      <form method="post" action="/route/edit/check-confirm">
         {{ govukButton({
-          text: "Continue"
+          text: "Confirm and commit changes"
         }) }}
       </form>    
 
