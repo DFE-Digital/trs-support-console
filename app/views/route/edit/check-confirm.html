@@ -175,32 +175,32 @@
               text: "Reason for change"
             },
             value: {
-              html: data.statusChangeReason 
+              html: data.statusChangeReason or data.anotherReason
             },
             actions: {
               items: [
                 {
-                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/check-confirm",
                   text: "Change",
                   visuallyHiddenText: "Reason for changing route"
                 }
               ]
             }
-          } if data.statusChangeReason,
+          } if data.statusChangeReason or data.anotherReason,
           
           {
             key: {
-              text: "More information"
+              text: "More details"
             },
             value: {
-              html: data.yesAdditionalInfo 
+              text: data.yesAdditionalInfo 
             },
             actions: {
               items: [
                 {
-                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/check-confirm",
                   text: "Change",
-                  visuallyHiddenText: "Reason for deleting route"
+                  visuallyHiddenText: "Additional details"
                 }
               ]
             }
@@ -218,7 +218,7 @@
             actions: {
               items: [
                 {
-                  href: "/route/delete/delete-reason?returnUrl=/route/delete/check",
+                  href: "/route/edit/change-reason?returnUrl=/route/edit/check-confirm",
                   text: "Change",
                   visuallyHiddenText: "Reason for deleting route"
                 }

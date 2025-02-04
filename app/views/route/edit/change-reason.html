@@ -36,16 +36,16 @@
  
       <form method="post" novalidate>
 
-        {% set otherInput %}
-        {{ govukInput({
-            id: "other-reason",
-            name: "otherReason",
-            classes: "govuk-!-width-two-third",
+        {% set anotherReason %}
+        {{ govukTextarea({
+            id: "another-reason",
+            name: "anotherReason",
+            classes: "govuk-!-width-one-half",
             label: {
-              text: "Add reason",
+              text: "Another reason for changing this route",
               classes: "govuk-label--s"
             },
-            value: data.otherReason
+            value: data.anotherReason
           }) }}
         {% endset %}
 
@@ -53,13 +53,10 @@
           {{ govukTextarea({
             id: "yes-additional-info",
             name: "yesAdditionalInfo",
-            classes: "govuk-!-width-two-third",
+            classes: "govuk-!-width-one-half",
             label: {
-              text: "Add more information",
+              text: "Enter details",
               classes: "govuk-label--s"
-            },
-            hint: {
-              text: "You can enter up to 4000 characters"
             },
             value: data.yesAdditionalInfo
           }) }}
@@ -106,7 +103,7 @@
               value: "Another reason",
               text: "Another reason",
               conditional: {
-                html: otherInput
+                html: anotherReason
               }
             }
           ]

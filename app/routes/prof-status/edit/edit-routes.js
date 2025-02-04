@@ -10,13 +10,17 @@ module.exports = (router) => {
 		
   })
 
+
 	router.post('/route/edit/route-status', (req, res) => {
-		if (req.query.returnUrl) {
-			res.redirect(req.query.returnUrl)
-		} else {
-			res.redirect('/route/edit/check')  
-		}    
-		
+    let data = req.session.data
+    if (data.routeStatus == "Awarded" || data.routeStatus === 'Failed') {
+      res.redirect('/route/edit/end-date')
+    } else if (req.query.returnUrl) {
+      res.redirect(req.query.returnUrl)
+    } else {
+      res.redirect('/route/edit/check')
+    }
+      console.log(data.routeStatus)
   })
 
 	router.post('/route/edit/start-date', (req, res) => {
@@ -27,12 +31,32 @@ module.exports = (router) => {
 		}    	
   })
 
+	//COMPLETE ROUTE FLOW ADDITIONAL SCREENS end date, award date and has exemption
+
 	router.post('/route/edit/end-date', (req, res) => {
 		if (req.query.returnUrl) {
 			res.redirect(req.query.returnUrl)
 		} else {
-			res.redirect('/route/edit/check')  
+			res.redirect('/route/edit/award-date')  
 		}    
+  })
+
+	router.post('/route/edit/award-date', (req, res) => {
+		if (req.query.returnUrl) {
+			res.redirect(req.query.returnUrl)
+		} else {
+			res.redirect('/route/edit/has-exemption')  
+		}      
+	})
+
+	router.post('/route/edit/has-exemption', (req, res) => {
+    let data = req.session.data
+    if (req.query.returnUrl) {
+					res.redirect(req.query.returnUrl)
+			} else {
+      res.redirect('/route/edit/change-reason')
+    }
+      console.log(data.routeStatus)
   })
 
 	router.post('/route/edit/training-provider', (req, res) => {
@@ -42,6 +66,8 @@ module.exports = (router) => {
 			res.redirect('/route/edit/check')  
 		}    
   })
+
+
 
 	router.post('/route/edit/degree-type', (req, res) => {
 		if (req.query.returnUrl) {
@@ -59,13 +85,7 @@ module.exports = (router) => {
 		}    
   })
 
-	router.post('/route/edit/end-date', (req, res) => {
-		if (req.query.returnUrl) {
-			res.redirect(req.query.returnUrl)
-		} else {
-			res.redirect('/route/edit/check')  
-		}    
-  })
+
 
 	router.post('/route/edit/key-stages', (req, res) => {
 		if (req.query.returnUrl) {
