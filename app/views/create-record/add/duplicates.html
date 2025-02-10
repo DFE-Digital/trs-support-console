@@ -112,7 +112,30 @@
       
        {# {% include "_includes/support-tasks/duplicate-record-card.njk" %} #}
 
+
+
       <form method="post" action="/check-confirm">
+
+        {{ govukRadios({
+          name: "isThisSamePerson",
+          fieldset: {
+            legend: {
+              text: "Are they the same person?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
         {{ govukButton({
           text: "Confirm and create record"
         }) }}
