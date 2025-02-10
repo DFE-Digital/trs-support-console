@@ -1,0 +1,39 @@
+{{ govukTable({
+        caption: "Possible duplicate",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Name",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Date of birth",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Email address",
+            classes: "app-custom-class"
+          },
+          {
+            text: "National insurance number",
+            classes: "app-custom-class"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: data.teachers[0].fullName
+            },
+            {
+              text: data.teachers[0].dateOfBirth
+            },
+            {
+              text: data.teachers[0].email
+            },
+            {
+              text: data.teachers[0].nationalInsurance
+            }
+          ]
+        ]
+      }) }}

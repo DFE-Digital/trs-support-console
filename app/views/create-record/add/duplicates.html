@@ -70,45 +70,7 @@
       }) }}
 
 
-      {{ govukTable({
-        caption: "Possible duplicate",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: false,
-        head: [
-          {
-            text: "Name",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Date of birth",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Email address",
-            classes: "app-custom-class"
-          },
-          {
-            text: "National insurance number",
-            classes: "app-custom-class"
-          }
-        ],
-        rows: [
-          [
-            {
-              text: data.teachers[0].fullName
-            },
-            {
-              text: data.teachers[0].dateOfBirth
-            },
-            {
-              text: data.teachers[0].email
-            },
-            {
-              text: data.teachers[0].nationalInsurance
-            }
-          ]
-        ]
-      }) }}
+        {% include "_includes/support-tasks/duplicate-record-table.njk" %}
       
        {# {% include "_includes/support-tasks/duplicate-record-card.njk" %} #}
 
@@ -117,7 +79,7 @@
       <form method="post" action="/check-confirm">
 
         {{ govukRadios({
-          name: "isThisSamePerson",
+          name: "samePerson",
           fieldset: {
             legend: {
               text: "Are they the same person?",
@@ -128,11 +90,11 @@
           items: [
             {
               value: "Yes",
-              text: "Yes"
+              text: "Yes, use the duplicate above"
             },
             {
               value: "No",
-              text: "No"
+              text: "No, create a new record"
             }
           ]
         }) }}

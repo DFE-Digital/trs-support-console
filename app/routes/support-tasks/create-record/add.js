@@ -11,6 +11,16 @@ module.exports = (router) => {
     }
 		res.redirect('/create-record/add/success')  
 	})
+
+  router.post('/create-record/add/duplicates', (req, res) => {
+    if (samePerson == 'Yes') {
+      res.redirect('/create-record/add')
+      
+    } else {
+      
+    }
+		res.redirect('/create-record/add')  
+	})
   
 	
 }
