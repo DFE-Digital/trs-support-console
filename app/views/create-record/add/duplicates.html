@@ -30,7 +30,7 @@
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
 
       {{ govukTable({
-        caption: "Your person",
+        caption: "Record to be created",
         captionClasses: "govuk-table__caption--m",
         firstCellIsHeader: false,
         head: [
@@ -95,16 +95,16 @@
         rows: [
           [
             {
-              text: data.createRecordFullName
+              text: data.teachers[0].fullName
             },
             {
-              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+              text: data.teachers[0].dateOfBirth
             },
             {
-              text: data.createRecordEmail
+              text: data.teachers[0].email
             },
             {
-              text: data.createRecordNationalInsuranceNumber
+              text: data.teachers[0].nationalInsurance
             }
           ]
         ]
