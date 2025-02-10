@@ -1,12 +1,15 @@
 {% extends "layouts/main.html" %}
 
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
 {% set teacher = trn | find(teacherArray)  %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Possible match found" %}
+{% set pageName = "Possible duplicate record" %}
 
 
 
@@ -65,8 +68,49 @@
           ]
         ]
       }) }}
+
+
+      {{ govukTable({
+        caption: "Possible duplicate",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Name",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Date of birth",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Email address",
+            classes: "app-custom-class"
+          },
+          {
+            text: "National insurance number",
+            classes: "app-custom-class"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: data.createRecordFullName
+            },
+            {
+              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+            },
+            {
+              text: data.createRecordEmail
+            },
+            {
+              text: data.createRecordNationalInsuranceNumber
+            }
+          ]
+        ]
+      }) }}
       
-       {% include "_includes/support-tasks/duplicate-record-card.njk" %}
+       {# {% include "_includes/support-tasks/duplicate-record-card.njk" %} #}
 
       <form method="post" action="/check-confirm">
         {{ govukButton({
