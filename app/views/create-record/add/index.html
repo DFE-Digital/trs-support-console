@@ -3,6 +3,9 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "createRecord" %}
 
+{% set captionName = "Support tasks" %}
+{% set pageName = "Create record" %}
+
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data.teachers %}
 {% set teacher = trn | find(teacherArray)  %}
@@ -23,28 +26,82 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l"> {{pageName}}</h1>
 
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}
 
 
-      {% include "_includes/support-tasks/secondary-navigation.njk" %}  
+      {% include "_includes/support-tasks/secondary-navigation.njk" %}
+      
+      
+      <form action="/form-handler" method="post" novalidate>
+
+        {{ govukInput({
+          label: {
+            text: "Full name",
+            classes: "govuk-label--s govuk-input--width-10"
+          },
+          id: "full-name",
+          name: "fullName",
+          autocomplete: "name",
+          spellcheck: false,
+          classes: "govuk-input--width-30"
+        }) }}
+
+        {{ govukDateInput({
+          id: "expiry",
+          namePrefix: "expiry",
+          fieldset: {
+            legend: {
+              text: "Expiry date",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          }
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "We’ll only use this to send you a receipt"
+          },
+          id: "email",
+          name: "email",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-input--width-30"
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "National Insurance number",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "It’s on your National Insurance card, benefit letter, payslip or P60 – for example, ‘QQ 12 34 56 C’"
+          },
+          classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
+          id: "national-insurance-number",
+          name: "nationalInsuranceNumber",
+          spellcheck: false
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
 
       
-      <h2 class="govuk-heading-m">All records</h2>
-        <p class="govuk-body">No records to show</p>
-
-          {{ govukButton({
-            text: "Add a record",
-            href: "/create-record/add"
-          }) }}
-
-
-      {% if data.chooseQtsRoute  == 'Legacy route' %}
-        {% include "_includes/summary/legacy-route-snapshot.njk" %}
-      {% endif %}
-
+      
 
   </div>
 </div>
