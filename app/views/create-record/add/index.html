@@ -15,16 +15,17 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/find-teacher"
+    href: "javascript:window.history.back()"
   }) }}
 {% endblock %}
+
 
 
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">{{captionName}}</span>
     <h1 class="govuk-heading-l"> {{pageName}}</h1>
@@ -47,15 +48,16 @@
           name: "fullName",
           autocomplete: "name",
           spellcheck: false,
-          classes: "govuk-input--width-30"
+          classes: "govuk-input--width-20"
         }) }}
 
+
         {{ govukDateInput({
-          id: "expiry",
-          namePrefix: "expiry",
+          id: "dateOfBirth",
+          namePrefix: "dateOfBirth",
           fieldset: {
             legend: {
-              text: "Expiry date",
+              text: "Date of birth",
               classes: "govuk-fieldset__legend--s"
             }
           },
@@ -64,9 +66,10 @@
           }
         }) }}
 
+
         {{ govukInput({
           label: {
-            text: "Email address",
+            text: "Email address (Optional)",
             classes: "govuk-label--s"
           },
           hint: {
@@ -77,9 +80,10 @@
           type: "email",
           autocomplete: "email",
           spellcheck: false,
-          classes: "govuk-input--width-30"
+          classes: "govuk-input--width-20"
         }) }}
 
+        
         {{ govukInput({
           label: {
             text: "National Insurance number",
