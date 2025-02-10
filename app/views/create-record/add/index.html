@@ -3,10 +3,6 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "createRecord" %}
 
-{% set captionName = "Support tasks" %}
-{% set pageName = "All records" %}
-
-
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data.teachers %}
 {% set teacher = trn | find(teacherArray)  %}
@@ -27,8 +23,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <span class="govuk-caption-l">{{captionName}}</span>
-    <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}
@@ -37,8 +32,8 @@
       {% include "_includes/support-tasks/secondary-navigation.njk" %}  
 
       
-      <h2 class="govuk-heading-m">No records to show</h2>
-        
+      <h2 class="govuk-heading-m">All records</h2>
+        <p class="govuk-body">No records to show</p>
 
           {{ govukButton({
             text: "Add a record",
