@@ -34,10 +34,10 @@
       {{ data.chooseQtsRoute | log }}
 
 
-      {% include "_includes/support-tasks/secondary-navigation.njk" %}
+      {# {% include "_includes/support-tasks/secondary-navigation.njk" %} #}
       
       
-      <form action="/form-handler" method="post" novalidate>
+      <form method="post" novalidate>
 
         {{ govukInput({
           label: {
@@ -45,16 +45,17 @@
             classes: "govuk-label--s govuk-input--width-10"
           },
           id: "full-name",
-          name: "fullName",
+          name: "createRecordFullName",
           autocomplete: "name",
           spellcheck: false,
-          classes: "govuk-input--width-20"
+          classes: "govuk-input--width-20",
+          value: data.createRecordFullName
         }) }}
 
 
         {{ govukDateInput({
-          id: "dateOfBirth",
-          namePrefix: "dateOfBirth",
+          id: "createRecordDateOfBirth",
+          namePrefix: "createRecordDateOfBirth",
           fieldset: {
             legend: {
               text: "Date of birth",
@@ -63,38 +64,38 @@
           },
           hint: {
             text: "For example, 31 3 1980"
-          }
+          },
+          value: data.createRecordDateOfBirth
         }) }}
 
 
         {{ govukInput({
           label: {
-            text: "Email address (Optional)",
+            text: "Email address",
             classes: "govuk-label--s"
           },
-          hint: {
-            text: "We’ll only use this to send you a receipt"
-          },
-          id: "email",
-          name: "email",
+          id: "createRecordEmail",
+          name: "createRecordEmail",
           type: "email",
           autocomplete: "email",
           spellcheck: false,
-          classes: "govuk-input--width-20"
+          classes: "govuk-input--width-20",
+          value: data.createRecordEmail
         }) }}
 
         
         {{ govukInput({
           label: {
-            text: "National Insurance number",
+            text: "National Insurance number (Optional)",
             classes: "govuk-label--s"
           },
           hint: {
-            text: "It’s on your National Insurance card, benefit letter, payslip or P60 – for example, ‘QQ 12 34 56 C’"
+            text: "For example, ‘QQ 12 34 56 C’"
           },
+          value: data.createRecordNationalInsuranceNumber,
           classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
-          id: "national-insurance-number",
-          name: "nationalInsuranceNumber",
+          id: "create-record-national-insurance-number",
+          name: "createRecordNationalInsuranceNumber",
           spellcheck: false
         }) }}
 

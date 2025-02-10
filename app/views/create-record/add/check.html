@@ -1,7 +1,33 @@
+{% extends "layouts/main.html" %}
 
-{# comment #}
 
-{{ govukSummaryList({
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Check details and create record" %}
+
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      
+
+      {{ govukSummaryList({
         card: {
           title: {
             text: "Personal details"
@@ -51,3 +77,22 @@
           }
         ]
       }) }}
+
+      
+
+      <form method="post">
+        {{ govukButton({
+          text: "Confirm and create record"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -1,19 +1,7 @@
-
-{# comment #}
-
-{{ govukSummaryList({
+ {{ govukSummaryList({
         card: {
           title: {
-            text: "Personal details"
-          },
-          actions: {
-            items: [
-              {
-                href: "/create-record/add",
-                text: "Change",
-                visuallyHiddenText: "record details"
-              }
-            ]
+            text: "Possible match"
           }
         },
         rows: [
@@ -22,7 +10,7 @@
               text: "Name"
             },
             value: {
-              html: data.createRecordFullName
+              html: teachers[0].fullName
             }
           },
           {
@@ -30,7 +18,7 @@
               text: "Date of birth"
             },
             value: {
-              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+              text: teachers[0].dateOfBirth
             }
           },
           {
@@ -38,7 +26,7 @@
               text: "Email address"
             },
             value: {
-              text: data.createRecordEmail
+              text: teachers[0].email
             }
           },
           {
@@ -46,7 +34,7 @@
               text: "National Insurance number"
             },
             value: {
-              text: data.createRecordNationalInsuranceNumber
+              text: teachers[0].nationalInsuranceNumber
             }
           }
         ]
