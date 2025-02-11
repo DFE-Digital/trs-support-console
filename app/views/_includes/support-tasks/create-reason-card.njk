@@ -1,22 +1,27 @@
 <h2 class="govuk-heading-m">Why are you creating this record?</h2>
 
 {{ govukSummaryList({
+  card: {
+          title: {
+            text: "Details"
+          },
+          actions: {
+            items: [
+              {
+                href: "/create-record/add/reason",
+                text: "Change",
+                visuallyHiddenText: "Why I am creating this record"
+              }
+            ]
+          }
+        },
   rows: [
     {
       key: {
         text: "Reason"
       },
       value: {
-        text: data.createRecordReason
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
+        text: data.createRecordReason or data.anotherReason
       }
     },
     {
@@ -25,34 +30,15 @@
       },
       value: {
         text: data.yesAdditionalInfo
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
       }
     },
-       {
+    {
       key: {
         text: "Evidence "
       },
       value: {
-        text: data.evidenceYes
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
+        text: data.evidenceFile
       }
-    }
-    
+    } if data.evidenceFile
   ]
 }) }}

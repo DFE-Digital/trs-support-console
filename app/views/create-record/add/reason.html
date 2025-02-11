@@ -2,7 +2,7 @@
 
 {% set serviceNavId = "supportTasks" %} 
 
-{% set captionName = "Support tasks" %}
+{% set captionName = "Create record" %}
 {% set pageName = "Why are you creating this record?" %}
 
 
@@ -38,7 +38,7 @@
             name: "anotherReason",
             classes: "govuk-!-width-one-half",
             label: {
-              text: "Another reason for changing this route",
+              text: "Enter a reason for creating this rrecord",
               classes: "govuk-label--s"
             },
             value: data.anotherReason
@@ -74,7 +74,7 @@
 
 
         {{ govukRadios({
-          name: "statusChangeReason",
+          name: "createRecordReason",
           fieldset: {
             legend: {
               text: "Reason for change",
