@@ -27,19 +27,19 @@
   rows: [
     [
       {
-        text: data.person[0].fullName
+        text: data.createRecordFullName
       },
       {
-        text: data.person[0].dateOfBirth
+        text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
       },
       {
-        text: data.person[0].email
+        text: data.createRecordEmail
       },
       {
-        text: data.person[0].nationalInsurance
+        text: data.createRecordNationalInsuranceNumber
       },
       {
-        text: data.person[0].trn 
+        text: "123456" 
       }
     ]
   ]

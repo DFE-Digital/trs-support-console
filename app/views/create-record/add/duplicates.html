@@ -3,11 +3,6 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "createRecord" %}
 
-
-{% set trn = data["findRecord"] %}
-{% set teacherArray = data["teachers"] %}
-{% set teacher = trn | find(teacherArray)  %}
-
 {% set captionName = "Support tasks" %}
 {% set pageName = "Possible duplicate record" %}
 
@@ -28,6 +23,8 @@
 
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      <form method="post" novalidate>
 
       {{ govukTable({
         caption: "Record to be created",
@@ -70,13 +67,54 @@
       }) }}
 
 
-        {% include "_includes/support-tasks/duplicate-record-table.njk" %}
       
-       {# {% include "_includes/support-tasks/duplicate-record-card.njk" %} #}
+      {{ govukTable({
+        caption: "Possible matching record",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Name",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Date of birth",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Email address",
+            classes: "app-custom-class"
+          },
+          {
+            text: "National insurance number",
+            classes: "app-custom-class"
+          },
+          {
+            text: "TRN",
+            classes: "app-custom-class"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: data.person[0].fullName
+            },
+            {
+              text: data.person[0].dateOfBirth
+            },
+            {
+              text: data.person[0].email
+            },
+            {
+              text: data.person[0].nationalInsurance
+            },
+            {
+              text: data.person[0].trn 
+            }
+          ]
+        ]
+      }) }}
 
-
-
-      <form method="post" action="/check-confirm">
 
         {{ govukRadios({
           name: "samePerson",
@@ -90,7 +128,7 @@
           items: [
             {
               value: "Yes",
-              text: "Yes, use the duplicate above"
+              text: "Yes, it is the same person"
             },
             {
               value: "No",
@@ -99,7 +137,7 @@
           ]
         }) }}
         {{ govukButton({
-          text: "Confirm and create record"
+          text: "Finish"
         }) }}
       </form>    
 

@@ -4,16 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "All records" %}
-
-
-{% set trn = data["findRecord"] %}
-{% set teacherArray = data.teachers %}
-{% set teacher = trn | find(teacherArray)  %}
-
-
-
-
+{% set pageName = "Create record" %}
 
 
 {% block content %}
@@ -30,7 +21,9 @@
     <h1 class="govuk-heading-l"> {{pageName}}</h1>
 
       {{ data.teachers | log }}
-      {{ data.chooseQtsRoute | log }}
+      {{ data.teachers[0].trn | log }}
+      {{ data.person[0].fullName | log }}
+      {{ data.createRecordFullName | log }}
 
 
       {% include "_includes/support-tasks/secondary-navigation.njk" %}
@@ -40,17 +33,18 @@
         href: "/create-record/add"
       }) }}
 
-      {% include "_includes/support-tasks/existing-records-table.njk" %}
+      
 
-      {# <h2 class="govuk-heading-m">No records to show</h2> #}
-        
+      {% if data.createRecordEmail === 'Susan.Arrowsmith@gmail.com' or data.createRecordFullName === 'Susan Arrowsmith'  %}
+          {% include "_includes/support-tasks/existing-record-single-row.njk" %}
+      {% elif data.createRecordEmail %}
+          {% include "_includes/support-tasks/new-record-single-row.njk" %}
+      {% else %}
+          <h2 class="govuk-heading-m">No records to show</h2>
+      {% endif %}
 
           
 
-
-      {% if data.chooseQtsRoute  == 'Legacy route' %}
-        {% include "_includes/summary/legacy-route-snapshot.njk" %}
-      {% endif %}
 
 
   </div>

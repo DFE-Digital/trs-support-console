@@ -1,0 +1,17 @@
+[
+  {
+    "firstName": "Susan",
+    "lastName": "Arrowsmith",
+    "fullName": "Susan Arrowsmith",
+    "dateOfBirth": "10 May 1998",
+    "gender": "Female",
+    "trn": "553092",
+    "nationalInsurance": "HZ 96 87 96 C",
+    "email": "Susan.Arrowsmith@gmail.com",
+    "mobile": "+447458517176",
+    "inductionStatus": "Required to complete",
+    "inductionStartDate": null,
+    "inductionCompletionDAte": null,
+    "exemptionReason": "Some reason"
+  }
+]

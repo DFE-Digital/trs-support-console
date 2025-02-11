@@ -6,21 +6,23 @@ module.exports = (router) => {
 
   router.post('/create-record/add/check', (req, res) => {
     let data = req.session.data
-    if (data.createRecordFullName === data.teachers[0].fullName || data.createRecordEmail === data.teachers[0].email || data.createRecordNationalInsuranceNumber === data.teachers[0].nationalInsurance) {
+    if (data.createRecordFullName === "Susan Arrowsmith" ) {
       res.redirect('/create-record/add/duplicates')
     }
-    req.flash('success', 'Record created successfully')
+    req.flash('success', 'New record created')
 		res.redirect('/create-record')  
 	})
 
   router.post('/create-record/add/duplicates', (req, res) => {
-    if (samePerson == 'Yes') {
-      res.redirect('/create-record')
-      
+    let data = req.session.data
+    if (data.samePerson == 'Yes') {
+      req.flash('success', 'Existing record merged/updated')
+      res.redirect('/create-record') 
     } else {
-      
+      req.flash('success', 'New record created')
+      let data = {}
+		  res.redirect('/create-record') 
     }
-		res.redirect('/create-record/add')  
 	})
   
 	

@@ -27,6 +27,24 @@
   rows: [
     [
       {
+        text: data.teachers[0].fullName
+      },
+      {
+        text: data.teachers[0].dateOfBirth
+      },
+      {
+        text: data.teachers[0].email
+      },
+      {
+        text: data.teachers[0].nationalInsurance
+      },
+      {
+        text: data.teachers[0].trn 
+      }
+    ] if data.teachers[0].email == 'Minnie_Aufderhar55@yahoo.com',
+  
+    [
+      {
         text: data.createRecordFullName
       },
       {
@@ -41,7 +59,7 @@
       {
         text: "253746"
       }
-    ] if data.createRecordFullName and data.createRecordEmail,
+    ] if not data.teachers[0].trn,
 
     [
       {
