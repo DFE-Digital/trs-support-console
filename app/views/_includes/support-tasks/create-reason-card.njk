@@ -1,0 +1,58 @@
+<h2 class="govuk-heading-m">Why are you creating this record?</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Reason"
+      },
+      value: {
+        text: data.createRecordReason
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "More details"
+      },
+      value: {
+        text: data.yesAdditionalInfo
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+       {
+      key: {
+        text: "Evidence "
+      },
+      value: {
+        text: data.evidenceYes
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }
+    
+  ]
+}) }}

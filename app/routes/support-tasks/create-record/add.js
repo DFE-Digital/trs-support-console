@@ -1,6 +1,10 @@
 module.exports = (router) => {
 
   router.post('/create-record/add', (req, res) => {
+		res.redirect('/create-record/add/reason')  
+	})
+
+  router.post('/create-record/add/reason', (req, res) => {
 		res.redirect('/create-record/add/check')  
 	})
 
