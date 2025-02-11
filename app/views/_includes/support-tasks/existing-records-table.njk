@@ -30,7 +30,7 @@
         text: data.createRecordFullName
       },
       {
-        text: data.createRecordDateOfBirth
+        text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
       },
       {
         text: data.createRecordEmail
@@ -39,7 +39,7 @@
         text: data.createRecordNationalInsuranceNumber
       },
       {
-        text: "2537468"
+        text: "253746"
       }
     ] if data.createRecordFullName and data.createRecordEmail,
 
