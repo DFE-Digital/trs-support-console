@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "You need to go to Find a lost teacher reference number (TRN) service" %}
+
+
+
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %} #}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      {# <span class="govuk-caption-l">{{captionName}}</span> #}
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+        
+          {# <p class="govuk-body">Some guidance.</p>
+          <p class="govuk-body">Stuff</p> #}
+          <p class="govuk-body">
+            <a class="govuk-link" href="https://find-a-lost-trn.education.gov.uk/start">Find a lost teacher reference number (TRN)</a>
+          </p>
+        </div>
+      </div>  
+
+    
+  </div>
+</div>
+
+{% endblock %}
