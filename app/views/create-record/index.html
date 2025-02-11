@@ -18,6 +18,11 @@
 
 {% block content %}
 
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">'+flash+'</h2>'
+}) if flash.length }}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
@@ -28,16 +33,19 @@
       {{ data.chooseQtsRoute | log }}
 
 
-      {% include "_includes/support-tasks/secondary-navigation.njk" %}  
-
+      {% include "_includes/support-tasks/secondary-navigation.njk" %}
       
-      <h2 class="govuk-heading-m">No records to show</h2>
+      {{ govukButton({
+        text: "Add a record",
+        href: "/create-record/add"
+      }) }}
+
+      {% include "_includes/support-tasks/existing-records-table.njk" %}
+
+      {# <h2 class="govuk-heading-m">No records to show</h2> #}
         
 
-          {{ govukButton({
-            text: "Add a record",
-            href: "/create-record/add"
-          }) }}
+          
 
 
       {% if data.chooseQtsRoute  == 'Legacy route' %}

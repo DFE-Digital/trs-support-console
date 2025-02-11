@@ -9,12 +9,13 @@ module.exports = (router) => {
     if (data.createRecordFullName === data.teachers[0].fullName || data.createRecordEmail === data.teachers[0].email || data.createRecordNationalInsuranceNumber === data.teachers[0].nationalInsurance) {
       res.redirect('/create-record/add/duplicates')
     }
-		res.redirect('/create-record/add/success')  
+    req.flash('success', 'Record created successfully')
+		res.redirect('/create-record')  
 	})
 
   router.post('/create-record/add/duplicates', (req, res) => {
     if (samePerson == 'Yes') {
-      res.redirect('/create-record/add')
+      res.redirect('/create-record')
       
     } else {
       
