@@ -7,9 +7,6 @@
 {% set pageName = "Personal details" %}
 
 
-
-
-
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -37,6 +34,19 @@
       
       <form method="post" novalidate>
 
+        {% set anotherReason %}
+        {{ govukTextarea({
+            id: "another-reason",
+            name: "data['anotherReason']",
+            classes: "govuk-!-width-one-half",
+            label: {
+              text: "Enter reason for creating record",
+              classes: "govuk-label--s"
+            },
+            value: data.anotherReason
+          }) }}
+        {% endset %}
+
         {{ govukInput({
           label: {
             text: "Full name",
@@ -63,7 +73,7 @@
           hint: {
             text: "For example, 31 3 1980"
           },
-          value: data.createRecordDateOfBirth
+          value: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
         }) }}
 
 
@@ -96,6 +106,37 @@
           name: "createRecordNationalInsuranceNumber",
           spellcheck: false
         }) }}
+
+        <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+        {{ govukRadios({
+          name: "createRecordReason",
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Some reason",
+              text: "Some reason"
+            },
+            {
+              value: "A different reason",
+              text: "A different reason"
+            },
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: anotherReason
+              }
+            }
+          ],
+          value: data.createRecordReason
+        }) }}
+
+
 
         {{ govukButton({
           text: "Continue"

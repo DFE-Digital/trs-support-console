@@ -34,7 +34,7 @@
           actions: {
             items: [
               {
-                href: "/create-record/add",
+                href: "/create-record/add/details",
                 text: "Change",
                 visuallyHiddenText: "record details"
               }
@@ -73,11 +73,18 @@
             value: {
               text: data.createRecordNationalInsuranceNumber
             }
-          } if data.createRecordNationalInsuranceNumber
+          } if data.createRecordNationalInsuranceNumber,
+          {
+            key: {
+              text: "Reason for creating record"
+            },
+            value: {
+              text: data.createRecordReason
+            }
+          }
         ]
       }) }}
 
-      {% include "_includes/support-tasks/create-reason-card.njk" %}
 
       <form method="post">
         {{ govukButton({
