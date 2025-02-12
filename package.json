@@ -8,6 +8,7 @@
   "dependencies": {
     "@faker-js/faker": "^9.0.3",
     "@govuk-prototype-kit/common-templates": "2.0.1",
+    "@ministryofjustice/frontend": "^3.3.1",
     "@x-govuk/govuk-prototype-components": "^3.0.9",
     "@x-govuk/govuk-prototype-filters": "^1.4.3",
     "accessible-autocomplete": "^3.0.1",
