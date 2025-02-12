@@ -60,7 +60,8 @@
               text: data.createRecordEmail
             },
             {
-              text: data.createRecordNationalInsuranceNumber
+              text: data.createRecordNationalInsuranceNumber,
+              classes: "govuk-table__cell govuk-table__cell--numeric"
             }
           ]
         ]
@@ -68,45 +69,9 @@
 
 
       
-      {{ govukTable({
-        caption: "Existing record",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: false,
-        head: [
-          {
-            text: "Name",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Date of birth",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Email address",
-            classes: "app-custom-class"
-          },
-          {
-            text: "National insurance number",
-            classes: "app-custom-class"
-          }
-        ],
-        rows: [
-          [
-            {
-              text: data.person[0].fullName
-            },
-            {
-              text: data.person[0].dateOfBirth
-            },
-            {
-              text: data.person[0].email
-            },
-            {
-              text: data.person[0].nationalInsurance
-            }
-          ]
-        ]
-      }) }}
+      {# Multi select table goes here #}
+      {% include "_includes/support-tasks/duplicate-multi-table.njk" %}
+
 
 
         {{ govukRadios({
