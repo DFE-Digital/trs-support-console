@@ -1,0 +1,1289 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Users – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: false
+    },
+    {
+      href: "permissions/overview",
+      text: "Users",
+      active: true
+    }
+  ]
+}) }}
+
+
+  
+
+  
+
+  <div class="govuk-width-container">
+
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <h1 class="govuk-heading-l">
+       Users
+          </h1>
+
+          <div class="moj-filter-layout">
+
+            <div class="moj-filter-layout__filter" style="width:280px!important;">
+          
+              <div class="moj-filter">
+          
+                <div class="moj-filter__header">
+          
+                  <div class="moj-filter__header-title">
+                    <h2 class="govuk-heading-m">Filter</h2>
+                  </div>
+          
+                  <div class="moj-filter__header-action">
+          
+                  </div>
+          
+                </div>
+          
+                <div class="moj-filter__options">
+
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-label--m" for="keywords">
+                        Keywords
+                      </label>
+          
+                      <input class="govuk-input" id="keywords" name="keywords" type="text">
+          
+                    </div>
+          
+                    <div class="govuk-form-group">
+          
+                      <fieldset class="govuk-fieldset">
+          
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          
+                          Role
+          
+                        </legend>
+          
+                        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="type">
+                              Administrator (18)
+                            </label>
+          
+                          </div>
+          
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                              Helpdesk (15)
+                            </label>
+          
+                          </div>
+          
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="type-3" name="type" type="checkbox" value="3">
+                            <label class="govuk-label govuk-checkboxes__label" for="type-3">
+                              Alerts (34)
+                            </label>
+                          </div>
+
+                                    
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="type-3" name="type" type="checkbox" value="3">
+                            <label class="govuk-label govuk-checkboxes__label" for="type-3">
+                              DBS Alerts (20)
+                            </label>
+                          </div>
+          
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="type-3" name="type" type="checkbox" value="3">
+                            <label class="govuk-label govuk-checkboxes__label" for="type-3">
+                             Induction (17)
+                            </label>
+                          </div>
+                        </div>
+          
+                      </fieldset>
+                      </div>
+
+                      <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset">
+          
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          
+                         Status
+          
+                        </legend>
+          
+                        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+          
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="type">
+                             Active (133)
+                            </label>
+          
+                          </div>
+          
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2">
+                            <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                              Deactivated (17)
+                            </label>
+          
+                          </div>
+          
+                      </fieldset>
+                      </div>
+                      
+                   
+                    {{ govukSelect({
+                      id: "sort",
+                      name: "sort",
+                      label: {
+                        text: "Sort by"
+                      },
+                      items: [
+                        {
+                          value: "date",
+                          text: "Date"
+                        },
+                        {
+                          value: "updated",
+                          text: "Recently updated",
+                          selected: true
+                        },
+                        {
+                          value: "alphabetical",
+                          text: "A to Z"
+                        }
+                      ]
+                    }) }}
+          
+                    <div class="govuk-button-group">
+                      <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Apply filters
+                      </button>
+  
+                      <div class="moj-filter__heading-action">
+                        <p><a class="govuk-link govuk-link--no-visited-state" href="">Clear filters</a></p>
+                      </div>
+                      </div>
+                   
+                 
+          
+                  </div>
+          
+                </div>
+          
+              </div>
+          
+        
+          
+            <div class="moj-filter-layout__content">
+          
+          
+            <!-- Page content -->
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=edit-user>Callie Becker</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  calliebecker@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "READ ONLY",
+                    classes: "govuk-tag--yellow"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "READ",
+                    classes: "govuk-tag--green"
+                  })}} 
+                  {{govukTag({
+                    text: "WRITE",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Sarah Jane Smith</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  sarahjanesmith@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Corinna Ilbert</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                corinnailbert@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Ben Cooper</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                bencooper@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Carmen Gomez</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                carmengomez@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Daniel Shah</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                danielshah@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Todd Wyatt</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                toddwyatt@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Jaime Barry</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                jaimebarry@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Stefan Salinas</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                stefansalinas@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+            <fieldset class="govuk-fieldset" aria-describedby="assessor-name-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-!-font-weight-bold">
+                 <a href=#>Freya Bernard</a>
+              </legend>
+            <dl class="govuk-summary-list ">
+              <div class="govuk-summary-list__row style=border:0px bottom!important;">
+                <dt class="govuk-summary-list__key">
+                  Email address
+                </dt>
+                <dd class="govuk-summary-list__value">
+                freyabernard@example.com
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              </dl>
+
+              <dl class="govuk-summary-list">
+              <legend class="govuk-fieldset__legend govuk-!-font-weight-bold">
+              Permissions
+             </legend>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Administrator
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Helpdesk
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "YES",
+                    classes: "govuk-tag--green"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 DBS Alerts
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "NO",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 Induction
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  {{govukTag({
+                    text: "CAN'T READ",
+                    classes: "govuk-tag--red"
+                  })}} 
+                  {{govukTag({
+                    text: "CAN'T WRITE",
+                    classes: "govuk-tag--red"
+                  })}}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address</span></a>
+                </dd>
+              </div>
+
+            </dl>
+            </fieldset>
+
+            
+          <!-- pagination -->
+          <nav class="govuk-pagination" role="navigation" aria-label="results">
+            <div class="govuk-pagination__prev">
+                <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+                    <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                        <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+                    </svg>
+                    <span class="govuk-pagination__link-title">Previous</span></a>
+            </div>
+            <ul class="govuk-pagination__list">
+                <li class="govuk-pagination__item govuk-pagination__item--current">
+                    <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1">
+                        1
+                    </a>
+                </li>
+                <li class="govuk-pagination__item">
+                    <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2" aria-current="page">
+                        2
+                    </a>
+                </li>
+                <li class="govuk-pagination__item">
+                    <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+                        3
+                    </a>
+                </li>
+            </ul>
+            <div class="govuk-pagination__next">
+                <a class="govuk-link govuk-pagination__link" href="#" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                    <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                </svg></a>
+            </div>
+        </nav>
+        </div>
+      </div>
+         </div>
+            </div>
+    
+    </main>
+    
+  </div>
+
+
+{% endblock %}

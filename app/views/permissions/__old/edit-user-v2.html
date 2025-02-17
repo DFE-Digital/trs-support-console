@@ -1,0 +1,190 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Primary navigation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: false
+    },
+    {
+      href: "permissions/overview",
+      text: "Users",
+      active: true
+    }
+  ]
+}) }}
+  
+
+  
+  <div class="govuk-width-container">
+    {% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "/find-teacher"
+    }) }}
+  {% endblock %}
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+          Edit Callie Becker
+          </h1>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              User does not have an account in CRM.
+              <br>
+              Some functionality will not be available.
+            </strong>
+          </div>
+
+          <fieldset class="govuk-fieldset">
+           
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="email">
+                Email address
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="text" autocomplete="email" value="calliebecker@example.com">
+            </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="name">
+                Name
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="name" name="name" type="text" autocomplete="name" value="Callie Becker">
+            </div>
+            
+          </fieldset>
+          
+
+         
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Roles
+                </h2>
+              </legend>
+              
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3">
+                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+                   User
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                    Read only access.
+                  </div>
+                </div>
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3">
+                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+                   Administrator
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                    Can edit all entities, export, import and delete data.
+                  </div>
+                </div>
+
+
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3">
+                  <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                    Helpdesk
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                    For TMU staff. Can edit Person, Employment, Alert and notes fields.
+                    <br>
+                    Cannot edit QTS, Induction, ITT, Qualification entities or allocate a TRN. Cannot delete records, export/import data or edit value sets.
+                  </div>
+                </div>
+
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  <h2 class="govuk-fieldset__heading">
+                    DBS alerts
+                  </h2>
+                </legend>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    Read only
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    Write
+                  </label>
+                </div>
+
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  <h2 class="govuk-fieldset__heading">
+                    Induction
+                  </h2>
+                </legend>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    Read only
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3">
+                  <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+                  <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+                    Write
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Save changes
+            </button>
+            <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+              Deactivate user
+            </button>
+            <a class="govuk-link" href="#">Cancel</a>
+          </div>
+
+        
+        </div>
+      </div>
+         </div>
+            </div>
+    
+    </main>
+    
+  </div>
+
+
+{% endblock %}

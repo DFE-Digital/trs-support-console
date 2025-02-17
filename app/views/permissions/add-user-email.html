@@ -1,0 +1,87 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Primary navigation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: false
+    },
+    {
+      href: "permissions/overview",
+      text: "Users",
+      active: true
+    }
+  ]
+}) }}
+  
+
+  
+  <div class="govuk-width-container">
+    {% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "/find-teacher"
+    }) }}
+  {% endblock %}
+  <form action="add-user">
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+          Add new user
+          </h1>
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+              <label class="govuk-label govuk-label--m" for="event-name">
+                Email address
+              </label>
+            </h1>
+            <input class="govuk-input" id="event-name" name="eventName" type="text">
+          </div>
+          
+
+     
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Find user
+            </button>
+            <a class="govuk-link" href="#">Cancel</a>
+          </div>
+        </form>
+        </div>
+      </div>
+         </div>
+            </div>
+    
+    </main>
+    
+  </div>
+
+
+{% endblock %}

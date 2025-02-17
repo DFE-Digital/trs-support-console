@@ -1,0 +1,412 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Primary navigation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: false
+    },
+    {
+      href: "permissions/overview",
+      text: "Users",
+      active: true
+    }
+  ]
+}) }}
+  
+
+  
+  <div class="govuk-width-container">
+    {% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "/find-teacher"
+    }) }}
+  {% endblock %}
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+          Edit Callie Becker
+          </h1>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-visually-hidden">Warning</span>
+              User does not have an account in CRM.
+              <br>
+              Some functionality will not be available.
+            </strong>
+          </div>
+
+          <fieldset class="govuk-fieldset">
+           
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="email">
+                Email address
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="text" autocomplete="email" value="calliebecker@example.com" disabled>
+            </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="name">
+                Name
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="name" name="name" type="text" autocomplete="name" value="Callie Becker">
+            </div>
+            
+          </fieldset>
+          
+
+         
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="role-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Roles
+                </h2>
+              </legend>
+              
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="role" name="admin" type="checkbox" value="admin" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="role">
+                   Viewer
+                  </label>
+                  <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                   [placeholder text explaining what this role is at a high level.]
+                  </div>
+                </div>
+
+
+                <details class="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                    View permissions
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <table class="govuk-table">
+                      <caption class="govuk-table__caption govuk-table__caption--s">Viewer permissions</caption>
+                      <p class="govuk-body">[alternative placeholder text with a quick explanation of what this role is but as body text]</p>
+                      <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                          <th scope="col" class="govuk-table__header">Read data</th>
+                          <th scope="col" class="govuk-table__header">Edit data</th>
+                          <th scope="col" class="govuk-table__header">View DBS alerts specifics</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Users'</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Support tasks'</th>
+                          <th scope="col" class="govuk-table__header">Deactivate users</th>
+                        </tr>
+                      </thead>
+                      <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                            text: "YES",
+                            classes: "govuk-tag--green"
+                          })}}
+                        </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td> <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td> <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3"></div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="role-2" name="helpdesk" type="checkbox" value="helpdesk">
+                  <label class="govuk-label govuk-checkboxes__label" for="role-2">
+                    Support officer (Editor)
+                  </label>
+                </div>
+
+                <details class="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                    View permissions
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <table class="govuk-table">
+                      <caption class="govuk-table__caption govuk-table__caption--s">Support officer permissions</caption>
+                      <p class="govuk-body">[placeholder text with a quick explanation of what this role is]</p>
+                      <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                          <th scope="col" class="govuk-table__header">Read data</th>
+                          <th scope="col" class="govuk-table__header">Edit data</th>
+                          <th scope="col" class="govuk-table__header">View DBS alerts specifics</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Users'</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Support tasks'</th>
+                          <th scope="col" class="govuk-table__header">Deactivate users</th>
+                        </tr>
+                      </thead>
+                      <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                            text: "YES",
+                            classes: "govuk-tag--green"
+                          })}}
+                        </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td> <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td> <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3"></div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="role-2" name="helpdesk" type="checkbox" value="helpdesk">
+                  <label class="govuk-label govuk-checkboxes__label" for="role-2">
+                    TMU user
+                  </label>
+                </div>
+
+                <details class="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                    View permissions
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <table class="govuk-table">
+                      <caption class="govuk-table__caption govuk-table__caption--s">TMU user permissions</caption>
+                      <p class="govuk-body">[placeholder text with a quick explanation of what this role is]</p>
+                      <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                          <th scope="col" class="govuk-table__header">Read data</th>
+                          <th scope="col" class="govuk-table__header">Edit data</th>
+                          <th scope="col" class="govuk-table__header">View DBS alerts specifics</th>
+                          <th scope="col" class="govuk-table__header">Edit and create alerts (non-DBS)</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Users'</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Support tasks'</th>
+                          <th scope="col" class="govuk-table__header">Deactivate users</th>
+                        </tr>
+                      </thead>
+                      <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                            text: "YES",
+                            classes: "govuk-tag--green"
+                          })}}
+                        </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td> <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "NO",
+                              classes: "govuk-tag--red"
+                            })}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3"></div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="role-2" name="helpdesk" type="checkbox" value="helpdesk">
+                  <label class="govuk-label govuk-checkboxes__label" for="role-2">
+                   Administrator
+                  </label>
+                </div>
+
+                <details class="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                    View permissions
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <table class="govuk-table">
+                      <caption class="govuk-table__caption govuk-table__caption--s">Administrator user permissions</caption>
+                      <p class="govuk-body">[placeholder text with a quick explanation of what this role is]</p>
+                      <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                          <th scope="col" class="govuk-table__header">Read data</th>
+                          <th scope="col" class="govuk-table__header">Edit data</th>
+                          <th scope="col" class="govuk-table__header">View DBS alerts specifics</th>
+                          <th scope="col" class="govuk-table__header">Edit and create alerts (non-DBS)</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Users'</th>
+                          <th scope="col" class="govuk-table__header">Access to 'Support tasks'</th>
+                          <th scope="col" class="govuk-table__header">Deactivate users</th>
+                        </tr>
+                      </thead>
+                      <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                            text: "YES",
+                            classes: "govuk-tag--green"
+                          })}}
+                        </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td> <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                          <td class="govuk-table__cell">
+                            {{govukTag({
+                              text: "YES",
+                              classes: "govuk-tag--green"
+                            })}}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+
+                <div class="govuk-checkboxes__item govuk-!-padding-bottom-3"></div>
+
+                <div class="govuk-button-group">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Save changes
+                  </button>
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Deactivate user
+                  </button>
+                  <a class="govuk-link" href="#">Cancel</a>
+                </div>
+      
+
+        </div>
+      </div>
+         </div>
+            </div>
+    
+    </main>
+    
+  </div>
+
+
+{% endblock %}
