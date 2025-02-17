@@ -1,0 +1,95 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Primary navigation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: false
+    },
+    {
+      href: "permissions/overview",
+      text: "Users",
+      active: true
+    }
+  ]
+}) }}
+  
+
+  
+  <div class="govuk-width-container">
+    {% block beforeContent %}
+    {{ govukBackLink({
+      text: "Back",
+      href: "/find-teacher"
+    }) }}
+  {% endblock %}
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+          Deactivate "Callie Becker"
+          </h1>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h1 class="govuk-fieldset__heading">
+                  Are you sure you want to deactivate this user?
+                </h1>
+              </legend>
+              
+              <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="changedName">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="changedName-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+             Continue
+            </button>
+            <a class="govuk-link" href="#">Cancel</a>
+          </div>
+    
+    </main>
+    
+  </div>
+
+
+{% endblock %}
