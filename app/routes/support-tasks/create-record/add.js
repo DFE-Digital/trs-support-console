@@ -14,7 +14,7 @@ module.exports = (router) => {
     if (data.createRecordEmail === "Susan.Arrowsmith@gmail.com" ) {
       res.redirect('/create-record/add/duplicates')
     }
-    req.flash('success', 'New record created')
+    req.flash('success', 'New record created: TRN - 553092')
 		res.redirect('/create-record')  
 	})
 
@@ -24,7 +24,7 @@ module.exports = (router) => {
       // req.flash('success', 'Existing record merged/updated')
       res.redirect('/create-record/add/find-trn') 
     } else {
-      req.flash('success', 'New record created')
+      req.flash('success', 'New record created: TRN - 553092')
       let data = {}
 		  res.redirect('/create-record') 
     }

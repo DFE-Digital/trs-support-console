@@ -1,5 +1,5 @@
 {{ govukTable({
-  caption: "All records",
+  caption: "Record details",
   captionClasses: "govuk-table__caption--m",
   firstCellIsHeader: false,
   head: [
@@ -27,7 +27,7 @@
   rows: [
     [
       {
-        text: data.person[0].fullName
+        html: '<p class="govuk-body"><a href="#" class="govuk-link"> '+ data.person[0].fullName +' </a></p>'
       },
       {
         text: data.person[0].dateOfBirth
