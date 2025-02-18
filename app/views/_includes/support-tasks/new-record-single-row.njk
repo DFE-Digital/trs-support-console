@@ -27,7 +27,7 @@
   rows: [
     [
       {
-        html: '<p class="govuk-body"><a href="#" class="govuk-link"> '+ data.person[0].fullName +' </a></p>'
+        html: '<p class="govuk-body"><a href="#" class="govuk-link"> '+ data.createRecordFirstName + " " + data.createRecordMiddleName + " " + data.createRecordLastName +' </a></p>'
       },
       {
         text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
