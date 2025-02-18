@@ -4,7 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Create record" %}
+{% set pageName = "Create a record" %}
 
 
 {% block content %}
@@ -40,7 +40,7 @@
       {% elif data.createRecordEmail %}
           {% include "_includes/support-tasks/new-record-single-row.njk" %}
       {% else %}
-          <h2 class="govuk-heading-m">No records to show</h2>
+          <h2 class="govuk-heading-m"></h2>
       {% endif %}
 
           

@@ -49,15 +49,41 @@
 
         {{ govukInput({
           label: {
-            text: "Full name",
+            text: "First name",
             classes: "govuk-label--s govuk-input--width-10"
           },
-          id: "full-name",
-          name: "createRecordFullName",
-          autocomplete: "name",
+          id: "first-name",
+          name: "createRecordFirstName",
+          autocomplete: "given-name",
           spellcheck: false,
           classes: "govuk-input--width-20",
-          value: data.createRecordFullName
+          value: data.createRecordFirstName
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Middle name",
+            classes: "govuk-label--s govuk-input--width-10"
+          },
+          id: "middle-name",
+          name: "createRecordMiddleName",
+          autocomplete: "additional-name",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          value: data.createRecordMiddleName
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Last name",
+            classes: "govuk-label--s govuk-input--width-10"
+          },
+          id: "last-name",
+          name: "createRecordLastName",
+          autocomplete: "family-name",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          value: data.createRecordLastName
         }) }}
 
 
