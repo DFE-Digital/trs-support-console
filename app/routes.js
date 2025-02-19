@@ -1,8 +1,3 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
-
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
@@ -30,6 +25,12 @@ require('./routes/new-qtls-set')(router)
 require('./routes/legacy')(router)
 
 
+//// CREATE RECORD ROUTES
+require('./routes/support-tasks/create-record/add')(router)
+
+
+
+// GENERAL ROUTES
 router.get('/cancel-and-return', (req, res) => {
     req.session.data = {}
     res.redirect('/general')
@@ -43,9 +44,3 @@ router.post('/find-teacher', (req, res) => {
 ////// INDUCTION ROUTES
 require('./routes/induction/induction-route')(router)
 
-
-// router.get('/find-new-record', (req, res) => {
-//     req.session.data = {}
-//     res.redirect('/find-teacher')
-// })
-  

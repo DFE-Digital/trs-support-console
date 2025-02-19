@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Create a record" %}
+
+
+{% block content %}
+
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">'+flash+' </h2>'
+}) if flash.length }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {{ data.teachers | log }}
+      {{ data.teachers[0].trn | log }}
+      {{ data.person[0].fullName | log }}
+      {{ data.createRecordFullName | log }}
+
+
+      {% include "_includes/support-tasks/secondary-navigation.njk" %}
+      
+      {{ govukButton({
+        text: "Add a record",
+        href: "/create-record/add/details"
+      }) }}
+
+      
+
+      {% if data.createRecordEmail === 'Susan.Arrowsmith@gmail.com' or data.createRecordFullName === 'Susan Arrowsmith'  %}
+          {% include "_includes/support-tasks/existing-record-single-row.njk" %}
+      {% elif data.createRecordEmail %}
+          {% include "_includes/support-tasks/new-record-single-row.njk" %}
+      {% else %}
+          <h2 class="govuk-heading-m"></h2>
+      {% endif %}
+
+          
+
+
+
+  </div>
+</div>
+
+{% endblock %}

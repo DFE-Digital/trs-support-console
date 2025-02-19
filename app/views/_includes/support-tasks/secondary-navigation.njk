@@ -1,0 +1,22 @@
+
+{{ xGovukSecondaryNavigation({
+    visuallyHiddenTitle: "Secondary menu",
+    classes: "govuk-!-margin-bottom-6",
+    items: [
+    {
+      text: "Create a record",
+      href: "/create-record",
+      current: (secondaryNavId == "createRecord")
+    },
+    {
+      text: "Get a TRN",
+      href: "#",
+      current: (secondaryNavId == "getTrn")
+    },
+    {
+      text: "Other support task",
+      href: "#",
+      current: (secondaryNavId == "otherTask")
+    }
+  ] if data.user
+}) }}

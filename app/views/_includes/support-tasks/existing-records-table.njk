@@ -1,0 +1,133 @@
+{{ govukTable({
+  caption: "All records",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Name",
+      classes: "app-custom-class"
+    },
+    {
+      text: "Date of birth",
+      classes: "app-custom-class"
+    },
+    {
+      text: "Email address",
+      classes: "app-custom-class"
+    },
+    {
+      text: "National insurance number",
+      classes: "app-custom-class"
+    },
+    {
+      text: "TRN",
+      classes: "app-custom-class"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: data.teachers[0].fullName
+      },
+      {
+        text: data.teachers[0].dateOfBirth
+      },
+      {
+        text: data.teachers[0].email
+      },
+      {
+        text: data.teachers[0].nationalInsurance
+      },
+      {
+        text: data.teachers[0].trn 
+      }
+    ] if data.teachers[0].email == 'Minnie_Aufderhar55@yahoo.com',
+  
+    [
+      {
+        text: data.createRecordFullName
+      },
+      {
+        text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+      },
+      {
+        text: data.createRecordEmail
+      },
+      {
+        text: data.createRecordNationalInsuranceNumber
+      },
+      {
+        text: "253746"
+      }
+    ] if not data.teachers[0].trn,
+
+    [
+      {
+        text: data.teachers[7].fullName
+      },
+      {
+        text: data.teachers[7].dateOfBirth
+      },
+      {
+        text: data.teachers[7].email
+      },
+      {
+        text: data.teachers[7].nationalInsurance
+      },
+      {
+        text: data.teachers[7].trn
+      }
+    ],
+    [
+      {
+        text: data.teachers[6].fullName
+      },
+      {
+        text: data.teachers[6].dateOfBirth
+      },
+      {
+        text: data.teachers[6].email
+      },
+      {
+        text: data.teachers[6].nationalInsurance
+      },
+      {
+        text: data.teachers[6].trn
+      }
+    ],
+    [
+      {
+        text: data.teachers[5].fullName
+      },
+      {
+        text: data.teachers[5].dateOfBirth
+      },
+      {
+        text: data.teachers[5].email
+      },
+      {
+        text: data.teachers[5].nationalInsurance
+      },
+      {
+        text: data.teachers[5].trn
+      }
+    ],
+    [
+      {
+        text: data.teachers[4].fullName
+      },
+      {
+        text: data.teachers[4].dateOfBirth
+      },
+      {
+        text: data.teachers[4].email
+      },
+      {
+        text: data.teachers[4].nationalInsurance
+      },
+      {
+        text: data.teachers[4].trn
+      }
+    ]
+  ]
+}) }}

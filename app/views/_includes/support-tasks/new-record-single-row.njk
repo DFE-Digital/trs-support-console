@@ -1,0 +1,46 @@
+{{ govukTable({
+  caption: "All records",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Name",
+      classes: "app-custom-class"
+    },
+    {
+      text: "Date of birth",
+      classes: "app-custom-class"
+    },
+    {
+      text: "Email address",
+      classes: "app-custom-class"
+    },
+    {
+      text: "National insurance number",
+      classes: "app-custom-class"
+    },
+    {
+      text: "TRN",
+      classes: "app-custom-class"
+    }
+  ],
+  rows: [
+    [
+      {
+        html: '<p class="govuk-body"><a href="#" class="govuk-link"> '+ data.createRecordFirstName + " " + data.createRecordMiddleName + " " + data.createRecordLastName +' </a></p>'
+      },
+      {
+        text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+      },
+      {
+        text: data.createRecordEmail
+      },
+      {
+        text: data.createRecordNationalInsuranceNumber
+      },
+      {
+        text: "123456" 
+      }
+    ]
+  ]
+}) }}

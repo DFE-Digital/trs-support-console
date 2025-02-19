@@ -1,0 +1,46 @@
+{{ govukTable({
+  caption: "All records",
+  captionClasses: "govuk-table__caption--m",
+  firstCellIsHeader: false,
+  head: [
+    {
+      text: "Name",
+      classes: "app-custom-class"
+    },
+    {
+      text: "Date of birth",
+      classes: "app-custom-class"
+    },
+    {
+      text: "Email address",
+      classes: "app-custom-class"
+    },
+    {
+      text: "National insurance number",
+      classes: "app-custom-class"
+    },
+    {
+      text: "TRN",
+      classes: "app-custom-class"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: data.person[0].fullName
+      },
+      {
+        text: data.person[0].dateOfBirth
+      },
+      {
+        text: data.person[0].email
+      },
+      {
+        text: data.person[0].nationalInsurance
+      },
+      {
+        text: data.person[0].trn 
+      }
+    ]
+  ]
+}) }}

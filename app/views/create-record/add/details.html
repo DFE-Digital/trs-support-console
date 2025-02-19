@@ -1,0 +1,221 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Create record" %}
+{% set pageName = "Enter the teacher's personal details" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {{ data.teachers | log }}
+      {{ data.chooseQtsRoute | log }}
+
+
+      {# {% include "_includes/support-tasks/secondary-navigation.njk" %} #}
+      
+      
+      <form method="post" novalidate>
+
+        {% set moreDetailsTextArea %}
+          {{ govukTextarea({
+            id: "yes-additional-info",
+            name: "yesAdditionalInfo",
+            classes: "govuk-!-width-one-half",
+            label: {
+              text: "Enter details",
+              classes: "govuk-label--s"
+            },
+            value: data.yesAdditionalInfo
+          }) }}
+        {% endset %}
+
+        {% set evidenceYes %}
+          {{ govukFileUpload({
+            id: "evidenceFile",
+            name: "evidenceFile",
+            label: {
+              text: "Upload files",
+              classes: "govuk-label--m"
+            },
+            hint: {
+              text: "Must be smaller than 100MB"
+            }
+          }) }}
+        {% endset %}
+
+
+        
+
+        {{ govukInput({
+          label: {
+            text: "First name",
+            classes: "govuk-label--s govuk-input--width-10"
+          },
+          id: "first-name",
+          name: "createRecordFirstName",
+          autocomplete: "given-name",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          value: data.createRecordFirstName
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Middle name",
+            classes: "govuk-label--s govuk-input--width-10"
+          },
+          id: "middle-name",
+          name: "createRecordMiddleName",
+          autocomplete: "additional-name",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          value: data.createRecordMiddleName
+        }) }}
+        
+        {{ govukInput({
+          label: {
+            text: "Last name",
+            classes: "govuk-label--s govuk-input--width-10"
+          },
+          id: "last-name",
+          name: "createRecordLastName",
+          autocomplete: "family-name",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          value: data.createRecordLastName
+        }) }}
+
+
+        {{ govukDateInput({
+          id: "createRecordDateOfBirth",
+          namePrefix: "createRecordDateOfBirth",
+          fieldset: {
+            legend: {
+              text: "Date of birth",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          value: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+        }) }}
+
+
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--s"
+          },
+          id: "createRecordEmail",
+          name: "createRecordEmail",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          classes: "govuk-input--width-20",
+          value: data.createRecordEmail
+        }) }}
+
+        
+        {{ govukInput({
+          label: {
+            text: "National Insurance number (Optional)",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "For example, ‘QQ 12 34 56 C’"
+          },
+          value: data.createRecordNationalInsuranceNumber,
+          classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
+          id: "create-record-national-insurance-number",
+          name: "createRecordNationalInsuranceNumber",
+          spellcheck: false
+        }) }}
+
+        <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+        {{ govukRadios({
+          name: "createRecordReason",
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Some reason",
+              text: "Some reason"
+            },
+            {
+              value: "A different reason",
+              text: "A different reason"
+            },
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: moreDetailsTextArea
+              }
+            }
+          ],
+          value: data.createRecordReason
+        }) }}
+
+        <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+        {{ govukRadios({
+          name: "evidenceUploaded",
+          fieldset: {
+            legend: {
+              text: "Do you have evidence to upload?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: evidenceYes
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.evidenceUploaded
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+      
+      
+
+  </div>
+</div>
+
+{% endblock %}
