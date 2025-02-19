@@ -1,0 +1,41 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "trnRequests" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "TRN requests" %}
+
+
+{% block content %}
+
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">'+flash+' </h2>'
+}) if flash.length }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {{ data.teachers | log }}
+      {{ data.teachers[0].trn | log }}
+      {{ data.person[0].fullName | log }}
+      {{ data.createRecordFullName | log }}
+
+
+      {% include "_includes/support-tasks/secondary-navigation.njk" %}
+
+      {% include "_includes/support-tasks/create-from-trn/request-table.njk" %}
+      
+
+          
+
+
+
+  </div>
+</div>
+
+{% endblock %}

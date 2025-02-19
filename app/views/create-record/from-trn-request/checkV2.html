@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %}
+{% set secondaryNavId = "createRecord" %}
+{% set captionName = "Support tasks" %}
+{% set pageName = "Check details and create record" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <span class="govuk-caption-l">{{ captionName }}</span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: { text: "First name" },
+            value: { html: data.createRecordFirstName },
+            actions: { items: [{ href: "/create-record/add/details", text: "Change", visuallyHiddenText: "record details" }] }
+          },
+          {
+            key: { text: "Middle name" },
+            value: { html: data.createRecordMiddleName }
+          },
+          {
+            key: { text: "Last name" },
+            value: { html: data.createRecordLastName }
+          },
+          {
+            key: { text: "Date of birth" },
+            value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+          },
+          {
+            key: { text: "Email address" },
+            value: { text: data.createRecordEmail }
+          },
+          {
+            key: { text: "National Insurance number" },
+            value: { text: data.createRecordNationalInsuranceNumber }
+          } if data.createRecordNationalInsuranceNumber
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: { text: "Reason for creating record" },
+            value: { text: data.createRecordReason }
+          } if not moreDetailsTextArea,
+          {
+            key: { text: "Evidence" },
+            value: {
+              html: '<p class="govuk-body"><a href="#" class="govuk-link">' + data.evidenceFile + '</a>.</p>'
+            }
+          } if data.evidenceFile
+        ]
+      }) }}
+
+      <form method="post">
+        {{ govukButton({
+          text: "Confirm and create record"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
