@@ -11,7 +11,7 @@ module.exports = (router) => {
 
   router.post('/create-record/add/check', (req, res) => {
     let data = req.session.data
-    if (data.createRecordEmail === "Susan.Arrowsmith@gmail.com" ) {
+    if (data.createRecordEmail === "Susan.Arrowsmith@gmail.com" || data.createRecordFirstName === "Susan" || data.createRecordLastName === "Arrowsmith") {
       res.redirect('/create-record/add/duplicates')
     }
     req.flash('success', 'New record created: TRN - 123456')
