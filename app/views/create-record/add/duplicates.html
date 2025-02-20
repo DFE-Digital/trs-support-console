@@ -23,6 +23,11 @@
 
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      {# <p class="govuk-body">Differenece are  
+        <mark class="hods-highlight">
+          <strong>highlighted</strong>
+        </mark>
+         on the right hand side</p> #}
 
       <form method="post" novalidate>
 
@@ -65,6 +70,8 @@
             }) }}
           </div>
 
+        
+
           <div class="govuk-grid-column-one-half">
             <h2 class="govuk-heading-m">Existing record</h2>
             {# <p class="govuk-body">This is a paragraph inside a one half wide column</p> #}
@@ -73,11 +80,11 @@
               rows: [
                 {
                   key: { text: "First name" },
-                  value: { html: data.createRecordFirstName }
+                  value: { html: data.person[0].firstName }
                 },
                 {
                   key: { text: "Middle name" },
-                  value: { html: data.createRecordMiddleName }
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].middleName + '</strong></mark>' }
                 } if data.createRecordMiddleName,
                 {
                   key: { text: "Last name" },
@@ -85,15 +92,15 @@
                 },
                 {
                   key: { text: "Date of birth" },
-                  value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].dateOfBirth + '</strong></mark>' }
                 },
                 {
                   key: { text: "Email address" },
-                  value: { text: data.createRecordEmail }
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].email + '</strong></mark>' }
                 },
                 {
                   key: { text: "National Insurance number" },
-                  value: { text: data.createRecordNationalInsuranceNumber }
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].nationalInsurance + '</strong></mark>' }
                 } if data.createRecordNationalInsuranceNumber,
                 {
                   key: { text: "Sex" },
