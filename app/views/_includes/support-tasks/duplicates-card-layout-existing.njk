@@ -1,0 +1,28 @@
+{{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-3 govuk-summary-list--no-border",
+  rows: [
+    {
+      key: { text: "Name" },
+      value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].fullName + '</strong></mark>' }
+    } if data.person[0].fullName,
+
+    {
+      key: { text: "Date of birth" },
+      value: { html: data.person[0].dateOfBirth  }
+    },
+
+    {
+      key: { text: "Email address" },
+      value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].email + '</strong></mark>' }
+    },
+
+    {
+      key: { text: "National Insurance number" },
+      value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].nationalInsurance + '</strong></mark>' }
+    } if data.createRecordNationalInsuranceNumber,
+    {
+      key: { text: "Sex" },
+      value: { text: data.createRecordSex }
+    }
+  ]
+}) }}

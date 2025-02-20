@@ -23,11 +23,7 @@
 
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
-      {# <p class="govuk-body">Differenece are  
-        <mark class="hods-highlight">
-          <strong>highlighted</strong>
-        </mark>
-         on the right hand side</p> #}
+      <p class="govuk-body">Differenece are highlighted on the right hand side</p>
 
       <form method="post" novalidate>
 
@@ -74,7 +70,7 @@
 
           <div class="govuk-grid-column-one-half">
             <h2 class="govuk-heading-m">Existing record</h2>
-            {# <p class="govuk-body">This is a paragraph inside a one half wide column</p> #}
+
             {{ govukSummaryList({
               classes: "govuk-!-margin-bottom-9",
               rows: [
@@ -96,7 +92,7 @@
                 },
                 {
                   key: { text: "Email address" },
-                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].email + '</strong></mark>' }
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].nationalInsurance + '</strong></mark>' }
                 },
                 {
                   key: { text: "National Insurance number" },
@@ -108,6 +104,7 @@
                 }
               ]
             }) }}
+            
           </div>
         </div>
      

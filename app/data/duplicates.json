@@ -1,0 +1,50 @@
+[
+  {
+    "firstName": "Suzanne",
+    "middleName": "None given",
+    "lastName": "Arrowsmith",
+    "fullName": "Suzanne Arrowsmith",
+    "dateOfBirth": "10 May 1998",
+    "gender": "Female",
+    "trn": "No TRN",
+    "nationalInsurance": "HN 96 87 96 D",
+    "email": "Suzanne.Arrowsmith@gmail.com",
+    "mobile": "+447458517176",
+    "inductionStatus": "Required to complete",
+    "inductionStartDate": null,
+    "inductionCompletionDAte": null,
+    "exemptionReason": "Some reason"
+  },
+  {
+    "firstName": "Susie",
+    "middleName": "None given",
+    "lastName": "Barrowsmith",
+    "fullName": "Susie Barrowsmith",
+    "dateOfBirth": "10 May 1998",
+    "gender": "Female",
+    "trn": "347693",
+    "nationalInsurance": "XZ 96 87 66 C",
+    "email": "Susie.Barrowsmith@gmail.com",
+    "mobile": "+447459783562",
+    "inductionStatus": "Required to complete",
+    "inductionStartDate": null,
+    "inductionCompletionDAte": null,
+    "exemptionReason": "Some reason"
+  },
+  {
+    "firstName": "Sarah",
+    "middleName": "Janine",
+    "lastName": "Arrowsmith",
+    "fullName": "Sarah Janine Arrowsmith",
+    "dateOfBirth": "10 May 1998",
+    "gender": "Female",
+    "trn": "439216",
+    "nationalInsurance": "GZ 22 87 96 C",
+    "email": "SarahJade.Arrowsmith@gmail.com",
+    "mobile": "+447458517176",
+    "inductionStatus": "Required to complete",
+    "inductionStartDate": null,
+    "inductionCompletionDAte": null,
+    "exemptionReason": "Some reason"
+  }
+]
