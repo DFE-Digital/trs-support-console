@@ -26,88 +26,84 @@
 
       <form method="post" novalidate>
 
-      {{ govukTable({
-        caption: "Details you entered",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: false,
-        head: [
-          {
-            text: "Name",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Date of birth",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Email address",
-            classes: "app-custom-class"
-          },
-          {
-            text: "National Insurance number",
-            classes: "app-custom-class"
-          }
-        ],
-        rows: [
-          [
-            {
-              text: data.createRecordFirstName + " " + data.createRecordMiddleName + " " + data.createRecordLastName
-            },
-            {
-              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
-            },
-            {
-              text: data.createRecordEmail
-            },
-            {
-              text: data.createRecordNationalInsuranceNumber
-            }
-          ]
-        ]
-      }) }}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <h1 class="govuk-heading-m">Details you entered</h1>
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-9",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: data.createRecordFirstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: data.createRecordMiddleName }
+                } if data.createRecordMiddleName,
+                {
+                  key: { text: "Last name" },
+                  value: { html: data.createRecordLastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { text: data.createRecordEmail }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { text: data.createRecordNationalInsuranceNumber }
+                } if data.createRecordNationalInsuranceNumber,
+                {
+                  key: { text: "Sex" },
+                  value: { text: data.createRecordSex }
+                }
+              ]
+            }) }}
+          </div>
 
-
-      
-      {{ govukTable({
-        caption: "Existing record",
-        captionClasses: "govuk-table__caption--m",
-        firstCellIsHeader: false,
-        head: [
-          {
-            text: "Name",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Date of birth",
-            classes: "app-custom-class"
-          },
-          {
-            text: "Email address",
-            classes: "app-custom-class"
-          },
-          {
-            text: "National Insurance number",
-            classes: "app-custom-class"
-          }
-        ],
-        rows: [
-          [
-            {
-              text: data.person[0].firstName + " " + data.person[0].middleName + " " + data.person[0].lastName
-            },
-            {
-              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
-            },
-            {
-              text: data.person[0].email
-            },
-            {
-              text: data.person[0].nationalInsurance
-            }
-          ]
-        ]
-      }) }}
-
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m">Existing record</h2>
+            {# <p class="govuk-body">This is a paragraph inside a one half wide column</p> #}
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-9",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: data.createRecordFirstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: data.createRecordMiddleName }
+                } if data.createRecordMiddleName,
+                {
+                  key: { text: "Last name" },
+                  value: { html: data.createRecordLastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { text: data.createRecordEmail }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { text: data.createRecordNationalInsuranceNumber }
+                } if data.createRecordNationalInsuranceNumber,
+                {
+                  key: { text: "Sex" },
+                  value: { text: data.createRecordSex }
+                }
+              ]
+            }) }}
+          </div>
+        </div>
+     
 
         {{ govukRadios({
           name: "samePerson",

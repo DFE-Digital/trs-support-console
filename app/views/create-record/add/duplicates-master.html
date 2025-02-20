@@ -3,7 +3,7 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "createRecord" %}
 
-{% set captionName = "Support tasks" %}
+{% set captionName = "Create a record" %}
 {% set pageName = "Potential match found" %}
 
 
@@ -44,14 +44,14 @@
             classes: "app-custom-class"
           },
           {
-            text: "National insurance number",
+            text: "National Insurance number",
             classes: "app-custom-class"
           }
         ],
         rows: [
           [
             {
-              text: data.createRecordFullName
+              text: data.createRecordFirstName + " " + data.createRecordMiddleName + " " + data.createRecordLastName
             },
             {
               text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
@@ -60,8 +60,7 @@
               text: data.createRecordEmail
             },
             {
-              text: data.createRecordNationalInsuranceNumber,
-              classes: "govuk-table__cell govuk-table__cell--numeric"
+              text: data.createRecordNationalInsuranceNumber
             }
           ]
         ]
@@ -69,9 +68,45 @@
 
 
       
-      {# Multi select table goes here #}
-      {% include "_includes/support-tasks/duplicate-multi-table.njk" %}
-
+      {{ govukTable({
+        caption: "Existing record",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Name",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Date of birth",
+            classes: "app-custom-class"
+          },
+          {
+            text: "Email address",
+            classes: "app-custom-class"
+          },
+          {
+            text: "National Insurance number",
+            classes: "app-custom-class"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: data.person[0].firstName + " " + data.person[0].middleName + " " + data.person[0].lastName
+            },
+            {
+              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+            },
+            {
+              text: data.person[0].email
+            },
+            {
+              text: data.person[0].nationalInsurance
+            }
+          ]
+        ]
+      }) }}
 
 
         {{ govukRadios({

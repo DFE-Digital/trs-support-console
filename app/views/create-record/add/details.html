@@ -79,7 +79,7 @@
         
         {{ govukInput({
           label: {
-            text: "Middle name",
+            text: "Middle name (optional)",
             classes: "govuk-label--s govuk-input--width-10"
           },
           id: "middle-name",
@@ -150,6 +150,29 @@
           spellcheck: false
         }) }}
 
+
+        {{ govukRadios({
+          name: "createRecordSex",
+          fieldset: {
+            legend: {
+              text: "Sex",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "Male",
+              text: "Male"
+            },
+            {
+              value: "Female",
+              text: "Female"
+            }
+          ]
+        }) }}
+
+
         <h2 class="govuk-heading-m">Why are you creating this record?</h2>
         {{ govukRadios({
           name: "createRecordReason",
@@ -161,12 +184,16 @@
           },
           items: [
             {
-              value: "Some reason",
-              text: "Some reason"
+              value: "They were awarded a mandatory qualification",
+              text: "They were awarded a mandatory qualification"
             },
             {
-              value: "A different reason",
-              text: "A different reason"
+              value: "They received an alert or prohibition",
+              text: "They received an alert or prohibition"
+            },
+            {
+              value: "They started university late",
+              text: "They started university late"
             },
             {
               value: "Another reason",
