@@ -20,11 +20,12 @@ module.exports = (router) => {
 
   router.post('/create-record/add/duplicates', (req, res) => {
     let data = req.session.data
+    let fullName = data.createRecordFirstName + ' ' + data.createRecordMiddleName + ' ' + data.createRecordLastName 
     if (data.samePerson == 'Yes') {
       // req.flash('success', 'Existing record merged/updated')
       res.redirect('/create-record/add/find-trn') 
     } else {
-      req.flash('success', 'New record created: TRN - 553092')
+      req.flash('success', 'New record created for ' + fullName)
       let data = {}
 		  res.redirect('/create-record') 
     }
