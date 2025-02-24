@@ -28,16 +28,51 @@
 
       {% include "_includes/support-tasks/secondary-navigation.njk" %}
 
-      
-      {% include "_includes/support-tasks/create-from-trn/request-table.njk" %}
-      
-      
 
-          
+      <div class="app-filter-layout">
+        <div class="app-filter-layout__filter">
+          {% include "_includes/filter-panel.njk" %}
+        </div>
+        <div class="app-filter-layout__content">
+            <div class="app-action-bar">
+              <div class="app-action-bar__filter"></div>
+            </div>
+            
+            <!--Put your list of things here-->
+            {% include "_includes/support-tasks/create-from-trn/request-table.njk" %}
+            
+        </div>
+      </div>
 
+      
+      
 
 
   </div>
 </div>
 
+{% endblock %}
+
+
+{% block scripts %}
+  {{super()}}
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
 {% endblock %}
