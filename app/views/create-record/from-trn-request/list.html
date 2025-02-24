@@ -1,10 +1,10 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "supportTasks" %} 
-{% set secondaryNavId = "trnRequests" %}
+{% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "TRN requests" %}
+{% set pageName = "All support tasks" %}
 
 
 {% block content %}
@@ -28,7 +28,9 @@
 
       {% include "_includes/support-tasks/secondary-navigation.njk" %}
 
+      
       {% include "_includes/support-tasks/create-from-trn/request-table.njk" %}
+      
       
 
           

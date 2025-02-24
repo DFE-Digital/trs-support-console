@@ -5,7 +5,9 @@
     "lastName": "Doe",
     "dateOfBirth": "12 April 1985",
     "nationalInsuranceNumber": "Not given",
-    "dateOfTrnRequest": "15 January 2024"
+    "dateOfTrnRequest": "15 January 2024",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-GJHS1234"
   },
   {
     "firstName": "Sarah",
@@ -13,7 +15,9 @@
     "lastName": "Smith",
     "dateOfBirth": "23 September 1990",
     "nationalInsuranceNumber": "NZ 96 87 96 D",
-    "dateOfTrnRequest": "2 February 2024"
+    "dateOfTrnRequest": "2 February 2024",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-G6H7H7K8"
   },
   {
     "firstName": "David",
@@ -21,7 +25,9 @@
     "lastName": "Brown",
     "dateOfBirth": "7 July 1978",
     "nationalInsuranceNumber": "Not given",
-    "dateOfTrnRequest": "20 December 2023"
+    "dateOfTrnRequest": "20 December 2023",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-HIM678UY"
   },
   {
     "firstName": "Emily",
@@ -29,7 +35,9 @@
     "lastName": "Taylor",
     "dateOfBirth": "30 November 1995",
     "nationalInsuranceNumber": "XZ 45 78 32 A",
-    "dateOfTrnRequest": "5 March 2024"
+    "dateOfTrnRequest": "5 March 2024",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-AY76543G"
   },
   {
     "firstName": "James",
@@ -37,7 +45,9 @@
     "lastName": "Wilson",
     "dateOfBirth": "14 May 1982",
     "nationalInsuranceNumber": "Not given",
-    "dateOfTrnRequest": "10 April 2024"
+    "dateOfTrnRequest": "10 April 2024",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-PI76HG54"
   },
   {
     "firstName": "Olivia",
@@ -45,7 +55,9 @@
     "lastName": "Johnson",
     "dateOfBirth": "8 August 1988",
     "nationalInsuranceNumber": "TR 78 56 12 C",
-    "dateOfTrnRequest": "25 January 2024"
+    "dateOfTrnRequest": "25 January 2024",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-QW45HGY6"
   }
 ]
 
