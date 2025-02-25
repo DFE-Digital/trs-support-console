@@ -5,7 +5,7 @@ module.exports = (router) => {
     res.render('create-record/from-trn-request/show', { task })
 	})
 
-  router.post('/create-record/from-trn-request/show', (req, res) => {
+  router.post('/create-record/from-trn-request/check', (req, res) => {
 		let fullName = req.session.data.task.firstName + ' ' + req.session.data.task.lastName
     res.render('create-record/from-trn-request/reason', { fullName })
 	})
