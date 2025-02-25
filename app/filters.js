@@ -19,7 +19,7 @@ addFilter('statusColour', potentialRecordMatch => {
       return 'govuk-tag--red'
     case 'No':
       return 'govuk-tag--blue'
-    case 'Not Applicable':
+    case 'Not applicable':
       return 'govuk-tag--yellow'
   }
 })

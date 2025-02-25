@@ -1,7 +1,7 @@
-<table class="govuk-table govuk-!-font-size-16">
+<table class="govuk-table">
 
   <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
+    <tr class="govuk-table__row  govuk-!-font-size-16">
       <th scope="col" class="govuk-table__header">Reference</th>
       <th scope="col" class="govuk-table__header">Type</th>
       <th scope="col" class="govuk-table__header">Requested on</th>
@@ -10,7 +10,7 @@
   </thead>
   <tbody class="govuk-table__body">
     {% for trnRequest in data.trnRequests %}
-    <tr class="govuk-table__row">
+    <tr class="govuk-table__row  govuk-!-font-size-16">
       <td class="govuk-table__cell"><a href="#" class="govuk-link">{{ trnRequest.reference }}</a></td> 
       <td class="govuk-table__cell">{{ trnRequest.supportTaskType }}</td>
       <td class="govuk-table__cell">{{ trnRequest.dateOfTrnRequest }}</td>
