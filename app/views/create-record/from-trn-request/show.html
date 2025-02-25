@@ -17,13 +17,15 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
 
     <span class="govuk-caption-l">Request made {{captionName}}</span>
     <h1 class="govuk-heading-l">Reference: {{pageName}}</h1>
 
     <!--Put your list of things here-->
     {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
+
+    {# {% include "_includes/support-tasks/create-from-trn/reason-evidence.njk" %} #}
 
   </div>
 </div>
