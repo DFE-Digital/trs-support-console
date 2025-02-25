@@ -38,6 +38,7 @@
 .app-filter__legend {
   overflow: visible; // Override govuk to allow for focus style to be seen
   width: 100%;
+  font-size: 0.8rem;
 
   button {
     @include govuk-font($size: 24, $weight: bold);
@@ -232,5 +233,6 @@
 }
 
 .app-filter .govuk-checkboxes__label::before {
-  background: govuk-colour('white')
+  background: govuk-colour('white');
+  font-size: 0.8rem;
 }

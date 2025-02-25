@@ -3,7 +3,7 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = task.dateOfTrnRequest %}
+{% set captionName = "Create record" %}
 {% set pageName = task.reference %}
 
 {% block beforeContent %}
@@ -19,8 +19,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l">Request made {{captionName}}</span>
-    <h1 class="govuk-heading-l">{{pageName}}</h1>
+    <span class="govuk-caption-l"></span>{{captionName}}</span>
+    <h1 class="govuk-heading-l">Create record for {{pageName}}</h1>
 
     {{ govukButton({
       text: "Create record",
@@ -28,12 +28,9 @@
     }) }}
 
     <!--Put your list of things here-->
-    {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
+    {# {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %} #}
 
-    {# {% include "_includes/support-tasks/create-from-trn/trn-request-reason-evidence.njk" %} #}
-
-    {{ task.reference | log }}
-    {{ data.teachers | log }}
+    {% include "_includes/support-tasks/create-from-trn/trn-request-reason-evidence.njk" %}
 
   </div>
 </div>
