@@ -7,7 +7,8 @@
     "nationalInsuranceNumber": "Not given",
     "dateOfTrnRequest": "15 January 2024",
     "supportTaskType": "TRN request",
-    "reference": "TRN-GJHS1234"
+    "reference": "TRN-GJHS1234",
+    "potentialRecordMatch": "Yes"
   },
   {
     "firstName": "Sarah",
@@ -17,7 +18,8 @@
     "nationalInsuranceNumber": "NZ 96 87 96 D",
     "dateOfTrnRequest": "2 February 2024",
     "supportTaskType": "TRN request",
-    "reference": "TRN-G6H7H7K8"
+    "reference": "TRN-G6H7H7K8",
+    "potentialRecordMatch": "No"
   },
   {
     "firstName": "David",
@@ -27,7 +29,8 @@
     "nationalInsuranceNumber": "Not given",
     "dateOfTrnRequest": "20 December 2023",
     "supportTaskType": "TRN request",
-    "reference": "TRN-HIM678UY"
+    "reference": "TRN-HIM678UY",
+    "potentialRecordMatch": "Yes"
   },
   {
     "firstName": "Emily",
@@ -37,7 +40,8 @@
     "nationalInsuranceNumber": "XZ 45 78 32 A",
     "dateOfTrnRequest": "5 March 2024",
     "supportTaskType": "TRN request",
-    "reference": "TRN-AY76543G"
+    "reference": "TRN-AY76543G",
+    "potentialRecordMatch": "Yes"
   },
   {
     "firstName": "James",
@@ -47,7 +51,8 @@
     "nationalInsuranceNumber": "Not given",
     "dateOfTrnRequest": "10 April 2024",
     "supportTaskType": "TRN request",
-    "reference": "TRN-PI76HG54"
+    "reference": "TRN-PI76HG54",
+    "potentialRecordMatch": "No"
   },
   {
     "firstName": "Olivia",
@@ -57,7 +62,8 @@
     "nationalInsuranceNumber": "TR 78 56 12 C",
     "dateOfTrnRequest": "25 January 2024",
     "supportTaskType": "TRN request",
-    "reference": "TRN-QW45HGY6"
+    "reference": "TRN-QW45HGY6",
+    "potentialRecordMatch": "No"
   }
 ]
 

@@ -1,12 +1,12 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[statuses]",
-    name: "filters[statuses]",
+    idPrefix: "filters[taskType]",
+    name: "filters[taskType]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Status",
+        text: "Task type",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -20,10 +20,31 @@
       value: 'GOV.UK One Login',
       text: 'GOV.UK One Login'
     }],
-    values: data.filters.statuses
+    values: data.filters.taskType
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[isRecordDuplicate]",
+    name: "filters[isRecordDuplicate]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Potential match",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Yes',
+      text: 'Yes'
+    }, {
+      value: 'No',
+      text: 'No'
+    }],
+    values: data.filters.isRecordDuplicate
   }) }}
 
 {% endset %}
+
 
 <div class="app-filter">
   <div class="app-filter__header">
