@@ -9,7 +9,9 @@
     "supportTaskType": "TRN request",
     "reference": "TRN-GJHS1234",
     "potentialRecordMatch": "Yes",
-    "id": "9eef4810-1a58-48ab-8d3f-d93bd373e72a"
+    "id": "9eef4810-1a58-48ab-8d3f-d93bd373e72a",
+    "email": "john.doe@gmail.com",
+    "gender": "Male"
   },
   {
     "firstName": "Sarah",
@@ -21,21 +23,25 @@
     "supportTaskType": "TRN request",
     "reference": "TRN-G6H7H7K8",
     "potentialRecordMatch": "No",
-    "id": "1cd3ee08-e262-4c59-8717-251fdbe8ca94"
+    "id": "1cd3ee08-e262-4c59-8717-251fdbe8ca94",
+    "email": "sara.e.smith@gmail.com",
+    "gender": "Female"
   },
   {
     "reference": "CAS-01019-V9R1R5",
     "supportTaskType": "Change name request",
     "dateOfTrnRequest": "1 December 2020",
     "potentialRecordMatch": "Not applicable",
-    "id": "8b9c4a14-ff64-4a03-a541-fef07754a582"
+    "id": "8b9c4a14-ff64-4a03-a541-fef07754a582",
+    "email": ""
   },
   {
       "reference": "CAS-10208-T6G6H8",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "14 January 2021M",
       "potentialRecordMatch": "Not applicable",
-      "id": "b3042e0e-154f-4e87-90dc-837eeafcf400"
+      "id": "b3042e0e-154f-4e87-90dc-837eeafcf400",
+      "email": ""
   },
   {
     "firstName": "David",
@@ -47,35 +53,41 @@
     "supportTaskType": "TRN request",
     "reference": "TRN-HIM678UY",
     "potentialRecordMatch": "Yes",
-    "id": "4fcf0830-59dc-405a-867f-38725803727b"
+    "id": "4fcf0830-59dc-405a-867f-38725803727b",
+    "email": "dj.brown@gmail.com",
+    "gender": "Male"
   },
   {
     "reference": "CAS-01014-H9Z0X1",
     "supportTaskType": "Change name request",
     "dateOfTrnRequest": "1 December 2020",
     "potentialRecordMatch": "Not applicable",
-    "id": "9716628f-d8d6-4843-b35e-a6b8aca6a149"
+    "id": "9716628f-d8d6-4843-b35e-a6b8aca6a149",
+    "email": ""
   },
   {
       "reference": "CAS-01015-V9N5S5",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "c31501e7-a718-4972-a86a-4174deb4c0f2"
+      "id": "c31501e7-a718-4972-a86a-4174deb4c0f2",
+      "email": ""
   },
   {
       "reference": "CAS-01016-F2P0N8",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "db78e9a9-e8ab-4ac3-ac03-a904b1829c85"
+      "id": "db78e9a9-e8ab-4ac3-ac03-a904b1829c85",
+      "email": ""
   },
   {
       "reference": "CAS-01017-X0M0V7",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "1cb098ed-2fc7-467c-81cd-32def07ce343"
+      "id": "1cb098ed-2fc7-467c-81cd-32def07ce343",
+      "email": ""
   },
   {
     "firstName": "Emily",
@@ -87,7 +99,9 @@
     "supportTaskType": "TRN request",
     "reference": "TRN-AY76543G",
     "potentialRecordMatch": "Yes",
-    "id": "18df95cf-b145-4c56-80e0-147b07ddcbba"
+    "id": "18df95cf-b145-4c56-80e0-147b07ddcbba",
+    "email": "EmzTaylor@gmail.com",
+    "gender": "Female"
   },
   {
     "firstName": "James",
@@ -99,7 +113,9 @@
     "supportTaskType": "TRN request",
     "reference": "TRN-PI76HG54",
     "potentialRecordMatch": "No",
-    "id": "d4fcdc04-e848-4e55-a304-2fdd080966e8"
+    "id": "d4fcdc04-e848-4e55-a304-2fdd080966e8",
+    "email": "ja.wilson@gmail.com",
+    "gender": "Male"
   },
   {
     "firstName": "Olivia",
@@ -111,56 +127,65 @@
     "supportTaskType": "TRN request",
     "reference": "TRN-QW45HGY6",
     "potentialRecordMatch": "No",
-    "id": "6474500c-9604-476a-b4d8-a4cd2d915b80"
+    "id": "6474500c-9604-476a-b4d8-a4cd2d915b80",
+    "email": "Olivia.Johnson@gmail.com",
+    "gender": "Female"
   },
   {
     "reference": "CAS-01006-F4Q3Z7",
     "supportTaskType": "Change date of birth request",
     "dateOfTrnRequest": "1 December 2020",
     "potentialRecordMatch": "Not applicable",
-    "id": "c1bb5b5c-baf7-4cc2-bb1a-f6c96fd2269e"
+    "id": "c1bb5b5c-baf7-4cc2-bb1a-f6c96fd2269e",
+    "email": ""
   },
   {
     "reference": "CAS-01007-C5S3G1",
     "supportTaskType": "Change name request",
     "dateOfTrnRequest": "1 December 2020",
     "potentialRecordMatch": "Not applicable",
-    "id": "d05af73b-d9f1-4e21-93bb-a00bf252f07b"
+    "id": "d05af73b-d9f1-4e21-93bb-a00bf252f07b",
+    "email": ""
   },
   {
       "reference": "CAS-01008-Z4Y4N0",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "1eac5735-9e2f-43b2-a3b9-c6edc5bc585f"
+      "id": "1eac5735-9e2f-43b2-a3b9-c6edc5bc585f",
+      "email": ""
   },
   {
       "reference": "CAS-01010-D9T7M9",
       "supportTaskType": "Change date of birth request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "7f336fc4-641c-425c-8952-dd7d6d5cc1ed"
+      "id": "7f336fc4-641c-425c-8952-dd7d6d5cc1ed",
+      "email": ""
   },
   {
       "reference": "CAS-01011-M5J4L5",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "39990291-030f-436d-9f27-1f46b905b689"
+      "id": "39990291-030f-436d-9f27-1f46b905b689",
+      "email": ""
   },
   {
       "reference": "CAS-01012-C1W4L5",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "2c318397-ff7a-4035-b927-ceb16485eba3"
+      "id": "2c318397-ff7a-4035-b927-ceb16485eba3",
+      "email": ""
   },
   {
       "reference": "CAS-01013-W7W7Q0",
       "supportTaskType": "Change name request",
       "dateOfTrnRequest": "1 December 2020",
       "potentialRecordMatch": "Not applicable",
-      "id": "1707f247-137a-4859-9f08-2f1c0abe2e26"
+      "id": "1707f247-137a-4859-9f08-2f1c0abe2e26",
+      "email": ""
   }
 ]
 

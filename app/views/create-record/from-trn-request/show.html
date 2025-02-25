@@ -3,8 +3,15 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = "Support tasks" %}
-{% set pageName = "TRN request details" %}
+{% set captionName = task.dateOfTrnRequest %}
+{% set pageName = task.reference %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
 
 
 {% block content %}
@@ -12,13 +19,11 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <span class="govuk-caption-l">{{captionName}}</span>
-    <h1 class="govuk-heading-l"> {{pageName}}</h1>
+    <span class="govuk-caption-l">Request made {{captionName}}</span>
+    <h1 class="govuk-heading-l">Reference: {{pageName}}</h1>
 
-      {% include "_includes/support-tasks/secondary-navigation.njk" %}
-
-
-     
+    <!--Put your list of things here-->
+    {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
   </div>
 </div>
