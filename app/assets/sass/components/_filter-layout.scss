@@ -8,9 +8,9 @@
   @include govuk-media-query($from: desktop) {
     float: left;
     margin-right: govuk-spacing(6);
-    max-width: 310px;
+    max-width: 260px;
     min-width: 260px;
-    width: 100%;
+    width: auto;
   }
 }
 

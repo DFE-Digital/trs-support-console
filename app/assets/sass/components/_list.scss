@@ -5,6 +5,7 @@
     padding-top: govuk-spacing(3);
     padding-bottom: govuk-spacing(3);
     position: relative;
+    font-size: 1rem;
   }
 
   h2 {
@@ -12,9 +13,9 @@
   }
 
   .govuk-tag {
-    position: absolute;
     top: govuk-spacing(4);
     right: 0;
+    font-size: 16px;
   }
 
   .govuk-summary-list {

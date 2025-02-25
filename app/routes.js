@@ -27,6 +27,7 @@ require('./routes/legacy')(router)
 
 //// CREATE RECORD ROUTES
 require('./routes/support-tasks/create-record/add')(router)
+require('./routes/support-tasks/tasks')(router)
 
 
 

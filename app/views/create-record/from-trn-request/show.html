@@ -1,0 +1,27 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "TRN request details" %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {% include "_includes/support-tasks/secondary-navigation.njk" %}
+
+
+     
+
+  </div>
+</div>
+
+{% endblock %}
+
