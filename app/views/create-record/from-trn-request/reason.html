@@ -1,10 +1,10 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "supportTasks" %} 
-{% set secondaryNavId = "allTasks" %}
+{% set secondaryNavId = "allTasks" %} 
 
 {% set captionName = "Create record" %}
-{% set pageName = task.reference %}
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -19,14 +19,13 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l"></span>{{captionName}}</span>
-    <h1 class="govuk-heading-l">Create record for {{pageName}}</h1>
+    {{ task.supportTaskType | log }}
+    {{ data.teachers | log }}
 
-    {{ govukButton({
-      text: "Create record",
-      href: "/create-record/from-trn-request/check"
-    }) }}
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">{{task.reference}}</h1>
 
+    
     <!--Put your list of things here-->
     {# {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %} #}
 

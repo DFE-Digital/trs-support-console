@@ -24,10 +24,10 @@
 
     {{ govukButton({
       text: "Create record",
-      href: "/create-record/from-trn-request/check"
+      href: "/create-record/from-trn-request/reason/" + task.id
     }) }}
 
-    <!--Put your list of things here-->
+    
     {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
     {# {% include "_includes/support-tasks/create-from-trn/trn-request-reason-evidence.njk" %} #}
