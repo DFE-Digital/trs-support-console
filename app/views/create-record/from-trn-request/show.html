@@ -33,18 +33,21 @@
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     {{ govukInsetText({
-      text: "Date of TRN request:" + task.dateOfTrnRequest
+      text: "Date of TRN request: " + task.dateOfTrnRequest
     }) }}
 
-    {{ govukButton({
-      text: "Create record",
-      href: "/create-record/from-trn-request/reason/" + task.id
-    }) }}
+    
 
     
     {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
     {# {% include "_includes/support-tasks/create-from-trn/trn-request-reason-evidence.njk" %} #}
+
+
+    {{ govukButton({
+      text: "Create record",
+      href: "/create-record/from-trn-request/reason/" + task.id
+    }) }}
 
     {{ task.reference | log }}
     {{ data.teachers | log }}
