@@ -16,15 +16,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      {{ data.fullName | log }}
-      {{ data.teachers | log }}
+      {{ task.supportTaskType | log }}
+      {{ task.reference | log }}
+      {{ task.dateOfTrnRequest | log }}
+      {{ task.firstName | log }}
+      {{ task.middleName | log }}
+      {{ task.lastName | log }}
+      {{ task.dateOfBirth | log }}
+      {{ task.email | log }}
+      {{ task.nationalInsurance | log }}
+      
+      
+      {{ data.createRecordReason | log }}
+
+      
 
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      <h2 class="govuk-heading-m">Personal details</h2>
-
-      {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
       <h2 class="govuk-heading-m">Why are you creating this record?</h2>
 
@@ -34,7 +43,7 @@
           {
             key: { text: "Reason for creating record" },
             value: { text: data.createRecordReason }
-          } if not moreDetailsTextArea,
+          },
           {
             key: { text: "Evidence" },
             value: {

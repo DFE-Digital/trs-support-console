@@ -10,5 +10,9 @@ module.exports = (router) => {
     res.render('create-record/from-trn-request/reason', { task })
 	})
 
+  router.post('/create-record/from-trn-request/reason/:taskId', (req, res) => {
+    res.render('create-record/from-trn-request/check')
+	})
 
+  
 }

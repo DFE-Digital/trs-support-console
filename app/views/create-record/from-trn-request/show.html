@@ -3,7 +3,7 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = task.dateOfTrnRequest %}
+{% set captionName = "TRN Request" %}
 {% set pageName = task.reference %}
 
 {% block beforeContent %}
@@ -19,8 +19,22 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <span class="govuk-caption-l">Request made {{captionName}}</span>
+    {{ task.supportTaskType | log }}
+    {{ task.reference | log }}
+    {{ task.dateOfTrnRequest | log }}
+    {{ task.firstName | log }}
+    {{ task.middleName | log }}
+    {{ task.lastName | log }}
+    {{ task.dateOfBirth | log }}
+    {{ task.email | log }}
+    {{ task.nationalInsurance | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
     <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    {{ govukInsetText({
+      text: "Date of TRN request:" + task.dateOfTrnRequest
+    }) }}
 
     {{ govukButton({
       text: "Create record",

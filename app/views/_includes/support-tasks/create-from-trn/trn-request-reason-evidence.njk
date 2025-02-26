@@ -1,4 +1,4 @@
-<form method="post" novalidate action="/tasks/:taskId/show">
+<form method="post">
 
   {% set moreDetailsTextArea %}
     {{ govukTextarea({
@@ -57,7 +57,7 @@
         }
       }
     ],
-    value: data.createRecordReason
+    value: createRecordReason
   }) }}
 
   <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
@@ -85,10 +85,8 @@
     value: data.evidenceUploaded
   }) }}
 
-
-
-  {{ govukButton({
-    text: "Continue"
-  }) }}
-
+     {{ govukButton({
+      text: "Continue",
+      href: "/create-record/from-trn-request/check"
+    }) }}
 </form>
