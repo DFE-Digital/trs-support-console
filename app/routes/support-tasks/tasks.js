@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 module.exports = (router) => {
 
   router.get('/tasks/:taskId', (req, res) => {
@@ -17,5 +19,21 @@ module.exports = (router) => {
     res.render('create-record/from-trn-request/check')
 	})
 
+  ///////////// Filters   //////////
+  router.get('create-record/from-trn-request/tasks', (req, res) => {
+  let tasks = req.session.data.tasks
   
+  let selectedTaskFilter  = _.get(req.session.data.filters, 'taskType')
+    if(_.get(selectedTaskFilter, 'length')){
+      tasks = tasks.filter(task => {
+      let matchesTaskType = true
+
+      matchesTaskType = selectedTaskFilter.includes(task.taskType)
+
+      return matchesTaskType
+      })
+    }
+    res.render('create-record/from-trn-request/tasks',{ tasks })
+	})
+
 }
