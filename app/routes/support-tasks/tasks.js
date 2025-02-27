@@ -24,12 +24,20 @@ module.exports = (router) => {
 
   /////////////  FLASH //////////////
   router.post('/create-record/from-trn-request/check-handler', (req, res) => {
+    req.flash('success', 'New record created with TRN: ')
     
-    req.flash('success', 'Yaldi!!!')
     let data = req.session.data || {}
 
+    // Generate TRN
+    const generateTRN = () => Math.floor(100000 + Math.random() * 900000).toString()
+
+    // Store the generated TRN in session data
+    data.trn = generateTRN()
+    req.session.data = data
+
+    // Redirect to the next page
     res.redirect('/create-record/from-trn-request')
-  })    
+})   
 
 
 
