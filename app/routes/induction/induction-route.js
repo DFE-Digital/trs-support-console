@@ -145,6 +145,6 @@ module.exports = router => {
   newInductionCompletionDate =  data.newInductionCompletionDate
 
   res.redirect('/induction')
-})    
+  })    
 
 }

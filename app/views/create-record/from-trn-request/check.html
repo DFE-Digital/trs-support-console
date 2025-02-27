@@ -2,8 +2,9 @@
 
 {% set serviceNavId = "supportTasks" %}
 {% set secondaryNavId = "createRecord" %}
-{% set captionName = "Create a record" %}
+{% set captionName = "Create record from TRN request" %}
 {% set pageName = "Check details and create record" %}
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -24,11 +25,10 @@
       {{ task.lastName | log }}
       {{ task.dateOfBirth | log }}
       {{ task.email | log }}
-      {{ task.nationalInsurance | log }}
+      {{ task.nationalInsuranceNumber | log }}
       
       
-      {{ data.createRecordReason | log }}
-      {{ data.evidenceFile | log }}
+      {{ data.evidenceUploaded | log }}
 
       
 
@@ -85,11 +85,12 @@
         ]
       }) }}
 
-      <form method="post">
+      <form method="post" action="/create-record/from-trn-request/check-handler">
         {{ govukButton({
           text: "Confirm and create record"
         }) }}
-      </form>    
+      </form>   
+       
 
       <p class="govuk-body">
         <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>

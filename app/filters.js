@@ -13,6 +13,12 @@ addFilter("find", function (id, arr) {
   });
 
 
+addFilter("findId", function (id, arr) {
+  let found = arr.find((element) => element.id == id);
+  return found ? found.id : null; // Return the ID or null if not found
+});
+
+
 addFilter('statusColour', potentialRecordMatch => {
   switch(potentialRecordMatch) {
     case 'Yes':
