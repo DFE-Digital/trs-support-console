@@ -11,7 +11,7 @@
 
 {{ govukNotificationBanner({
   type: "success",
-  html: '<h2 class="govuk-heading-m">'+flash+ '</h2>'
+  html: '<h2 class="govuk-heading-m">New record created  - TRN: <a href="#" class="govuk-link"> ' + data.trn + flash+ ' </a></h2>'
 }) if flash.length }}
 
 <div class="govuk-grid-row">
@@ -30,22 +30,8 @@
       
       {{ govukButton({
         text: "Add a record",
-        href: "/create-record/add/details"
+        href: "/support-tasks/create-record/manual/details"
       }) }}
-
-      
-{# 
-      {% if data.createRecordEmail === 'Susan.Arrowsmith@gmail.com' or data.createRecordFullName === 'Susan Arrowsmith'  %}
-          {% include "_includes/support-tasks/existing-record-single-row.njk" %}
-      {% elif data.createRecordEmail %}
-          {% include "_includes/support-tasks/new-record-single-row.njk" %}
-      {% else %}
-          <h2 class="govuk-heading-m"></h2>
-      {% endif %}
-#}
-
-          
-
 
 
   </div>

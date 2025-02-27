@@ -43,20 +43,28 @@ module.exports = (router) => {
 
   
   ///////////// Filters   //////////
-  router.get('create-record/from-trn-request/tasks', (req, res) => {
-  let tasks = req.session.data.tasks
-  
-  let selectedTaskFilter  = _.get(req.session.data.filters, 'taskType')
-    if(_.get(selectedTaskFilter, 'length')){
+  router.get('/create-record/from-trn-request', (req, res) => {
+    
+    let tasks = req.session.data.tasks 
+
+    let selectedTaskFilters = _.get(req.session.data.filters, 'taskType')
+    //User has selected a task type filter
+    if (_.get(selectedTaskFilters, 'length')) {
+
       tasks = tasks.filter(task => {
-      let matchesTaskType = true
+        let matchesTaskType = true
 
-      matchesTaskType = selectedTaskFilter.includes(task.taskType)
+        matchesTaskType = selectedTaskFilters.includes(task.taskType)
+        
 
-      return matchesTaskType
-      })
+        return matchesTaskType
+      }) 
     }
-    res.render('create-record/from-trn-request/tasks',{ tasks })
-	})
+
+    res.render('create-record/from-trn-request/index',
+      {
+        tasks
+      })
+  })
 
 }
