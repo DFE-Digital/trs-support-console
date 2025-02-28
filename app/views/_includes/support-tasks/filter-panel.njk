@@ -10,16 +10,20 @@
         classes: "govuk-fieldset__legend--s"
       }
     },
-    items: [{
-      value: 'TRN requests',
-      text: 'TRN requests'
-    }, {
-      value: 'Change requests',
-      text: 'Change requests'
-    }, {
-      value: 'GOV.UK One Login',
-      text: 'GOV.UK One Login'
-    }],
+    items: [
+      {
+        value: 'TRN requests',
+        text: 'TRN requests'
+      },
+      {
+        value: 'Change requests',
+        text: 'Change requests'
+      },
+      {
+        value: 'GOV.UK One Login',
+        text: 'GOV.UK One Login'
+      }
+    ],
     values: data.filters.taskType
   }) }}
 
@@ -64,7 +68,7 @@
         <div class="app-filter__selected-heading">
           <div class="app-filter__heading-title">
             <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Selected filters</h2>
-            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/applications/clear-filters">Clear filters</a></p>
+            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/support-tasks/clear-filters">Clear filters</a></p>
           </div>
         </div>
         {% for category in selectedFilters.categories %}
@@ -78,7 +82,7 @@
       </div>
     {% endif %}
     <div class="app-filter__options">
-      <form method="get" action="/create-record/from-trn-request" novalidate>
+      <form method="get" action="/support-tasks" novalidate>
         <button class="govuk-button" data-module="govuk-button">
           Apply filters
         </button>
