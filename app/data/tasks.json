@@ -1,7 +1,7 @@
 [
   {
     "firstName": "John",
-    "middleName": "Not given",
+    "middleName": "Henry",
     "lastName": "Doe",
     "dateOfBirth": "12 April 1985",
     "nationalInsuranceNumber": "Not given",
@@ -12,7 +12,9 @@
     "sourceOfMatch": "Register",
     "id": "9eef4810-1a58-48ab-8d3f-d93bd373e72a",
     "email": "john.doe@gmail.com",
-    "gender": "Male"
+    "gender": "Male",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "firstName": "Sarah",
@@ -27,7 +29,9 @@
     "sourceOfMatch": "none",
     "id": "1cd3ee08-e262-4c59-8717-251fdbe8ca94",
     "email": "sara.e.smith@gmail.com",
-    "gender": "Female"
+    "gender": "Female",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "reference": "CAS-01019-V9R1R5",
@@ -36,7 +40,9 @@
     "potentialRecordMatch": "Not applicable",
     "sourceOfMatch": "None",
     "id": "8b9c4a14-ff64-4a03-a541-fef07754a582",
-    "email": ""
+    "email": "",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
       "reference": "CAS-10208-T6G6H8",
@@ -60,7 +66,9 @@
     "sourceOfMatch": "Register",
     "id": "4fcf0830-59dc-405a-867f-38725803727b",
     "email": "dj.brown@gmail.com",
-    "gender": "Male"
+    "gender": "Male",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "reference": "CAS-01014-H9Z0X1",
@@ -111,7 +119,9 @@
     "sourceOfMatch": "Register",
     "id": "18df95cf-b145-4c56-80e0-147b07ddcbba",
     "email": "EmzTaylor@gmail.com",
-    "gender": "Female"
+    "gender": "Female",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "firstName": "James",
@@ -126,7 +136,9 @@
     "sourceOfMatch": "None",
     "id": "d4fcdc04-e848-4e55-a304-2fdd080966e8",
     "email": "ja.wilson@gmail.com",
-    "gender": "Male"
+    "gender": "Male",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "firstName": "Olivia",
@@ -141,7 +153,9 @@
     "sourceOfMatch": "None",
     "id": "6474500c-9604-476a-b4d8-a4cd2d915b80",
     "email": "Olivia.Johnson@gmail.com",
-    "gender": "Female"
+    "gender": "Female",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "reference": "CAS-01006-F4Q3Z7",
@@ -198,7 +212,9 @@
     "sourceOfMatch": "Register",
     "id": "3a5bc28e-1a4d-4b8e-b5d3-1eae99a6cd45",
     "email": "michael.brown@gmail.com",
-    "gender": "Male"
+    "gender": "Male",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "firstName": "Emily",
@@ -213,7 +229,9 @@
     "sourceOfMatch": "None",
     "id": "f5c78d64-65c9-4cbf-8f72-abc731c2df82",
     "email": "emily.davies@example.com",
-    "gender": "Female"
+    "gender": "Female",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
     "firstName": "David",
@@ -228,7 +246,9 @@
     "sourceOfMatch": "Register",
     "id": "8b394f7c-53ad-4e20-a235-fd0e6a9c672d",
     "email": "david.johnson@gmail.com",
-    "gender": "Male"
+    "gender": "Male",
+    "hasAlerts": "None",
+    "trn": "None"
   },
   {
       "reference": "CAS-01010-D9T7M9",

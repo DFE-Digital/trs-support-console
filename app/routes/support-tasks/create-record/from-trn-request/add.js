@@ -19,6 +19,12 @@ module.exports = (router) => {
     res.render('support-tasks/create-record/from-trn-request/duplicates', { task })
   })
 
+  //// Merging
+  router.get('/support-tasks/create-record/from-trn-request/:taskId/merging', (req, res) => {
+    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+    res.render('support-tasks/create-record/from-trn-request/merging', { task })
+  })
+
   //// THis route posts from the reasons page
   router.post('/create-record/from-trn-request/:taskId/reason', (req, res) => {
     const tasks = req.session.data.tasks
