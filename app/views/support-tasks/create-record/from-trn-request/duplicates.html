@@ -23,17 +23,88 @@
 
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      <p class="govuk-body">Differenece are highlighted on the right hand side</p>
 
       <form method="post" novalidate>
 
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">Two-thirds column</h1>
-            <p class="govuk-body">This is a paragraph inside a two-thirds wide column</p>
+          <div class="govuk-grid-column-one-half">
+            <h1 class="govuk-heading-m">From TRN request</h1>
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-9",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: data.createRecordFirstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: data.createRecordMiddleName }
+                } if data.createRecordMiddleName,
+                {
+                  key: { text: "Last name" },
+                  value: { html: data.createRecordLastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { text: data.createRecordEmail }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { text: data.createRecordNationalInsuranceNumber }
+                } if data.createRecordNationalInsuranceNumber,
+                {
+                  key: { text: "Sex" },
+                  value: { text: data.createRecordSex }
+                }
+              ]
+            }) }}
           </div>
-          <div class="govuk-grid-column-one-third">
-            <h2 class="govuk-heading-m">One-third column</h2>
-            <p class="govuk-body">This is a paragraph inside a one-third wide column</p>
+
+        
+
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record</a></h2>
+
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-9",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: data.person[0].firstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].middleName + '</strong></mark>' }
+                } if data.createRecordMiddleName,
+                {
+                  key: { text: "Last name" },
+                  value: { html: data.createRecordLastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].dateOfBirth + '</strong></mark>' }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].nationalInsurance + '</strong></mark>' }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].nationalInsurance + '</strong></mark>' }
+                } if data.createRecordNationalInsuranceNumber,
+                {
+                  key: { text: "Sex" },
+                  value: { text: data.createRecordSex }
+                }
+              ]
+            }) }}
+            
           </div>
         </div>
      

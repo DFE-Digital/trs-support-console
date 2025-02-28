@@ -48,16 +48,23 @@
     
 
     <div class="govuk-button-group">
-      {{ govukButton({
-        text: "Check possible duplicate",
-        href: "/support-tasks/create-record/from-trn-request/" + task.id + "/duplicates"
-      }) }}
-    
-      {{ govukButton({
-        text: "Create a record from TRN request",
-        href: "/support-tasks/create-record/from-trn-request/" + task.id + "/reason",
-        classes: "govuk-button--secondary"
-      }) }}
+      {% if task.potentialRecordMatch == "Yes" %}
+        {{ govukButton({
+          text: "Check possible duplicate",
+          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/duplicates"
+        }) }}
+        
+        {{ govukButton({
+          text: "Create a record from TRN request",
+          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/reason",
+          classes: "govuk-button--secondary"
+        }) }}
+      {% else %}  
+        {{ govukButton({
+          text: "Create a record from TRN request",
+          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/reason"
+        }) }}
+      {% endif %}
     </div>
 
 

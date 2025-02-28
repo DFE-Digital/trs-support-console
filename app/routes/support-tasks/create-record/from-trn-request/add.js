@@ -8,9 +8,15 @@ module.exports = (router) => {
 	})
 
   //// This route is triggered from the button on 'show' page
-  router.get('/create-record/from-trn-request/:taskId/reason', (req, res) => {
+  router.get('/support-tasks/create-record/from-trn-request/:taskId/reason', (req, res) => {
     let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('create-record/from-trn-request/reason', { task })
+    res.render('support-tasks/create-record/from-trn-request/reason', { task })
+  })
+
+  //// This route is triggered from the button on 'show' page
+  router.get('/support-tasks/create-record/from-trn-request/:taskId/duplicates', (req, res) => {
+    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+    res.render('support-tasks/create-record/from-trn-request/duplicates', { task })
   })
 
   //// THis route posts from the reasons page
