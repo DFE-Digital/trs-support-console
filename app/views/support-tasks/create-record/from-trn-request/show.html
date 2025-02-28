@@ -45,10 +45,20 @@
 
 
 
-    {{ govukButton({
-      text: "Create a record from TRN request",
-      href: "/create-record/from-trn-request/" + task.id + "/reason"
-    }) }}
+    
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Check possible duplicate",
+        href: "/support-tasks/create-record/from-trn-request/" + task.id + "/duplicates"
+      }) }}
+    
+      {{ govukButton({
+        text: "Create a record from TRN request",
+        href: "/support-tasks/create-record/from-trn-request/" + task.id + "/reason",
+        classes: "govuk-button--secondary"
+      }) }}
+    </div>
 
 
 

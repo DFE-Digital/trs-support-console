@@ -2,9 +2,9 @@ const _ = require('lodash')
 
 module.exports = (router) => {
   ////////// get a single task //////////
-  router.get('/create-record/from-trn-request/:taskId', (req, res) => {
+  router.get('/support-tasks/:taskId', (req, res) => {
 		let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('/create-record/from-trn-request/show', { task })
+    res.render('/support-tasks/create-record/from-trn-request/show', { task })
 	})
 
   //// This route is triggered from the button on 'show' page
