@@ -24,23 +24,26 @@
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[isRecordDuplicate]",
-    name: "filters[isRecordDuplicate]",
+    idPrefix: "filters[sourceOfDuplicate]",
+    name: "filters[sourceOfDuplicate]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Potential match",
+        text: "Source of duplicate",
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [{
-      value: 'Yes',
-      text: 'Yes'
+      value: 'Register',
+      text: 'Register'
     }, {
-      value: 'No',
-      text: 'No'
+      value: 'Some service',
+      text: 'Some service'
+    },{
+      value: 'Another service',
+      text: 'Another service'
     }],
-    values: data.filters.isRecordDuplicate
+    values: data.filters.sourceOfDuplicate
   }) }}
 
 {% endset %}

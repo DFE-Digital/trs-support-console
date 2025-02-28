@@ -10,3 +10,6 @@ module.exports = {
   duplicates,
   tasks
 }
+
+// In JS use - req.session.data.tasks
+// In template / Nunjucks use {{ data.tasks }}

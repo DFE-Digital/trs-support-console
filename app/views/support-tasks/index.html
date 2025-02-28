@@ -37,34 +37,28 @@
     {{ task.email | log }}
     {{ task.nationalInsuranceNumber | log }}
 
-    {{ newRecordTrn | log }}
-
-
-
+  
 
       {% include "_includes/support-tasks/secondary-navigation.njk" %}
 
 
       <div class="app-filter-layout">
         <div class="app-filter-layout__filter">
-          {% include "_includes/filter-panel.njk" %}
+          {% include "_includes/support-tasks/filter-panel.njk" %}
         </div>
         <div class="app-filter-layout__content">
             <div class="app-action-bar">
               <div class="app-action-bar__filter"></div>
             </div>
-            
-            <!--Put your list of things here-->
 
+            <!--Put your list of things here-->
+            {{ data.tasks | log }}
             {% include "_includes/support-tasks/create-from-trn/trn-request-list-item.njk" %}
             
         </div>
       </div>
 
       
-      
-
-
   </div>
 </div>
 
