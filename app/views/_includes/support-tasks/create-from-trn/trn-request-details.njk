@@ -2,7 +2,7 @@
 
 {# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
 
-<h2 class="govuk-heading-m">Incoming TRN request</h2>
+<h2 class="govuk-heading-m">Incoming {{task.supportTaskType}}</h2>
 
   {{ govukInsetText({
     text: "Active alerts: " + task.hasAlerts

@@ -3,8 +3,8 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = "Support tasks" %}
-{% set pageName = "All support tasks" %}
+{% set captionName = "Task list " %}
+{% set pageName = "Support tasks" %}
 
 
 {% if data.trn %}
@@ -16,10 +16,17 @@
 
 {% block content %}
 
-{{ govukNotificationBanner({
-  type: "success",
-  html: '<h2 class="govuk-heading-m">' + flash + '<a href="#" class="govuk-link">' + data.trn  + '</a></h2>'
-}) if flash.length }}
+{% if not data.duplicates[3].trn %}
+  {{ govukNotificationBanner({
+    type: "success",
+    html: '<h2 class="govuk-heading-m">' + flash + '<a href="#" class="govuk-link">' + data.trn  + '</a></h2>'
+  }) if flash.length }}
+{% else %}
+  {{ govukNotificationBanner({
+    type: "success",
+    html: '<h2 class="govuk-heading-m">' + flash + '<a href="#" class="govuk-link">' + data.duplicates[3].trn  + '</a></h2>'
+  }) if flash.length }}
+{% endif%}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">

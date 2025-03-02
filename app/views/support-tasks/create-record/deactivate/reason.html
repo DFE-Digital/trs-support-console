@@ -1,0 +1,184 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %} 
+
+{% set captionName = "Create record from TRN request" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ task.supportTaskType | log }}
+    {{ task.reference | log }}
+    {{ task.dateOfTrnRequest | log }}
+    {{ task.firstName | log }}
+    {{ task.middleName | log }}
+    {{ task.lastName | log }}
+    {{ task.dateOfBirth | log }}
+    {{ task.email | log }}
+    {{ task.nationalInsurance | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">{{task.reference}}</h1>
+
+    {{ govukInsetText({
+      text: "Date of TRN request:" + task.dateOfTrnRequest
+    }) }}
+
+    
+    <!--Put your list of things here-->
+    <form method="post" novalidate action="/support-tasks/create-record/deactivate/{{task.id}}/check">
+
+    {% set anotherReason %}
+    {{ govukTextarea({
+        id: "another-reason",
+        name: "anotherReason",
+        classes: "govuk-!-width-one-half",
+        label: {
+          text: "Enter a reason for creating this rrecord",
+          classes: "govuk-label--s"
+        },
+        value: data.anotherReason
+      }) }}
+    {% endset %}
+
+    {% set moreDetailsTextArea %}
+      {{ govukTextarea({
+        id: "yes-additional-info",
+        name: "yesAdditionalInfo",
+        classes: "govuk-!-width-one-half",
+        label: {
+          text: "Enter details",
+          classes: "govuk-label--s"
+        },
+        value: data.yesAdditionalInfo
+      }) }}
+    {% endset %}
+
+    {% set evidenceYes %}
+      {{ govukFileUpload({
+        id: "evidenceFile",
+        name: "evidenceFile",
+        label: {
+          text: "Upload files",
+          classes: "govuk-label--m"
+        },
+        hint: {
+          text: "Must be smaller than 100MB"
+        }
+      }) }}
+    {% endset %}
+
+  <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+        {{ govukRadios({
+          name: "createRecordReason",
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "They were awarded a mandatory qualification",
+              text: "They were awarded a mandatory qualification"
+            },
+            {
+              value: "They received an alert or prohibition",
+              text: "They received an alert or prohibition"
+            },
+            {
+              value: "They started university late",
+              text: "They started university late"
+            },
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: anotherReason
+              }
+            }
+          ],
+          value: data.createRecordReason
+        }) }}
+
+        <h2 class="govuk-heading-m">Do you want to provide more information?</h2>
+        {{ govukRadios({
+          name: 'hasMoreInfo',
+          fieldset: {
+            legend: {
+              text: "Do you have more information",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: moreDetailsTextArea
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.yesAdditionalInfo
+        }) }}
+
+        <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+        {{ govukRadios({
+          name: "evidenceUploaded",
+          fieldset: {
+            legend: {
+              text: "Do you have evidence to upload?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: evidenceYes
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.evidenceUploaded
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+
+  
+  </div>
+</div>
+
+{% endblock %}
+
