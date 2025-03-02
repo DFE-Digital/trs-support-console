@@ -1,20 +1,4 @@
-{% if task.potentialRecordMatch == "Yes" %}
-  <h2 class="govuk-heading-m">Potential duplicate from</h2>
-  
-  {{ govukSummaryList({
-    classes: "govuk-!-margin-bottom-7",
-    rows: [
-      {
-        key: { text: "Source" },
-        value: { html: task.sourceOfMatch }
-      } if task.potentialRecordMatch == "Yes",
-      {
-        key: { text: "Created on" },
-        value: { html: "[some_date]" }
-      } 
-    ]
-  }) }}
-{% endif %}
+
 
 {# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
 
@@ -25,7 +9,7 @@
   rows: [
     { key: 
       { text: "Potential duplicate" },
-      value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes",
+      value: { html: '<span class="govuk-tag govuk-!-font-size-19 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.sourceOfMatch + ' </span>'  } } if task.potentialRecordMatch == "Yes",
     {
       key: { text: "First name" },
       value: { html: task.firstName }

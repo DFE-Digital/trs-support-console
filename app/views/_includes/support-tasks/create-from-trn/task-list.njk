@@ -4,7 +4,8 @@
       <th scope="col" class="govuk-table__header">Reference</th>
       <th scope="col" class="govuk-table__header">Type</th>
       <th scope="col" class="govuk-table__header">Requested on</th>
-      <th scope="col" class="govuk-table__header">Potential match</th>
+      <th scope="col" class="govuk-table__header">Task complete</th>
+      <th scope="col" class="govuk-table__header">Potential duplicate</th>
       <th scope="col" class="govuk-table__header">Source of match</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <td class="govuk-table__cell"><a href="/support-tasks/{{ task.id }}" class="govuk-link">{{ task.reference }}</a></td> 
       <td class="govuk-table__cell">{{ task.supportTaskType }}</td>
       <td class="govuk-table__cell">{{ task.dateOfTrnRequest }}</td>
+      <td class="govuk-table__cell">{{ task.completed }}</td>
       <td class="govuk-table__cell">
         {{ govukTag({ 
           text: task.potentialRecordMatch,
@@ -26,5 +28,6 @@
     {% endfor %}
   </tbody>
 </table>
+
 
 
