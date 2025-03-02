@@ -38,7 +38,7 @@
 
     
     <!--Put your list of things here-->
-   <form method="post">
+    <form method="post" novalidate action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/check">
 
     {% set anotherReason %}
     {{ govukTextarea({

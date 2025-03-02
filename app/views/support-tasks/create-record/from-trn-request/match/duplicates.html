@@ -25,12 +25,14 @@
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
       <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p>
 
-      <form method="post" novalidate>
+      <form method="post" novalidate action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/merge">
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-half">
-            <h1 class="govuk-heading-m">API has received</h1>
+            <h1 class="govuk-heading-m">Incoming TRN request from API</h1>
             {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+
+            {{ data.mergeRecord | log }}
 
             {{ govukInsetText({
               text: "Active alerts: " + task.hasAlerts
@@ -79,7 +81,7 @@
       
 
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record </a>&nbsp;<span class="govuk-tag {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
+            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Primary record </a>&nbsp;<span class="govuk-tag {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
               {{ govukInsetText({
                 text: "Active alerts: " + task.hasAlerts
               }) }}
@@ -137,7 +139,7 @@
           items: [
             {
               value: "Yes",
-              text: "Yes, merge with existing record"
+              text: "Yes, merge with primary record"
             },
             {
               value: "No",
@@ -146,8 +148,7 @@
           ]
         }) }}
         {{ govukButton({
-          text: "Continue",
-          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/merge"
+          text: "Continue"
         }) }}
       </form>    
 

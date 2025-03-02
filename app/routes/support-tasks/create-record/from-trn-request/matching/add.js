@@ -27,36 +27,35 @@ module.exports = (router) => {
   })
 
 
-  ////////// get a single task //////////
+  ////////// SHOW a single task //////////
   router.get('/support-tasks/:taskId', (req, res) => {
 		let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
     res.render('/support-tasks/show', { task })
 	})
 
-  //// This route is triggered from the button on 'show' page
-  router.get('/support-tasks/create-record/from-trn-request/:taskId/reason', (req, res) => {
+
+  //// This route is triggered from the button on SHOW page
+  router.get('/support-tasks/create-record/from-trn-request/match/:taskId/duplicates', (req, res) => {
     let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/reason', { task })
+    res.render('support-tasks/create-record/from-trn-request/match/duplicates', { task })
   })
 
-  //// This route is triggered from the button on 'show' page
-  router.get('/support-tasks/create-record/from-trn-request/:taskId/duplicates', (req, res) => {
+  //// This route is triggered from the button on DUPLICATE page
+  router.post('/support-tasks/create-record/from-trn-request/match/:taskId/merge', (req, res) => {
     let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/duplicates', { task })
+    res.render('support-tasks/create-record/from-trn-request/match/merge', { task }) 
   })
 
-  //// Merging
-  router.get('/support-tasks/create-record/from-trn-request/:taskId/merging', (req, res) => {
+  //// THis route posts from the MERGE page
+  router.post('/support-tasks/create-record/from-trn-request/match/:taskId/reason', (req, res) => {
     let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/merging', { task })
+    res.render('support-tasks/create-record/from-trn-request/match/reason', { task }) 
   })
 
-  //// THis route posts from the reasons page
-  router.post('/create-record/from-trn-request/:taskId/reason', (req, res) => {
-    const tasks = req.session.data.tasks
-    const taskId = req.params.taskId
-    res.locals.task = tasks.find(task => task.id == taskId)
-    res.render('create-record/from-trn-request/check', { task: res.locals.task })
+   //// THis route posts from the REASON page
+   router.post('/support-tasks/create-record/from-trn-request/match/:taskId/check', (req, res) => {
+    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+    res.render('support-tasks/create-record/from-trn-request/match/check', { task }) 
   })
 
 

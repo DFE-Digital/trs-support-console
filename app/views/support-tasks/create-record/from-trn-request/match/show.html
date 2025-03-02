@@ -3,8 +3,8 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = "Create a record" %}
-{% set pageName = "Merge TRN request with existing record" %}
+{% set captionName = "TRN Request" %}
+{% set pageName = task.reference %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -35,16 +35,21 @@
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     
-    {% include "_includes/support-tasks/create-from-trn/merge-request-details.njk" %}
+    {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
-    
-    <form method="post" novalidate action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/reason">
-      <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Merge records"
-          }) }}
-      </div>
-    </form>
+    <div class="govuk-button-group">
+      {% if task.potentialRecordMatch == "Yes" %}
+        {{ govukButton({
+          text: "Compare potential duplicates",
+          href: "/support-tasks/create-record/from-trn-request/match/" + task.id + "/duplicates"
+        }) }}
+      {% else %}  
+        {{ govukButton({
+          text: "Create a record from TRN request",
+          href: "/support-tasks/create-record/from-trn-request/no-match/" + task.id + "/reason"
+        }) }}
+      {% endif %}
+    </div>
 
     <p class="govuk-body">
       <a href="#" class="govuk-link">Cancel and return to record</a>
