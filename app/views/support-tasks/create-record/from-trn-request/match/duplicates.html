@@ -4,7 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Create a record" %}
-{% set pageName = "Check possible match" %}
+{% set pageName = "Compare potential duplicates" %}
 
 
 
@@ -79,7 +79,7 @@
       
 
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record </a>&nbsp;<span class="govuk-tag govuk-!-font-size-19 {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
+            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record </a>&nbsp;<span class="govuk-tag {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
               {{ govukInsetText({
                 text: "Active alerts: " + task.hasAlerts
               }) }}
@@ -126,7 +126,7 @@
      
 
         {{ govukRadios({
-          name: "samePerson",
+          name: "mergeRecord",
           fieldset: {
             legend: {
               text: "Are they the same person?",
@@ -137,7 +137,7 @@
           items: [
             {
               value: "Yes",
-              text: "Yes"
+              text: "Yes, merge with existing record"
             },
             {
               value: "No",
@@ -147,7 +147,7 @@
         }) }}
         {{ govukButton({
           text: "Continue",
-          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/merging"
+          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/merge"
         }) }}
       </form>    
 

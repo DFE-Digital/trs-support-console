@@ -30,38 +30,25 @@ module.exports = (router) => {
   ////////// get a single task //////////
   router.get('/support-tasks/:taskId', (req, res) => {
 		let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('/support-tasks/create-record/from-trn-request/show', { task })
+    res.render('/support-tasks/show', { task })
 	})
 
   //// This route is triggered from the button on 'show' page
-  router.get('/support-tasks/create-record/from-trn-request/:taskId/reason', (req, res) => {
+  router.get('/support-tasks/create-record/from-trn-request/no-match/:taskId/reason', (req, res) => {
     let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/reason', { task })
+    res.render('support-tasks/create-record/from-trn-request/no-match/reason', { task })
   })
 
-  //// This route is triggered from the button on 'show' page
-  router.get('/support-tasks/create-record/from-trn-request/:taskId/duplicates', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/duplicates', { task })
-  })
+  
 
-  //// Merging
-  router.get('/support-tasks/create-record/from-trn-request/:taskId/merging', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/merging', { task })
-  })
-
-  //// THis route posts from the reasons page
-  router.post('/create-record/from-trn-request/:taskId/reason', (req, res) => {
-    const tasks = req.session.data.tasks
-    const taskId = req.params.taskId
-    res.locals.task = tasks.find(task => task.id == taskId)
-    res.render('create-record/from-trn-request/check', { task: res.locals.task })
+  //// THis route posts from the reason page
+  router.post('/create-record/from-trn-request/no-match/check', (req, res) => {
+    res.redirect('create-record/from-trn-request/no-match/check')
   })
 
 
   /////////////  FLASH //////////////
-  router.post('/create-record/from-trn-request/check-handler', (req, res) => {
+  router.post('/create-record/from-trn-request/no-match/check-handler', (req, res) => {
     req.flash('success', 'New record created with TRN: ')
     
     let data = req.session.data || {}
@@ -74,7 +61,7 @@ module.exports = (router) => {
     req.session.data = data
 
     // Redirect to the next page
-    res.redirect('/create-record/from-trn-request')
+    res.redirect('/support-tasks')
   })   
 
 }

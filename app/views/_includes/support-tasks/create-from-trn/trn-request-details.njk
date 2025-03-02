@@ -4,6 +4,10 @@
 
 <h2 class="govuk-heading-m">TRN request details</h2>
 
+  {{ govukInsetText({
+    text: "Active alerts: " + task.hasAlerts
+  }) }}
+
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-6",
   rows: [
@@ -45,10 +49,6 @@
     {
       key: { text: "TRN" },
       value: { text: task.trn }
-    },
-    {
-      key: { text: "Alerts" },
-      value: { text: task.hasAlerts }
     }
   ]
 }) }}
