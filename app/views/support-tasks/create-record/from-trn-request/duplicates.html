@@ -29,7 +29,7 @@
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-half">
-            <h1 class="govuk-heading-m">From TRN request</h1>
+            <h1 class="govuk-heading-m">API has received</h1>
             {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
 
             {{ govukInsetText({
@@ -76,9 +76,10 @@
             }) }}
           </div>
   
+      
 
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record</a></h2>
+            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record </a>&nbsp;<span class="govuk-tag govuk-!-font-size-19 {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
               {{ govukInsetText({
                 text: "Active alerts: " + task.hasAlerts
               }) }}
