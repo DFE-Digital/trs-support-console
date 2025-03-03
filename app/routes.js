@@ -32,6 +32,9 @@ require('./routes/support-tasks/create-record/from-trn-request/deactivate/add')(
 require('./routes/support-tasks/create-record/manual/add')(router)
 
 
+require('./routes/support-tasks/tasks')(router)
+
+
 
 // GENERAL ROUTES
 router.get('/cancel-and-return', (req, res) => {

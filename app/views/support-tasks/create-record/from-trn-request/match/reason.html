@@ -31,11 +31,6 @@
 
     <span class="govuk-caption-l">{{captionName}}</span>
     <h1 class="govuk-heading-l">{{task.reference}}</h1>
-
-    {{ govukInsetText({
-      text: "Date of TRN request:" + task.dateOfTrnRequest
-    }) }}
-
     
     <!--Put your list of things here-->
     <form method="post" novalidate action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/check">
