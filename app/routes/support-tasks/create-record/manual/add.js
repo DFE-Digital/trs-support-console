@@ -23,7 +23,7 @@ module.exports = (router) => {
     data.trn = generateTRN()
     req.session.data = data
 
-    req.flash('success', ' ')
+    req.flash('success', 'Record created with TRN: ')
 		res.redirect('/support-tasks/create-record/manual/new')  
 	})
 
@@ -34,7 +34,7 @@ module.exports = (router) => {
       // req.flash('success', 'Existing record merged/updated')
       res.redirect('/support-tasks/create-record/manual/find-trn') 
     } else {
-      req.flash('success', 'New record created for ' + fullName)
+      req.flash('success', 'New record created for ')
       let data = {}
 		  res.redirect('/support-tasks/create-record/manual') 
     }

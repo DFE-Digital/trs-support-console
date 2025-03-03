@@ -42,14 +42,16 @@ module.exports = (router) => {
   
 
   //// THis route posts from the reason page
-  router.post('/create-record/from-trn-request/no-match/check', (req, res) => {
-    res.redirect('create-record/from-trn-request/no-match/check')
+  router.get('/support-tasks/create-record/from-trn-request/no-match/:taskId/check', (req, res) => {
+    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+    res.render('support-tasks/create-record/from-trn-request/no-match/check', {task})
   })
 
 
   /////////////  FLASH //////////////
-  router.post('/create-record/from-trn-request/no-match/check-handler', (req, res) => {
-    req.flash('success', 'New record created with TRN: ')
+  router.post('/support-tasks/create-record/from-trn-request/no-match/:taskId/new', (req, res) => {
+    
+   
     
     let data = req.session.data || {}
 
@@ -60,8 +62,12 @@ module.exports = (router) => {
     data.trn = generateTRN()
     req.session.data = data
 
+    // Pass new record details
+    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+
     // Redirect to the next page
-    res.redirect('/support-tasks')
+    res.render('support-tasks/create-record/from-trn-request/no-match/new', {task})
+    
   })   
 
 }

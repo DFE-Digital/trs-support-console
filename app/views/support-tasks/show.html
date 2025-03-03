@@ -38,22 +38,23 @@
     {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
     <div class="govuk-button-group">
-      {% if task.supportTaskType == "TRN request" %}
+      {% if task.supportTaskType == "TRN request" and task.potentialRecordMatch == "No" %}
+      {{ govukButton({
+        text: "Create a record from TRN request",
+        href: "/support-tasks/create-record/from-trn-request/no-match/" + task.id + "/reason"
+      }) }}
+
+      {% elseif task.supportTaskType == "TRN request" and task.potentialRecordMatch == "Yes" %}
+
         {{ govukButton({
           text: "Compare potential duplicates",
           href: "/support-tasks/create-record/from-trn-request/match/" + task.id + "/duplicates"
         }) }}
 
-      {% elseif task.supportTaskType == "Change name request" and task.potentialRecordMatch == "Yes" %}
+      {% elseif task.supportTaskType == "Change name request"  %}
         {{ govukButton({
           text: "Compare potential duplicates",
           href: "/support-tasks/create-record/deactivate/" + task.id + "/duplicates"
-        }) }}
-
-      {% else %}  
-        {{ govukButton({
-          text: "Create a record from TRN request",
-          href: "/support-tasks/create-record/from-trn-request/no-match/" + task.id + "/reason"
         }) }}
 
       {% endif %}

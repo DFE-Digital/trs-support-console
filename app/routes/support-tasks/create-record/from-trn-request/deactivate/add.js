@@ -44,15 +44,24 @@ module.exports = (router) => {
 
 
   /////////////  FLASH //////////////
-  router.post('/create-record/from-trn-request/match/check-handler', (req, res) => {
-    req.flash('success', 'Merged with primary record TRN: ')
+  router.post('/support-tasks/create-record/deactivate/:taskId/new', (req, res) => {
+    
     
     let data = req.session.data || {}
 
+    // Generate TRN
+    const generateTRN = () => Math.floor(100000 + Math.random() * 900000).toString()
 
+    // Store the generated TRN in session data
+    data.trn = generateTRN()
+    req.session.data = data
+
+    // Pass new record details
+    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
 
     // Redirect to the next page
-    res.redirect('/support-tasks')
+    res.render('support-tasks/create-record/deactivate/new', {task})
+    
   })   
 
 }

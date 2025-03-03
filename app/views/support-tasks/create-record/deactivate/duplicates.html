@@ -18,22 +18,14 @@
 
 {% block content %}
 
-{% set html %}
-  <p class="govuk-notification-banner__heading">
-    Botn records have a TRN. You need to retain one and deactivate the other.
-    {# <a class="govuk-notification-banner__link" href="#">Something</a>. #}
-  </p>
-{% endset %}
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    {{ govukNotificationBanner({
-      html: html
-    }) }}
-
+   
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
-      <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p>
+      {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
 
       {# {{ govukWarningText({
         text: "Both of these records have a TRN You will have to merge a primary record and deactivate the old record.",

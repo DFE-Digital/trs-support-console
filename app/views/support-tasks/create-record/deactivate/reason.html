@@ -3,7 +3,7 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %} 
 
-{% set captionName = "Create record from TRN request" %}
+{% set captionName = "Create record" %}
 
 
 {% block beforeContent %}
@@ -80,7 +80,7 @@
       }) }}
     {% endset %}
 
-  <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+  <h2 class="govuk-heading-m">Why are you merging these record?</h2>
         {{ govukRadios({
           name: "createRecordReason",
           fieldset: {

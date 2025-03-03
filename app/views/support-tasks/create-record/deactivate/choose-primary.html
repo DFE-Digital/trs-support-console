@@ -7,6 +7,14 @@
 {% set pageName = "Choose primary record" %}
 
 
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+    Botn records have a TRN. You need to retain one and deactivate the other.
+    {# <a class="govuk-notification-banner__link" href="#">Something</a>. #}
+  </p>
+{% endset %}
+
+
 
 
 {% block beforeContent %}
@@ -21,6 +29,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+
+    {{ govukNotificationBanner({
+      html: html
+    }) }}
+
     
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>

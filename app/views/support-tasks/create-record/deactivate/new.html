@@ -1,0 +1,118 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %}
+
+
+{% set pageName = task.firstName + " " + task.lastName %}
+
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %} #}
+
+
+{% set html %}
+  <p class="govuk-notification-banner__heading">
+   Merged records with TRN:
+    <a class="govuk-notification-banner__link" href="#">{{data.duplicates[4].trn}}</a>.
+  </p>
+{% endset %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      {{ govukNotificationBanner({
+        html: html,
+        type: "success"
+      }) }}
+
+      {{ task.supportTaskType | log }}
+      {{ task.reference | log }}
+      {{ task.dateOfTrnRequest | log }}
+      {{ data.createRecordFirstName | log }}
+      {{ task.middleName | log }}
+      {{ task.lastName | log }}
+      {{ task.dateOfBirth | log }}
+      {{ task.email | log }}
+      {{ task.nationalInsuranceNumber | log }}
+
+      <span class="govuk-caption-l">{{ captionName }}</span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+
+      {{ govukSummaryList({
+        card: {
+                title: {
+                  text: "Personal details"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/create-record/add/reason",
+                      text: "Change",
+                      visuallyHiddenText: "Why I am creating this record"
+                    }
+                  ]
+                }
+              },
+              rows: [
+              {
+                key: { text: "First name" },
+                value: { html: data.duplicates[4].firstName }
+              },
+              {
+                key: { text: "Middle name (optional)" },
+                value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[4].middleName + '</strong></mark>' }
+              } if data.duplicates[4].middleName,
+              {
+                key: { text: "Last Name" },
+                value: { html: data.duplicates[4].lastName }
+              },
+              {
+                key: { text: "Date of birth" },
+                value: { text: data.duplicates[4].dateOfBirth }
+              },
+              {
+                key: { text: "Email address" },
+                value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[4].email + '</strong></mark>' }
+              },
+              {
+                key: { text: "National Insurance number" },
+                value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[4].nationalInsuranceNumber + '</strong></mark>' }
+              } if data.duplicates[4].nationalInsuranceNumber,
+              {
+                key: { text: "Sex" },
+                value: { text: data.duplicates[4].gender }
+              },
+              {
+                key: { text: "TRN" },
+                value: { html: data.duplicates[4].trn }
+              }
+            ]
+      }) }}
+
+
+      {{ govukInsetText({
+        html: "You can see the " + '<a href="#" class="govuk-link">deactivated record</a>' + " here."
+      }) }}
+
+
+     
+
+      {# <form method="post">
+        {{ govukButton({
+          text: "Confirm and create record"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p> #}
+    </div>
+  </div>
+{% endblock %}
