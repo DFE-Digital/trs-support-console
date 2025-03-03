@@ -24,7 +24,7 @@ module.exports = (router) => {
     req.session.data = data
 
     req.flash('success', ' ')
-		res.redirect('/support-tasks/create-record/manual')  
+		res.redirect('/support-tasks/create-record/manual/new')  
 	})
 
   router.post('/support-tasks/create-record/manual/duplicates', (req, res) => {
