@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Create a record" %}
-{% set pageName = "Merge and create primary record" %}
+{% set pageName = "Merge TRN request with existing record" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -35,16 +35,16 @@
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     
-    {% include "_includes/support-tasks/create-from-trn/keep-primary-merge-deactivate.njk" %}
+    {% include "_includes/support-tasks/create-from-trn/merge-request-details.njk" %}
 
-    
-    <form method="post" novalidate action="/support-tasks/create-record/deactivate/{{task.id}}/reason">
-      <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-      </div>
-    </form>
+    <div class="govuk-button-group">
+      
+        {{ govukButton({
+          text: "Merge records",
+          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/duplicates"
+        }) }}
+
+    </div>
 
     <p class="govuk-body">
       <a href="#" class="govuk-link">Cancel and return to record</a>

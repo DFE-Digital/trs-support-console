@@ -68,7 +68,7 @@
     "middleName": "James",
     "lastName": "Brown",
     "dateOfBirth": "7 July 1978",
-    "nationalInsuranceNumber": "Not given",
+    "nationalInsuranceNumber": "DT 46 51 96 C",
     "dateOfTrnRequest": "20 December 2023",
     "supportTaskType": "TRN request",
     "reference": "TRN-HIM678UY",
@@ -78,7 +78,7 @@
     "email": "dj.brown@gmail.com",
     "gender": "Male",
     "hasAlerts": "None",
-    "trn": "None",
+    "trn": "123456",
     "completed": "no"
   },
   {

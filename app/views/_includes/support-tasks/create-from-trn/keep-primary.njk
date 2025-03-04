@@ -1,15 +1,7 @@
-
-{# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
-
-
-
 {{ govukWarningText({
   text: "Some words about merging & consequences.",
   iconFallbackText: "Warning"
 }) }}
-
-{# <p class="govuk-body">Information being retained from the existing record is <mark class="hods-highlight"><strong>highlighted</strong></mark></p> #}
-<h2 class="govuk-heading-m">Primary record after merge</h2>
 
 
 {{ govukSummaryList({
@@ -17,23 +9,23 @@
   rows: [
     {
       key: { text: "First name" },
-      value: { html: task.firstName }
+      value: { html: data.duplicates[3].firstName }
     },
     {
       key: { text: "Middle name (optional)" },
-      value: { html: task.middleName }
-    } if task.middleName,
+      value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].middleName + '</strong></mark>' }
+    } if data.duplicates[3].middleName,
     {
       key: { text: "Last Name" },
-      value: { html: task.lastName }
+      value: { html: data.duplicates[3].lastName }
     },
     {
       key: { text: "Date of birth" },
-      value: { text: task.dateOfBirth }
+      value: { text: data.duplicates[3].dateOfBirth }
     },
     {
       key: { text: "Email address" },
-      value: { text: task.email }
+      value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].email + '</strong></mark>' }
     },
     {
       key: { text: "National Insurance number" },
@@ -49,6 +41,3 @@
     }
   ]
 }) }}
-
-
-

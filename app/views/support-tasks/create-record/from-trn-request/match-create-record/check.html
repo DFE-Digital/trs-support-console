@@ -2,8 +2,8 @@
 
 {% set serviceNavId = "supportTasks" %}
 {% set secondaryNavId = "createRecord" %}
-{% set captionName = "Create record" %}
-{% set pageName = "Check details and merge record" %}
+{% set captionName = "Create record from TRN request" %}
+{% set pageName = "Check details and merge records" %}
 
 
 {% block beforeContent %}
@@ -34,8 +34,6 @@
 
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
-
-      {% include "_includes/support-tasks/create-from-trn/keep-primary-merge-deactivate.njk" %}
 
 
       <h2 class="govuk-heading-m">Why are you merging these records?</h2>
@@ -87,11 +85,11 @@
         ]
       }) }}
 
-      <form method="post" action="/support-tasks/create-record/deactivate/{{task.id}}/new">
+      <form method="post" action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/new">
         {{ govukButton({
           text: "Confirm and merge records"
         }) }}
-      </form>    
+      </form>  
        
 
       <p class="govuk-body">

@@ -4,15 +4,11 @@
 
 <h2 class="govuk-heading-m">Incoming {{task.supportTaskType}}</h2>
 
-  {{ govukInsetText({
-    text: "Active alerts: " + task.hasAlerts
-  }) }}
-
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-6",
   rows: [
     { key: 
-      { text: "Potential duplicate" },
+      { text: "Source of duplicate" },
       value: { html: '<span class="govuk-tag govuk-!-font-size-19 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.sourceOfMatch + ' </span>'  } } if task.potentialRecordMatch == "Yes",
     {
       key: { text: "First name" },
