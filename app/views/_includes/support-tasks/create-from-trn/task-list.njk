@@ -1,0 +1,29 @@
+<table class="govuk-table app-list">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row  govuk-!-font-size-16">
+      <th scope="col" class="govuk-table__header">Reference</th>
+      <th scope="col" class="govuk-table__header">Requested on</th>
+      <th scope="col" class="govuk-table__header">Potential duplicate</th>
+      <th scope="col" class="govuk-table__header">Source of match</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    {% for task in tasks %}
+    <tr class="govuk-table__row  govuk-!-font-size-16">   
+      <td class="govuk-table__cell"><a href="/support-tasks/{{ task.id }}" class="govuk-link">{{ task.reference }}</a></td> 
+      <td class="govuk-table__cell">{{ task.dateOfTrnRequest }}</td>
+      <td class="govuk-table__cell">
+        {{ govukTag({ 
+          text: task.potentialRecordMatch,
+          classes: 'govuk-!-font-size-16',
+          classes: task.potentialRecordMatch | statusColour
+        }) }}
+      </td>
+      <td class="govuk-table__cell">{{ task.sourceOfMatch }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+

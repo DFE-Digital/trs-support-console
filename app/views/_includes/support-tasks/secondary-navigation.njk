@@ -4,19 +4,9 @@
     classes: "govuk-!-margin-bottom-6",
     items: [
     {
-      text: "Create a record",
-      href: "/create-record",
-      current: (secondaryNavId == "createRecord")
-    },
-    {
-      text: "TRN requests",
-      href: "/create-record/from-trn-request/list",
-      current: (secondaryNavId == "trnRequests")
-    },
-    {
-      text: "Other support task",
-      href: "#",
-      current: (secondaryNavId == "otherTask")
+      text: "Requests",
+      href: "/support-tasks",
+      current: (secondaryNavId == "allTasks")
     }
   ] if data.user
 }) }}

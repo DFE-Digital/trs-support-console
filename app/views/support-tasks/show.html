@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = task.reference %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ task.supportTaskType | log }}
+    {{ task.reference | log }}
+    {{ task.dateOfTrnRequest | log }}
+    {{ task.firstName | log }}
+    {{ task.middleName | log }}
+    {{ task.lastName | log }}
+    {{ task.dateOfBirth | log }}
+    {{ task.email | log }}
+    {{ task.nationalInsuranceNumber | log }}
+    {{ task.potentialRecordMatch | log }}
+
+    {{ task | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    
+    {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
+
+
+    <form method="post">
+      <div class="govuk-button-group">
+        {% if task.potentialRecordMatch === "No" %}
+
+        {{ govukButton({
+          text: "Create a record from TRN request",
+          href: "/support-tasks/create-record/from-trn-request/no-match/" + task.id + "/new"
+        }) }}
+
+        {{ govukButton({
+          text: "Reject TRN request",
+          href: "#",
+          classes: "govuk-button--secondary"
+        }) }}
+
+        {% elseif task.potentialRecordMatch === "Yes" %}
+
+          {{ govukButton({
+            text: "Compare potential duplicates",
+            href: "/support-tasks/create-record/from-trn-request/match/" + task.id + "/duplicates"
+          }) }}
+
+          {{ govukButton({
+            text: "Reject TRN request",
+            href: "#",
+            classes: "govuk-button--secondary"
+          }) }}
+
+        {% endif %}
+      </div>
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}
+

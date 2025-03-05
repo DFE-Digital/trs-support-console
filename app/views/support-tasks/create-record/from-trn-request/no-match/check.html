@@ -1,0 +1,104 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %}
+{% set secondaryNavId = "createRecord" %}
+{% set captionName = "Create record from TRN request" %}
+{% set pageName = "Check details and create record" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      {{ task.supportTaskType | log }}
+      {{ task.reference | log }}
+      {{ task.dateOfTrnRequest | log }}
+      {{ task.firstName | log }}
+      {{ task.middleName | log }}
+      {{ task.lastName | log }}
+      {{ task.dateOfBirth | log }}
+      {{ task.email | log }}
+      {{ task.nationalInsuranceNumber | log }}
+      
+      
+      {{ data.evidenceUploaded | log }}
+
+      {{ data.createRecordReason | log }}
+
+      
+
+      <span class="govuk-caption-l">{{ captionName }}</span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
+
+
+      <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: { text: "Reason for creating record" },
+            value: { text: data.createRecordReason },
+            actions: {
+              items: [
+                {
+                  href: "/create-record/from-trn-request/reason/" +  task.id + "?returnUrl=/from-trn-request/check",
+                  text: "Change",
+                  visuallyHiddenText: "reason for creating record"
+                }
+              ]
+            }
+          } if not moreDetailsTextArea,
+          {
+            key: { text: "More details" },
+            value: { text: data.yesAdditionalInfo },
+            actions: {
+              items: [
+                {
+                  href: "/create-record/from-trn-request/reason/" +  task.id + "?returnUrl=/from-trn-request/check",
+                  text: "Change",
+                  visuallyHiddenText: "reason for creating record"
+                }
+              ]
+            }
+          } if not data.yesAdditionalInfo == "",
+          {
+            key: { text: "Evidence" },
+            value: {
+              html: '<p class="govuk-body"><a href="#" class="govuk-link">' + data.evidenceFile + '</a>.</p>'
+            },
+            actions: {
+              items: [
+                {
+                  href: "/create-record/from-trn-request/reason/" +  task.id + "?returnUrl=/from-trn-request/check",
+                  text: "Change",
+                  visuallyHiddenText: "evidence"
+                }
+              ]
+            }
+          } if data.evidenceFile
+        ]
+      }) }}
+
+      <form method="post" action="/support-tasks/create-record/from-trn-request/no-match/{{task.id}}/new">
+        {{ govukButton({
+          text: "Confirm and create record"
+        }) }}
+      </form>   
+       
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

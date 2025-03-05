@@ -1,0 +1,107 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Choose what data to keep on primary record" %}
+
+{% set tableCheckbox %}
+<div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+  <div class="govuk-checkboxes__item">
+    <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+    <label class="govuk-label govuk-checkboxes__label" for="organisation"> </label>
+  </div>
+</div>
+{% endset %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
+
+      <form method="post" novalidate >
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[0].id}}" class="govuk-link">Record A</a></h2>
+          
+            {% include "_includes/support-tasks/deactivate/record-a.njk" %} 
+
+            {{ govukTextarea({
+              name: "recordAmoreDetail",
+              id: "more-detail",
+              classes: "govuk-input--width-20",
+              label: {
+                text: "Add a note",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              }
+            }) }}
+            
+          </div>
+  
+      
+
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[1].id}}" class="govuk-link">Record B</a></h2>
+
+            {% include "_includes/support-tasks/deactivate/record-b.njk" %} 
+            
+            {{ govukTextarea({
+              name: "recordBmoreDetail",
+              id: "more-detail",
+              classes: "govuk-input--width-20",
+              label: {
+                text: "Add a note",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              }
+            }) }}
+             
+          </div>
+        </div>
+     
+
+        {{ govukRadios({
+          name: "combineTheseSelections",
+          fieldset: {
+            legend: {
+              text: "Retain these selections for primary record?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>    
+    
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Create a record" %}
+{% set pageName = "Potential match found" %}
+
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      
+      <div class="app-list">
+        <h2 class="govuk-heading-m">Details you entered</h2>
+          <div class="app-list__item">
+            {% include "_includes/support-tasks/duplicates-card-layout-existing.njk" %}
+          </div>
+      </div>
+      
+      <div class="app-list">
+        <h2 class="govuk-heading-m govuk-!-margin-top-6">Existing records</h2>
+        {% for duplicate in data.duplicates %}
+          <div class="app-list__item">
+            {% include "_includes/support-tasks/duplicates-card-layout.njk" %}
+          </div>
+        {% endfor %}
+      </div>
+      
+      <hr class="govuk-section-break govuk-section-break--m">
+
+      <form method="post" novalidate>
+
+        {{ govukRadios({
+          name: "samePerson",
+          fieldset: {
+            legend: {
+              text: "Are they the same person?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No, create a new record"
+            }
+          ]
+        }) }}
+        {{ govukButton({
+          text: "Finish"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

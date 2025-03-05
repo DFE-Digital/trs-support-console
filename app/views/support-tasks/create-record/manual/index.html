@@ -1,0 +1,40 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Create a record" %}
+
+
+{% block content %}
+
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m">New record created  - TRN: <a href="#" class="govuk-link"> ' + data.trn + flash+ ' </a></h2>'
+}) if flash.length }}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {{ data.teachers | log }}
+      {{ data.teachers[0].trn | log }}
+      {{ data.person[0].fullName | log }}
+      {{ data.createRecordFullName | log }}
+
+
+      {% include "_includes/support-tasks/secondary-navigation.njk" %}
+      
+      {{ govukButton({
+        text: "Add a record",
+        href: "/support-tasks/create-record/manual/details"
+      }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}

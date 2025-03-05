@@ -1,0 +1,138 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %}
+
+
+{% set pageName = data.createRecordFirstName + " " + data.createRecordLastName %}
+
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %} #}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      {{ govukNotificationBanner({
+        type: "success",
+        html: '<h2 class="govuk-heading-m">Record created TRN:' + flash + '<a href="#" class="govuk-link">' + data.trn  + '</a></h2>'
+      }) if flash.length }}
+
+      {{ task.supportTaskType | log }}
+      {{ task.reference | log }}
+      {{ task.dateOfTrnRequest | log }}
+      {{ data.createRecordFirstName | log }}
+      {{ task.middleName | log }}
+      {{ task.lastName | log }}
+      {{ task.dateOfBirth | log }}
+      {{ task.email | log }}
+      {{ task.nationalInsuranceNumber | log }}
+
+      <span class="govuk-caption-l">{{ captionName }}</span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {# <h2 class="govuk-heading-m">Personal details</h2> #}
+
+      {{ govukSummaryList({
+        card: {
+                title: {
+                  text: "Personal details"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/create-record/add/reason",
+                      text: "Change",
+                      visuallyHiddenText: "Why I am creating this record"
+                    }
+                  ]
+                }
+              },
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: data.createRecordFirstName
+            }
+          },
+          {
+            key: {
+              text: "Middle name"
+            },
+            value: {
+              text: data.createRecordMiddleName
+            }
+          } if data.createRecordMiddleName,
+          {
+            key: {
+              text: "Last name "
+            },
+            value: {
+              text: data.createRecordLastName
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text:  data.createRecordEmail
+            }
+          },
+          {
+            key: {
+              text: "National insurance number"
+            },
+            value: {
+              text: data.createRecordNationalInsuranceNumber
+            }
+          },
+          {
+            key: {
+              text: "Sex"
+            },
+            value: {
+              text: data.createRecordSex
+            }
+          },
+          {
+            key: {
+              text: "TRN"
+            },
+            value: {
+              text: data.trn
+            }
+          }
+        ]
+      }) }}
+
+     
+
+      {# <form method="post">
+        {{ govukButton({
+          text: "Confirm and create record"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p> #}
+    </div>
+  </div>
+{% endblock %}

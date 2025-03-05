@@ -1,0 +1,92 @@
+<form method="post">
+
+  {% set moreDetailsTextArea %}
+    {{ govukTextarea({
+      id: "yes-additional-info",
+      name: "yesAdditionalInfo",
+      classes: "govuk-!-width-one-half",
+      label: {
+        text: "Enter details",
+        classes: "govuk-label--s"
+      },
+      value: data.yesAdditionalInfo
+    }) }}
+  {% endset %}
+
+  {% set evidenceYes %}
+    {{ govukFileUpload({
+      id: "evidenceFile",
+      name: "evidenceFile",
+      label: {
+        text: "Upload files",
+        classes: "govuk-label--m"
+      },
+      hint: {
+        text: "Must be smaller than 100MB"
+      }
+    }) }}
+  {% endset %}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-6">Why are you creating this record?</h2>
+  {{ govukRadios({
+    name: "createRecordReason",
+    fieldset: {
+      legend: {
+        text: "Reason for change",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        value: "They were awarded a mandatory qualification",
+        text: "They were awarded a mandatory qualification"
+      },
+      {
+        value: "They received an alert or prohibition",
+        text: "They received an alert or prohibition"
+      },
+      {
+        value: "They started university late",
+        text: "They started university late"
+      },
+      {
+        value: "Another reason",
+        text: "Another reason",
+        conditional: {
+          html: moreDetailsTextArea
+        }
+      }
+    ],
+    value: createRecordReason
+  }) }}
+
+  <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+  {{ govukRadios({
+    name: "evidenceUploaded",
+    fieldset: {
+      legend: {
+        text: "Do you have evidence to upload?",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        conditional: {
+          html: evidenceYes
+        }
+      },
+      {
+        value: "No",
+        text: "No"
+      }
+    ],
+    value: data.evidenceUploaded
+  }) }}
+
+     {{ govukButton({
+      text: "Continue",
+      href: "/create-record/from-trn-request/check"
+    }) }}
+</form>

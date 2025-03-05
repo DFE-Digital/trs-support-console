@@ -1,0 +1,162 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Compare potential duplicates" %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
+
+      <form method="post" novalidate >
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[0].id}}" class="govuk-link">Record A</a></h2>
+            
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+
+            {{ data.mergeRecord | log }}
+
+
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-7",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: data.deactivate[0].firstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: data.deactivate[0].middleName }
+                } if data.deactivate[0].middleName,
+                {
+                  key: { text: "Last Name" },
+                  value: { html: data.deactivate[0].lastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: data.deactivate[0].dateOfBirth }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { text: data.deactivate[0].email }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { text: data.deactivate[0].nationalInsuranceNumber }
+                } if data.deactivate[0].nationalInsuranceNumber,
+                {
+                  key: { text: "Evidence" },
+                  value: { html: '<a href="#" class="govuk-link">' + data.deactivate[0].providedEvidence + '</a>' }
+                },
+                {
+                  key: { text: "TRN" },
+                  value: { html:  data.deactivate[0].trn  }
+                },
+                {
+                  key: { text: "Alerts" },
+                  value: { text: data.deactivate[0].hasAlerts }
+                }
+              ]
+            }) }}
+          </div>
+  
+      
+
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[1].id}}" class="govuk-link">Record B</a></h2>
+            
+              {{ govukSummaryList({
+                classes: "govuk-!-margin-bottom-7",
+                rows: [
+                  {
+                    key: { text: "First name" },
+                    value: { html: data.deactivate[1].firstName }
+                  },
+                  {
+                    key: { text: "Middle name" },
+                    value:  { html: data.deactivate[1].middleName }
+                  } if data.deactivate[1].middleName,
+                  {
+                    key: { text: "Last Name" },
+                    value: { html: data.deactivate[1].lastName }
+                  },
+                  {
+                    key: { text: "Date of birth" },
+                    value: { text: data.deactivate[1].dateOfBirth }
+                  },
+                  {
+                    key: { text: "Email address" },
+                    value: { html: data.deactivate[1].email }
+                  },
+                  {
+                    key: { text: "National Insurance number" },
+                    value: { html: data.deactivate[1].nationalInsuranceNumber }
+                  } if data.deactivate[1].nationalInsuranceNumber,
+                  {
+                    key: { text: "Evidence" },
+                    value: { html: '<a href="#" class="govuk-link">' + data.deactivate[1].providedEvidence + '</a>' }
+                  },
+                  {
+                    key: { text: "TRN" },
+                    value: { html: data.deactivate[1].trn }
+                  },
+                  {
+                    key: { text: "Alerts" },
+                    value: { text: data.deactivate[1].hasAlerts }
+                  }
+                ]
+              }) }}
+          </div>
+        </div>
+     
+
+        {{ govukRadios({
+          name: "mergeRecord",
+          fieldset: {
+            legend: {
+              text: "Which record will be retained as the primary record?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Record A",
+              text: "Record A"
+            },
+            {
+              value: "Record B",
+              text: "Record B"
+            }
+          ]
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "javascript:window.history.back()"
+          }) }}
+        </div>
+
+      </form>    
+    
+    
+  </div>
+</div>
+
+{% endblock %}

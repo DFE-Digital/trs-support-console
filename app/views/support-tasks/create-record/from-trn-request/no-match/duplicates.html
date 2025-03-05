@@ -1,0 +1,163 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Create a record" %}
+{% set pageName = "Compare potential duplicates" %}
+
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p>
+
+      <form method="post" novalidate>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <h1 class="govuk-heading-m">API has received</h1>
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+
+            {{ govukInsetText({
+              text: "Active alerts: " + task.hasAlerts
+            }) }}
+
+
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-7",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: task.firstName }
+                },
+                {
+                  key: { text: "Middle name (optional)" },
+                  value: { html: task.middleName }
+                } if task.middleName,
+                {
+                  key: { text: "Last Name" },
+                  value: { html: task.lastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: task.dateOfBirth }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { text: task.email }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { text: task.nationalInsuranceNumber }
+                } if task.nationalInsuranceNumber,
+                {
+                  key: { text: "Sex" },
+                  value: { text: task.gender }
+                },
+                {
+                  key: { text: "TRN" },
+                  value: { text: task.trn }
+                }
+              ]
+            }) }}
+          </div>
+  
+      
+
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record </a>&nbsp;<span class="govuk-tag {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
+              {{ govukInsetText({
+                text: "Active alerts: " + task.hasAlerts
+              }) }}
+            
+              {{ govukSummaryList({
+                classes: "govuk-!-margin-bottom-7",
+                rows: [
+                  {
+                    key: { text: "First name" },
+                    value: { html: data.duplicates[3].firstName }
+                  },
+                  {
+                    key: { text: "Middle name" },
+                    value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].middleName + '</strong></mark>' }
+                  } if data.duplicates[3].middleName,
+                  {
+                    key: { text: "Last Name" },
+                    value: { html: data.duplicates[3].lastName }
+                  },
+                  {
+                    key: { text: "Date of birth" },
+                    value: { text: data.duplicates[3].dateOfBirth }
+                  },
+                  {
+                    key: { text: "Email address" },
+                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].email + '</strong></mark>' }
+                  },
+                  {
+                    key: { text: "National Insurance number" },
+                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
+                  } if data.duplicates[3].nationalInsuranceNumber,
+                  {
+                    key: { text: "Sex" },
+                    value: { text: data.duplicates[3].gender }
+                  },
+                  {
+                    key: { text: "TRN" },
+                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].trn + '</strong></mark>' }
+                  }
+                ]
+              }) }}
+          </div>
+        </div>
+     
+
+        {{ govukRadios({
+          name: "mergeRecord",
+          fieldset: {
+            legend: {
+              text: "Are they the same person?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes, merge with existing record"
+            },
+            {
+              value: "No",
+              text: "No, create a new record"
+            }
+          ]
+        }) }}
+        {{ govukButton({
+          text: "Continue",
+          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/merge"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}

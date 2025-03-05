@@ -1,41 +1,41 @@
  {{ govukSummaryList({
-        card: {
-          title: {
-            text: "Possible match"
-          }
-        },
-        rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              html: teachers[0].fullName
-            }
-          },
-          {
-            key: {
-              text: "Date of birth"
-            },
-            value: {
-              text: teachers[0].dateOfBirth
-            }
-          },
-          {
-            key: {
-              text: "Email address"
-            },
-            value: {
-              text: teachers[0].email
-            }
-          },
-          {
-            key: {
-              text: "National Insurance number"
-            },
-            value: {
-              text: teachers[0].nationalInsuranceNumber
-            }
-          }
-        ]
-      }) }}
+  card: {
+    title: {
+      text: "Possible match"
+    }
+  },
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        html: teachers[0].fullName
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: teachers[0].dateOfBirth
+      }
+    },
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text: teachers[0].email
+      }
+    },
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: teachers[0].nationalInsuranceNumber
+      }
+    }
+  ]
+}) }}

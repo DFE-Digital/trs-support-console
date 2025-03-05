@@ -1,0 +1,30 @@
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  border-bottom: 1px solid grey;
+
+  .govuk-checkboxes__item {
+    flex-grow: 4;
+    width: 200px;
+    margin-bottom: 0;
+    padding: 7px 15px 7px 0px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .govuk-checkboxes--small .govuk-checkboxes {
+    margin-left: 0px;
+  }
+
+  .govuk-body, .govuk-body-m {
+    margin-bottom: 0px;
+  }
+
+  .govuk-label .govuk-checkboxes__label{
+    flex-grow: 0.5;
+  }
+
+}

@@ -1,0 +1,146 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Create a record" %}
+{% set pageName = "Potential match found" %}
+
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+      <p class="govuk-body">Differenece are highlighted on the right hand side</p>
+
+      <form method="post" novalidate>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <h1 class="govuk-heading-m">Details you entered</h1>
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-9",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: data.createRecordFirstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: data.createRecordMiddleName }
+                } if data.createRecordMiddleName,
+                {
+                  key: { text: "Last name" },
+                  value: { html: data.createRecordLastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { text: data.createRecordEmail }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { text: data.createRecordNationalInsuranceNumber }
+                } if data.createRecordNationalInsuranceNumber,
+                {
+                  key: { text: "Sex" },
+                  value: { text: data.createRecordSex }
+                }
+              ]
+            }) }}
+          </div>
+
+        
+
+          <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Existing record</a></h2>
+
+            {{ govukSummaryList({
+              classes: "govuk-!-margin-bottom-9",
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: data.person[0].firstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].middleName + '</strong></mark>' }
+                } if data.createRecordMiddleName,
+                {
+                  key: { text: "Last name" },
+                  value: { html: data.createRecordLastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].dateOfBirth + '</strong></mark>' }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].nationalInsurance + '</strong></mark>' }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + data.person[0].nationalInsurance + '</strong></mark>' }
+                } if data.createRecordNationalInsuranceNumber,
+                {
+                  key: { text: "Sex" },
+                  value: { text: data.createRecordSex }
+                }
+              ]
+            }) }}
+            
+          </div>
+        </div>
+     
+
+        {{ govukRadios({
+          name: "samePerson",
+          fieldset: {
+            legend: {
+              text: "Are they the same person?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No, create a new record"
+            }
+          ]
+        }) }}
+        {{ govukButton({
+          text: "Finish"
+        }) }}
+      </form>    
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+
+    
+    
+  </div>
+</div>
+
+{% endblock %}
