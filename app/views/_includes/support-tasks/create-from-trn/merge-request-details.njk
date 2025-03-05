@@ -9,7 +9,7 @@
 }) }}
 
 {# <p class="govuk-body">Information being retained from the existing record is <mark class="hods-highlight"><strong>highlighted</strong></mark></p> #}
-<h2 class="govuk-heading-m">Primary record after merge</h2>
+<h2 class="govuk-heading-m">Record details after merge</h2>
 
 
 {{ govukSummaryList({
@@ -20,7 +20,7 @@
       value: { html: task.firstName }
     },
     {
-      key: { text: "Middle name (optional)" },
+      key: { text: "Middle name" },
       value: { html: task.middleName }
     } if task.middleName,
     {
@@ -37,15 +37,16 @@
     },
     {
       key: { text: "National Insurance number" },
-      value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
+      value: { html: data.duplicates[3].nationalInsuranceNumber }
     } if data.duplicates[3].nationalInsuranceNumber,
     {
-      key: { text: "Sex" },
-      value: { text: data.duplicates[3].gender }
+      key: { text: "Evidence" },
+      value: { html: '<a href="#" class="govuk-link">' + data.duplicates[3].providedEvidence + '</a>' }
+      
     },
     {
       key: { text: "TRN" },
-      value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].trn + '</strong></mark>' }
+      value: { html: data.duplicates[3].trn }
     }
   ]
 }) }}

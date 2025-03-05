@@ -13,7 +13,8 @@
     "inductionStatus": "Required to complete",
     "inductionStartDate": null,
     "inductionCompletionDAte": null,
-    "exemptionReason": "Some reason"
+    "exemptionReason": "Some reason",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Susie",
@@ -29,7 +30,8 @@
     "inductionStatus": "Required to complete",
     "inductionStartDate": null,
     "inductionCompletionDAte": null,
-    "exemptionReason": "Some reason"
+    "exemptionReason": "Some reason",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Sarah",
@@ -45,7 +47,8 @@
     "inductionStatus": "Required to complete",
     "inductionStartDate": null,
     "inductionCompletionDAte": null,
-    "exemptionReason": "Some reason"
+    "exemptionReason": "Some reason",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "John",
@@ -62,7 +65,8 @@
     "email": "mr.john.doe@yahoo.com",
     "gender": "Male",
     "trn": "439353",
-    "hasAlerts": "None"
+    "hasAlerts": "None",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Conrad",
@@ -79,7 +83,8 @@
     "email": "Conrad.J.Diamond@icloud.com",
     "gender": "Male",
     "trn": "998877",
-    "hasAlerts": "None"
+    "hasAlerts": "None",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "David",
@@ -97,6 +102,7 @@
     "gender": "Male",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   }
 ]

@@ -3,7 +3,7 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "createRecord" %}
 
-{% set captionName = "Create a record" %}
+{% set captionName = "Support tasks" %}
 {% set pageName = "Compare potential duplicates" %}
 
 
@@ -29,14 +29,10 @@
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-half">
-            <h1 class="govuk-heading-m">Incoming TRN request from API</h1>
+            <h1 class="govuk-heading-m">Incoming request - <a href="/support-tasks/{{task.id}}" class="govuk-link">{{task.reference}}</a></h1>
             {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
 
             {{ data.mergeRecord | log }}
-
-            {{ govukInsetText({
-              text: "Active alerts: " + task.hasAlerts
-            }) }}
 
 
             {{ govukSummaryList({
@@ -67,12 +63,8 @@
                   value: { text: task.nationalInsuranceNumber }
                 } if task.nationalInsuranceNumber,
                 {
-                  key: { text: "Sex" },
-                  value: { text: task.gender }
-                },
-                {
-                  key: { text: "TRN" },
-                  value: { text: task.trn }
+                  key: { text: "Evidence" },
+                  value: { html: '<a href="#" class="govuk-link">' + task.providedEvidence + '</a>' }
                 }
               ]
             }) }}
@@ -81,10 +73,7 @@
       
 
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="#" class="govuk-link">Primary record </a>&nbsp;<span class="govuk-tag {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
-              {{ govukInsetText({
-                text: "Active alerts: " + task.hasAlerts
-              }) }}
+            <h2 class="govuk-heading-m"><a href="/support-tasks/create-record/from-trn-request/match/new" class="govuk-link">Existing record </a>&nbsp;<span class="govuk-tag {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
             
               {{ govukSummaryList({
                 classes: "govuk-!-margin-bottom-7",
@@ -103,7 +92,7 @@
                   },
                   {
                     key: { text: "Date of birth" },
-                    value: { text: data.duplicates[3].dateOfBirth }
+                    value: { text: task.dateOfBirth }
                   },
                   {
                     key: { text: "Email address" },
@@ -114,12 +103,16 @@
                     value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
                   } if data.duplicates[3].nationalInsuranceNumber,
                   {
-                    key: { text: "Sex" },
-                    value: { text: data.duplicates[3].gender }
+                    key: { text: "Evidence" },
+                    value: { html: '<a href="#" class="govuk-link">' + data.duplicates[3].providedEvidence + '</a>' }
                   },
                   {
                     key: { text: "TRN" },
                     value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].trn + '</strong></mark>' }
+                  },
+                  {
+                    key: { text: "Alerts" },
+                    value: { text: task.hasAlerts }
                   }
                 ]
               }) }}
@@ -139,7 +132,7 @@
           items: [
             {
               value: "Yes",
-              text: "Yes, merge with primary record"
+              text: "Yes"
             },
             {
               value: "No",
@@ -151,11 +144,6 @@
           text: "Continue"
         }) }}
       </form>    
-
-      <p class="govuk-body">
-        <a href="#" class="govuk-link">Cancel and return to record</a>
-      </p>
-
     
     
   </div>

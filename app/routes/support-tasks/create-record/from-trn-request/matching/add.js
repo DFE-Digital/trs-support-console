@@ -22,20 +22,20 @@ module.exports = (router) => {
   })
 
   //// THis route posts from the MERGE page
-  router.post('/support-tasks/create-record/from-trn-request/match/:taskId/reason', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/match/reason', { task }) 
-  })
+  // router.post('/support-tasks/create-record/from-trn-request/match/:taskId/reason', (req, res) => {
+  //   let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+  //   res.render('support-tasks/create-record/from-trn-request/match/reason', { task }) 
+  // })
 
    //// THis route posts from the REASON page
-   router.post('/support-tasks/create-record/from-trn-request/match/:taskId/check', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/from-trn-request/match/check', { task }) 
-  })
+  //  router.post('/support-tasks/create-record/from-trn-request/match/:taskId/check', (req, res) => {
+  //   let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+  //   res.render('support-tasks/create-record/from-trn-request/match/check', { task }) 
+  // })
 
 
   /////////////  FLASH //////////////
-  router.post('/support-tasks/create-record/from-trn-request/match/:taskId/new', (req, res) => {
+  router.get('/support-tasks/create-record/from-trn-request/match/:taskId/new', (req, res) => {
     
    
     

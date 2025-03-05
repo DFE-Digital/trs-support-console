@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "findRecord" %}
+{% set secondaryNavId = "thisRecord" %}
 
 
 {% set pageName = task.firstName + " " + task.lastName %}
@@ -16,10 +17,11 @@
 
 {% set html %}
   <p class="govuk-notification-banner__heading">
-   Merged records with TRN:
+   Record created with TRN:
     <a class="govuk-notification-banner__link" href="#">{{data.duplicates[3].trn}}</a>.
   </p>
 {% endset %}
+
 
 
 {% block content %}
@@ -41,8 +43,12 @@
       {{ task.email | log }}
       {{ task.nationalInsuranceNumber | log }}
 
+      {{ task.firstName | log }}
+
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {% include "_includes/support-tasks/secondary-navigation-for-record.njk" %}
 
       {# <h2 class="govuk-heading-m">Personal details</h2> #}
 
@@ -50,51 +56,84 @@
         card: {
                 title: {
                   text: "Personal details"
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/create-record/add/reason",
-                      text: "Change",
-                      visuallyHiddenText: "Why I am creating this record"
-                    }
-                  ]
                 }
               },
-              rows: [
-              {
-                key: { text: "First name" },
-                value: { html: task.firstName }
-              },
-              {
-                key: { text: "Middle name (optional)" },
-                value: { html: task.middleName }
-              } if task.middleName,
-              {
-                key: { text: "Last Name" },
-                value: { html: task.lastName }
-              },
-              {
-                key: { text: "Date of birth" },
-                value: { text: task.dateOfBirth }
-              },
-              {
-                key: { text: "Email address" },
-                value: { text: task.email }
-              },
-              {
-                key: { text: "National Insurance number" },
-                value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
-              } if data.duplicates[3].nationalInsuranceNumber,
-              {
-                key: { text: "Sex" },
-                value: { text: data.duplicates[3].gender }
-              },
-              {
-                key: { text: "TRN" },
-                value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].trn + '</strong></mark>' }
-              }
-            ]
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: task.firstName
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Middle name"
+            },
+            value: {
+              text: task.middleName
+            }
+          } if task.middleName,
+          {
+            key: {
+              text: "Last name "
+            },
+            value: {
+              text: task.lastName
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: task.dateOfBirth
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text:  task.email
+            }
+          },
+          {
+            key: {
+              text: "National insurance number"
+            },
+            value: {
+              text: task.nationalInsuranceNumber
+            }
+          },
+          {
+            key: {
+              text: "TRN"
+            },
+            value: {
+              text: data.duplicates[3].trn
+            }
+          }
+        ]
       }) }}
 
      

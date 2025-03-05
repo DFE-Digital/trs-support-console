@@ -3,7 +3,7 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = "Create a record" %}
+{% set captionName = "Support tasks" %}
 {% set pageName = "Merge TRN request with existing record" %}
 
 {% block beforeContent %}
@@ -38,18 +38,15 @@
     {% include "_includes/support-tasks/create-from-trn/merge-request-details.njk" %}
 
     
-    <form method="post" novalidate action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/reason">
+    <form method="post" novalidate action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/new">
       <div class="govuk-button-group">
           {{ govukButton({
-            text: "Merge records"
+            text: "Confirm and merge records"
           }) }}
       </div>
     </form>
 
-    <p class="govuk-body">
-      <a href="#" class="govuk-link">Cancel and return to record</a>
-    </p>
-
+   
   </div>
 </div>
 
