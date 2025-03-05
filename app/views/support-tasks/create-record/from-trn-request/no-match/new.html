@@ -14,11 +14,12 @@
   }) }}
 {% endblock %} #}
 
+{% set newTrn = "108266" %}
 
 {% set html %}
   <p class="govuk-notification-banner__heading">
    Record created with TRN:
-    <a class="govuk-notification-banner__link" href="#">{{data.trn}}</a>.
+    <a class="govuk-notification-banner__link" href="#">{{newTrn}}</a>.
   </p>
 {% endset %}
 
@@ -130,7 +131,7 @@
               text: "TRN"
             },
             value: {
-              text: data.trn
+              text: newTrn
             }
           }
         ]
