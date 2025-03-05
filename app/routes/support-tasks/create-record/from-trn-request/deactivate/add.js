@@ -2,66 +2,32 @@ const _ = require('lodash')
 
 module.exports = (router) => {
 
+  router.post('/support-tasks/deactivate/index', (req, res) => {
+    res.redirect('/support-tasks/deactivate/choose-primary-record')
+  })
 
-  ////////// SHOW a single task //////////
-  router.get('/support-tasks/:taskId', (req, res) => {
-		let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('/support-tasks/show', { task })
-	})
-
-
-  //// This route is triggered from the button on SHOW page
-  router.get('/support-tasks/create-record/deactivate/:taskId/duplicates', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/deactivate/duplicates', { task })
+  router.post('/support-tasks/deactivate/choose-primary-record', (req, res) => {
+    res.redirect('/support-tasks/deactivate/select-data')
   })
 
 
-
-  //// This route is triggered from the button on DUPLICATE page
-  router.post('/support-tasks/create-record/deactivate/:taskId/choose-primary', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/deactivate/choose-primary', { task }) 
+  router.post('/support-tasks/deactivate/select-data', (req, res) => {
+    res.redirect('/support-tasks/deactivate/confirm-retain')
   })
 
-  //// This route is triggered from the button on DUPLICATE page
-  router.post('/support-tasks/create-record/deactivate/:taskId/merge', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/deactivate/merge', { task }) 
-  })
-
-  //// THis route posts from the MERGE page
-  router.post('/support-tasks/create-record/deactivate/:taskId/reason', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/deactivate/reason', { task }) 
-  })
-
-   //// THis route posts from the REASON page
-   router.post('/support-tasks/create-record/deactivate/:taskId/check', (req, res) => {
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-    res.render('support-tasks/create-record/deactivate/check', { task }) 
+  router.post('/support-tasks/deactivate/confirm-retain', (req, res) => {
+    res.redirect('/support-tasks/deactivate/confirm-deactivate')
   })
 
 
-  /////////////  FLASH //////////////
-  router.post('/support-tasks/create-record/deactivate/:taskId/new', (req, res) => {
-    
-    
-    let data = req.session.data || {}
-
-    // Generate TRN
-    const generateTRN = () => Math.floor(100000 + Math.random() * 900000).toString()
-
-    // Store the generated TRN in session data
-    data.trn = generateTRN()
-    req.session.data = data
-
-    // Pass new record details
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-
-    // Redirect to the next page
-    res.render('support-tasks/create-record/deactivate/new', {task})
-    
-  })   
+  router.post('/support-tasks/deactivate/confirm-deactivate', (req, res) => {
+    req.flash('success', 'Primary record updated for ')
+		  res.redirect('/find-teacher') 
+    }
+	)
 
 }
+
+
+
+// 439353

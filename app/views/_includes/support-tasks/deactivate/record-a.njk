@@ -1,0 +1,121 @@
+ <div class="flexContainer">
+    {{ govukCheckboxes({
+    name: "recordfirstName",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].firstName,
+        text: "First name",
+        classes: "govuk-!-font-weight-bold"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].firstName}}</p>
+</div>
+
+
+
+<div class="flexContainer">
+   {{ govukCheckboxes({
+    name: "recordmiddleName",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].middleName,
+        text: "Middle name"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].middleName}}</p>
+</div>
+
+
+
+<div class="flexContainer">
+  {{ govukCheckboxes({
+    name: "recordlastName",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].lastName,
+        text: "Last name"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].lastName}}</p>
+</div>
+
+
+<div class="flexContainer">
+   {{ govukCheckboxes({
+    name: "recorddateOfBirth",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].dateOfBirth,
+        text: "Date of birth"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].dateOfBirth}}</p>
+</div>
+
+
+<div class="flexContainer">
+  {{ govukCheckboxes({
+    name: "recordemail",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].email,
+        text: "Email"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].email}}</p>
+</div>
+
+
+<div class="flexContainer">
+   {{ govukCheckboxes({
+    name: "recordnationalInsuranceNumber",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].nationalInsuranceNumber,
+        text: "National Insurance number"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].nationalInsuranceNumber}}</p>
+</div>
+
+
+<div class="flexContainer">
+   {{ govukCheckboxes({
+    name: "recordprovidedEvidence",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].providedEvidence,
+        text: "Evidence"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].providedEvidence}}</p>
+</div>
+
+
+<div class="flexContainer govuk-!-margin-bottom-6">
+   {{ govukCheckboxes({
+    name: "recordtrn",
+    classes: "govuk-checkboxes--small",
+    items: [
+      {
+        value: data.deactivate[0].trn,
+        text: "TRN"
+      }
+    ]
+  }) }}
+  <p class="govuk-body">{{data.deactivate[0].trn}}</p>
+</div>

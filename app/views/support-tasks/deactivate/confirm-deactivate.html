@@ -3,8 +3,8 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = "Create a record" %}
-{% set pageName = "Merge and create primary record" %}
+{% set captionName = "Support tasks" %}
+{% set pageName = "Deactivate this record" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -35,21 +35,18 @@
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     
-    {% include "_includes/support-tasks/create-from-trn/keep-primary-merge-deactivate.njk" %}
+    {% include "_includes/support-tasks/deactivate/deactivated-record-details.njk" %}
 
     
-    <form method="post" novalidate action="/support-tasks/create-record/deactivate/{{task.id}}/reason">
-      <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-      </div>
-    </form>
+      <form method="post" novalidate >
+        <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Confirm and deactivate record"
+            }) }}
+        </div>
+      </form>
 
-    <p class="govuk-body">
-      <a href="#" class="govuk-link">Cancel and return to record</a>
-    </p>
-
+   
   </div>
 </div>
 

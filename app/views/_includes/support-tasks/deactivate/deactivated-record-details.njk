@@ -1,0 +1,56 @@
+
+{# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
+
+
+
+{{ govukWarningText({
+  text: "Some words about deactivation.",
+  iconFallbackText: "Warning"
+}) }}
+
+{# <p class="govuk-body">Information being retained from the existing record is <mark class="hods-highlight"><strong>highlighted</strong></mark></p> #}
+<h2 class="govuk-heading-m">Record details</h2>
+
+
+ {{ govukSummaryList({
+  classes: "govuk-!-margin-bottom-7",
+  rows: [
+    {
+      key: { text: "First name" },
+      value: { html: data.deactivate[1].firstName }
+    },
+    {
+      key: { text: "Middle name" },
+      value:  { html: data.deactivate[1].middleName }
+    },
+    {
+      key: { text: "Last Name" },
+      value: { html: data.deactivate[1].lastName }
+    },
+    {
+      key: { text: "Date of birth" },
+      value: { text: data.deactivate[1].dateOfBirth }
+    },
+    {
+      key: { text: "Email address" },
+      value: { html: data.deactivate[1].email }
+    },
+    {
+      key: { text: "National Insurance number" },
+      value: { html: data.deactivate[1].nationalInsuranceNumber }
+    } ,
+    {
+      key: { text: "Evidence" },
+      value: { html: '<a href="#" class="govuk-link">' + data.deactivate[1].providedEvidence + '</a>' }
+    },
+    {
+      key: { text: "TRN" },
+      value: { html: data.deactivate[1].trn }
+    },
+    {
+      key: { text: "Notes" },
+      value: { html: data.recordBmoreDetail }
+    }
+  ]
+}) }}
+

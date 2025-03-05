@@ -7,15 +7,6 @@
 {% set pageName = "Compare potential duplicates" %}
 
 
-
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-{% endblock %}
-
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -23,13 +14,14 @@
 
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
-      <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p>
+      {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
 
-      <form method="post" novalidate action="/support-tasks/create-record/from-trn-request/match/{{task.id}}/merge">
+      <form method="post" novalidate >
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-half">
-            <h1 class="govuk-heading-m">Incoming request - <a href="/support-tasks/{{task.id}}" class="govuk-link">{{task.reference}}</a></h1>
+            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[0].id}}" class="govuk-link">Record A</a></h2>
+            
             {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
 
             {{ data.mergeRecord | log }}
@@ -40,31 +32,39 @@
               rows: [
                 {
                   key: { text: "First name" },
-                  value: { html: task.firstName }
+                  value: { html: data.deactivate[0].firstName }
                 },
                 {
                   key: { text: "Middle name" },
-                  value: { html: task.middleName }
-                } if task.middleName,
+                  value: { html: data.deactivate[0].middleName }
+                } if data.deactivate[0].middleName,
                 {
                   key: { text: "Last Name" },
-                  value: { html: task.lastName }
+                  value: { html: data.deactivate[0].lastName }
                 },
                 {
                   key: { text: "Date of birth" },
-                  value: { text: task.dateOfBirth }
+                  value: { text: data.deactivate[0].dateOfBirth }
                 },
                 {
                   key: { text: "Email address" },
-                  value: { text: task.email }
+                  value: { text: data.deactivate[0].email }
                 },
                 {
                   key: { text: "National Insurance number" },
-                  value: { text: task.nationalInsuranceNumber }
-                } if task.nationalInsuranceNumber,
+                  value: { text: data.deactivate[0].nationalInsuranceNumber }
+                } if data.deactivate[0].nationalInsuranceNumber,
                 {
                   key: { text: "Evidence" },
-                  value: { html: '<a href="#" class="govuk-link">' + task.providedEvidence + '</a>' }
+                  value: { html: '<a href="#" class="govuk-link">' + data.deactivate[0].providedEvidence + '</a>' }
+                },
+                {
+                  key: { text: "TRN" },
+                  value: { html:  data.deactivate[0].trn  }
+                },
+                {
+                  key: { text: "Alerts" },
+                  value: { text: data.deactivate[0].hasAlerts }
                 }
               ]
             }) }}
@@ -73,46 +73,46 @@
       
 
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="/support-tasks/create-record/from-trn-request/match/new" class="govuk-link">Existing record </a>&nbsp;<span class="govuk-tag {{task.potentialRecordMatch | statusColour}}">{{ task.sourceOfMatch }}</span></h2>
+            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[1].id}}" class="govuk-link">Record B</a></h2>
             
               {{ govukSummaryList({
                 classes: "govuk-!-margin-bottom-7",
                 rows: [
                   {
                     key: { text: "First name" },
-                    value: { html: data.duplicates[3].firstName }
+                    value: { html: data.deactivate[1].firstName }
                   },
                   {
                     key: { text: "Middle name" },
-                    value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].middleName + '</strong></mark>' }
-                  } if data.duplicates[3].middleName,
+                    value:  { html: data.deactivate[1].middleName }
+                  } if data.deactivate[1].middleName,
                   {
                     key: { text: "Last Name" },
-                    value: { html: data.duplicates[3].lastName }
+                    value: { html: data.deactivate[1].lastName }
                   },
                   {
                     key: { text: "Date of birth" },
-                    value: { text: task.dateOfBirth }
+                    value: { text: data.deactivate[1].dateOfBirth }
                   },
                   {
                     key: { text: "Email address" },
-                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].email + '</strong></mark>' }
+                    value: { html: data.deactivate[1].email }
                   },
                   {
                     key: { text: "National Insurance number" },
-                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
-                  } if data.duplicates[3].nationalInsuranceNumber,
+                    value: { html: data.deactivate[1].nationalInsuranceNumber }
+                  } if data.deactivate[1].nationalInsuranceNumber,
                   {
                     key: { text: "Evidence" },
-                    value: { html: '<a href="#" class="govuk-link">' + data.duplicates[3].providedEvidence + '</a>' }
+                    value: { html: '<a href="#" class="govuk-link">' + data.deactivate[1].providedEvidence + '</a>' }
                   },
                   {
                     key: { text: "TRN" },
-                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].trn + '</strong></mark>' }
+                    value: { html: data.deactivate[1].trn }
                   },
                   {
                     key: { text: "Alerts" },
-                    value: { text: task.hasAlerts }
+                    value: { text: data.deactivate[1].hasAlerts }
                   }
                 ]
               }) }}
@@ -124,22 +124,23 @@
           name: "mergeRecord",
           fieldset: {
             legend: {
-              text: "Are they the same person?",
+              text: "Which record will be retained as the primary record?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Record A",
+              text: "Record A"
             },
             {
-              value: "No",
-              text: "No, create a new record"
+              value: "Record B",
+              text: "Record B"
             }
           ]
         }) }}
+        
         <div class="govuk-button-group">
           {{ govukButton({
             text: "Continue"
@@ -151,6 +152,7 @@
             href: "javascript:window.history.back()"
           }) }}
         </div>
+
       </form>    
     
     

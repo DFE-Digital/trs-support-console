@@ -61,6 +61,12 @@
             href: "/support-tasks/create-record/from-trn-request/match/" + task.id + "/duplicates"
           }) }}
 
+          {{ govukButton({
+            text: "Reject TRN request",
+            href: "#",
+            classes: "govuk-button--secondary"
+          }) }}
+
         {% endif %}
       </div>
     </form>
