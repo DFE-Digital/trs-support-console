@@ -53,16 +53,6 @@
     <main class="govuk-main-wrapper" id="main-content" role="main">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-
-          {% set html %}
-          <p class="govuk-body">Callie Becker's account has been deactivated
-          {% endset %}
-          
-          {{ govukNotificationBanner({
-          html: html,
-          type: "success"
-          }) }}
-
           <h1 class="govuk-heading-l">
             Add and manage users
           </h1>
@@ -132,7 +122,7 @@
                         <div class="govuk-checkboxes__item">
                           <input class="govuk-checkboxes__input" id="type-3" name="type" type="checkbox" value="3">
                           <label class="govuk-label govuk-checkboxes__label" for="type-3">
-                            Alerts manager (34)
+                         Alerts manager (34)
                           </label>
                         </div>
     
@@ -160,7 +150,7 @@
                       <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
     
                         <div class="govuk-checkboxes__item">
-                          <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1" checked>
+                          <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1">
                           <label class="govuk-label govuk-checkboxes__label" for="type">
                             Active (133)
                           </label>
@@ -168,9 +158,9 @@
                         </div>
     
                         <div class="govuk-checkboxes__item">
-                          <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2">
+                          <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" checked>
                           <label class="govuk-label govuk-checkboxes__label" for="type-2">
-                            Deactivated (17)
+                            Deactivated (1)
                           </label>
     
                         </div>
@@ -209,158 +199,26 @@
               <div class="application__listing">
                 <div class="teaching-applications__applications teaching-applications__applications--regular">
                   <ol class="app-search-results">
+
+
                     
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Freya Bernard</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd> 		freyabernard@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Records manager</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-                      </dl>
-                    </li>
-    
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Jaime Berry</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd> jaimeberry@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Records manager</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-                      </dl>
-                    </li>
 
                     <li class="app-search-results__item">
     
                       <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Ben Cooper</a> </h2>
+                          href="edit-user-reactivate">Callie Becker</a> </h2>
     
                       <dl class="app-description-list app-description-list--search-result">
                         <dt class="app-description-list__label"></dt>
                         <dt class="app-description-list__label">Email address</dt>
-                        <dd> bencooper@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Viewer</dd>
+                        <dd>callie.becker@example.com</dd>
+                      
                         <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
+                        <dd>Deactivated</dd>
                       </dl>
                     </li>
 
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Carmen Gomez</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd> carmengomez@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Records manager</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-    
-    
-                      </dl>
-                    </li>
-    
-    
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Corinna Ilbert</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd> corinnailbert@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Viewer</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-                      </dl>
-                    </li>
-
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Stefan Salinas</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd> 	stefansalinas@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Records manager</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-                      </dl>
-                    </li>
-
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Daniel Shah</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd> danielshah@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Records manager</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-    
-    
-                      </dl>
-                    </li>
-
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="not-in-prototype">Sarah Jane Smith</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd> sarahjanesmith@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Viewer</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-                      </dl>
-                    </li>
-    
-                    <li class="app-search-results__item">
-    
-                      <h2 class="app-search-result__item-title"><a class="govuk-link--no-visited-state"
-                          href="edit-user">Annie Trenton</a> </h2>
-    
-                      <dl class="app-description-list app-description-list--search-result">
-                        <dt class="app-description-list__label"></dt>
-                        <dt class="app-description-list__label">Email address</dt>
-                        <dd>annie.trenton@example.com</dd>
-                        <dt class="app-description-list__label">Role</dt>
-                        <dd>Viewer</dd>
-                        <dt class="app-description-list__label">Status</dt>
-                        <dd>Active</dd>
-                      </dl>
-                    </li>
-                    
-    
-                    
+                   
 
                   </ol>
                 </div>
@@ -372,7 +230,7 @@
          
 
             
-          <!-- pagination -->
+          <!-- pagination 
           <nav class="govuk-pagination" role="navigation" aria-label="results">
             <div class="govuk-pagination__prev">
                 <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
@@ -404,7 +262,7 @@
                 </svg></a>
             </div>
         </nav>
-        </div>
+        </div>-->
       </div>
          </div>
             </div>

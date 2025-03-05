@@ -1,0 +1,112 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Add and manage users – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: false
+    },
+    {
+      href: "permissions/overview",
+      text: "Add and manage users",
+      active: true
+    }
+  ]
+}) }}
+
+  
+
+  
+  <div class="govuk-width-container">
+   
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            Change Callie Becker's role
+          </h1>
+
+          <form class="form" action="overview-reactivated-success" method="post" novalidate>
+
+
+            <fieldset class="govuk-fieldset">
+           
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="email">
+                  Email address
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="text" autocomplete="email" value="calliebecker@example.com" disabled>
+              </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="name">
+                  Name
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="name" name="name" type="text" autocomplete="name" value="Callie Becker">
+              </div>
+              
+            </fieldset>
+
+         
+        
+
+       
+
+
+      
+        
+                      <div class="govuk-!-padding-bottom-3"></div>
+                      <div class="govuk-button-group">
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                          Reactivate user
+                        </button>
+        
+                     
+                       
+                      </div>
+                      <p class="govuk-body">
+                      <a class="govuk-link" href="#">Cancel and return to users</a>
+                    </p>
+      
+
+        </div>
+      </div>
+         </div>
+            </div>
+    
+    </main>
+    </form>
+  </div>
+
+
+
+
+{% endblock %}
