@@ -43,7 +43,12 @@ router.get('/cancel-and-return', (req, res) => {
 })
 
 router.post('/find-teacher', (req, res) => {
-    res.redirect('/general')
+		let data = req.session.data
+    if (data.findRecord === "439353") {
+      res.redirect('/support-tasks/deactivate/index')    
+    } else {
+			res.redirect('/general')
+		}
 })
 
 
