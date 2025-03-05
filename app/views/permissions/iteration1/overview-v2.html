@@ -48,24 +48,19 @@
   
 
   <div class="govuk-width-container">
-    
+
 
     <main class="govuk-main-wrapper" id="main-content" role="main">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-          
-    {% set html %}
-    <p class="govuk-body">"Callie Becker" has been updated.
-    {% endset %}
-    
-    {{ govukNotificationBanner({
-    html: html,
-    type: "success"
-    }) }}
           <h1 class="govuk-heading-l">
             Users
           </h1>
-    
+          <form action="add-user-email">
+            <button type="submit" class="govuk-button" data-module="govuk-button">
+              Add a new user
+            </button>
+          </form>
           <div class="moj-filter-layout">
     
             <div class="moj-filter-layout__filter" style="width:280px!important;">
@@ -119,7 +114,7 @@
                         <div class="govuk-checkboxes__item">
                           <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" checked>
                           <label class="govuk-label govuk-checkboxes__label" for="type-2">
-                            Editor (55)
+                            Support Officer (55)
                           </label>
     
                         </div>
@@ -235,7 +230,7 @@
                         <dt class="app-description-list__label">Email address</dt>
                         <dd>callie.becker@example.com</dd>
                         <dt class="app-description-list__label">Role</dt>
-                        <dd>Editor</dd>
+                        <dd>Viewer</dd>
                         <dt class="app-description-list__label">Status</dt>
                         <dd>Active</dd>
     
@@ -312,7 +307,7 @@
                         <dt class="app-description-list__label">Email address</dt>
                         <dd> carmengomez@example.com</dd>
                         <dt class="app-description-list__label">Role</dt>
-                        <dd>Editor</dd>
+                        <dd>Support Officer</dd>
                         <dt class="app-description-list__label">Status</dt>
                         <dd>Active</dd>
     
@@ -330,7 +325,7 @@
                         <dt class="app-description-list__label">Email address</dt>
                         <dd> danielshah@example.com</dd>
                         <dt class="app-description-list__label">Role</dt>
-                        <dd>Editor</dd>
+                        <dd>Support Officer</dd>
                         <dt class="app-description-list__label">Status</dt>
                         <dd>Active</dd>
     
@@ -348,7 +343,7 @@
                         <dt class="app-description-list__label">Email address</dt>
                         <dd> toddwyatt@example.com</dd>
                         <dt class="app-description-list__label">Role</dt>
-                        <dd>Editor</dd>
+                        <dd>Support Officer</dd>
                         <dt class="app-description-list__label">Status</dt>
                         <dd>Active</dd>
                       </dl>
@@ -365,7 +360,7 @@
                         <dt class="app-description-list__label">Email address</dt>
                         <dd> jaimebarry@example.com</dd>
                         <dt class="app-description-list__label">Role</dt>
-                        <dd>Editor</dd>
+                        <dd>Support Officer</dd>
                         <dt class="app-description-list__label">Status</dt>
                         <dd>Active</dd>
                       </dl>
@@ -382,7 +377,7 @@
                         <dt class="app-description-list__label">Email address</dt>
                         <dd> 	stefansalinas@example.com</dd>
                         <dt class="app-description-list__label">Role</dt>
-                        <dd>Editor</dd>
+                        <dd>Support Officer</dd>
                         <dt class="app-description-list__label">Status</dt>
                         <dd>Active</dd>
                       </dl>
@@ -398,7 +393,7 @@
                         <dt class="app-description-list__label">Email address</dt>
                         <dd> 		freyabernard@example.com</dd>
                         <dt class="app-description-list__label">Role</dt>
-                        <dd>Editor</dd>
+                        <dd>Support Officer</dd>
                         <dt class="app-description-list__label">Status</dt>
                         <dd>Active</dd>
                       </dl>

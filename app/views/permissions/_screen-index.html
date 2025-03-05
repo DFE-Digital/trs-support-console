@@ -1,0 +1,250 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">
+Permissions screen index
+  </h1>
+
+  <p>
+    <a href="https://lucid.app/lucidspark/4c5bed28-6fbe-49b5-99a2-304a8ae2de0d/edit?viewport_loc=129047%2C65186%2C36653%2C17830%2C0_0&invitationId=inv_fcb13b2b-03be-4e0f-8c45-dc25b836ba72" target="_blank">Lucid board with finalised designs</a>
+  </p>
+  <p>
+    The board shows the journeys more clearly.
+  </p>
+         
+
+  <h2 class="govuk-heading-m">Add a new user</h2>
+  <table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="overview">'Add and manage users' overview page</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+           Landing page showing the overview of all users on the console.
+            <br>
+           The list is sorted alphabetically.
+          </p>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="add-user-email">Add user email</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          Page showing email input. 
+          </p>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            
+            <p><a href="add-user">Add user: permissions set up</a></p>
+            
+          </td>
+          <td class="govuk-table__cell">
+            <p>
+              Selecting the new permission for a user.
+              <br>
+             By default, no role has been selected and no name has been entered. The only populated field on this screen is email address, pulling it through from the screen before.
+            </p>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+               
+            <p><a href="overview-new-user-success">Overview: success banner</a></p>
+              
+              
+            </td>
+            <td class="govuk-table__cell">
+              <p>
+              Overview screen with success banner once a new user has been set up.
+               
+              </p>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+      
+    </tbody>
+  </table>
+
+
+  <h2 class="govuk-heading-m">Edit a user</h2>
+  <p>Editing a user to change their role</p>
+  <table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="overview">'Add and manage users' overview page</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+           Overview page.
+          </p>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="edit-user">Edit user</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         Similar to the 'add user' page except this has an additional secondary button for deactivating a user.
+          </p>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+
+
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+               
+            <p><a href="overview-updated-success">Overview: updated success banner</a></p>
+              
+              
+            </td>
+            <td class="govuk-table__cell">
+              <p>
+              Overview screen with success banner detailing a user's role has been changed successfully.
+               
+              </p>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+      
+    </tbody>
+  </table>
+
+
+  <h2 class="govuk-heading-m">Deactivate/reactivate</h2>
+  <p>Deactivating and reactivating users</p>
+  <table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="delete-reason">Deactivate: select reason</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+           This is the page following on from clicking on 'deactivate'.
+          </p>
+        </td>
+      </tr>
+      
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+               
+            <p><a href="overview-deleted-success">Overview: deactivated success banner</a></p>
+              
+              
+            </td>
+            <td class="govuk-table__cell">
+              <p>
+              Overview screen with success banner detailing that a user has been deactivated successfully. This user also no longer shows on the overview page with the default filters active.
+               
+              </p>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                 
+              <p><a href="overview-reactivate">Overview: reactivate</a></p>
+                
+                
+              </td>
+              <td class="govuk-table__cell">
+                <p>
+                Overview screen with deactivated filter active.
+                </p>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+
+
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                 
+              <p><a href="edit-user-reactivate">Edit user: reactivate</a></p>
+                
+                
+              </td>
+              <td class="govuk-table__cell">
+                <p>
+               Edit screen used to reactivate users.
+                </p>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                   
+                <p><a href="overview-reactivated-success">Overview: reactivated success</a></p>
+                  
+                  
+                </td>
+                <td class="govuk-table__cell">
+                  <p>
+                  Overview screen showing success banner that a user has been reactivated.
+                  </p>
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+      
+    </tbody>
+  </table>
+
+{% endblock %}
