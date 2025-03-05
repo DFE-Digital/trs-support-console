@@ -1,33 +1,6 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[taskType]",
-    name: "filters[taskType]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Task type",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [
-      {
-        value: 'TRN requests',
-        text: 'TRN requests'
-      },
-      {
-        value: 'Change requests',
-        text: 'Change requests'
-      },
-      {
-        value: 'GOV.UK One Login',
-        text: 'GOV.UK One Login'
-      }
-    ],
-    values: data.filters.taskType
-  }) }}
-
-  {{ govukCheckboxes({
     idPrefix: "filters[sourceOfDuplicate]",
     name: "filters[sourceOfDuplicate]",
     classes: "govuk-checkboxes--small",
@@ -37,16 +10,21 @@
         classes: "govuk-fieldset__legend--s"
       }
     },
-    items: [{
-      value: 'Register',
-      text: 'Register'
-    }, {
-      value: 'Some service',
-      text: 'Some service'
-    },{
-      value: 'Another service',
-      text: 'Another service'
-    }],
+    items: [
+      {
+        value: 'Register',
+        text: 'Register'
+      },{
+        value: 'Apply',
+        text: 'Apply'
+      },{
+        value: 'DTTP',
+        text: 'DTTP'
+      },{
+        value: 'HESA',
+        text: 'HESA'
+      }
+    ],
     values: data.filters.sourceOfDuplicate
   }) }}
 

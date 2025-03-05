@@ -15,7 +15,8 @@
     "gender": "Male",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Sarah",
@@ -33,7 +34,8 @@
     "gender": "Female",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Conrad",
@@ -41,28 +43,20 @@
     "lastName": "Diamond",
     "dateOfBirth": "23 September 1990",
     "nationalInsuranceNumber": "AB 22 55 96 C",
-    "reference": "CAS-01019-V9R1R5",
-    "supportTaskType": "Change name request",
+    "reference": "TRN-GSIP5383",
+    "supportTaskType": "TRN request",
     "dateOfTrnRequest": "1 December 2020",
     "potentialRecordMatch": "Yes",
-    "sourceOfMatch": "DfE ID",
+    "sourceOfMatch": "Register",
     "id": "8b9c4a14-ff64-4a03-a541-fef07754a582",
     "email": "Not given",
     "gender": "Male",
     "hasAlerts": "None",
     "trn": "998877",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
-  {
-      "reference": "CAS-10208-T6G6H8",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "14 January 2021M",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "b3042e0e-154f-4e87-90dc-837eeafcf400",
-      "email": "",
-      "completed": "no"
-  },
+  
   {
     "firstName": "David",
     "middleName": "James",
@@ -79,47 +73,8 @@
     "gender": "Male",
     "hasAlerts": "None",
     "trn": "123456",
-    "completed": "no"
-  },
-  {
-    "reference": "CAS-01014-H9Z0X1",
-    "supportTaskType": "Change name request",
-    "dateOfTrnRequest": "1 December 2020",
-    "potentialRecordMatch": "Not applicable",
-    "sourceOfMatch": "None",
-    "id": "9716628f-d8d6-4843-b35e-a6b8aca6a149",
-    "email": "",
-    "completed": "no"
-  },
-  {
-      "reference": "CAS-01015-V9N5S5",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "c31501e7-a718-4972-a86a-4174deb4c0f2",
-      "email": "",
-      "completed": "no"
-  },
-  {
-      "reference": "CAS-01016-F2P0N8",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "db78e9a9-e8ab-4ac3-ac03-a904b1829c85",
-      "email": "",
-      "completed": "no"
-  },
-  {
-      "reference": "CAS-01017-X0M0V7",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "1cb098ed-2fc7-467c-81cd-32def07ce343",
-      "email": "",
-      "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Emily",
@@ -137,7 +92,8 @@
     "gender": "Female",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "James",
@@ -155,7 +111,8 @@
     "gender": "Male",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Olivia",
@@ -173,37 +130,8 @@
     "gender": "Female",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
-  },
-  {
-    "reference": "CAS-01006-F4Q3Z7",
-    "supportTaskType": "Change date of birth request",
-    "dateOfTrnRequest": "1 December 2020",
-    "potentialRecordMatch": "Not applicable",
-    "sourceOfMatch": "None",
-    "id": "c1bb5b5c-baf7-4cc2-bb1a-f6c96fd2269e",
-    "email": "",
-    "completed": "no"
-  },
-  {
-    "reference": "CAS-01007-C5S3G1",
-    "supportTaskType": "Change name request",
-    "dateOfTrnRequest": "1 December 2020",
-    "potentialRecordMatch": "Not applicable",
-    "sourceOfMatch": "None",
-    "id": "d05af73b-d9f1-4e21-93bb-a00bf252f07b",
-    "email": "",
-    "completed": "no"
-  },
-  {
-      "reference": "CAS-01008-Z4Y4N0",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "1eac5735-9e2f-43b2-a3b9-c6edc5bc585f",
-      "email": "",
-      "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Sarah",
@@ -219,7 +147,8 @@
     "id": "d2f1a97c-3e75-4eaa-9f42-e4c823b1d8c1",
     "email": "sarah.williams@example.com",
     "gender": "Female",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Michael",
@@ -237,7 +166,8 @@
     "gender": "Male",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "Emily",
@@ -255,7 +185,8 @@
     "gender": "Female",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   },
   {
     "firstName": "David",
@@ -273,47 +204,8 @@
     "gender": "Male",
     "hasAlerts": "None",
     "trn": "None",
-    "completed": "no"
-  },
-  {
-      "reference": "CAS-01010-D9T7M9",
-      "supportTaskType": "Change date of birth request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "7f336fc4-641c-425c-8952-dd7d6d5cc1ed",
-      "email": "",
-      "completed": "no"
-  },
-  {
-      "reference": "CAS-01011-M5J4L5",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "39990291-030f-436d-9f27-1f46b905b689",
-      "email": "",
-      "completed": "no"
-  },
-  {
-      "reference": "CAS-01012-C1W4L5",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "2c318397-ff7a-4035-b927-ceb16485eba3",
-      "email": "",
-      "completed": "no"
-  },
-  {
-      "reference": "CAS-01013-W7W7Q0",
-      "supportTaskType": "Change name request",
-      "dateOfTrnRequest": "1 December 2020",
-      "potentialRecordMatch": "Not applicable",
-      "sourceOfMatch": "None",
-      "id": "1707f247-137a-4859-9f08-2f1c0abe2e26",
-      "email": "",
-      "completed": "no"
+    "completed": "no",
+    "providedEvidence": "passport.jpg"
   }
 ]
 

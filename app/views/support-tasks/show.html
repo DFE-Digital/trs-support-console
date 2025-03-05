@@ -3,7 +3,7 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = task.supportTaskType %}
+{% set captionName = "Support tasks" %}
 {% set pageName = task.reference %}
 
 {% block beforeContent %}
@@ -28,6 +28,7 @@
     {{ task.dateOfBirth | log }}
     {{ task.email | log }}
     {{ task.nationalInsuranceNumber | log }}
+    {{ task.potentialRecordMatch | log }}
 
     {{ task | log }}
 
@@ -37,32 +38,33 @@
     
     {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
-    <div class="govuk-button-group">
-      {% if task.supportTaskType == "TRN request" and task.potentialRecordMatch == "No" %}
-      {{ govukButton({
-        text: "Create a record from TRN request",
-        href: "/support-tasks/create-record/from-trn-request/no-match/" + task.id + "/reason"
-      }) }}
 
-      {% elseif task.supportTaskType == "TRN request" and task.potentialRecordMatch == "Yes" %}
+    <form method="post">
+      <div class="govuk-button-group">
+        {% if task.potentialRecordMatch === "No" %}
 
         {{ govukButton({
-          text: "Compare potential duplicates",
-          href: "/support-tasks/create-record/from-trn-request/match/" + task.id + "/duplicates"
+          text: "Create a record from TRN request",
+          href: "/support-tasks/create-record/from-trn-request/no-match/" + task.id + "/new"
         }) }}
 
-      {% elseif task.supportTaskType == "Change name request"  %}
         {{ govukButton({
-          text: "Compare potential duplicates",
-          href: "/support-tasks/create-record/deactivate/" + task.id + "/duplicates"
+          text: "Reject TRN request",
+          href: "#",
+          classes: "govuk-button--secondary"
         }) }}
 
-      {% endif %}
-    </div>
+        {% elseif task.potentialRecordMatch === "Yes" %}
 
-    <p class="govuk-body">
-      <a href="#" class="govuk-link">Cancel and return to record</a>
-    </p>
+          {{ govukButton({
+            text: "Compare potential duplicates",
+            href: "/support-tasks/create-record/from-trn-request/match/" + task.id + "/duplicates"
+          }) }}
+
+        {% endif %}
+      </div>
+    </form>
+
 
   </div>
 </div>

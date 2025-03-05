@@ -1,0 +1,32 @@
+
+{{ xGovukSecondaryNavigation({
+    visuallyHiddenTitle: "Secondary menu",
+    classes: "govuk-!-margin-bottom-6",
+    items: [
+    {
+      text: "General",
+      href: "/record",
+      current: (secondaryNavId == "thisRecord")
+    },
+    {
+      text: "Qualifications",
+      href: "/record-qualifications",
+      current: (secondaryNavId == "recordQualifications")
+    },
+    {
+      text: "Requests",
+      href: "/record-induction",
+      current: (secondaryNavId == "recordInduction")
+    },
+    {
+      text: "Requests",
+      href: "/record-alerts",
+      current: (secondaryNavId == "recordAlerts")
+    },
+    {
+      text: "Requests",
+      href: "/record-history",
+      current: (secondaryNavId == "recordHistory")
+    }
+  ] if data.user
+}) }}

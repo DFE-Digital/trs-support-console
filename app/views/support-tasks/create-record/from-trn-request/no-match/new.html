@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "findRecord" %}
+{% set secondaryNavId = "thisRecord" %}
 
 
 {% set pageName = task.firstName + " " + task.lastName %}
@@ -47,21 +48,14 @@
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
+      {% include "_includes/support-tasks/secondary-navigation-for-record.njk" %}
+
       {# <h2 class="govuk-heading-m">Personal details</h2> #}
 
       {{ govukSummaryList({
         card: {
                 title: {
                   text: "Personal details"
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "#",
-                      text: "Change",
-                      visuallyHiddenText: "Details"
-                    }
-                  ]
                 }
               },
         rows: [
@@ -71,6 +65,15 @@
             },
             value: {
               text: task.firstName
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
           {
@@ -95,6 +98,15 @@
             },
             value: {
               text: task.dateOfBirth
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
           {
@@ -111,14 +123,6 @@
             },
             value: {
               text: task.nationalInsuranceNumber
-            }
-          },
-          {
-            key: {
-              text: "Sex"
-            },
-            value: {
-              text: task.gender
             }
           },
           {

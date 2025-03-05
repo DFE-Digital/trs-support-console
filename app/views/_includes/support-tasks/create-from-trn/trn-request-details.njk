@@ -15,7 +15,7 @@
       value: { html: task.firstName }
     },
     {
-      key: { text: "Middle name (optional)" },
+      key: { text: "Middle name" },
       value: { html: task.middleName }
     } if task.middleName,
     {
@@ -35,16 +35,12 @@
       value: { text: task.nationalInsuranceNumber }
     } if task.nationalInsuranceNumber,
     {
-      key: { text: "Sex" },
-      value: { text: task.gender }
-    },
-    {
       key: { text: "Date of request" },
       value: { text: task.dateOfTrnRequest }
     },
     {
-      key: { text: "TRN" },
-      value: { text: task.trn }
+      key: { text: "Evidence" },
+      value: { html: '<a href="#" class="govuk-link">' + task.providedEvidence + '</a>' }
     }
   ]
 }) }}
