@@ -27,7 +27,7 @@
           {
             key: { text: "First name" },
             value: { html: data.createRecordFirstName },
-            actions: { items: [{ href: "/create-record/add/details", text: "Change", visuallyHiddenText: "record details" }] }
+            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "record details" }] }
           },
           {
             key: { text: "Middle name" },
@@ -63,7 +63,8 @@
         rows: [
           {
             key: { text: "Reason for creating record" },
-            value: { text: data.createRecordReason }
+            value: { text: data.createRecordReason },
+            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "reason details" }] }
           } if not moreDetailsTextArea,
           {
             key: { text: "Evidence" },

@@ -3,12 +3,16 @@
 {% set pageName="Find a record" %}
 {% set serviceNavId = "findRecord" %}
 
-
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full-width">
+  <div class="govuk-grid-column-full">
 
     {{ govukNotificationBanner({
       type: "success",

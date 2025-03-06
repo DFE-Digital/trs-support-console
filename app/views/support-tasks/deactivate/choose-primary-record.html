@@ -6,6 +6,13 @@
 {% set captionName = "Support tasks" %}
 {% set pageName = "Compare potential duplicates" %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
 
 {% block content %}
 

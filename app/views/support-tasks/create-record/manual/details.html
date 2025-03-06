@@ -4,7 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Create a record" %}
-{% set pageName = "Enter the teacher's personal details" %}
+{% set pageName = "Enter the person's personal details" %}
 
 
 {% block beforeContent %}
@@ -79,7 +79,7 @@
         
         {{ govukInput({
           label: {
-            text: "Middle name (optional)",
+            text: "Middle name",
             classes: "govuk-label--s govuk-input--width-10"
           },
           id: "middle-name",
@@ -188,8 +188,8 @@
               text: "They were awarded a mandatory qualification"
             },
             {
-              value: "They received an alert or prohibition",
-              text: "They received an alert or prohibition"
+              value: "They received an alert",
+              text: "They received an alert"
             },
             {
               value: "They started university late",

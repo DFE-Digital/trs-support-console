@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "findRecord" %}
+{% set secondaryNavId = "thisRecord" %}
 
 
 {% set pageName = data.createRecordFirstName + " " + data.createRecordLastName %}
@@ -21,7 +22,7 @@
 
       {{ govukNotificationBanner({
         type: "success",
-        html: '<h2 class="govuk-heading-m">Record created TRN:' + flash + '<a href="#" class="govuk-link">' + data.trn  + '</a></h2>'
+        html: '<h2 class="govuk-heading-m">' + flash + '<a href="#" class="govuk-link">' + data.trn  + '</a></h2>'
       }) if flash.length }}
 
       {{ task.supportTaskType | log }}
@@ -36,6 +37,7 @@
 
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
+      {% include "_includes/support-tasks/secondary-navigation-for-record.njk" %}
 
       {# <h2 class="govuk-heading-m">Personal details</h2> #}
 
