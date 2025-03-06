@@ -1,0 +1,17 @@
+
+{{ xGovukSecondaryNavigation({
+    visuallyHiddenTitle: "Secondary menu",
+    classes: "govuk-!-margin-bottom-6",
+    items: [
+    {
+      text: "Find a record",
+      href: "/find-teacher",
+      current: (secondaryNavId == "findRecord")
+    },
+    {
+      text: "Create a record",
+      href: "/support-tasks/create-record/manual",
+      current: (secondaryNavId == "createRecord")
+    }
+  ] if data.user
+}) }}

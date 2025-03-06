@@ -137,11 +137,11 @@
         
         {{ govukInput({
           label: {
-            text: "National Insurance number (optional)",
+            text: "National Insurance number",
             classes: "govuk-label--s"
           },
           hint: {
-            text: "For example, ‘QQ 12 34 56 C’"
+            text: "For example, 'QQ 12 34 56 C'"
           },
           value: data.createRecordNationalInsuranceNumber,
           classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
@@ -169,7 +169,7 @@
               value: "Female",
               text: "Female"
             }
-          ] value: data.createRecordSex
+          ], value: data.createRecordSex
         }) }}
 
 

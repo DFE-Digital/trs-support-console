@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set serviceNavId = "supportTasks" %} 
+{% set serviceNavId = "findRecord" %}
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Support tasks" %}
@@ -26,7 +26,7 @@
       {{ data.createRecordFullName | log }}
 
 
-      {% include "_includes/support-tasks/secondary-navigation.njk" %}
+      {% include "_includes/support-tasks/secondary-navigation-find-record.njk" %}
       
       {{ govukButton({
         text: "Add a record",

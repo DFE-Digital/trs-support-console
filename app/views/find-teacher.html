@@ -2,6 +2,7 @@
 
 {% set pageName="Find a record" %}
 {% set serviceNavId = "findRecord" %}
+{% set secondaryNavId = "findRecord" %}
 
 
 
@@ -20,6 +21,8 @@
     <h1 class="govuk-heading-l">
       {{ pageName }}
     </h1>
+
+    {% include "_includes/support-tasks/secondary-navigation-find-record.njk" %}
 
     <form method="post" novalidate>
       {{ govukInput({
