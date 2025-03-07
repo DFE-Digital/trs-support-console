@@ -22,7 +22,8 @@ module.exports = (router) => {
 
   router.post('/support-tasks/deactivate/confirm-deactivate', (req, res) => {
     req.flash('success', 'Primary record updated for ')
-		  res.redirect('/find-teacher') 
+		  res.redirect('/find-teacher')
+      let data = req.session.data || {} 
     }
 	)
 

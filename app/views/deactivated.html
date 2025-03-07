@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Find a record" %}
+{% set serviceNavId = "findRecord" %}
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %} #}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '<h2 class="govuk-heading-m">' + flash + data.deactivate[0].firstName + data.deactivate[0].lastName + '</h2>'
+    }) if flash.length }}
+
+
+    <h1 class="govuk-heading-l">
+      {{ pageName }}
+    </h1>
+
+   <h2 class="govuk-heading-m">1 record found</h2>
+
+    <form method="post" novalidate>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header" scope="col">Date of birth</th>
+            <th class="govuk-table__header" scope="col">TRN</th>
+            <th class="govuk-table__header" scope="col">National Insurance number</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+  
+          
+          <tr class="govuk-table__row govuk-table__row--selected">
+              <td class="govuk-table__cell"><a href="#" class="govuk-link">{{data.deactivate[1].firstName}} {{data.deactivate[1].lastName}}</a></td>
+              <td class="govuk-table__cell">{{data.deactivate[1].dateOfBirth}}</td>
+              <td class="govuk-table__cell">{{data.deactivate[1].trn}}</td>
+              <td class="govuk-table__cell">{{data.deactivate[1].nationalInsuranceNumber}}</td>
+          </tr>
+          
+         
+        </tbody>
+      </table>
+
+    </form>
+    
+    
+  </div>
+</div>
+
+{% endblock %}
