@@ -37,7 +37,7 @@
           actions: {
             items: [
               {
-                href: "#",
+                href: "/personal-details/edit",
                 text: "Change",
                 visuallyHiddenText: "personal details"
               }
@@ -58,7 +58,7 @@
               text: "Date of birth"
             },
             value: {
-              text: teacher['dateOfBirth']
+              text: data.person[0].dateOfBirth
             }
           },
           {
@@ -66,7 +66,7 @@
               text: "Gender"
             },
             value: {
-              text: teacher['gender']
+              text: data.person[0].gender
             }
           },
           {
@@ -74,7 +74,7 @@
               text: "Teacher reference number (TRN)"
             },
             value: {
-              text: teacher['trn']
+              text: data.person[0].trn
             }
           },
           {
@@ -82,7 +82,7 @@
               text: "National Insurance number"
             },
             value: {
-              text: teacher['nationalInsurance']
+              text: data.person[0].nationalInsurance
             }
           },
           {
@@ -90,7 +90,7 @@
               text: "Email"
             },
             value: {
-               text: teacher['email']
+               text: data.person[0].email
             }
           },
           {
@@ -98,7 +98,7 @@
               text: "Mobile number"
             },
             value: {
-               text: teacher['mobile']
+               text: data.person[0].mobile
             }
           }
         ]

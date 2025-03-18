@@ -47,7 +47,7 @@ router.post('/find-teacher', (req, res) => {
     if (data.findRecord === "John Doe") {
       res.redirect('/support-tasks/deactivate/index')    
     } else {
-			res.redirect('/general')
+			res.redirect('/personal-details')
 		}
 })
 
