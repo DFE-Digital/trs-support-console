@@ -3,9 +3,7 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "general" %}
 
-{% set trn = data["findRecord"] %}
-{% set teacherArray = data.teachers %}
-{% set teacher = trn | find(teacherArray)  %}
+
 
 
 
@@ -23,7 +21,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
+      <h1 class="govuk-heading-l">{{ data.person[0].fullName }}</h1>
 
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}
@@ -34,7 +32,16 @@
       {{ govukSummaryList({
         card: {
           title: {
-            text: "Personal details"
+            text: "Personal Details"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "personal details"
+              }
+            ]
           }
         },
         rows: [
@@ -43,16 +50,7 @@
               text: "Name"
             },
             value: {
-              text: teacher['fullName']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
+              text: data.person[0].fullName
             }
           },
           {
@@ -61,15 +59,6 @@
             },
             value: {
               text: teacher['dateOfBirth']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
             }
           },
           {
@@ -78,15 +67,6 @@
             },
             value: {
               text: teacher['gender']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "date of birth"
-                }
-              ]
             }
           },
           {
@@ -103,15 +83,6 @@
             },
             value: {
               text: teacher['nationalInsurance']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "National Insurance number"
-                }
-              ]
             }
           },
           {
@@ -120,15 +91,6 @@
             },
             value: {
                text: teacher['email']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Email"
-                }
-              ]
             }
           },
           {
@@ -137,15 +99,6 @@
             },
             value: {
                text: teacher['mobile']
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "Mobile number"
-                }
-              ]
             }
           }
         ]
