@@ -34,6 +34,8 @@ require('./routes/support-tasks/create-record/manual/add')(router)
 
 require('./routes/support-tasks/tasks')(router)
 
+require('./routes/change-personal-details/edit')(router)
+
 
 
 // GENERAL ROUTES
