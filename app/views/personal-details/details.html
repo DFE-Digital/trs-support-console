@@ -1,7 +1,6 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "findRecord" %} 
-{% set secondaryNavId = "alerts" %}
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
@@ -154,7 +153,8 @@
         value: data.personalDetailsPhoneNumber
       }) }}
 
-      
+      {# -------- Start of NiNO & SEX   -------------- #}
+
       {{ govukInput({
         label: {
           text: "National Insurance number",

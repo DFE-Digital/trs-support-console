@@ -1,9 +1,13 @@
 {% extends "layouts/main.html" %}
 
-{% set serviceNavId = "supportTasks" %}
-{% set secondaryNavId = "createRecord" %}
-{% set captionName = "Create a record" %}
-{% set pageName = "Check details and create record" %}
+{% set serviceNavId = "findRecord" %} 
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set headingName = "Check personal details and confirm changes" %}
+{% set captionName = data.person[0].fullName %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -17,7 +21,7 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       <span class="govuk-caption-l">{{ captionName }}</span>
-      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+      <h1 class="govuk-heading-l">{{ headingName }}</h1>
 
       <h2 class="govuk-heading-m">Personal details</h2>
 
@@ -26,32 +30,32 @@
         rows: [
           {
             key: { text: "First name" },
-            value: { html: data.createRecordFirstName },
-            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "record details" }] }
+            value: { html: data.personalDetailsFirstName },
+            actions: { items: [{ href: "/personal-details/details", text: "Change", visuallyHiddenText: "personal details" }] }
           },
           {
             key: { text: "Middle name" },
-            value: { html: data.createRecordMiddleName }
-          } if data.createRecordMiddleName,
+            value: { html: data.personalDetailsMiddleName }
+          } if data.personalDetailsMiddleName,
           {
             key: { text: "Last name" },
-            value: { html: data.createRecordLastName }
+            value: { html: data.personalDetailsLastName }
           },
           {
             key: { text: "Date of birth" },
-            value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+            value: { text: data | isoDateFromDateInput('personalDetailsDateOfBirth') | govukDate }
           },
           {
             key: { text: "Email address" },
-            value: { text: data.createRecordEmail }
+            value: { text: data.personalDetailsEmail }
           },
           {
             key: { text: "National Insurance number" },
-            value: { text: data.createRecordNationalInsuranceNumber }
-          } if data.createRecordNationalInsuranceNumber,
+            value: { text: data.personalDetailsNationalInsuranceNumber }
+          } if data.personalDetailsNationalInsuranceNumber,
           {
             key: { text: "Sex" },
-            value: { text: data.createRecordSex }
+            value: { text: data.personalDetailsSex }
           }
         ]
       }) }}
@@ -64,7 +68,7 @@
           {
             key: { text: "Reason for creating record" },
             value: { text: data.createRecordReason },
-            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "reason details" }] }
+            actions: { items: [{ href: "/personal-details/details", text: "Change", visuallyHiddenText: "reason details" }] }
           } if not moreDetailsTextArea,
           {
             key: { text: "Evidence" },
@@ -77,7 +81,7 @@
 
       <form method="post">
         {{ govukButton({
-          text: "Confirm and create record"
+          text: "Confirm changes"
         }) }}
       </form>    
 
