@@ -109,18 +109,27 @@
 
 
       {{ govukDateInput({
-        id: "personalDetailsDateOfBirth",
         namePrefix: "personalDetailsDateOfBirth",
-        fieldset: {
-          legend: {
-            text: "Date of birth",
-            classes: "govuk-fieldset__legend--s"
-          }
-        },
         hint: {
-          text: "For example, 31 3 1980"
+          text: "For example, 27 3 2023"
         },
-        value: data | isoDateFromDateInput('personalDetailsDateOfBirth') | govukDate
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data['personalDetailsDateOfBirth-day']
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data['personalDetailsDateOfBirth-month']
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data['personalDetailsDateOfBirth-year']
+          }
+        ]
       }) }}
 
       {# -------- Start of EMAIL & PHONE   -------------- #}
