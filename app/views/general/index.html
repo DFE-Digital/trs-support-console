@@ -3,10 +3,10 @@
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "general" %}
 
-
 {% set trn = data["findRecord"] %}
-{% set teacherArray = data["teachers"] %}
+{% set teacherArray = data.teachers %}
 {% set teacher = trn | find(teacherArray)  %}
+
 
 
 {% block beforeContent %}
@@ -23,27 +23,18 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ data.person[0].fullName }}</h1>
+      <h1 class="govuk-heading-l">{{ teacher.fullName }}</h1>
 
       {{ data.teachers | log }}
       {{ data.chooseQtsRoute | log }}
 
 
-      {% include "_includes/personal-details/secondary-navigation.njk" %}  
+      {% include "_includes/secondary-navigation.njk" %}  
 
       {{ govukSummaryList({
         card: {
           title: {
-            text: "Personal Details"
-          },
-          actions: {
-            items: [
-              {
-                href: "/personal-details/edit",
-                text: "Change",
-                visuallyHiddenText: "personal details"
-              }
-            ]
+            text: "Personal details"
           }
         },
         rows: [
@@ -52,7 +43,16 @@
               text: "Name"
             },
             value: {
-              text: data.person[0].fullName
+              text: teacher['fullName']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
             }
           },
           {
@@ -60,7 +60,16 @@
               text: "Date of birth"
             },
             value: {
-              text: data.person[0].dateOfBirth
+              text: teacher['dateOfBirth']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
             }
           },
           {
@@ -68,7 +77,16 @@
               text: "Gender"
             },
             value: {
-              text: data.person[0].gender
+              text: teacher['gender']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
             }
           },
           {
@@ -76,7 +94,7 @@
               text: "Teacher reference number (TRN)"
             },
             value: {
-              text: data.person[0].trn
+              text: teacher['trn']
             }
           },
           {
@@ -84,7 +102,16 @@
               text: "National Insurance number"
             },
             value: {
-              text: data.person[0].nationalInsurance
+              text: teacher['nationalInsurance']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "National Insurance number"
+                }
+              ]
             }
           },
           {
@@ -92,7 +119,16 @@
               text: "Email"
             },
             value: {
-               text: data.person[0].email
+               text: teacher['email']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Email"
+                }
+              ]
             }
           },
           {
@@ -100,7 +136,16 @@
               text: "Mobile number"
             },
             value: {
-               text: data.person[0].mobile
+               text: teacher['mobile']
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Mobile number"
+                }
+              ]
             }
           }
         ]

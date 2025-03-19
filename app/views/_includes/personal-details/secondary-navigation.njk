@@ -1,0 +1,33 @@
+
+{{ xGovukSecondaryNavigation({
+    visuallyHiddenTitle: "Secondary menu",
+    classes: "govuk-!-margin-bottom-6",
+    items: [
+    {
+      text: "Personal details",
+      href: "/personal-details",
+      current: (secondaryNavId == "general")
+    },{
+      text: "Routes and qualifications",
+      href: "#",
+      current: (secondaryNavId == "route")
+    },{
+      text: "Induction",
+      href: "#",
+      current: (secondaryNavId == "induction")
+    },{
+      text: "Alerts",
+      href: "#",
+      current: (secondaryNavId == "alerts")
+    },{
+      text: "Change history",
+      href: "#",
+      current: (secondaryNavId == "changelog")
+    }
+    ,{
+      text: "Notes",
+      href: "#",
+      current: (secondaryNavId == "notes")
+    }
+  ] if data.user
+}) }}

@@ -43,13 +43,20 @@ router.get('/cancel-and-return', (req, res) => {
 })
 
 router.post('/find-teacher', (req, res) => {
-		let data = req.session.data
-    if (data.findRecord === "John Doe") {
-      res.redirect('/support-tasks/deactivate/index')    
-    } else {
-			res.redirect('/personal-details')
-		}
+  let data = req.session.data
+  // let teacher = data.teachers
+
+  if (data.findRecord === "John Doe") {
+      res.redirect('/support-tasks/deactivate/index')
+  } 
+  else if (data.findRecord === "494612" || data.findRecord === "553092" || data.findRecord === "571028" ||data.findRecord === "752394") {
+      res.redirect('/general')
+  } 
+  else {
+      res.redirect('/personal-details')
+  }
 })
+
 
 
 ////// INDUCTION ROUTES
