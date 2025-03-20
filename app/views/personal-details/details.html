@@ -59,6 +59,7 @@
             text: "Upload files",
             classes: "govuk-label--m"
           },
+          value: data.evidenceFile,
           hint: {
             text: "Must be smaller than 100MB"
           }
@@ -78,7 +79,7 @@
         autocomplete: "given-name",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.personalDetailsFirstName
+        value: data.person[0].firstName
       }) }}
       
       {{ govukInput({
@@ -91,7 +92,7 @@
         autocomplete: "additional-name",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.personalDetailsMiddleName
+        value: data.person[0].middleName
       }) }}
       
       {{ govukInput({
@@ -104,20 +105,25 @@
         autocomplete: "family-name",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.personalDetailsLastName
+        value: data.person[0].lastName
       }) }}
 
 
       {{ govukDateInput({
+        id: "personal-details-dob",
         namePrefix: "personalDetailsDateOfBirth",
-        hint: {
-          text: "For example, 27 3 2023"
+        fieldset: {
+          legend: {
+            text: "Date of birth",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
         },
         items: [
           {
             name: "day",
             classes: "govuk-input--width-2",
-            value: data['personalDetailsDateOfBirth-day']
+            value: data.person[0]['personalDetailsDateOfBirth-day']
           },
           {
             name: "month",
@@ -145,12 +151,12 @@
         autocomplete: "email",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.personalDetailsEmail
+        value: data.person[0].email
       }) }}
 
       {{ govukInput({
         label: {
-          text: "Contact number",
+          text: "Phone number",
           classes: "govuk-label--s"
         },
         id: "personalDetailsPhoneNumber",
@@ -159,7 +165,7 @@
         autocomplete: "email",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.personalDetailsPhoneNumber
+        value: data.person[0].mobile
       }) }}
 
       {# -------- Start of NiNO & SEX   -------------- #}
@@ -172,7 +178,7 @@
         hint: {
           text: "For example, 'QQ 12 34 56 C'"
         },
-        value: data.personalDetailsNationalInsuranceNumber,
+        value:  data.person[0].nationalInsurance,
         classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
         id: "create-record-national-insurance-number",
         name: "personalDetailsNationalInsuranceNumber",
@@ -198,7 +204,7 @@
             value: "Female",
             text: "Female"
           }
-        ], value: data.personalDetailsSex
+        ], value: data.person[0].gender
       }) }}
 
 
