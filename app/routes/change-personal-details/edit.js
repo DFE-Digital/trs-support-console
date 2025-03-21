@@ -23,10 +23,10 @@ module.exports = (router) => {
     res.redirect('/personal-details/check');
   });
 
-  router.post('/personal-details/check', (req, res) => {
-    // Save changes or handle confirmation logic here
-    res.redirect('/personal-details');
-  });
+  router.get('/personal-details/check', (req, res) => {
+    const updatedData = req.session.updatedPersonData || personData[0]
+    res.render('personal-details/index', { updatedData })
+  })
 
   router.get('/personal-details/check', (req, res) => {
     const data = req.session.updatedPersonData || personData[0]
