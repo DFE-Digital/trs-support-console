@@ -1,4 +1,4 @@
-const personData = require('../../data/person.json')
+const personData = require('../../data/person.json');
 
 module.exports = (router) => {
   router.post('/personal-details/details', (req, res) => {
@@ -17,15 +17,15 @@ module.exports = (router) => {
       gender: req.body.personalDetailsSex || personData[0].gender,
       createRecordReason: req.body.createRecordReason || null,
       evidenceFile: req.body.evidenceFile || null,
-    }
+    };
 
     req.session.updatedPersonData = updatedData; // Store updated data in session
-    res.redirect('/personal-details/check')
+    res.redirect('/personal-details/check');
   });
 
   router.post('/personal-details/check', (req, res) => {
     // Save changes or handle confirmation logic here
-    res.redirect('/personal-details')
+    res.redirect('/personal-details');
   });
 
   router.get('/personal-details/check', (req, res) => {

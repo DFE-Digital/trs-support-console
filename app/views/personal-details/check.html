@@ -19,6 +19,9 @@
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ headingName }}</h1>
 
+      
+      {{ data | log }}
+
       {{ govukSummaryList({
         card: {
           title: {

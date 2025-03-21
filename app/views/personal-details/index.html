@@ -26,10 +26,14 @@
       <h1 class="govuk-heading-l">{{ data.person[0].fullName }}</h1>
 
       {{ data.teachers | log }}
-      
+      {{ updatedData | log }}
 
 
       {% include "_includes/personal-details/secondary-navigation.njk" %}  
+
+      {% if updatedData.firstName == 'Sadie' %}
+        {% include "_includes/personal-details/updated-personal-details.njk" %}
+      {% endif %}
 
       {{ govukSummaryList({
         card: {

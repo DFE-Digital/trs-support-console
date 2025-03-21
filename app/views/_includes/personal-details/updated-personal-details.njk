@@ -1,0 +1,52 @@
+{{ govukSummaryList({
+    card: {
+      title: {
+        text: "Personal Details"
+      },
+      actions: {
+        items: [
+          {
+            href: "/personal-details/details",
+            text: "Change",
+            visuallyHiddenText: "personal details"
+          }
+        ]
+      }
+    },
+    rows: [
+    {
+      key: { text: "Name" },
+      value: { text: updatedData.firstName + " " + updatedData.middleName + " " + updatedData.lastName }
+    },
+    {
+      key: { text: "Date of birth" },
+      value: { text: updatedData.dateOfBirthDay + " " + updatedData.dateOfBirthMonth + " " + updatedData.dateOfBirthYear }
+    },
+    {
+      key: { text: "Email address" },
+      value: { text: updatedData.email }
+    },
+    {
+      key: { text: "Phone number" },
+      value: { text: updatedData.mobile }
+    },
+    {
+      key: { text: "National Insurance number" },
+      value: { text: updatedData.nationalInsurance }
+    },
+    {
+      key: { text: "Sex" },
+      value: { text: updatedData.gender }
+    },
+    {
+      key: { text: "Reason for creating record" },
+      value: { text: updatedData.createRecordReason }
+    } if updatedData.createRecordReason,
+    {
+      key: { text: "Evidence" },
+      value: {
+        html: '<p class="govuk-body"><a href="#" class="govuk-link">' + updatedData.evidenceFile + '</a>.</p>'
+      }
+    } if updatedData.evidenceFile
+  ]
+}) }}
