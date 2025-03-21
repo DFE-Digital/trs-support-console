@@ -31,9 +31,6 @@
 
       {% include "_includes/personal-details/secondary-navigation.njk" %}  
 
-      {% if updatedData.firstName == 'Sadie' %}
-        {% include "_includes/personal-details/updated-personal-details.njk" %}
-      {% endif %}
 
       {{ govukSummaryList({
         card: {
@@ -61,6 +58,14 @@
           },
           {
             key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: data.person[0].trn
+            }
+          },
+          {
+            key: {
               text: "Previous name"
             },
             value: {
@@ -77,18 +82,10 @@
           },
           {
             key: {
-              text: "Gender"
+              text: "Email"
             },
             value: {
-              text: data.person[0].gender
-            }
-          },
-          {
-            key: {
-              text: "Teacher reference number (TRN)"
-            },
-            value: {
-              text: data.person[0].trn
+               text: data.person[0].email
             }
           },
           {
@@ -101,12 +98,15 @@
           },
           {
             key: {
-              text: "Email"
+              text: "Sex"
             },
             value: {
-               text: data.person[0].email
+              text: data.person[0].gender
             }
           },
+          
+          
+          
           {
             key: {
               text: "Mobile number"
@@ -117,31 +117,6 @@
           }
         ]
       }) }}
-      
-      {% if data.chooseQtsRoute  == 'Initial teacher training' %}
-        {% include "_includes/summary/itt-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Assessment only' %}
-        {% include "_includes/summary/assessment-only-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'iqts' %}
-         {% include "_includes/summary/iqts-only-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Overseas qualified' %}
-         {% include "_includes/summary/apply-for-qts-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Qualified Teacher Learning and Skills status (QTLS)' %}
-         {% include "_includes/summary/qtls-and-set-only-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Legacy route' %}
-        {% include "_includes/summary/legacy-route-snapshot.njk" %}
-      {% endif %}
-
 
   </div>
 </div>
