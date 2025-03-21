@@ -6,7 +6,7 @@
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
-{% set teacher = trn | find(teacherArray)  %}
+
 
 
 {% block beforeContent %}
@@ -26,7 +26,7 @@
       <h1 class="govuk-heading-l">{{ data.person[0].fullName }}</h1>
 
       {{ data.teachers | log }}
-      {{ data.chooseQtsRoute | log }}
+      
 
 
       {% include "_includes/personal-details/secondary-navigation.njk" %}  
@@ -68,7 +68,7 @@
               text: "Date of birth"
             },
             value: {
-              text: data.person[0].dateOfBirth
+              text: data.person[0].dateOfBirthDay + " " + data.person[0].dateOfBirthMonth + " " + data.person[0].dateOfBirthYear
             }
           },
           {

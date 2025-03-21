@@ -2,12 +2,8 @@
 
 {% set serviceNavId = "findRecord" %} 
 
-{% set trn = data["findRecord"] %}
-{% set teacherArray = data["teachers"] %}
-{% set teacher = trn | find(teacherArray)  %}
-
 {% set headingName = "Check personal details and confirm changes" %}
-{% set captionName = data.person[0].fullName %}
+{% set captionName = data.fullName %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -22,7 +18,6 @@
 
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ headingName }}</h1>
-
 
       {{ govukSummaryList({
         card: {
@@ -42,32 +37,32 @@
         rows: [
           {
             key: { text: "Name" },
-            value: { html: data.personalDetailsFirstName + " " + data.personalDetailsMiddleName + " " + data.personalDetailsLastName }
+            value: { text: data.firstName + " " + data.middleName + " " + data.lastName }
           },
           {
-            key: { text: "Previous name" },
-            value: { html: data.person[0].fullName }
-          } if data.personalDetailsFirstName + " " + data.personalDetailsMiddleName + " " + data.personalDetailsLastName,
-          {
             key: { text: "Date of birth" },
-            value: { text: data | isoDateFromDateInput('personalDetailsDateOfBirth') | govukDate }
+            value: { text: data.dateOfBirthDay + " " + data.dateOfBirthMonth + " " + data.dateOfBirthYear }
           },
           {
             key: { text: "Email address" },
-            value: { text: data.personalDetailsEmail }
+            value: { text: data.email }
+          },
+          {
+            key: { text: "Phone number" },
+            value: { text: data.mobile }
           },
           {
             key: { text: "National Insurance number" },
-            value: { text: data.personalDetailsNationalInsuranceNumber }
-          } if data.personalDetailsNationalInsuranceNumber,
+            value: { text: data.nationalInsurance }
+          },
           {
             key: { text: "Sex" },
-            value: { text: data.personalDetailsSex }
+            value: { text: data.gender }
           },
           {
             key: { text: "Reason for creating record" },
             value: { text: data.createRecordReason }
-          } if not moreDetailsTextArea,
+          } if data.createRecordReason,
           {
             key: { text: "Evidence" },
             value: {
@@ -76,7 +71,6 @@
           } if data.evidenceFile
         ]
       }) }}
-
 
       <form method="post">
         {{ govukButton({

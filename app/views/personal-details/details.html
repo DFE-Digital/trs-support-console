@@ -28,9 +28,9 @@
     <h1 class="govuk-heading-l"> {{headingName}}</h1>
 
     {{ data.teachers | log }}
-    {{ teacher.inductionStatus | log }}
-    {{ teacher.trn | log }}
     {{ data.newInductionStatus | log }}
+
+    {{ data.person[0] | log }}
  
 
 
@@ -67,6 +67,7 @@
       {% endset %}
 
 
+      
       {# -------- Start of name & DOB stuff  -------------- #}
 
       {{ govukInput({
@@ -123,17 +124,17 @@
           {
             name: "day",
             classes: "govuk-input--width-2",
-            value: data.person[0]['personalDetailsDateOfBirth-day']
+            value: data.person[0].dateOfBirthDay
           },
           {
             name: "month",
             classes: "govuk-input--width-2",
-            value: data['personalDetailsDateOfBirth-month']
+            value: data.person[0].dateOfBirthMonth
           },
           {
             name: "year",
             classes: "govuk-input--width-4",
-            value: data['personalDetailsDateOfBirth-year']
+            value: data.person[0].dateOfBirthYear
           }
         ]
       }) }}
