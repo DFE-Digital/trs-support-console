@@ -15,38 +15,68 @@
     },
     rows: [
     {
-      key: { text: "Name" },
-      value: { text: updatedData.firstName + " " + updatedData.middleName + " " + updatedData.lastName }
-    },
-    {
-      key: { text: "Date of birth" },
-      value: { text: updatedData.dateOfBirthDay + " " + updatedData.dateOfBirthMonth + " " + updatedData.dateOfBirthYear }
-    },
-    {
-      key: { text: "Email address" },
-      value: { text: updatedData.email }
-    },
-    {
-      key: { text: "Phone number" },
-      value: { text: updatedData.mobile }
-    },
-    {
-      key: { text: "National Insurance number" },
-      value: { text: updatedData.nationalInsurance }
-    },
-    {
-      key: { text: "Sex" },
-      value: { text: updatedData.gender }
-    },
-    {
-      key: { text: "Reason for creating record" },
-      value: { text: updatedData.createRecordReason }
-    } if updatedData.createRecordReason,
-    {
-      key: { text: "Evidence" },
+      key: {
+        text: "Name"
+      },
       value: {
-        html: '<p class="govuk-body"><a href="#" class="govuk-link">' + updatedData.evidenceFile + '</a>.</p>'
+        text:  data.personalDetailsFirstName + " " +  data.personalDetailsMiddleName + " " +  data.personalDetailsLastName
       }
-    } if updatedData.evidenceFile
+    },
+    {
+      key: {
+        text: "Previous name"
+      },
+      value: {
+        text:  data.person[0].fullName
+      } 
+    } if data.personalDetailsFirstName or data.personalDetailsMiddleName or data.personalDetailsLastName,
+    {
+      key: {
+        text: "Teacher reference number (TRN)"
+      },
+      value: {
+        text: data.person[0].trn
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: data | isoDateFromDateInput('personalDetailsDateOfBirth') | govukDate
+      }
+    },
+    {
+      key: {
+        text: "Email"
+      },
+      value: {
+          text: data.personalDetailsEmail
+      }
+    },
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: data.personalDetailsNationalInsuranceNumber
+      }
+    },
+    {
+      key: {
+        text: "Sex"
+      },
+      value: {
+        html: data.personalDetailsSex
+      }
+    },
+   {
+      key: {
+        text: "Mobile number"
+      },
+      value: {
+          text: data.personalDetailsPhoneNumber
+      }
+    }
   ]
 }) }}

@@ -20,8 +20,14 @@
 
 {% block content %}
 
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+
+      {{ govukNotificationBanner({
+        type: "success",
+        html: '<h2 class="govuk-heading-m">'+flash+'</h2>'
+      }) if flash.length }}
 
       <h1 class="govuk-heading-l">{{ data.person[0].fullName }}</h1>
 
@@ -31,10 +37,10 @@
 
       {% include "_includes/personal-details/secondary-navigation.njk" %}
       
-      {% if data.person[0].fullName %}
-        {% include "_includes/personal-details/original-personal-details.njk" %}
-      {% elseif updatedData.firstName or updatedData.middleName or updatedData.lastName %}
-        {% include "_includes/personal-details/updated-personal-details.njk" %}
+      {% if data.personalDetailsFirstName %}
+        {% include "_includes/personal-details/updated-personal-details.njk" %} 
+      {% else  %}
+        {% include "_includes/personal-details/original-personal-details.njk" %}  
       {% endif %}
 
 

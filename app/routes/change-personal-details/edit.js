@@ -43,6 +43,7 @@ module.exports = (router) => {
       evidenceFile: req.body.evidenceFile,
     }
 		req.session.updatedPersonData = updatedData; // Store updated data in session
+    req.flash('success', 'Personal details updated')
     res.redirect('/personal-details/index')
   })
 
