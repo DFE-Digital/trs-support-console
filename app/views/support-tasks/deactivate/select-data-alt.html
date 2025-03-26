@@ -32,13 +32,18 @@
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
       {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
 
+      {{ govukWarningText({
+        text: "Some words about what happens to retained & deactivated data.",
+        iconFallbackText: "Warning"
+      }) }}
+
       <form method="post" novalidate>
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-one-half">
-                <h2 class="govuk-heading-m">Record A</h2>
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Record A</h2>
               </div>
               <div class="govuk-grid-column-one-half">
-                <h2 class="govuk-heading-m">Record B</h2>
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Record B</h2>
               </div>
             </div>
       
@@ -60,7 +65,7 @@
                     </div>
                   </div>
                 
-                  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                  <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
                 <!-- Middle name -->
                 <label class="govuk-label govuk-!-font-weight-bold">Middle name: </label>
@@ -74,7 +79,7 @@
                     <label class="govuk-label govuk-radios__label" for="middle-name-b">Henry (B)</label>
                   </div>
                 </div>
-                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
                 <!-- Last name -->
                 <label class="govuk-label govuk-!-font-weight-bold">Last name: </label>
@@ -88,7 +93,7 @@
                     <label class="govuk-label govuk-radios__label" for="last-name-b">Doe (B)</label>
                   </div>
                 </div>
-                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
                 <!-- Date of birth -->
                 <label class="govuk-label govuk-!-font-weight-bold">Date of birth: </label>
@@ -102,7 +107,7 @@
                     <label class="govuk-label govuk-radios__label" for="dob-b">Not provided (B)</label>
                   </div>
                 </div>
-                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
                 <!-- Email -->
                 <label class="govuk-label govuk-!-font-weight-bold">Email: </label>
@@ -116,7 +121,7 @@
                     <label class="govuk-label govuk-radios__label" for="email-b">john.doe@gmail.com (B)</label>
                   </div>
                 </div>
-                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
                 <!-- National Insurance number -->
                 <label class="govuk-label govuk-!-font-weight-bold">National Insurance number: </label>
@@ -130,7 +135,7 @@
                     <label class="govuk-label govuk-radios__label" for="ni-b">Not provided (B)</label>
                   </div>
                 </div>
-                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+                <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
       
                 <!-- TRN -->
@@ -148,6 +153,17 @@
 
               </fieldset>
             </div>
+
+            {{ govukTextarea({
+              name: "makeMergeComment",
+              id: "merge-comment",
+              classes: "govuk-input--width-30",
+              label: {
+                text: "Comments",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              }
+            }) }}
       
             <button class="govuk-button" data-module="govuk-button">Continue</button>
       </form>
