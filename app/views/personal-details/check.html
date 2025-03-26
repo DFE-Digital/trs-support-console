@@ -102,7 +102,25 @@
             value: {
                text: data.personalDetailsPhoneNumber
             }
-          }
+          },
+
+          {
+            key: {
+              text: "Reason for change"
+            },
+            value: {
+               text: data.createRecordReason
+            }
+          } if data.createRecordReason,
+
+          {
+            key: {
+              text: "Evidence"
+            },
+            value: {
+               text: data.evidenceFile
+            }
+          } if data.evidenceFile
         ]
       }) }}
 
