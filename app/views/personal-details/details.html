@@ -160,6 +160,9 @@
           text: "Phone number",
           classes: "govuk-label--s"
         },
+        hint: {
+          text: "For international numbers include the country code"
+        },
         id: "personalDetailsPhoneNumber",
         name: "personalDetailsPhoneNumber",
         type: "email",
@@ -209,7 +212,7 @@
       }) }}
 
 
-      <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+      <h2 class="govuk-heading-m">Why are you changing this record?</h2>
       {{ govukRadios({
         name: "createRecordReason",
         fieldset: {
@@ -220,16 +223,12 @@
         },
         items: [
           {
-            value: "They were awarded a mandatory qualification",
-            text: "They were awarded a mandatory qualification"
+            value: "Data loss or incomplete information",
+            text: "Data loss or incomplete information"
           },
           {
-            value: "They received an alert",
-            text: "They received an alert"
-          },
-          {
-            value: "They started university late",
-            text: "They started university late"
+            value: "New information recovered",
+            text: "New information recovered"
           },
           {
             value: "Another reason",
