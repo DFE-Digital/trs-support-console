@@ -9,27 +9,25 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters">
+  <div class="govuk-grid-column-full">
 
     {{ govukNotificationBanner({
       type: "success",
       html: '<h2 class="govuk-heading-m">'+flash + data.deactivate[0].firstName + " " + data.deactivate[0].lastName +'</h2>'
     }) if flash.length }}
 
-
-
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
     {% include "_includes/support-tasks/secondary-navigation-find-record.njk" %}
-
-    {% include "_includes/search-form.njk" %}
-
-    {% if data.findRecord === 'John Doe' %}
-      {% include "_includes/support-tasks/deactivate/deactivate-from-two-trn.njk" %} 
-    {% endif %}
-    
+  
   </div>
 </div>
+
+{% include "_includes/search-form.njk" %}
+
+{% if data.findRecord === 'John Doe' %}
+  {% include "_includes/support-tasks/deactivate/deactivate-from-two-trn.njk" %} 
+{% endif %}
 
 {% endblock %}
 

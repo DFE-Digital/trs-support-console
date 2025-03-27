@@ -1,10 +1,22 @@
-<div class="flex-sort-by">
-  <h2 class="govuk-heading-m flex-start">{{ data.deactivate | length }} records found</h2>
-  <p class="govuk-body">Sort by: <a href="#" class="govuk-link">Last name</a> | <a href="#" class="govuk-link">First name</a> | <a href="#" class="govuk-link">Date of birth</a></p>
-</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="flex-sort-by">
+      <h2 class="govuk-heading-m flex-start">{{ data.deactivate | length }} records found</h2>
+      <p class="govuk-body">
+        Sort by: 
+        <a href="#" class="govuk-link">Last name</a> | 
+        <a href="#" class="govuk-link">First name</a> | 
+        <a href="#" class="govuk-link">Date of birth</a>
+      </p>
+    </div>
 
     <form method="post" novalidate>
-      <table class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all" data-multi-select-idprefix="mountains-">
+      <table 
+        class="govuk-table" 
+        data-module="moj-multi-select" 
+        data-multi-select-checkbox="#select-all" 
+        data-multi-select-idprefix="mountains-"
+      >
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col" id="select-all"></th>
@@ -15,24 +27,31 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-  
           {% for record in data.deactivate %}
           <tr class="govuk-table__row govuk-table__row--selected">
             <td class="govuk-table__cell">
               <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="duplicate-records">
-                <label class="govuk-label govuk-checkboxes__label" for="duplicate-records">
-                  <span class="govuk-visually-hidden">Select this row/span>
+                <input 
+                  type="checkbox" 
+                  class="govuk-checkboxes__input" 
+                  id="duplicate-records-{{ loop.index }}" 
+                  name="duplicate-records" 
+                  value="{{ record.trn }}"
+                >
+                <label 
+                  class="govuk-label govuk-checkboxes__label" 
+                  for="duplicate-records-{{ loop.index }}"
+                >
+                  <span class="govuk-visually-hidden">Select this row</span>
                 </label>
               </div>
             </td>
-              <td class="govuk-table__cell">{{record.firstName}} {{record.lastName}}</td>
-              <td class="govuk-table__cell">{{record.dateOfBirth}}</td>
-              <td class="govuk-table__cell">{{record.trn}}</td>
-              <td class="govuk-table__cell">{{record.nationalInsuranceNumber}}</td>
+            <td class="govuk-table__cell">{{ record.firstName }} {{ record.lastName }}</td>
+            <td class="govuk-table__cell">{{ record.dateOfBirth }}</td>
+            <td class="govuk-table__cell">{{ record.trn }}</td>
+            <td class="govuk-table__cell">{{ record.nationalInsuranceNumber }}</td>
           </tr>
           {% endfor %}
-         
         </tbody>
       </table>
 
@@ -40,13 +59,12 @@
         {{ govukButton({
           text: "Compare records"
         }) }}
-      
         {{ govukButton({
           text: "Cancel",
           classes: "govuk-button--secondary",
           href: "javascript:window.history.back()"
         }) }}
       </div>
-
-
     </form>
+  </div>
+</div>
