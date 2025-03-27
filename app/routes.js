@@ -45,7 +45,7 @@ router.get('/cancel-and-return', (req, res) => {
 router.post('/find-teacher', (req, res) => {
 		let data = req.session.data
     if (data.findRecord === "John Doe") {
-      res.redirect('/support-tasks/deactivate/index')    
+      res.redirect('/find-teacher')    
     } else {
 			res.redirect('/general')
 		}

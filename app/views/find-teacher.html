@@ -23,6 +23,10 @@
     {% include "_includes/support-tasks/secondary-navigation-find-record.njk" %}
 
     {% include "_includes/search-form.njk" %}
+
+    {% if data.findRecord === 'John Doe' %}
+      {% include "_includes/support-tasks/deactivate/deactivate-from-two-trn.njk" %} 
+    {% endif %}
     
   </div>
 </div>
