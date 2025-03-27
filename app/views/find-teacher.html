@@ -18,29 +18,11 @@
 
 
 
-    <h1 class="govuk-heading-l">
-      {{ pageName }}
-    </h1>
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
     {% include "_includes/support-tasks/secondary-navigation-find-record.njk" %}
 
-    <form method="post" novalidate>
-      {{ govukInput({
-        label: {
-          text: "Search",
-          classes: "govuk-label--s"
-        },
-        hint: {
-          text: "Search by TRN, name or date of birth, for example 31 3 1980"
-        },
-        id: "find-record",
-        name: "findRecord"
-      }) }}
-
-      {{ govukButton({
-        text: "Search"
-      }) }}
-    </form>
+    {% include "_includes/search-form.njk" %}
     
   </div>
 </div>

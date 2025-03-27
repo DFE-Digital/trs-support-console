@@ -1,0 +1,49 @@
+<h2 class="govuk-heading-m">{{ data.deactivate | length }} records found</h2>
+
+    <form method="post" novalidate>
+      <table class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all" data-multi-select-idprefix="mountains-">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col" id="select-all"></th>
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header" scope="col">Date of birth</th>
+            <th class="govuk-table__header" scope="col">TRN</th>
+            <th class="govuk-table__header" scope="col">National Insurance number</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+  
+          {% for record in data.deactivate %}
+          <tr class="govuk-table__row govuk-table__row--selected">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" id="duplicate-records">
+                <label class="govuk-label govuk-checkboxes__label" for="duplicate-records">
+                  <span class="govuk-visually-hidden">Select this row/span>
+                </label>
+              </div>
+            </td>
+              <td class="govuk-table__cell">{{record.firstName}} {{record.lastName}}</td>
+              <td class="govuk-table__cell">{{record.dateOfBirth}}</td>
+              <td class="govuk-table__cell">{{record.trn}}</td>
+              <td class="govuk-table__cell">{{record.nationalInsuranceNumber}}</td>
+          </tr>
+          {% endfor %}
+         
+        </tbody>
+      </table>
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Compare records"
+        }) }}
+      
+        {{ govukButton({
+          text: "Cancel",
+          classes: "govuk-button--secondary",
+          href: "javascript:window.history.back()"
+        }) }}
+      </div>
+
+
+    </form>

@@ -1,0 +1,22 @@
+<div class="app-search-form">
+  <form>
+    {{ govukInput({
+       id: "find-record",
+        name: "findRecord",
+      label: {
+         text: "Search",
+        classes: "govuk-label--s app-search-form__label"
+      },
+      hint: {
+        text: "TRN, name or date of birth, for example 4/3/1975"
+      },
+      value: data.findRecord
+    }) }}
+
+    {{ govukButton({
+      text: "Search",
+      classes: "app-search-form__button"
+    }) }}
+  </form>
+
+</div>
