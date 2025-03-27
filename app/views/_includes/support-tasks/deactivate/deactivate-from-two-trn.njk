@@ -1,6 +1,7 @@
-<h2 class="govuk-heading-m">{{ data.deactivate | length }} records found</h2>
-
-   <p class="govuk-body">Sort by: <a href="#" class="govuk-link">Last name</a> | <a href="#" class="govuk-link">First name</a> | <a href="#" class="govuk-link">Date of birth</a></p>
+<div class="flex-sort-by">
+  <h2 class="govuk-heading-m flex-start">{{ data.deactivate | length }} records found</h2>
+  <p class="govuk-body">Sort by: <a href="#" class="govuk-link">Last name</a> | <a href="#" class="govuk-link">First name</a> | <a href="#" class="govuk-link">Date of birth</a></p>
+</div>
 
     <form method="post" novalidate>
       <table class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all" data-multi-select-idprefix="mountains-">
