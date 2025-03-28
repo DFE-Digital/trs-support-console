@@ -4,7 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Choose what data to keep on primary record" %}
+{% set pageName = "Select the details to use in the primary record" %}
 
 {% set tableCheckbox %}
 <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
@@ -26,64 +26,170 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-three-quarters">
 
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
       {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
 
-      <form method="post" novalidate >
-
+      <form method="post" novalidate>
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[0].id}}" class="govuk-link">Record A</a></h2>
-          
-            {% include "_includes/support-tasks/deactivate/record-a.njk" %} 
-
-            {{ govukTextarea({
-              name: "recordAmoreDetail",
-              id: "more-detail",
-              classes: "govuk-input--width-20",
-              label: {
-                text: "Add a note",
-                classes: "govuk-label--s",
-                isPageHeading: false
-              }
-            }) }}
-            
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Primary record &nbsp;&nbsp;&nbsp; <span class="moj-badge moj-badge--blue moj-badge--large">GOV.UK ID</span></h2>
           </div>
-  
-      
-
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[1].id}}" class="govuk-link">Record B</a></h2>
-
-            {% include "_includes/support-tasks/deactivate/record-b.njk" %} 
-            
-            {{ govukTextarea({
-              name: "recordBmoreDetail",
-              id: "more-detail",
-              classes: "govuk-input--width-20",
-              label: {
-                text: "Add a note",
-                classes: "govuk-label--s",
-                isPageHeading: false
-              }
-            }) }}
-             
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Secodary record</h2>
           </div>
         </div>
-     
+  
+        <div class="govuk-form-group flex-radios">
+          <fieldset class="govuk-fieldset" aria-describedby="primary-record-hint">
 
+            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+            <!-- First name -->
+            
+              <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">First name: </label>
+              <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="first-name-a" name="first-name" type="radio" value="A" checked disabled>
+                  <label class="govuk-label govuk-radios__label" for="first-name-a">John</label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="first-name-b" name="first-name" type="radio" value="B" disabled>
+                  <label class="govuk-label govuk-radios__label" for="first-name-b">John</label>
+                </div>
+              </div>
+            
+              <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+            <!-- Middle name -->
+            <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">Middle name: </label>
+            <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+              <div class="govuk-radios__item align-record-a">
+                <input class="govuk-radios__input" id="middle-name-a" name="middle-name" type="radio" value="A">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>Not provided</strong>
+                </mark></label>
+              </div>
+              <div class="govuk-radios__item align-record-b">
+                <input class="govuk-radios__input" id="middle-name-b" name="middle-name" type="radio" value="B">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>Henry</strong>
+                </mark></label>
+              </div>
+            </div>
+            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+            <!-- Last name -->
+            <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">Last name: </label>
+            <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+              <div class="govuk-radios__item align-record-a">
+                <input class="govuk-radios__input" id="last-name-a" name="last-name" type="radio" value="A" checked disabled>
+                <label class="govuk-label govuk-radios__label" for="last-name-a">Doe</label>
+              </div>
+              <div class="govuk-radios__item align-record-b">
+                <input class="govuk-radios__input" id="last-name-b" name="last-name" type="radio" value="B" disabled>
+                <label class="govuk-label govuk-radios__label" for="last-name-b">Doe</label>
+              </div>
+            </div>
+            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+            <!-- Date of birth -->
+            <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">Date of birth: </label>
+            <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+              <div class="govuk-radios__item align-record-a">
+                <input class="govuk-radios__input" id="dob-a" name="dob" type="radio" value="A">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>23 September 1990</strong>
+                </mark></label>
+              </div>
+              <div class="govuk-radios__item align-record-b">
+                <input class="govuk-radios__input" id="dob-b" name="dob" type="radio" value="B">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>Not provided</strong>
+                </mark></label>
+              </div>
+            </div>
+            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+            <!-- Email -->
+            <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">Email: </label>
+            <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+              <div class="govuk-radios__item align-record-a">
+                <input class="govuk-radios__input" id="email-a" name="email" type="radio" value="A">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>mr.john.doe@yahoo.com</strong>
+                </mark></label>
+              </div>
+              <div class="govuk-radios__item align-record-b">
+                <input class="govuk-radios__input" id="email-b" name="email" type="radio" value="B">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>john.doe@gmail.com</strong>
+                </mark></label>
+              </div>
+            </div>
+            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+            <!-- National Insurance number -->
+            <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">National Insurance number: </label>
+            <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+              <div class="govuk-radios__item align-record-a">
+                <input class="govuk-radios__input" id="ni-a" name="ni" type="radio" value="A">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>AB 22 55 96 C</strong>
+                </mark></label>
+              </div>
+              <div class="govuk-radios__item align-record-b">
+                <input class="govuk-radios__input" id="ni-b" name="ni" type="radio" value="B">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>Not provided</strong>
+                </mark></label>
+              </div>
+            </div>
+            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+  
+            <!-- TRN -->
+            <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">TRN: </label>
+            <div class=" govuk-radios__flex govuk-radios govuk-radios--inline">
+              <div class="govuk-radios__item align-record-a">
+                <input class="govuk-radios__input" id="trn-a" name="trn" type="radio" value="A">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>439353</strong>
+                </mark></label>
+              </div>
+              <div class="govuk-radios__item align-record-b">
+                <input class="govuk-radios__input" id="trn-b" name="trn" type="radio" value="B">
+                <label class="govuk-label govuk-radios__label" for="first-name-a"><mark class="hods-highlight">
+                  <strong>339353</strong>
+                </mark></label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        {{ govukTextarea({
+          name: "makeMergeComment",
+          id: "merge-comment",
+          classes: "govuk-input--width-30",
+          label: {
+            text: "Add comments",
+            classes: "govuk-label--s",
+            isPageHeading: false
+          }
+        }) }}
+
+        <h2 class="govuk-heading-m govuk-!-width-full">Do you want to use these details in the primary record?</h2>
+
+        {{ govukWarningText({
+          text: "The secondary record will be deactivated once it's merged with the primary record, but you'll still be able to view it.",
+          classes: "govuk-!-width-full govuk-!-margin-bottom-2",
+          iconFallbackText: "Warning"
+        }) }}
+  
         {{ govukRadios({
           name: "combineTheseSelections",
-          fieldset: {
-            legend: {
-              text: "Retain these selections for primary record?",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
           items: [
             {
               value: "Yes",
@@ -95,14 +201,20 @@
             }
           ]
         }) }}
+
         
         {{ govukButton({
           text: "Continue"
         }) }}
-      </form>    
+      </form>
     
     
   </div>
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+  <script src="/assets/javascripts/components/radios-merge.js"></script>
+{% endblock %}
+
