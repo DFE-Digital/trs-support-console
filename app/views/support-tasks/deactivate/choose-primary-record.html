@@ -4,7 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Compare potential duplicates" %}
+{% set pageName = "Compare matching records" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -12,6 +12,14 @@
     href: "javascript:window.history.back()"
   }) }}
 {% endblock %}
+
+{% set summaryCardTitle %}
+  {% if data.deactivate.govUkId == "No" %}
+    Record A
+  {% else %}
+    Record A&nbsp;&nbsp;<span class="moj-badge moj-badge--blue moj-badge--large">GOV.UK ID</span>
+  {% endif %}
+{% endset %}
 
 
 {% block content %}
@@ -27,7 +35,6 @@
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[0].id}}" class="govuk-link">Record A</a></h2>
             
             {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
 
@@ -35,7 +42,20 @@
 
 
             {{ govukSummaryList({
-              classes: "govuk-!-margin-bottom-7",
+              card: {
+                title: {
+                  html: summaryCardTitle
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/support-tasks/data.deactivate[0].id",
+                      text: "View record",
+                      visuallyHiddenText: "view record"
+                    }
+                  ]
+                }
+              },
               rows: [
                 {
                   key: { text: "First name" },
@@ -61,10 +81,7 @@
                   key: { text: "National Insurance number" },
                   value: { text: data.deactivate[0].nationalInsuranceNumber }
                 } if data.deactivate[0].nationalInsuranceNumber,
-                {
-                  key: { text: "Evidence" },
-                  value: { html: '<a href="#" class="govuk-link">' + data.deactivate[0].providedEvidence + '</a>' }
-                },
+             
                 {
                   key: { text: "TRN" },
                   value: { html:  data.deactivate[0].trn  }
@@ -80,10 +97,23 @@
       
 
           <div class="govuk-grid-column-one-half">
-            <h2 class="govuk-heading-m"><a href="/support-tasks/{{data.deactivate[1].id}}" class="govuk-link">Record B</a></h2>
+       
             
               {{ govukSummaryList({
-                classes: "govuk-!-margin-bottom-7",
+                card: {
+                  title: {
+                    html: "Record B"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/support-tasks/data.deactivate[1].id",
+                        text: "View record",
+                        visuallyHiddenText: "view record"
+                      }
+                    ]
+                  }
+                },
                 rows: [
                   {
                     key: { text: "First name" },
@@ -109,10 +139,7 @@
                     key: { text: "National Insurance number" },
                     value: { html: data.deactivate[1].nationalInsuranceNumber }
                   } if data.deactivate[1].nationalInsuranceNumber,
-                  {
-                    key: { text: "Evidence" },
-                    value: { html: '<a href="#" class="govuk-link">' + data.deactivate[1].providedEvidence + '</a>' }
-                  },
+            
                   {
                     key: { text: "TRN" },
                     value: { html: data.deactivate[1].trn }
@@ -131,7 +158,7 @@
           name: "mergeRecord",
           fieldset: {
             legend: {
-              text: "Which record will be retained as the primary record?",
+              text: "Which is the primary record?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
