@@ -15,14 +15,15 @@
     "gender": "Male",
     "trn": "439353",
     "hasAlerts": "None",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "govUkId": "Yes"
   },
   {
     "firstName": "John",
     "middleName": "Henry",
     "lastName": "Doe",
     "dateOfBirth": "Not provided",
-    "nationalInsuranceNumber": "AB 22 55 96 C",
+    "nationalInsuranceNumber": "Not provided",
     "dateOfTrnRequest": "15 January 2024",
     "supportTaskType": "TRN request",
     "reference": "TRN-GJHS1234",
@@ -34,6 +35,7 @@
     "hasAlerts": "None",
     "trn": "987654",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "govUkId": "No"
   } 
 ]

@@ -19,7 +19,28 @@
 @import "components/flex-table-row.scss";
 
 @import "components/radios-layout.scss";
+@import "components/status-grid.scss";
+@import "components/status-card.scss";
+@import "components/search-form.scss";
 
 body {
   height: auto;
+}
+
+.flex-sort-by{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3rem;
+}
+
+body {
+  height: auto;
+}
+
+.flex-sort-by{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3rem;
 }
