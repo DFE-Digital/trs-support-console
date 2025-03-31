@@ -1,52 +1,54 @@
-
-{# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
-
-
-
 {{ govukWarningText({
-  text: "Some words about what happens to retained & deactivated data.",
+  text: "These include the details you selected from the secondary record.",
   iconFallbackText: "Warning"
 }) }}
 
-{# <p class="govuk-body">Information being retained from the existing record is <mark class="hods-highlight"><strong>highlighted</strong></mark></p> #}
+
 <h2 class="govuk-heading-m">Primary record</h2>
 
+{{ data.firstNameA | log }}
+{{ data.middleNameA | log }}
+{{ data.lastNameA | log }}
+{{ data.dateOfBirthA | log }}
+{{ data.emailA | log }}
+{{ data.nationalInsuranceNumberA | log }}
+{{ data.trnA | log }}
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-7",
   rows: [
     {
       key: { text: "First name" },
-      value: { html: data.firstNameA }
+      value: { html: data.deactivate[0].firstName }
     },
     {
       key: { text: "Middle name" },
-      value: { html: data.recordmiddleName }
+      value: { html: data.retainMiddleName }
     },
     {
       key: { text: "Last Name" },
-      value: { html: data.recordlastName }
+      value: { html: data.deactivate[0].lastName }
     },
     {
       key: { text: "Date of birth" },
-      value: { html: data.recorddateOfBirth }
+      value: { html: data.retainDOB }
     },
     {
       key: { text: "Email address" },
-      value: { html: data.recordemail }
+      value: { html: data.retainEmail }
     },
     {
       key: { text: "National Insurance number" },
-      value: { html: data.recordnationalInsuranceNumber }
+      value: { html: data.retainnationalInsuranceNumber }
     },
 
     {
       key: { text: "TRN" },
-      value: { html: data.recordtrn }
+      value: { html: data.retainTRN }
     },
      {
-      key: { text: "Notes" },
-      value: { html: data.recordAmoreDetail }
+      key: { text: "Comments" },
+      value: { html: data.makeMergeComment }
     }
   ]
 }) }}

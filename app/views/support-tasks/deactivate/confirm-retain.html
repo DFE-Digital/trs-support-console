@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Confirm and retain as primary record" %}
+{% set pageName = "Check the details you selected for the primary record" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -28,14 +28,34 @@
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     
-    {% include "_includes/support-tasks/deactivate/retain-record-details.njk" %}
-
-    
     <form method="post" novalidate >
+    {% include "_includes/support-tasks/deactivate/retain-record-details.njk" %}
+    
+      {{ govukRadios({
+        fieldset: {
+          legend: {
+            text: "Do you want to keep this as the primary record?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+    
       <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Confirm and retain record"
-          }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
       </div>
     </form>
 
