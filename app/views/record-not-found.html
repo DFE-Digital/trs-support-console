@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Find a record" %}
+{% set serviceNavId = "findRecord" %}
+{% set secondaryNavId = "findRecord" %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Enter TRN, name or date of birth",
+          href: "#"
+        }
+      ]
+    }) }}
+
+    <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+    {% include "_includes/support-tasks/secondary-navigation-find-record.njk" %}
+  
+  </div>
+</div>
+
+{% include "_includes/search-form.njk" %}
+
+{% if data.findRecord === 'John Doe' %}
+  {% include "_includes/support-tasks/deactivate/deactivate-from-two-trn.njk" %} 
+{% endif %}
+
+{% endblock %}
+
+{# value: data.findRecord #}

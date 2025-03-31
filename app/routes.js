@@ -46,16 +46,19 @@ router.get('/cancel-and-return', (req, res) => {
 
 router.post('/find-teacher', (req, res) => {
   let data = req.session.data
-  // let teacher = data.teachers
+  console.log('findRecord:', data.findRecord) // Log the value of findRecord
 
   if (data.findRecord === "John Doe") {
       res.redirect('/find-teacher')
   } 
-  else if (data.findRecord === "494612" || data.findRecord === "553092" || data.findRecord === "571028" ||data.findRecord === "752394") {
-      res.redirect('/general')
-  } 
+  else if (data.findRecord == "494612" || data.findRecord == "553092" || data.findRecord == "571028" ||data.findRecord == "752394") {
+      res.redirect('/induction')
+  }
+  else if (data.findRecord == "987654") {
+    res.redirect('/personal-details')
+} 
   else {
-      res.redirect('/personal-details')
+      res.redirect('/record-not-found')
   }
 })
 

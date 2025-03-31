@@ -8,7 +8,7 @@ window.GOVUKPrototypeKit.documentReady(() => {
     
 })
 
-import accessibleAutocomplete from 'accessible-autocomplete';
+import accessibleAutocomplete from 'accessible-autocomplete'
 
 // Sample data (e.g., list of countries)
 const countries = ['United Kingdom', 'United States', 'Canada', 'Australia']
