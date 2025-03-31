@@ -84,7 +84,7 @@
             <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">Last name: </label>
             <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
               <div class="govuk-radios__item align-record-a">
-                <input class="govuk-radios__input" id="last-name-a" name="retainDOB" type="radio" checked disabled value="Doe">
+                <input class="govuk-radios__input" id="last-name-a" name="retainDOB" type="radio" value="Doe" checked disabled>
                 <label class="govuk-label govuk-radios__label" for="last-name-a">Doe</label>
               </div>
               <div class="govuk-radios__item align-record-b">
@@ -205,9 +205,17 @@
         }) }}
 
         
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "javascript:window.history.back()"
+          }) }}
+        </div>
       </form>
     
     

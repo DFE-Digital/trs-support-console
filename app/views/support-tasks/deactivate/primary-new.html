@@ -15,16 +15,6 @@
 {% set pageName = data.deactivate[0].firstName +  " " + data.retainMiddleName + " " + data.deactivate[0].lastName %}
 
 
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "/find-teacher"
-  }) }}
-{% endblock %}
-
-
-
 {% block content %}
 
 

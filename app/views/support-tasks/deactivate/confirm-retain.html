@@ -53,9 +53,14 @@
       }) }}
     
       <div class="govuk-button-group">
-        
         {{ govukButton({
           text: "Continue"
+        }) }}
+      
+        {{ govukButton({
+          text: "Cancel",
+          classes: "govuk-button--secondary",
+          href: "javascript:window.history.back()"
         }) }}
       </div>
     </form>
