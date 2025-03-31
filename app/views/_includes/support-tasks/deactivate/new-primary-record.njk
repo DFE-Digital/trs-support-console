@@ -1,0 +1,58 @@
+{{ data.firstNameA | log }}
+{{ data.middleNameA | log }}
+{{ data.lastNameA | log }}
+{{ data.dateOfBirthA | log }}
+{{ data.emailA | log }}
+{{ data.nationalInsuranceNumberA | log }}
+{{ data.trnA | log }}
+
+{{ govukSummaryList({
+      card: {
+      title: {
+        text: "Personal Details"
+      },
+      actions: {
+        items: [
+          {
+            href: "/personal-details/details",
+            text: "Change",
+            visuallyHiddenText: "personal details"
+          }
+        ]
+      }
+    },
+  rows: [
+    {
+      key: { text: "First name" },
+      value: { html: data.deactivate[0].firstName }
+    },
+    {
+      key: { text: "Middle name" },
+      value: { html: data.retainMiddleName }
+    },
+    {
+      key: { text: "Last Name" },
+      value: { html: data.deactivate[0].lastName }
+    },
+    {
+      key: { text: "Date of birth" },
+      value: { html: data.retainDOB }
+    },
+    {
+      key: { text: "Email address" },
+      value: { html: data.retainEmail }
+    },
+    {
+      key: { text: "National Insurance number" },
+      value: { html: data.retainnationalInsuranceNumber }
+    },
+
+    {
+      key: { text: "TRN" },
+      value: { html: data.retainTRN }
+    }
+  ]
+}) }}
+
+
+

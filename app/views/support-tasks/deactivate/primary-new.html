@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %}
+
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "general" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data.teachers %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set pageName = data.deactivate[0].firstName +  " " + data.retainMiddleName + " " + data.deactivate[0].lastName %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/find-teacher"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      {{ govukNotificationBanner({
+        type: "success",
+        html: '<h2 class="govuk-heading-m">' + flash + '</h2>'
+      }) if flash.length }}
+
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+
+      {{ data.teachers | log }}
+      {{ data.chooseQtsRoute | log }}
+
+      {% include "_includes/secondary-navigation.njk" %}  
+      {% include "_includes/support-tasks/deactivate/new-primary-record.njk" %}
+
+
+  </div>
+</div>
+
+{% endblock %}
+

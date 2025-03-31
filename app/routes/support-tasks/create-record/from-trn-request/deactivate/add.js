@@ -16,16 +16,14 @@ module.exports = (router) => {
   })
 
   router.post('/support-tasks/deactivate/confirm-retain', (req, res) => {
-    res.redirect('/support-tasks/deactivate/confirm-deactivate')
-  })
-
-
-  router.post('/support-tasks/deactivate/confirm-deactivate', (req, res) => {
-    req.flash('success', 'Primary record updated for ')
-		  res.redirect('/find-teacher')
-      let data = req.session.data || {} 
+    let data = req.session.data
+    if (data.keepTheseSelections == 'Yes') {
+      req.flash('success', 'Primary record updated for ' + data.deactivate[0].firstName +  " " + data.retainMiddleName + " " + data.deactivate[0].lastName)
+      res.redirect('/support-tasks/deactivate/primary-new')  
+    } else {
+      res.redirect('/support-tasks/deactivate/select-data')  
     }
-	)
+  })
 
 }
 

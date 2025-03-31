@@ -32,6 +32,7 @@
     {% include "_includes/support-tasks/deactivate/retain-record-details.njk" %}
     
       {{ govukRadios({
+        name: "keepTheseSelections",
         fieldset: {
           legend: {
             text: "Do you want to keep this as the primary record?",
