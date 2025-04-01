@@ -48,7 +48,7 @@ router.post('/find-teacher', (req, res) => {
   let data = req.session.data
   console.log('findRecord:', data.findRecord) // Log the value of findRecord
 
-  if (data.findRecord === "John Doe") {
+  if (data.findRecord == "John Doe") {
       res.redirect('/find-teacher')
   } 
   else if (data.findRecord == "494612" || data.findRecord == "553092" || data.findRecord == "571028" ||data.findRecord == "752394") {
