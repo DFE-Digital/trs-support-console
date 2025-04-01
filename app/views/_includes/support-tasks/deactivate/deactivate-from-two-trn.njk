@@ -1,3 +1,7 @@
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data.teachers %}
+{% set teacher = trn | find(teacherArray)  %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <div class="flex-sort-by">
@@ -46,7 +50,7 @@
                 </label>
               </div>
             </td>
-            <td class="govuk-table__cell"><a href="#" class="govuk-link">{{ record.firstName }} {{ record.lastName }}</a></td>
+            <td class="govuk-table__cell"><a href="/deactivate/show/{{record.id}}" class="govuk-link">{{ record.firstName }} {{ record.lastName }}</a></td>
             <td class="govuk-table__cell">{{ record.dateOfBirth }}</td>
             <td class="govuk-table__cell">{{ record.trn }}</td>
             <td class="govuk-table__cell">{{ record.nationalInsuranceNumber }}</td>

@@ -12,7 +12,8 @@
     "inductionStatus": "Not applicable",
     "inductionStartDate": null,
     "inductionCompletionDAte": null,
-    "exemptionReason": null
+    "exemptionReason": null,
+    "id": "b3f29a6e-68c2-4fc9-9518-94b3f0fef379"
   },
   {
     "firstName": "Susan",
@@ -27,7 +28,9 @@
     "inductionStatus": "Required to complete",
     "inductionStartDate": null,
     "inductionCompletionDAte": null,
-    "exemptionReason": "Some reason"
+    "exemptionReason": "Some reason",
+    "id": "5f21e9d3-7719-4a31-9c1d-68c5729c648e"
+
   },
   {
     "firstName": "Hugh",
@@ -42,7 +45,9 @@
     "inductionStatus": "Exempt",
     "inductionStartDate": null,
     "inductionCompletionDAte": null,
-    "exemptionReason": null
+    "exemptionReason": null,
+    "id": "c4ef0622-d5a0-4bb8-bf9b-33c8b0d9dfd0"
+
   },
   {
     "firstName": "Stuart",
@@ -57,7 +62,9 @@
     "inductionStatus": "In progress",
     "inductionStartDate": "14 March 2023",
     "inductionCompletionDAte": null,
-    "exemptionReason": null
+    "exemptionReason": null,
+    "id": "67c98384-3a1a-4a99-bb61-53bcb9eaf2f3"
+
   },
   {
     "firstName": "Amjad",
@@ -72,7 +79,9 @@
     "inductionStatus": "Passed",
     "inductionStartDate": "5 June 2021",
     "inductionCompletionDAte": "18 March 2023",
-    "exemptionReason": null
+    "exemptionReason": null,
+    "id": "bfe151ad-9cd2-476f-986c-23d63ec2df46"
+
   },
   {
     "firstName": "Diane",
@@ -87,7 +96,8 @@
     "inductionStatus": "Passed in Wales",
     "inductionStartDate": "2 October 2020",
     "inductionCompletionDAte": "15 November 2022",
-    "exemptionReason": null
+    "exemptionReason": null,
+    "id": "99401d50-c0e3-4c88-861d-8dc2b58e40c2"
   },
   {
     "firstName": "Bruce",
@@ -102,7 +112,9 @@
     "inductionStatus": "Failed",
     "inductionStartDate": "10 December 2018",
     "inductionCompletionDAte": "1 July 2020",
-    "exemptionReason": null
+    "exemptionReason": null,
+    "id": "1b0eb98e-f352-4ad7-a206-26d726e92986"
+
   },
   {
     "firstName": "Rana",
@@ -117,6 +129,50 @@
     "inductionStatus": "Failed in Wales",
     "inductionStartDate": "18 August 2019",
     "inductionCompletionDAte": "23 September 2021",
-    "exemptionReason": null
+    "exemptionReason": null,
+    "id": "3e1f17b6-7e78-4d4c-a6f5-1d6d2c1e3d0c"
+  },
+  {
+    "firstName": "John",
+    "middleName": "Not provided",
+    "lastName": "Doe",
+    "fullName": "John Doe",
+    "dateOfBirth": "23 September 1990",
+    "gender": "Male",
+    "trn": "439353",
+    "nationalInsurance": "AB 22 55 96 C",
+    "dateOfTrnRequest": "15 January 2024",
+    "email": "mr.john.doe@yahoo.com",
+    "mobile": "+447559123456",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-GJHS1234",
+    "potentialRecordMatch": "Yes",
+    "sourceOfMatch": "Register",
+    "id": "9eef4810-1a58-48ab-8d3f-d93bd373e72a",
+    "hasAlerts": "None",
+    "providedEvidence": "passport.jpg",
+    "govUkId": "Yes"
+  },
+  {
+    "firstName": "John",
+    "middleName": "Henry",
+    "lastName": "Doe",
+    "fullName": "John Henry Doe",
+    "dateOfBirth": "Not provided",
+    "gender": "Male",
+    "trn": "339353",
+    "nationalInsurance": "Not provided",
+    "email": "john.doe@gmail.com",
+    "mobile": "+447787634567",
+    "dateOfTrnRequest": "15 January 2024",
+    "supportTaskType": "TRN request",
+    "reference": "TRN-GJHS1234",
+    "potentialRecordMatch": "Yes",
+    "sourceOfMatch": "Register",
+    "id": "84c6c6f5-0d9e-4e3e-b913-d1792ddaf2e0",
+    "hasAlerts": "None",
+    "completed": "no",
+    "providedEvidence": "passport.jpg",
+    "govUkId": "No"
   }
 ]

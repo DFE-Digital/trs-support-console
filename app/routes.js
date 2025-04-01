@@ -50,13 +50,16 @@ router.post('/find-teacher', (req, res) => {
 
   if (data.findRecord == "John Doe") {
       res.redirect('/find-teacher')
-  } 
+  }
+	else if (data.findRecord == "439353" || data.findRecord == "339353") {
+		res.redirect('/general')
+	}		
   else if (data.findRecord == "494612" || data.findRecord == "553092" || data.findRecord == "571028" ||data.findRecord == "752394") {
       res.redirect('/induction')
-  }
+  }	
   else if (data.findRecord == "987654") {
     res.redirect('/personal-details')
-} 
+ 	}
   else {
       res.redirect('/record-not-found')
   }
@@ -67,3 +70,10 @@ router.post('/find-teacher', (req, res) => {
 ////// INDUCTION ROUTES
 require('./routes/induction/induction-route')(router)
 
+
+////////// Show a single teacher (John Doe) on deactivate journey //////////
+
+router.get('/deactivate/show/:recordId', (req, res) => {
+  let record = req.session.data.deactivate.find(record => record.id === req.params.recordId)
+  res.render('support-tasks/deactivate/show', { record })
+})

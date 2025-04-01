@@ -1,0 +1,179 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "general" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">{{ record.fullName }}</h1>
+
+      {{ data.deactivate | log }}
+
+      
+
+
+      {% include "_includes/secondary-navigation.njk" %}  
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal details"
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              html: record.fullName
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: record.dateOfBirth
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: record.gender
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "gender"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: record.trn
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: record.nationalInsuranceNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "National Insurance number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+              text: record.email
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Email"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+              text: record.mobile or "Not provided"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Mobile number"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+      
+      
+      {% if data.chooseQtsRoute  == 'Initial teacher training' %}
+        {% include "_includes/summary/itt-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'Assessment only' %}
+        {% include "_includes/summary/assessment-only-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'iqts' %}
+         {% include "_includes/summary/iqts-only-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'Overseas qualified' %}
+         {% include "_includes/summary/apply-for-qts-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'Qualified Teacher Learning and Skills status (QTLS)' %}
+         {% include "_includes/summary/qtls-and-set-only-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'Legacy route' %}
+        {% include "_includes/summary/legacy-route-snapshot.njk" %}
+      {% endif %}
+
+
+  </div>
+</div>
+
+{% endblock %}

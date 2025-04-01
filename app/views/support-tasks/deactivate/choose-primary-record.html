@@ -21,6 +21,8 @@
   {% endif %}
 {% endset %}
 
+{% set record = data.deactivate %}
+
 
 {% block content %}
 
@@ -30,6 +32,10 @@
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
       {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
+      {{ govukInsetText({
+        text: "Both of these records have a qualification. After merging you will see two qualifications attached to the primary record.",
+        classes: "govuk-!-width-two-thirds"
+      }) }}
 
       <form method="post" novalidate >
 
@@ -49,7 +55,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/support-tasks/data.deactivate[0].id",
+                      href: "/deactivate/show/"+record[0].id,
                       text: "View record",
                       visuallyHiddenText: "view record"
                     }
@@ -107,7 +113,7 @@
                   actions: {
                     items: [
                       {
-                        href: "/support-tasks/data.deactivate[1].id",
+                        href: "/deactivate/show/"+record[1].id,
                         text: "View record",
                         visuallyHiddenText: "view record"
                       }
