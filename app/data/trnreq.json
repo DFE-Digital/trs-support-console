@@ -16,7 +16,9 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "On Hold",
+    "fullName": "John Henry Doe"
   },
   {
     "firstName": "Sarah",
@@ -35,7 +37,9 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "Unassigned",
+    "fullName": "Sarah Elizabeth Smith"
   },
   {
     "firstName": "Conrad",
@@ -54,9 +58,10 @@
     "hasAlerts": "None",
     "trn": "998877",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "On Hold",
+    "fullName": "Conrad Diamond"
   },
-  
   {
     "firstName": "David",
     "middleName": "James",
@@ -74,7 +79,9 @@
     "hasAlerts": "None",
     "trn": "123456",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "On Hold",
+    "fullName": "David James Brown"
   },
   {
     "firstName": "Emily",
@@ -93,7 +100,9 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "On Hold",
+    "fullName": "Emily Taylor"
   },
   {
     "firstName": "James",
@@ -112,7 +121,9 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "Open",
+    "fullName": "James Andrew Wilson"
   },
   {
     "firstName": "Olivia",
@@ -131,7 +142,9 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "Unassigned",
+    "fullName": "Olivia Johnson"
   },
   {
     "firstName": "Sarah",
@@ -148,7 +161,9 @@
     "email": "sarah.williams@example.com",
     "gender": "Female",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "Open",
+    "fullName": "Sarah Anne Williams"
   },
   {
     "firstName": "Michael",
@@ -167,7 +182,9 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "Unassigned",
+    "fullName": "Michael Brown"
   },
   {
     "firstName": "Emily",
@@ -186,7 +203,9 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "Unassigned",
+    "fullName": "Emily Grace Davies"
   },
   {
     "firstName": "David",
@@ -205,8 +224,8 @@
     "hasAlerts": "None",
     "trn": "None",
     "completed": "no",
-    "providedEvidence": "passport.jpg"
+    "providedEvidence": "passport.jpg",
+    "caseStatus": "Unassigned",
+    "fullName": "David James Johnson"
   }
 ]
-
-

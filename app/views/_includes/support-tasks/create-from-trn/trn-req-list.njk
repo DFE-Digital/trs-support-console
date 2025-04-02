@@ -13,22 +13,22 @@
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">{{ req.firstName }} {{ req.lastName }}</td>
         <td class="govuk-table__cell">{{ req.email }}</td>
-        <td class="govuk-table__cell" data-sort-value="{{ req.requested_on | date('YYYYMMDD') }}">
-          {{ req.requested_on | date('D MMM YYYY') }}
+        <td class="govuk-table__cell" data-sort-value="{{ req.dateOfTrnRequest | date('YYYYMMDD') }}">
+          {{ req.dateOfTrnRequest | date('D MMM YYYY') }}
         </td>
         <td class="govuk-table__cell">
           <strong class="govuk-tag 
-            {% if req.status == 'Open' %}
+            {% if req.caseStatus == 'Open' %}
               govuk-tag--blue
-            {% elif req.status == 'Approved' %}
-              govuk-tag--green
-            {% elif req.status == 'On hold' %}
+            {% elif req.caseStatus == 'Unassigned' %}
+              govuk-tag--yellow
+            {% elif req.caseStatus == 'On hold' %}
               govuk-tag--red
             {% else %}
               govuk-tag--grey
             {% endif %}
           ">
-            {{ req.status }}
+            {{ req.caseStatus }}
           </strong>
         </td>
         <td class="govuk-table__cell">
