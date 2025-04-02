@@ -11,7 +11,7 @@
   <tbody class="govuk-table__body">
     {% for req in data.trnreq %}
       <tr class="govuk-table__row">
-        <td class="govuk-table__cell">{{ req.firstName }} {{ req.lastName }}</td>
+        <td class="govuk-table__cell"><a href="#" class="govuk-link">{{ req.firstName }} {{ req.lastName }}</a></td>
         <td class="govuk-table__cell">{{ req.email }}</td>
         <td class="govuk-table__cell" data-sort-value="{{ req.dateOfTrnRequest | date('YYYYMMDD') }}">
           {{ req.dateOfTrnRequest | date('D MMM YYYY') }}
@@ -38,3 +38,5 @@
     {% endfor %}
   </tbody>
 </table>
+
+

@@ -1,0 +1,25 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="app-search-form">
+      <form method="post" action="/find-teacher">
+        {{ govukInput({
+            id: "find-record",
+            name: "findRecord",
+          label: {
+              text: "Search",
+              classes: "govuk-label--s app-search-form__label"
+          },
+          hint: {
+            text: "By name, Requested on or email address"
+          },
+          value: data.findRecord
+        }) }}
+
+        {{ govukButton({
+          text: "Search",
+          classes: "app-search-form__button"
+        }) }}
+      </form>
+    </div>
+  </div>
+</div>
