@@ -9,6 +9,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+    {{ data.trnreq | log }}
+    {{ data.teachers | log }}
 
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
@@ -19,9 +21,7 @@
 
 {% include "_includes/search-form.njk" %}
 
-{% include "_includes/support-tasks/create-from-trn/get-trn-table.njk" %}
-
-
+{% include "_includes/support-tasks/create-from-trn/trn-req-list.njk" %}
 
 {% endblock %}
 
