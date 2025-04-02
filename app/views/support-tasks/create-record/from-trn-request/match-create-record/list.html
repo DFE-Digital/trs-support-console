@@ -6,7 +6,12 @@
 {# {% set secondaryNavId = "findRecord" %} #}
 
 
-
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
 
 {% block content %}
 
