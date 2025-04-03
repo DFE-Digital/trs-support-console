@@ -83,7 +83,7 @@
             <br>
             Failure count: <b>0</b>
             <br>
-            Duplicate count: <b>0</b>
+            Duplicate count: <b>1</b>
             
           </p>
           
@@ -139,13 +139,14 @@
      
               function renderTable(sortedRows) {
               tableBody.innerHTML = `
-                <tr class="govuk-table__row govuk-task-list__item--with-link">
-                  <td class="govuk-table__cell"><a href="detail">1</a></td>
-                  <td class="govuk-table__cell"><a href="detail">Joseph Stubbersfield</a></td>
-                  <td class="govuk-table__cell"><a href="detail"></td>
-                  <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--green">Success</strong></a></td>
-                  <td class="govuk-table__cell"><a href="detail">17 March 2025</a></td>
-                </tr>
+               
+<tr class="govuk-table__row govuk-task-list__item--with-link">
+            <td class="govuk-table__cell"><a href="detail">1</a></td>
+            <td class="govuk-table__cell"><a href="detail">Linda Fernandez </a></td>
+            <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--orange">Duplicate</strong> </td>
+            <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--green">Success</strong></a></td>
+            <td class="govuk-table__cell"><a href="detail">17 March 2025</a></td>
+          </tr>
               ` + sortedRows.map(row => `
                 <tr class="govuk-table__row govuk-task-list__item--with-link">
                   <td class="govuk-table__cell"><a href="detail">${row.id}</a></td>
