@@ -20,34 +20,15 @@ router.get('/support-tasks/create-record/from-trn-request/match-create-record/me
   res.render('support-tasks/create-record/from-trn-request/match-create-record/merge', { record })
 })
 
-
-
-
 router.post('/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/:recordId', (req, res) => {
-  res.redirect('/support-tasks/create-record/from-trn-request/match-create-record/merge')
+  res.redirect('/support-tasks/create-record/from-trn-request/match-create-record/merge/:recordId')
 })
 
+router.post('/support-tasks/create-record/from-trn-request/match-create-record/merge/:recordId', (req, res) => {
+  req.flash('success', 'Records merged successfully')
+  res.redirect('/support-tasks/create-record/from-trn-request/match-create-record/list')
+})
 
-  /////////////  FLASH //////////////
-  //router.get('/support-tasks/create-record/from-trn-request/match/:taskId/new', (req, res) => {
-    
-    
-    //let data = req.session.data || {}
-
-    // Generate TRN
-    //const generateTRN = () => Math.floor(100000 + Math.random() * 900000).toString()
-
-    // Store the generated TRN in session data
-    //data.trn = generateTRN()
-    //req.session.data = data
-
-    // Pass new record details
-    //let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
-
-    // Redirect to the next page
-    //res.render('support-tasks/create-record/from-trn-request/match/new', {task})
-    
-  //})   
 
 }
 

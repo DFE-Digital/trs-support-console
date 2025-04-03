@@ -15,6 +15,11 @@
 
 {% block content %}
 
+{{ govukNotificationBanner({
+  type: "success",
+  html: '<h2 class="govuk-heading-m"> ' + flash + ' <a href="#" class="govuk-link"> View record</a></h2>'
+}) if flash.length }}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
