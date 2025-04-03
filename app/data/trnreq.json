@@ -3,7 +3,7 @@
     "firstName": "John",
     "middleName": "Henry",
     "lastName": "Doe",
-    "dateOfBirth": "12 April 1985",
+    "dateOfBirth": "23 September 1990",
     "nationalInsuranceNumber": "Not given",
     "dateOfTrnRequest": "15 January 2024",
     "supportTaskType": "TRN request",
@@ -17,7 +17,7 @@
     "trn": "None",
     "completed": "no",
     "providedEvidence": "passport.jpg",
-    "caseStatus": "Unassigned",
+    "caseStatus": "Open",
     "fullName": "John Henry Doe"
   },
   {
@@ -38,7 +38,7 @@
     "trn": "None",
     "completed": "no",
     "providedEvidence": "passport.jpg",
-    "caseStatus": "Unassigned",
+    "caseStatus": "Open",
     "fullName": "Sarah Elizabeth Smith"
   },
   {
@@ -143,7 +143,7 @@
     "trn": "None",
     "completed": "no",
     "providedEvidence": "passport.jpg",
-    "caseStatus": "Unassigned",
+    "caseStatus": "Open",
     "fullName": "Olivia Johnson"
   },
   {
@@ -183,7 +183,7 @@
     "trn": "None",
     "completed": "no",
     "providedEvidence": "passport.jpg",
-    "caseStatus": "Unassigned",
+    "caseStatus": "Open",
     "fullName": "Michael Brown"
   },
   {
@@ -204,7 +204,7 @@
     "trn": "None",
     "completed": "no",
     "providedEvidence": "passport.jpg",
-    "caseStatus": "Unassigned",
+    "caseStatus": "Open",
     "fullName": "Emily Grace Davies"
   },
   {
@@ -225,7 +225,7 @@
     "trn": "None",
     "completed": "no",
     "providedEvidence": "passport.jpg",
-    "caseStatus": "Unassigned",
+    "caseStatus": "Open",
     "fullName": "David James Johnson"
   }
 ]

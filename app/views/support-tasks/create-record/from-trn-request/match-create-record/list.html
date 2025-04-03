@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName="TRN requests" %}
+{% set pageName="Get a TRN requests" %}
 {% set serviceNavId = "supportTasks" %}
 {# {% set secondaryNavId = "findRecord" %} #}
 
@@ -32,6 +32,27 @@
 
 
 {% include "_includes/support-tasks/create-from-trn/trn-req-list.njk" %}
+
+{{ govukPagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    }
+  ]
+}) }}
 
 {% endblock %}
 

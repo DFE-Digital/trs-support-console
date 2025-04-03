@@ -1,13 +1,4 @@
 
-{# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
-
-
-
-{{ govukWarningText({
-  text: "Some words about merging & consequences.",
-  iconFallbackText: "Warning"
-}) }}
-
 {# <p class="govuk-body">Information being retained from the existing record is <mark class="hods-highlight"><strong>highlighted</strong></mark></p> #}
 <h2 class="govuk-heading-m">Record details after merge</h2>
 
@@ -17,33 +8,28 @@
   rows: [
     {
       key: { text: "First name" },
-      value: { html: task.firstName }
+      value: { html: record.firstName }
     },
     {
       key: { text: "Middle name" },
-      value: { html: task.middleName }
-    } if task.middleName,
+      value: { html: record.middleName }
+    } if record.middleName,
     {
       key: { text: "Last Name" },
-      value: { html: task.lastName }
+      value: { html: record.lastName }
     },
     {
       key: { text: "Date of birth" },
-      value: { text: task.dateOfBirth }
+      value: { text: record.dateOfBirth }
     },
     {
       key: { text: "Email address" },
-      value: { text: task.email }
+      value: { html: '<ul class="govuk-list govuk-list--bullet"><li>' +record.email+ '</li><li>' +data.duplicates[3].email+ '</li></ul>'  }
     },
     {
       key: { text: "National Insurance number" },
       value: { html: data.duplicates[3].nationalInsuranceNumber }
     } if data.duplicates[3].nationalInsuranceNumber,
-    {
-      key: { text: "Evidence" },
-      value: { html: '<a href="#" class="govuk-link">' + data.duplicates[3].providedEvidence + '</a>' }
-      
-    },
     {
       key: { text: "TRN" },
       value: { html: data.duplicates[3].trn }

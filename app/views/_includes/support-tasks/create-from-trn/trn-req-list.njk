@@ -5,7 +5,6 @@
       <th scope="col" class="govuk-table__header" aria-sort="none">Email</th>
       <th scope="col" class="govuk-table__header" aria-sort="none">Requested on</th>
       <th scope="col" class="govuk-table__header" aria-sort="none">Status</th>
-      <th scope="col" class="govuk-table__header" aria-sort="none">Possible duplicate</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -30,9 +29,6 @@
           ">
             {{req.caseStatus}}
           </strong>
-        </td>
-        <td class="govuk-table__cell">
-          {{req.potentialRecordMatch}}
         </td>
       </tr>
     {% endfor %}
