@@ -42,10 +42,11 @@
     <span class="govuk-caption-l">{{captionName}}</span>
 
     {% if record.potentialRecordMatch == "Yes" %}
-      <h1 class="govuk-heading-l">{{pageName}} &nbsp;&nbsp;<strong class="govuk-tag govuk-tag--red">Potential duplicate</strong></h1> 
+      <h1 class="govuk-heading-l">{{pageName}} &nbsp;&nbsp;<span class="moj-badge moj-badge--red moj-badge--large">Potential duplicate</span></h1> 
     {% else %}
       <h1 class="govuk-heading-l">{{pageName}}</h1>
     {% endif %}
+
 
     
     {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
@@ -54,7 +55,7 @@
       {% if record.potentialRecordMatch == "Yes" %}
         {{ govukButton({
           text: "Compare potential duplicates",
-          href: "/support-tasks/create-record/from-trn-request/match/" + record.id + "/duplicates"
+          href: "/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/" + record.id
         }) }}
         {{ govukButton({
           text: "Cancel",

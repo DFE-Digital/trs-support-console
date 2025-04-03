@@ -41,6 +41,13 @@ router.get('/support-tasks/create-record/from-trn-request/match-create-record/sh
   res.render('support-tasks/create-record/from-trn-request/match-create-record/show', { record })
 })
 
+
+router.get('/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/:recordId', (req, res) => {
+  let record = req.session.data.trnreq.find(record => record.id === req.params.recordId)
+  res.render('support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing', { record })
+})
+
+
   /////////////  FLASH //////////////
   //router.get('/support-tasks/create-record/from-trn-request/match/:taskId/new', (req, res) => {
     

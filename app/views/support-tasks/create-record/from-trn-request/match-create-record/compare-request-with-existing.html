@@ -1,0 +1,195 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Compare potential duplicates" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% set summaryCardTitle %}
+  {% if data.trnreq.potentialRecordMatch == "Yes" %}
+    Incoming TRN request
+  {% else %}
+  Incoming TRN request &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="moj-badge moj-badge--red moj-badge--large">Potential duplicate</span>
+  {% endif %}
+{% endset %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ record.trn | log }}
+    {{ record.caseStatus | log }}
+    {{ record.fullName | log }}
+    {{ record.trnRequestId | log }}
+    {{ record.trnRequestType | log }}
+
+    {{ record.supportTaskType | log }}
+    {{ record.reference | log }}
+    {{ record.dateOfTrnRequest | log }}
+    {{ record.firstName | log }}
+    {{ record.middleName | log }}
+    {{ record.lastName | log }}
+    {{ record.dateOfBirth | log }}
+    {{ record.email | log }}
+    {{ record.nationalInsuranceNumber | log }}
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
+      
+      {{ govukInsetText({
+        html: '<p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p>',
+        classes: "govuk-!-width-two-thirds"
+      }) }}
+
+      <form method="post" novalidate >
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+
+            {{ data.mergeRecord | log }}
+
+
+            {{ govukSummaryList({
+              card: {
+                title: {
+                  html: summaryCardTitle
+                }
+              },
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { html: record.firstName }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: { html: record.middleName }
+                } if record.middleName,
+                {
+                  key: { text: "Last Name" },
+                  value: { html: record.lastName }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: record.dateOfBirth }
+                },
+                {
+                  key: { text: "Email address" },
+                  value: { text: record.email }
+                },
+                {
+                  key: { text: "National Insurance number" },
+                  value: { text: record.nationalInsuranceNumber }
+                } if record.nationalInsuranceNumber
+              ]
+            }) }}
+          </div>
+  
+      
+
+          <div class="govuk-grid-column-one-half">
+       
+            
+              {{ govukSummaryList({
+                card: {
+                  title: {
+                    html: "Existing record"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "/deactivate/show/"+record.id,
+                        text: "View record",
+                        visuallyHiddenText: "view record"
+                      }
+                    ]
+                  }
+                },
+                rows: [
+                  {
+                    key: { text: "First name" },
+                    value: { html: data.duplicates[3].firstName }
+                  },
+                  {
+                    key: { text: "Middle name" },
+                    value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].middleName + '</strong></mark>' }
+                  } if data.duplicates[3].middleName,
+                  {
+                    key: { text: "Last Name" },
+                    value: { html: data.duplicates[3].lastName }
+                  },
+                  {
+                    key: { text: "Date of birth" },
+                    value: { text: data.duplicates[3].dateOfBirth }
+                  },
+                  {
+                    key: { text: "Email address" },
+                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].email + '</strong></mark>' }
+                  },
+                  {
+                    key: { text: "National Insurance number" },
+                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
+                  } if data.duplicates[3].nationalInsuranceNumber,
+                  {
+                    key: { text: "TRN" },
+                    value: { html:  data.duplicates[3].trn  }
+                  }
+                ]
+              }) }}
+          </div>
+        </div>
+     
+
+        {{ govukRadios({
+          name: "mergeRecord",
+          fieldset: {
+            legend: {
+              text: "Are they the same person?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No, create a new record",
+              text: "No, create a new record"
+            }
+          ]
+        }) }}
+        
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary",
+            href: "javascript:window.history.back()"
+          }) }}
+        </div>
+
+      </form>    
+    
+    
+  </div>
+</div>
+
+{% endblock %}
