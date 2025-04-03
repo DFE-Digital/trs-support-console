@@ -1,0 +1,305 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Add and manage users – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: true
+    },
+    {
+      href: "permissions/overview",
+      text: "Add and manage users"
+    }
+  ]
+}) }}
+
+
+  
+
+  
+
+  <div class="govuk-width-container">
+
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+         
+          <span class="govuk-caption-l"> Active Integration Transactions</span>
+          <h1 class="govuk-heading-l">Capita Import</h1>
+
+          <h2 class="govuk-heading-m">
+            Record information
+          </h2>
+
+          <p class="govuk-body govuk-!-padding-bottom-4">
+            Total count: <b>286</b>
+            <br>
+            Success count: <b>280</b>
+            <br>
+            Failure count: <b>6</b>
+            <br>
+            Duplicate count: <b>0</b>
+          </p>
+      
+
+          <table class="govuk-table" data-module="moj-sortable-table" >
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                
+          
+                <th scope="col" class="govuk-table__header" aria-sort="ascending">Row ID</th>
+          
+                <th scope="col" class="govuk-table__header" aria-sort="none">Person</th>
+          
+                <th scope="col" class="govuk-table__header" aria-sort="none">Duplicate status</th>
+
+                <th scope="col" class="govuk-table__header" aria-sort="none">Status reason</th>
+
+                <th scope="col" class="govuk-table__header" aria-sort="none">Created on</th>
+
+                <th scope="col" class="govuk-table__header" aria-sort="none">Filename</th>
+          
+              
+          
+              </tr>
+            </thead>
+          
+            <tbody class="govuk-table__body">
+          
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">10</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Natalie Foster</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">101</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Dan Xue</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">102</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Victoria Joicey</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">103</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Katie Shepherd</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">104</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Jane Bedwell</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">105</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Yvette Mepham</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">106</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Carmen Gomez</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">107</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Adela Nunez</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+          
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">108</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Indira Weiss</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">109</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Catharina Wiese</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">110</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Joseph Arimathea</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+          
+                <td class="govuk-table__cell"><a href="detail">111</a></td>
+          
+                <td class="govuk-table__cell"><a href="detail">Alex Mercer</a></td>
+
+                <td class="govuk-table__cell"> </td>
+
+                <td class="govuk-table__cell"> Success</td>
+
+                <td class="govuk-table__cell">17/03/2025</td>
+
+                <td class="govuk-table__cell">traout-210615.txt</td>
+
+              </tr>
+
+             
+            </tbody>
+          </table>
+
+
+    </div>
+  </div>
+</main>
+</div>
+{% endblock %}
