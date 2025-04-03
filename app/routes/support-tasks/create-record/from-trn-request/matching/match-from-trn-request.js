@@ -34,27 +34,33 @@ module.exports = (router) => {
   // })
 
 
+////////// Show a single teacher (John Doe) on deactivate journey //////////
+//// Route passes {record} so must call that in the template
+router.get('/support-tasks/create-record/from-trn-request/match-create-record/show/:recordId', (req, res) => {
+  let record = req.session.data.trnreq.find(record => record.id === req.params.recordId)
+  res.render('support-tasks/create-record/from-trn-request/match-create-record/show', { record })
+})
+
   /////////////  FLASH //////////////
-  router.get('/support-tasks/create-record/from-trn-request/match/:taskId/new', (req, res) => {
+  //router.get('/support-tasks/create-record/from-trn-request/match/:taskId/new', (req, res) => {
     
-   
     
-    let data = req.session.data || {}
+    //let data = req.session.data || {}
 
     // Generate TRN
-    const generateTRN = () => Math.floor(100000 + Math.random() * 900000).toString()
+    //const generateTRN = () => Math.floor(100000 + Math.random() * 900000).toString()
 
     // Store the generated TRN in session data
-    data.trn = generateTRN()
-    req.session.data = data
+    //data.trn = generateTRN()
+    //req.session.data = data
 
     // Pass new record details
-    let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
+    //let task = req.session.data.tasks.find(task => task.id === req.params.taskId)
 
     // Redirect to the next page
-    res.render('support-tasks/create-record/from-trn-request/match/new', {task})
+    //res.render('support-tasks/create-record/from-trn-request/match/new', {task})
     
-  })   
+  //})   
 
 }
 
