@@ -1,0 +1,155 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Add and manage users – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "#",
+      text: "Support tasks",
+      active: true
+    },
+    {
+      href: "permissions/overview",
+      text: "Add and manage users"
+    }
+  ]
+}) }}
+
+
+  
+
+  
+
+  <div class="govuk-width-container">
+
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <nav class="govuk-breadcrumbs govuk-!-padding-bottom-4" aria-label="Breadcrumb">
+            <ol class="govuk-breadcrumbs__list">
+              <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="#">Support tasks home</a>
+              </li>
+              <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="#">ITR Overview</a>
+              </li>
+              
+            </ol>
+          </nav>
+         
+          <span class="govuk-caption-l"> Active Integration Transactions</span>
+          <h1 class="govuk-heading-l">Capita Import</h1>
+
+          <h2 class="govuk-heading-m">
+            Record information
+          </h2>
+
+          <p class="govuk-body govuk-!-padding-bottom-4">
+            Total count: <b>286</b>
+            <br>
+            Success count: <b>280</b>
+            <br>
+            Failure count: <b>6</b>
+            <br>
+            Duplicate count: <b>0</b>
+            <br>
+            File name: <b>	traout-210615.txt</b>
+          </p>
+      
+          <table class="govuk-table" data-module="moj-sortable-table" style="table-layout: autp;" >
+            <thead>
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header" aria-sort="none">Row ID</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Person</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Duplicate status</th>
+                <th scope="col" class="govuk-table__header moj-sortable-table__header" aria-sort="ascending">Status reason</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Created on</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <!-- Rows will be populated by JavaScript -->
+            </tbody>
+          </table>
+          
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const tableBody = document.getElementById("table-body");
+              const firstNames = ["Alice", "Bob", "Charlie", "David", "Emma", "Fiona", "George", "Hannah", "Ian", "Julia"];
+              const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Martinez"];
+              let rows = [];
+              
+              for (let i = 1; i <= 286; i++) {
+                let randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                let randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                let duplicateStatus = Math.random() < 0.05 ? "Duplicate" : "";
+                let statusReason = Math.random() < 0.05 ? "Fail" : "Success";
+                rows.push({
+                  id: i,
+                  person: `${randomFirstName} ${randomLastName}`,
+                  duplicateStatus: duplicateStatus,
+                  statusReason: statusReason,
+                  createdOn: "17 March 2025"
+                });
+              }
+              
+              function renderTable(sortedRows) {
+                tableBody.innerHTML = sortedRows.map(row => `
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell">${row.id}</td>
+                    <td class="govuk-table__cell">${row.person}</td>
+                    <td class="govuk-table__cell">${row.duplicateStatus}</td>
+                    <td class="govuk-table__cell">${row.statusReason}</td>
+                    <td class="govuk-table__cell">${row.createdOn}</td>
+                  </tr>
+                `).join("");
+              }
+              
+              // Sort by Status Reason by default
+              rows.sort((a, b) => a.statusReason.localeCompare(b.statusReason));
+              renderTable(rows);
+          
+              document.querySelectorAll(".moj-sortable-table__header").forEach(header => {
+                header.addEventListener("click", function() {
+                  const column = this.innerText.trim();
+                  let key = column.toLowerCase().replace(" ", "");
+                  rows.sort((a, b) => a[key].localeCompare(b[key]));
+                  renderTable(rows);
+                });
+              });
+            });
+          </script>
+          
+          
+    </div>
+  </div>
+</main>
+</div>
+{% endblock %}

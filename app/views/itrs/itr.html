@@ -1,0 +1,175 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Add and manage users – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "../support-tasks",
+      text: "Support tasks",
+      active: true
+    },
+    {
+      href: "permissions/overview",
+      text: "Add and manage users"
+    }
+  ]
+}) }}
+
+
+  
+
+  
+
+  <div class="govuk-width-container">
+
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <nav class="govuk-breadcrumbs govuk-!-padding-bottom-4" aria-label="Breadcrumb">
+            <ol class="govuk-breadcrumbs__list">
+              <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="../support-tasks">Support tasks</a>
+              </li>
+              <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="interfaces">Interfaces</a>
+              </li>
+              
+            </ol>
+          </nav>
+         
+          <span class="govuk-caption-l"> Active Integration Transactions</span>
+          <h1 class="govuk-heading-l">Capita Import</h1>
+
+          <h2 class="govuk-heading-m">
+            Record information
+          </h2>
+
+          <p class="govuk-body govuk-!-padding-bottom-4">
+            File name: <b>	traout-210615.txt</b>
+            <br>
+            Interface ID: <b>115141</b>
+            <br>
+            Total count: <b>100</b>
+            <br>
+            Success count: <b>95 </b>
+            <br>
+            Failure count: <b>5</b>
+            <br>
+            Duplicate count: <b>3</b>
+            
+          </p>
+      
+          <table class="govuk-table" data-module="moj-sortable-table" style="table-layout: autp; govuk-table__row:hover {
+            background-color: #f3f2f1;
+          }" >
+            <thead>
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header" aria-sort="none">Row ID</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Person</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Duplicate</th>
+                <th scope="col" class="govuk-table__header moj-sortable-table__header" aria-sort="descending">Status</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none">Created on</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr class="govuk-table__row govuk-task-list__item--with-link">
+                <td class="govuk-table__cell"><a href="detail">1</a></td>
+                <td class="govuk-table__cell"><a href="detail">John Doe</a></td>
+                <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--orange">Duplicate</strong></a></td>
+                <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--red">Fail</strong></a></td>
+                <td class="govuk-table__cell"><a href="detail">17 March 2025</a></td>
+              </tr>
+              <!-- Rows will be populated by JavaScript -->
+            </tbody>
+          </table>
+          
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const tableBody = document.getElementById("table-body");
+              const firstNames = ["Alice", "Bob", "Charlie", "David", "Emma", "Fiona", "George", "Hannah", "Ian", "Julia", "James", "Michael", "Robert", "Daniel", "Anthony", "Mark", "George", "Edward", "Patrick", "Nathan", "Aaron", "Sean", "Harold", "Mary", "Amanda", "Carol", "Anna", "Lisa", "Nancy"];
+              const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Martinez", "Weber", "Black", "Egger", "Aliyev", "Dupont", "Martin", "Dumont", "Wiese", "Horvat", "Newman", "Olsen", "Mortensen"];
+              let rows = [];
+              
+              for (let i = 1; i <= 100; i++) {
+                let randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+                let randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+                let duplicateStatus = Math.random() < 0.05 ? "Duplicate" : "";
+                let statusReason = Math.random() < 0.05 ? "Fail" : "Success";
+                rows.push({
+                  id: i,
+                  person: `${randomFirstName} ${randomLastName}`,
+                  duplicateStatus: duplicateStatus,
+                  statusReason: statusReason,
+                  createdOn: "17 March 2025"
+                });
+              }
+     
+              function renderTable(sortedRows) {
+              tableBody.innerHTML = `
+                <tr class="govuk-table__row govuk-task-list__item--with-link">
+                  <td class="govuk-table__cell"><a href="detail">1</a></td>
+                  <td class="govuk-table__cell"><a href="detail">Joseph Stubbersfield</a></td>
+                  <td class="govuk-table__cell"><a href="detail"></td>
+                  <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--red">Fail</strong></a></td>
+                  <td class="govuk-table__cell"><a href="detail">17 March 2025</a></td>
+                </tr>
+              ` + sortedRows.map(row => `
+                <tr class="govuk-table__row govuk-task-list__item--with-link">
+                  <td class="govuk-table__cell"><a href="detail">${row.id}</a></td>
+                  <td class="govuk-table__cell"><a href="detail">${row.person}</a></td>
+                  <td class="govuk-table__cell"><a href="detail">${row.duplicateStatus ? '<strong class="govuk-tag govuk-tag--orange">Duplicate</strong>' : ''}</a></td>
+                  <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag ${row.statusReason === 'Fail' ? 'govuk-tag--red' : 'govuk-tag--green'}">${row.statusReason}</strong></a></td>
+                  <td class="govuk-table__cell"><a href="detail">${row.createdOn}</a></td>
+                </tr>
+              `).join("");
+}
+              
+              // Sort by Status Reason by default
+              rows.sort((a, b) => a.statusReason.localeCompare(b.statusReason));
+              renderTable(rows);
+          
+              document.querySelectorAll(".moj-sortable-table__header").forEach(header => {
+                header.addEventListener("click", function() {
+                  const column = this.innerText.trim();
+                  let key = column.toLowerCase().replace(" ", "");
+                  rows.sort((a, b) => a[key].localeCompare(b[key]));
+                  renderTable(rows);
+                });
+              });
+            });
+          </script>
+          
+          
+    </div>
+  </div>
+</main>
+</div>
+{% endblock %}
