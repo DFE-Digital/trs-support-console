@@ -30,5 +30,11 @@ router.post('/support-tasks/create-record/from-trn-request/match-create-record/m
 })
 
 
+router.get('/support-tasks/create-record/from-trn-request/match-create-record/updated/:recordId', (req, res) => {
+  let record = req.session.data.trnreq.find(record => record.id === req.params.recordId)
+  res.render('support-tasks/create-record/from-trn-request/match-create-record/updated', { record })
+})
+
+
 }
 
