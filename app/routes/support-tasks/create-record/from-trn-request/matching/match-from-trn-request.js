@@ -28,29 +28,30 @@ router.get('/support-tasks/create-record/from-trn-request/match-create-record/me
 })
 
 
-//////// Post from Merge to list wit Flash msg ////////
+//////// Post from MERGE to list wit Flash msg ////////
 router.post('/support-tasks/create-record/from-trn-request/match-create-record/merge/:recordId', (req, res) => {
   const recordId = req.body.recordId
-  req.flash('success', 'Records merged successfully')
-  res.redirect('/support-tasks/create-record/from-trn-request/match-create-record/list')
+  res.redirect(`/support-tasks/create-record/from-trn-request/match-create-record/list?message=Records+merged+successfully&recordId=${recordId}`)
 })
 
-//////// Post from Show to list wit Flash msg ////////
+
+//////// Post from SHOW to list wit Flash msg ////////
 router.post('/support-tasks/create-record/from-trn-request/match-create-record/show/:recordId', (req, res) => {
   const recordId = req.body.recordId
-  console.log("📩 recordId from body:", req.body.recordId)
-  // Fix POST route flash message (use singular)
-  req.flash('success', 'Record created successfully')
-  res.redirect('/support-tasks/create-record/from-trn-request/match-create-record/list')
+  res.redirect(`/support-tasks/create-record/from-trn-request/match-create-record/list?message=Record+created+successfully&recordId=${recordId}`)
 })
 
+
 router.get('/support-tasks/create-record/from-trn-request/match-create-record/list', (req, res) => {
-  const flashRaw = req.flash('success')[0] || ''
-  const [flashMessage, recordId] = flashRaw.split('|||')
+  const flashMessage = req.query.message || ''
+  const recordId = req.query.recordId || ''
+
+  const record = req.session.data.trnreq?.find(r => r.id === recordId)
 
   res.render('support-tasks/create-record/from-trn-request/match-create-record/list', {
     flashMessage,
-    recordId
+    recordId,
+    fullName: record?.fullName || '' // fallback just in case
   })
 })
 

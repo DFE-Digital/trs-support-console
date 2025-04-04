@@ -15,12 +15,40 @@
 
 {% block content %}
 
-{{ govukNotificationBanner({
-  type: "success",
-  html: '<h2 class="govuk-heading-m">' ~ flash ~ 
-        ' <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ 
-        '" class="govuk-link">View record</a></h2>'
-}) if flash.length }}
+{% if flashMessage %}
+  {% if flashMessage == "Record created successfully" %}
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '
+        <div class="banner-flex">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+            ' ~ fullName ~ ' was created successfully
+          </h2>
+          
+            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">View record</a>
+          
+        </div>'
+    }) }}
+  
+  {% elif flashMessage == "Records merged successfully" %}
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '
+        <div class="banner-flex">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+            Records merged successfully for ' ~ fullName ~ '
+          </h2>
+          
+            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">View record</a>
+          
+        </div>'
+    }) }}
+  {% endif %}
+{% endif %}
+
+
+
+
 
 
 
