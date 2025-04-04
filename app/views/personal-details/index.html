@@ -20,31 +20,124 @@
 
 {% block content %}
 
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-
-      {{ govukNotificationBanner({
-        type: "success",
-        html: '<h2 class="govuk-heading-m">'+flash+'</h2>'
-      }) if flash.length }}
 
       <h1 class="govuk-heading-l">{{ data.person[0].fullName }}</h1>
 
       {{ data.teachers | log }}
-      {{ updatedData | log }}
-
-
-      {% include "_includes/personal-details/secondary-navigation.njk" %}
       
-      {% if data.personalDetailsFirstName %}
-        {% include "_includes/personal-details/updated-personal-details.njk" %} 
-      {% else  %}
-        {% include "_includes/personal-details/original-personal-details.njk" %}  
+
+
+      {% include "_includes/personal-details/secondary-navigation.njk" %}  
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal Details"
+          },
+          actions: {
+            items: [
+              {
+                href: "/personal-details/details?returnUrl",
+                text: "Change",
+                visuallyHiddenText: "personal details"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data.person[0].fullName
+            }
+          },
+          {
+            key: {
+              text: "Previous name"
+            },
+            value: {
+              text:  data.personalDetailsFirstName + " " +  data.personalDetailsMiddleName + " " +  data.personalDetailsLastName
+            } 
+          } if data.personalDetailsFirstName or data.personalDetailsMiddleName or data.personalDetailsLastName ,
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: data.person[0].dateOfBirthDay + " " + data.person[0].dateOfBirthMonth + " " + data.person[0].dateOfBirthYear
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: data.person[0].gender
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: data.person[0].trn
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: data.person[0].nationalInsurance
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+               text: data.person[0].email
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+               text: data.person[0].mobile
+            }
+          }
+        ]
+      }) }}
+      
+      {% if data.chooseQtsRoute  == 'Initial teacher training' %}
+        {% include "_includes/summary/itt-snapshot.njk" %}
       {% endif %}
 
+      {% if data.chooseQtsRoute  == 'Assessment only' %}
+        {% include "_includes/summary/assessment-only-snapshot.njk" %}
+      {% endif %}
 
-      
+      {% if data.chooseQtsRoute  == 'iqts' %}
+         {% include "_includes/summary/iqts-only-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'Overseas qualified' %}
+         {% include "_includes/summary/apply-for-qts-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'Qualified Teacher Learning and Skills status (QTLS)' %}
+         {% include "_includes/summary/qtls-and-set-only-snapshot.njk" %}
+      {% endif %}
+
+      {% if data.chooseQtsRoute  == 'Legacy route' %}
+        {% include "_includes/summary/legacy-route-snapshot.njk" %}
+      {% endif %}
+
 
   </div>
 </div>

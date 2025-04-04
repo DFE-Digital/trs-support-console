@@ -21,23 +21,7 @@
 
     {# We call record here from the route `/support-tasks/create-record/from-trn-request/match-create-record/show/:id` #}
 
-    {{ record.trn | log }}
-    {{ record.caseStatus | log }}
-    {{ record.fullName | log }}
-    {{ record.trnRequestId | log }}
-    {{ record.trnRequestType | log }}
-
-    {{ record.supportTaskType | log }}
-    {{ record.reference | log }}
-    {{ record.dateOfTrnRequest | log }}
-    {{ record.firstName | log }}
-    {{ record.middleName | log }}
-    {{ record.lastName | log }}
-    {{ record.dateOfBirth | log }}
-    {{ record.email | log }}
-    {{ record.nationalInsuranceNumber | log }}
-
-    {{ record | log }}
+    {{ record.id | log }}
 
     <span class="govuk-caption-l">{{captionName}}</span>
 
@@ -63,17 +47,16 @@
           href: "javascript:window.history.back()",
           classes: "govuk-button--secondary"
         }) }}
-      {% else %}  
-        {{ govukButton({
-          text: "Create a record from TRN request",
-          href: "/support-tasks/create-record/from-trn-request/no-match/" + record.id + "/reason"
-        }) }}
-        {{ govukButton({
-          text: "Cancel",
-          href: "javascript:window.history.back()",
-          classes: "govuk-button--secondary"
-        }) }}
+        {% else %} 
+        <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/show/{{record.id}}" novalidate>
+          <input type="hidden" name="recordId" value="{{record.id}}">
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button">Create a record from TRN request</button>
+            <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
+          </div>
+        </form>
       {% endif %}
+      <p>{{record.id}}</p>
     </div>
 
   </div>

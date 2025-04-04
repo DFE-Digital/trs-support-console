@@ -1,15 +1,9 @@
 
-
-{# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
-
   <div class="govuk-summary-card">
     <div class="govuk-summary-card__title-wrapper">
       <h2 class="govuk-summary-card__title">Requested on {{record.dateOfTrnRequest}}</h2>
-      {# <ul class="govuk-summary-card__actions">
-        <li class="govuk-summary-card__action">
-          <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> {{record.dateOfTrnRequest}}</span></a>
-        </li>
-      </ul> #}
+     
+     <p>{{record.id}}</p>
     </div>
     <div class="govuk-summary-card__content">
       <dl class="govuk-summary-list">

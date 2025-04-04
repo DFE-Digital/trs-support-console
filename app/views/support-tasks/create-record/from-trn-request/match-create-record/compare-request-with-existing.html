@@ -27,21 +27,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    {{ record.trn | log }}
-    {{ record.caseStatus | log }}
-    {{ record.fullName | log }}
-    {{ record.trnRequestId | log }}
-    {{ record.trnRequestType | log }}
-
-    {{ record.supportTaskType | log }}
-    {{ record.reference | log }}
-    {{ record.dateOfTrnRequest | log }}
-    {{ record.firstName | log }}
-    {{ record.middleName | log }}
-    {{ record.lastName | log }}
-    {{ record.dateOfBirth | log }}
-    {{ record.email | log }}
-    {{ record.nationalInsuranceNumber | log }}
+    {{ record | log }}
 
       <span class="govuk-caption-l">{{captionName}}</span>
       <h1 class="govuk-heading-l"> {{pageName}}</h1>
@@ -57,8 +43,6 @@
           <div class="govuk-grid-column-one-half">
             
             {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
-
-            {{ data.mergeRecord | log }}
 
 
             {{ govukSummaryList({

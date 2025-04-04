@@ -18,9 +18,9 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ data.record[0].fullName }}</h1>
+      <h1 class="govuk-heading-l">{{ data.trnreq[0].fullName }}</h1>
 
-      {{ record.id | log }}
+      {{ req.id | log }}
       <p>{{ record.id }}</p>
 
       {% include "_includes/secondary-navigation.njk" %}  
@@ -46,7 +46,7 @@
               text: "Name"
             },
             value: {
-              html: record.fullName
+              html: data.trnreq[0].fullName
             }
           },
           {
@@ -54,15 +54,19 @@
               text: "Date of birth"
             },
             value: {
-              text: record.dateOfBirth
+              text: data.trnreq[0].dateOfBirth
             }
           },
           {
+            key: { text: "Email" },
+            value: { html: '<ul class="govuk-list govuk-list--bullet"><li>' +data.trnreq[0].email+ '</li><li>' +data.duplicates[3].email+ '</li></ul>'  }
+          },
+          {
             key: {
-              text: "Gender"
+              text: "National Insurance number"
             },
             value: {
-              text: record.gender
+              text: data.duplicates[3].nationalInsuranceNumber
             }
           },
           {
@@ -70,31 +74,24 @@
               text: "Teacher reference number (TRN)"
             },
             value: {
-              text: record.trn
+              text: data.duplicates[3].trn
             }
           },
           {
             key: {
-              text: "National Insurance number"
+              text: "Gender"
             },
             value: {
-              text: record.nationalInsuranceNumber
+              text: data.duplicates[3].gender
             }
           },
-          {
-            key: {
-              text: "Email"
-            },
-            value: {
-              text: record.email
-            }
-          },
+         
           {
             key: {
               text: "Mobile number"
             },
             value: {
-              text: record.mobile or "Not provided"
+              text: data.duplicates[3].mobile or "Not provided"
             }
           }
         ]

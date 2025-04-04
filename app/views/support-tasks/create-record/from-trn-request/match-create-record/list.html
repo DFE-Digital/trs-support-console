@@ -28,11 +28,13 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    {{ data.trnreq | log }}
-    {{ data.teachers | log }}
+    {{ record | log }}
+    
 
     <span class="govuk-caption-l">{{captionName}}</span>
     <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <p>{{ record.id }}</p>
     
   
   </div>
