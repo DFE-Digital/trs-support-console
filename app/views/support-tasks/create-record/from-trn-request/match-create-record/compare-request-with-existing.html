@@ -53,8 +53,6 @@
         classes: "govuk-!-width-two-thirds"
       }) }}
 
-      <form method="post" novalidate >
-
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-one-half">
             
@@ -151,6 +149,8 @@
               }) }}
           </div>
         </div>
+
+        <p>{{ record.id }}</p>
      
 
         {{ govukRadios({
@@ -174,21 +174,17 @@
           ]
         }) }}
         
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Continue",
-            href: "/support-tasks/create-record/from-trn-request/match-create-record/merge/"+record.id
-          }) }}
+        <form method="get" action="/support-tasks/create-record/from-trn-request/match-create-record/merge/{{ record.id }}">
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button" type="submit">Continue</button>
         
-          {{ govukButton({
-            text: "Cancel",
-            classes: "govuk-button--secondary",
-            href: "javascript:window.history.back()"
-          }) }}
-        </div>
-
-      </form>    
-    
+            {{ govukButton({
+              text: "Cancel",
+              classes: "govuk-button--secondary",
+              href: "javascript:window.history.back()"
+            }) }}
+          </div>
+        </form>
     
   </div>
 </div>

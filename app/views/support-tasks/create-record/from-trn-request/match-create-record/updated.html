@@ -18,12 +18,10 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ record.fullName }}</h1>
+      <h1 class="govuk-heading-l">{{ data.record[0].fullName }}</h1>
 
-      {{ data.deactivate | log }}
-
-      
-
+      {{ record.id | log }}
+      <p>{{ record.id }}</p>
 
       {% include "_includes/secondary-navigation.njk" %}  
 
@@ -102,31 +100,7 @@
         ]
       }) }}
       
-      
-      {% if data.chooseQtsRoute  == 'Initial teacher training' %}
-        {% include "_includes/summary/itt-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Assessment only' %}
-        {% include "_includes/summary/assessment-only-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'iqts' %}
-         {% include "_includes/summary/iqts-only-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Overseas qualified' %}
-         {% include "_includes/summary/apply-for-qts-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Qualified Teacher Learning and Skills status (QTLS)' %}
-         {% include "_includes/summary/qtls-and-set-only-snapshot.njk" %}
-      {% endif %}
-
-      {% if data.chooseQtsRoute  == 'Legacy route' %}
-        {% include "_includes/summary/legacy-route-snapshot.njk" %}
-      {% endif %}
-
+    
 
   </div>
 </div>

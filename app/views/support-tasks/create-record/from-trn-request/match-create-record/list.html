@@ -17,8 +17,12 @@
 
 {{ govukNotificationBanner({
   type: "success",
-  html: '<h2 class="govuk-heading-m">' ~ flash ~ ' <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ record.id ~ '" class="govuk-link">View record</a></h2>'
+  html: '<h2 class="govuk-heading-m">' ~ flash ~ 
+        ' <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ 
+        '" class="govuk-link">View record</a></h2>'
 }) if flash.length }}
+
+
 
 
 <div class="govuk-grid-row">
