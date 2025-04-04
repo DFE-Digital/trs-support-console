@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Add and manage users – {{ serviceName }} – GOV.UK Prototype Kit
+Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -142,14 +142,6 @@
             <td class="govuk-table__cell"><a href="y_details"> </td>
             <td class="govuk-table__cell"><a href="y_details"><strong class="govuk-tag govuk-tag--red">Fail</strong></a></td>
             <td class="govuk-table__cell"><a href="y_details">17 March 2025</a></td>
-          </tr>
-
-          <tr class="govuk-table__row govuk-task-list__item--with-link">
-            <td class="govuk-table__cell"><a href="x_details">21</a></td>
-            <td class="govuk-table__cell"><a href="x_details">Linda Fernandez </a></td>
-            <td class="govuk-table__cell"><a href="x_details"><strong class="govuk-tag govuk-tag--orange">Duplicate</strong> </td>
-            <td class="govuk-table__cell"><a href="x_details"><strong class="govuk-tag govuk-tag--green">Success</strong></a></td>
-            <td class="govuk-table__cell"><a href="x_details">17 March 2025</a></td>
           </tr>
           
         ` + sortedRows.map(row => `
