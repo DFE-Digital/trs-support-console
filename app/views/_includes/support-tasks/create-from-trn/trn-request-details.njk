@@ -1,52 +1,83 @@
 
   <div class="govuk-summary-card">
     <div class="govuk-summary-card__title-wrapper">
-      <h2 class="govuk-summary-card__title">Requested on {{record.dateOfTrnRequest}}</h2>
-     
-     <p>{{record.id}}</p>
+      <h2 class="govuk-summary-card__title">Requested on {{record.dateOfTrnRequest}} from &nbsp;&nbsp;<strong class="govuk-tag">{{ record.sourceOfMatch }}</strong></h2>
+      {# <p>{{record.id}}</p> #}
     </div>
-    <div class="govuk-summary-card__content">
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">First name</dt>
-          <dd class="govuk-summary-list__value">{{record.firstName}}</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">Middle name</dt>
-          <dd class="govuk-summary-list__value">{{record.middleName}}</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">Last name</dt>
-          <dd class="govuk-summary-list__value">{{record.lastName}}</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">Date of birth</dt>
-          <dd class="govuk-summary-list__value">{{record.dateOfBirth}}</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">Email</dt>
-          <dd class="govuk-summary-list__value">{{record.email}}</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">TRN</dt>
-          <dd class="govuk-summary-list__value">{{record.trn}}</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">National Insurance number</dt>
-          <dd class="govuk-summary-list__value">{{record.nationalInsuranceNumber}}</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">Provider</dt>
-          <dd class="govuk-summary-list__value">[provider name]</dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">Course</dt>
-          <dd class="govuk-summary-list__value">[course name]</dd>
-        </div>
-      </dl>
+<div class="govuk-summary-card__content">
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Name</dt>
+      <dd class="govuk-summary-list__value">{{ record.fullName }}</dd>
     </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Previous name</dt>
+      <dd class="govuk-summary-list__value">{{ record.previousName or "none" }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Date of birth</dt>
+      <dd class="govuk-summary-list__value">{{ record.dateOfBirth }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Personal email</dt>
+      <dd class="govuk-summary-list__value">{{ record.email }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">National Insurance number</dt>
+      <dd class="govuk-summary-list__value">{{ record.nationalInsuranceNumber }}</dd>
+    </div>
+
+    {% if record.nationalInsuranceNumber == "Not provided" or record.nationalInsuranceNumber == "" or record.nationalInsuranceNumber == null %}
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Address</dt>
+        <dd class="govuk-summary-list__value">{{ record.trainingProviderAddress }}</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Town or city</dt>
+        <dd class="govuk-summary-list__value">{{ record.town }}</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Postal code</dt>
+        <dd class="govuk-summary-list__value">{{ record.postcode }}</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Country</dt>
+        <dd class="govuk-summary-list__value">{{ record.country }}</dd>
+      </div>
+    {% endif %}
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Working in school or educational setting</dt>
+      <dd class="govuk-summary-list__value">{{ record.workingAlready }}</dd>
+    </div>
+
+    {% if record.workingAlready == "Yes" %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Work email</dt>
+      <dd class="govuk-summary-list__value">{{ record.workEmail }}</dd>
+    </div>
+    {% endif %}
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">NPQ application ID</dt>
+      <dd class="govuk-summary-list__value">{{ record.npqApplicationId }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">NPQ name</dt>
+      <dd class="govuk-summary-list__value">{{ record.npqName }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">NPQ training provider</dt>
+      <dd class="govuk-summary-list__value">{{ record.trainingProvider }}</dd>
+    </div>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Evidence</dt>
+      <dd class="govuk-summary-list__value"><a href="#" class="govuk-link">{{ record.providedEvidence }} (opens in new tab)</a>.</dd>
+    </div>
+  </dl>
+</div>
+
+
   </div>
-
-
-
-

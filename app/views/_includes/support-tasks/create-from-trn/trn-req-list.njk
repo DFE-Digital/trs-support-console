@@ -4,7 +4,7 @@
       <th scope="col" class="govuk-table__header" aria-sort="ascending">Name</th>
       <th scope="col" class="govuk-table__header" aria-sort="none">Email</th>
       <th scope="col" class="govuk-table__header" aria-sort="none">Requested on</th>
-      <th scope="col" class="govuk-table__header" aria-sort="none">Status</th>
+      <th scope="col" class="govuk-table__header" aria-sort="none">Source</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -17,17 +17,15 @@
         </td>
         <td class="govuk-table__cell">
           <strong class="govuk-tag 
-            {% if req.caseStatus == 'Open' %}
+            {% if req.sourceOfMatch == 'Register' %}
               govuk-tag--blue
-            {% elif req.caseStatus == 'Unassigned' %}
+            {% elif req.sourceOfMatch == 'AfQTS' %}
               govuk-tag--yellow
-            {% elif req.caseStatus == 'On hold' %}
-              govuk-tag--red
             {% else %}
-              govuk-tag--grey
+              govuk-tag--green
             {% endif %}
           ">
-            {{req.caseStatus}}
+            {{req.sourceOfMatch}}
           </strong>
         </td>
       </tr>

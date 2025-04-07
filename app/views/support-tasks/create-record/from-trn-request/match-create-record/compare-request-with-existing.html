@@ -4,7 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Compare potential duplicates" %}
+{% set pageName = "Compare potential duplicate records" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -17,7 +17,7 @@
   {% if data.trnreq.potentialRecordMatch == "Yes" %}
     Incoming TRN request
   {% else %}
-  Incoming TRN request &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="moj-badge moj-badge--red moj-badge--large">Potential duplicate</span>
+  Incoming TRN request &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--red">Potential duplicate</span>
   {% endif %}
 {% endset %}
 
@@ -35,7 +35,7 @@
       {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
       
       {{ govukInsetText({
-        html: '<p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p>',
+        html: '<p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> in the existing record</p>',
         classes: "govuk-!-width-two-thirds"
       }) }}
 
@@ -73,7 +73,7 @@
                   value: { text: record.email }
                 },
                 {
-                  key: { text: "National Insurance number" },
+                  key: { text: "NI number" },
                   value: { text: record.nationalInsuranceNumber }
                 } if record.nationalInsuranceNumber
               ]
@@ -122,7 +122,7 @@
                     value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].email + '</strong></mark>' }
                   },
                   {
-                    key: { text: "National Insurance number" },
+                    key: { text: "NI number" },
                     value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
                   } if data.duplicates[3].nationalInsuranceNumber,
                   {
@@ -134,7 +134,7 @@
           </div>
         </div>
 
-        <p>{{ record.id }}</p>
+        {# <p>{{ record.id }}</p> #}
      
 
         {{ govukRadios({
@@ -148,12 +148,12 @@
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "Yes, I want to merge these records",
+              text: "Yes, I want to merge these records"
             },
             {
-              value: "No, create a new record",
-              text: "No, create a new record"
+              value: "No, I want to create a new record",
+              text: "No, I want to create a new record"
             }
           ]
         }) }}

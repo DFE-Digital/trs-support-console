@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Incoming TRN request" %}
+{% set pageName = "Incoming " + record.sourceOfMatch + " request" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -26,7 +26,7 @@
     <span class="govuk-caption-l">{{captionName}}</span>
 
     {% if record.potentialRecordMatch == "Yes" %}
-      <h1 class="govuk-heading-l">{{pageName}} &nbsp;&nbsp;<span class="moj-badge moj-badge--red moj-badge--large">Potential duplicate</span></h1> 
+      <h1 class="govuk-heading-l">{{pageName}} &nbsp;&nbsp;<span class="govuk-tag govuk-tag--red">Potential duplicate</span></h1> 
     {% else %}
       <h1 class="govuk-heading-l">{{pageName}}</h1>
     {% endif %}
@@ -34,6 +34,8 @@
 
     
     {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
+    {# {% include "_includes/support-tasks/create-from-trn/register-request-details.njk" %} #}
+    {# {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %} #}
 
     
     <div class="govuk-button-group">
@@ -56,7 +58,7 @@
           </div>
         </form>
       {% endif %}
-      <p>{{record.id}}</p>
+      {# <p>{{record.id}}</p> #}
     </div>
 
   </div>
