@@ -75,7 +75,11 @@
                 {
                   key: { text: "NI number" },
                   value: { text: record.nationalInsuranceNumber }
-                } if record.nationalInsuranceNumber
+                } if record.nationalInsuranceNumber,
+                {
+                  key: { text: "Evidence" },
+                  value: { html: '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' }
+                }
               ]
             }) }}
           </div>

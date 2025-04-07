@@ -48,12 +48,19 @@ router.get('/support-tasks/create-record/from-trn-request/match-create-record/li
 
   const record = req.session.data.trnreq?.find(r => r.id === recordId)
 
+  // Filter the record OUT of the list before passing to the view
+  const filteredTrnreq = req.session.data.trnreq?.filter(r => r.id !== recordId)
+
   res.render('support-tasks/create-record/from-trn-request/match-create-record/list', {
     flashMessage,
     recordId,
-    fullName: record?.fullName || '' // fallback just in case
+    fullName: record?.fullName || '',
+    data: {
+      trnreq: filteredTrnreq // 👈 this is what your Nunjucks will loop over
+    }
   })
 })
+
 
 
 

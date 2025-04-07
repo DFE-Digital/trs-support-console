@@ -1,8 +1,8 @@
 
 {# <p class="govuk-body">Information being retained from the existing record is <mark class="hods-highlight"><strong>highlighted</strong></mark></p> #}
-<h2 class="govuk-heading-m">Record details after merge</h2>
+<h2 class="govuk-heading-m">Details of the merged record</h2>
 
-<p>{{ record.id }}</p>
+{# <p>{{ record.id }}</p> #}
 
 {{ govukSummaryList({
   classes: "govuk-!-margin-bottom-7",
@@ -25,7 +25,7 @@
     },
     {
       key: { text: "Email address" },
-      value: { html: '<ul class="govuk-list govuk-list--bullet"><li>' +record.email+ '</li><li>' +data.duplicates[3].email+ '</li></ul>'  }
+      value: { html: '<ul class="govuk-list"><li>' +record.email+ '</li><li>' +data.duplicates[3].email+ '</li></ul>'  }
     },
     {
       key: { text: "National Insurance number" },
