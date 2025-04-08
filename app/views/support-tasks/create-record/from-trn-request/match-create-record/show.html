@@ -32,9 +32,12 @@
     {% endif %}
 
 
-    
-    {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
-    {# {% include "_includes/support-tasks/create-from-trn/register-request-details.njk" %} #}
+    {% if record.sourceOfMatch == "Get a TRN" %}
+      {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
+    {% endif %}
+    {% if record.sourceOfMatch == "Register" %}
+      {% include "_includes/support-tasks/create-from-trn/register-request-details.njk" %}
+    {% endif %}
     {# {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %} #}
 
     

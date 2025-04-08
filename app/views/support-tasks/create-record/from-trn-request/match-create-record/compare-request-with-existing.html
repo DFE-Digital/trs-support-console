@@ -15,9 +15,9 @@
 
 {% set summaryCardTitle %}
   {% if data.trnreq.potentialRecordMatch == "Yes" %}
-    Incoming TRN request
+    From {{ record.sourceOfMatch }} 
   {% else %}
-  Incoming TRN request &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--red">Potential duplicate</span>
+  From {{ record.sourceOfMatch }}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--red">Potential duplicate</span>
   {% endif %}
 {% endset %}
 
@@ -59,7 +59,7 @@
                 {
                   key: { text: "Middle name" },
                   value: { html: record.middleName }
-                } if record.middleName,
+                } if not record.middleName === "Not given",
                 {
                   key: { text: "Last Name" },
                   value: { html: record.lastName }
@@ -69,7 +69,7 @@
                   value: { text: record.dateOfBirth }
                 },
                 {
-                  key: { text: "Email address" },
+                  key: { text: "Email" },
                   value: { text: record.email }
                 },
                 {
@@ -78,8 +78,8 @@
                 } if record.nationalInsuranceNumber,
                 {
                   key: { text: "Evidence" },
-                  value: { html: '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' }
-                }
+                  value: { html: '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' or "None"} 
+                } if not record.hasEvidence === "None"
               ]
             }) }}
           </div>
@@ -87,54 +87,13 @@
       
 
           <div class="govuk-grid-column-one-half">
-       
-            
-              {{ govukSummaryList({
-                card: {
-                  title: {
-                    html: "Existing record"
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "/deactivate/show/"+record.id,
-                        text: "View record",
-                        visuallyHiddenText: "view record"
-                      }
-                    ]
-                  }
-                },
-                rows: [
-                  {
-                    key: { text: "First name" },
-                    value: { html: data.duplicates[3].firstName }
-                  },
-                  {
-                    key: { text: "Middle name" },
-                    value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].middleName + '</strong></mark>' }
-                  } if data.duplicates[3].middleName,
-                  {
-                    key: { text: "Last Name" },
-                    value: { html: data.duplicates[3].lastName }
-                  },
-                  {
-                    key: { text: "Date of birth" },
-                    value: { text: data.duplicates[3].dateOfBirth }
-                  },
-                  {
-                    key: { text: "Email address" },
-                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].email + '</strong></mark>' }
-                  },
-                  {
-                    key: { text: "NI number" },
-                    value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
-                  } if data.duplicates[3].nationalInsuranceNumber,
-                  {
-                    key: { text: "TRN" },
-                    value: { html:  data.duplicates[3].trn  }
-                  }
-                ]
-              }) }}
+            {% if record.sourceOfMatch == "Get a TRN" %}
+              {% include "_includes/support-tasks/create-from-trn/compare-get-a-trn.njk" %}
+            {% endif %}
+            {% if record.sourceOfMatch == "Register" %}
+              {% include "_includes/support-tasks/create-from-trn/compare-register.njk" %}
+            {% endif %}
+            {# {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %} #}     
           </div>
         </div>
 

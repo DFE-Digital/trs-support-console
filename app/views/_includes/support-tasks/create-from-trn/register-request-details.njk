@@ -1,0 +1,41 @@
+
+  <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+      <h2 class="govuk-summary-card__title">Requested on {{record.dateOfTrnRequest}} from &nbsp;&nbsp;<strong class="govuk-tag">{{ record.sourceOfMatch }}</strong></h2>
+      {# <p>{{record.id}}</p> #}
+    </div>
+      <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">First name</dt>
+            <dd class="govuk-summary-list__value">{{ record.firstName }}</dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Last name</dt>
+            <dd class="govuk-summary-list__value">{{ record.lastName }}</dd>
+          </div>
+          {% if record.perviousName  %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Previous name</dt>
+            <dd class="govuk-summary-list__value">{{ record.previousName or "none" }}</dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Date of birth</dt>
+            <dd class="govuk-summary-list__value">{{ record.dateOfBirth }}</dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Email</dt>
+            <dd class="govuk-summary-list__value">{{ record.email }}</dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">National Insurance number</dt>
+            <dd class="govuk-summary-list__value">{{ record.nationalInsuranceNumber }}</dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Gender</dt>
+            <dd class="govuk-summary-list__value">{{ record.gender }}</dd>
+          </div>
+        </dl>
+      </div>
+  </div>
