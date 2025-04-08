@@ -12,7 +12,7 @@
 {% set teacherArray = data.teachers %}
 {% set teacher = trn | find(teacherArray)  %}
 
-{% set pageName = data.deactivate[0].firstName +  " " + data.retainMiddleName + " " + data.deactivate[0].lastName %}
+{% set pageName = data.deactivate[0].firstName +  " " + data.deactivate[1].middleName + " " + data.deactivate[0].lastName %}
 
 
 {% block content %}
@@ -28,7 +28,7 @@
 
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      {{ data.teachers | log }}
+      {{ data.retainMiddleName | log }}
       {{ data.chooseQtsRoute | log }}
 
       {% include "_includes/secondary-navigation.njk" %}  
