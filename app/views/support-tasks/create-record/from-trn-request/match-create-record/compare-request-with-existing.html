@@ -93,7 +93,9 @@
             {% if record.sourceOfMatch == "Register" %}
               {% include "_includes/support-tasks/create-from-trn/compare-register.njk" %}
             {% endif %}
-            {# {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %} #}     
+            {% if record.sourceOfMatch == "AfQTS" %}
+              {% include "_includes/support-tasks/create-from-trn/compare-afqts.njk" %}
+            {% endif %} 
           </div>
         </div>
 
