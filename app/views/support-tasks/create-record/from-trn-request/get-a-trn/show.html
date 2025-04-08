@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     {# We call record here from the route `/support-tasks/create-record/from-trn-request/match-create-record/show/:id` #}
-
+    {{ data.user | log }}
     {{ record.id | log }}
 
     <span class="govuk-caption-l">{{captionName}}</span>

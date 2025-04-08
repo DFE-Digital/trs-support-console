@@ -2,6 +2,15 @@ const _ = require('lodash')
 
 module.exports = (router) => {
 
+   ////Check for data.user in session
+   router.get('/support-tasks/create-record/from-trn-request/match-create-record/list', (req, res) => {
+    console.log("user in session:", req.session.data.user)
+  
+    res.render('support-tasks/create-record/from-trn-request/match-create-record/list', {
+      data: req.session.data
+    })
+  })
+
 ////////// Show a single teacher (John Doe) on deactivate journey //////////
 //// Route passes {record} so must call that in the template
 router.get('/support-tasks/create-record/from-trn-request/match-create-record/show/:recordId', (req, res) => {

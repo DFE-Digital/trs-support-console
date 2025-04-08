@@ -9,6 +9,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+    {{ data.user | log }}
+
     {{ govukNotificationBanner({
       type: "success",
       html: '<h2 class="govuk-heading-m">'+flash + data.deactivate[0].firstName + " " + data.deactivate[0].lastName +'</h2>'
