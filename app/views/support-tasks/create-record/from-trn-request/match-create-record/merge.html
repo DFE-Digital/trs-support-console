@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Create a record" %}
-{% set pageName = "Check details before merging TRN request" %}
+{% set pageName = "Check details before merging with " + record.sourceOfMatch + " request" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -25,7 +25,17 @@
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     
-    {% include "_includes/support-tasks/create-from-trn/merge-request-details.njk" %}
+    
+
+    {% if record.sourceOfMatch == "Get a TRN" %}
+      {% include "_includes/support-tasks/create-from-trn/check-merge-get-a-trn.njk" %}
+    {% endif %}
+    {% if record.sourceOfMatch == "Register" %}
+      {% include "_includes/support-tasks/create-from-trn/check-merge-register.njk" %}
+    {% endif %}
+    {% if record.sourceOfMatch == "AfQTS" %}
+      {% include "_includes/support-tasks/create-from-trn/check-merge-afqts.njk" %}
+    {% endif %} 
 
     
     {{ govukWarningText({
