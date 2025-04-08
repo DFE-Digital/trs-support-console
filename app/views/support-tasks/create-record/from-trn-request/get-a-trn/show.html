@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Incoming from " + record.sourceOfMatch + " API" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {# We call record here from the route `/support-tasks/create-record/from-trn-request/match-create-record/show/:id` #}
+
+    {{ record.id | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+
+    {% if record.potentialRecordMatch == "Yes" %}
+      <h1 class="govuk-heading-l">{{pageName}} &nbsp;&nbsp;<span class="govuk-tag govuk-tag--red">Potential duplicate</span></h1> 
+    {% else %}
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
+    {% endif %}
+
+
+    {% if record.sourceOfMatch == "Get a TRN" %}
+      {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
+    {% endif %}
+    {% if record.sourceOfMatch == "Register" %}
+      {% include "_includes/support-tasks/create-from-trn/register-request-details.njk" %}
+    {% endif %}
+    {# {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %} #}
+
+    
+    <div class="govuk-button-group">
+      {% if record.potentialRecordMatch == "Yes" %}
+        {{ govukButton({
+          text: "Compare potential duplicates",
+          href: "/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/" + record.id
+        }) }}
+        {{ govukButton({
+          text: "Cancel",
+          href: "javascript:window.history.back()",
+          classes: "govuk-button--secondary"
+        }) }}
+        {% else %} 
+        <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/show/{{record.id}}" novalidate>
+          <input type="hidden" name="recordId" value="{{record.id}}">
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button">Create a record from TRN request</button>
+            <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
+          </div>
+        </form>
+      {% endif %}
+      {# <p>{{record.id}}</p> #}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+

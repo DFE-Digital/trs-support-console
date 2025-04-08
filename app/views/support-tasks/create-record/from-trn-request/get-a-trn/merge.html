@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %}
+
+{% set captionName = "Create a record" %}
+{% set pageName = "Check details before merging with " + record.sourceOfMatch + " request" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ record | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    
+    
+
+    {% if record.sourceOfMatch == "Get a TRN" %}
+      {% include "_includes/support-tasks/create-from-trn/check-merge-get-a-trn.njk" %}
+    {% endif %}
+    {% if record.sourceOfMatch == "Register" %}
+      {% include "_includes/support-tasks/create-from-trn/check-merge-register.njk" %}
+    {% endif %}
+    {% if record.sourceOfMatch == "AfQTS" %}
+      {% include "_includes/support-tasks/create-from-trn/check-merge-afqts.njk" %}
+    {% endif %} 
+
+    
+    {{ govukWarningText({
+      text: "Some content around reassurance that they have merged the correct things.",
+      iconFallbackText: "Warning"
+    }) }}
+    
+    <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/merge/{{ record.id }}" novalidate>
+      <input type="hidden" name="recordId" value="{{ record.id }}">
+      <div class="govuk-button-group">
+        {{ govukButton({ text: "Confirm and merge records" }) }}
+        {{ govukButton({ text: "Cancel", classes: "govuk-button--secondary" }) }}
+      </div>
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}
+

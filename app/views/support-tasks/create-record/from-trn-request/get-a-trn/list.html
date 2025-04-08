@@ -1,0 +1,99 @@
+{% extends "layouts/main.html" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName="Get a TRN requests" %}
+{% set serviceNavId = "supportTasks" %}
+{# {% set secondaryNavId = "findRecord" %} #}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% if flashMessage %}
+  {% if flashMessage == "Record created successfully" %}
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '
+        <div class="banner-flex">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+            ' ~ fullName ~ ' was created successfully
+          </h2>
+          
+            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">view record</a>
+          
+        </div>'
+    }) }}
+  
+  {% elif flashMessage == "Records merged successfully" %}
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '
+        <div class="banner-flex">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+            Records merged successfully for ' ~ fullName ~ '
+          </h2>
+          
+            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">view record</a>
+          
+        </div>'
+    }) }}
+  {% endif %}
+{% endif %}
+
+
+
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ record | log }}
+    
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <p>{{ record.id }}</p>
+    
+  
+  </div>
+</div>
+
+{% include "_includes/support-tasks/create-from-trn/search-form.njk" %}
+
+
+{% include "_includes/support-tasks/create-from-trn/get-a-trn-list.njk" %}
+
+{{ govukPagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}
+
+{# value: data.findRecord #}
