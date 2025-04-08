@@ -11,7 +11,7 @@
     {% for req in data.trnreq %}
     {% if req.sourceOfMatch === "Get a TRN" %}
       <tr class="govuk-table__row">
-        <td class="govuk-table__cell"><a href="/support-tasks/create-record/from-trn-request/match-create-record/show/{{req.id}}" class="govuk-link">{{req.firstName}} {{req.lastName}}</a></td>
+        <td class="govuk-table__cell"><a href="/support-tasks/create-record/from-trn-request/get-a-trn/show/{{req.id}}" class="govuk-link">{{req.firstName}} {{req.lastName}}</a></td>
         <td class="govuk-table__cell">{{req.email}}</td>
         <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
           {{req.dateOfTrnRequest}}

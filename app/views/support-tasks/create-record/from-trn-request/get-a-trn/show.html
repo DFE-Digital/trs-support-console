@@ -45,7 +45,7 @@
       {% if record.potentialRecordMatch == "Yes" %}
         {{ govukButton({
           text: "Compare potential duplicates",
-          href: "/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/" + record.id
+          href: "/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/" + record.id
         }) }}
         {{ govukButton({
           text: "Cancel",
@@ -53,7 +53,7 @@
           classes: "govuk-button--secondary"
         }) }}
         {% else %} 
-        <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/show/{{record.id}}" novalidate>
+        <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/show/{{record.id}}" novalidate>
           <input type="hidden" name="recordId" value="{{record.id}}">
           <div class="govuk-button-group">
             <button type="submit" class="govuk-button">Create a record from TRN request</button>

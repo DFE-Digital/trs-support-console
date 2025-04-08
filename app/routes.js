@@ -27,9 +27,10 @@ require('./routes/legacy')(router)
 
 //// CREATE RECORD ROUTES
 
-require('./routes/support-tasks/create-record/from-trn-request/matching/match-from-trn-request')(router)
-require('./routes/support-tasks/create-record/from-trn-request/non-matching/add')(router)
-require('./routes/support-tasks/create-record/from-trn-request/deactivate/add')(router)
+require('./routes/support-tasks/matching/match-from-trn-request')(router)
+require('./routes/support-tasks/apis/match-from-api')(router)
+require('./routes/support-tasks/non-matching/add')(router)
+require('./routes/support-tasks/deactivate/add')(router)
 require('./routes/support-tasks/create-record/manual/add')(router)
 
 
