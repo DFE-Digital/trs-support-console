@@ -51,13 +51,18 @@
           <fieldset class="govuk-fieldset" aria-describedby="primary-record-hint">
 
             <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+
             <!-- First name -->
-            
               <p class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">First name: </p>
               <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="first-name-a" name="retainFirstName" type="radio" checked disabled>
                   <label class="govuk-label govuk-radios__label" for="first-name-a">John</label>
+
+                  <!-- Add this hidden input just after it to pass 'disabled' -->
+                  <input type="hidden" name="retainFirstName" value="John">
+
                 </div>
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="first-name-b" name="retainFirstName" type="radio" disabled>
@@ -89,8 +94,12 @@
             <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">Last name: </label>
             <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
               <div class="govuk-radios__item align-record-a">
-                <input class="govuk-radios__input" id="last-name-a" name="retainDOB" type="radio" value="Doe" checked disabled>
+                <input class="govuk-radios__input" id="last-name-a" name="retainLastName" type="radio" value="Doe" checked disabled>
                 <label class="govuk-label govuk-radios__label" for="last-name-a">Doe</label>
+
+                 <!-- Add this hidden input just after it to pass 'disabled' -->
+                 <input type="hidden" name="retainLastName" value="Doe">
+
               </div>
               <div class="govuk-radios__item align-record-b">
                 <input class="govuk-radios__input" id="last-name-b" name="retainDOB" type="radio" disabled value="Doe">
@@ -137,6 +146,7 @@
             </div>
             <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
+
             <!-- National Insurance number -->
             <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">National Insurance number: </label>
             <div class=" govuk-radios__flex govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
@@ -164,9 +174,12 @@
                 <label class="govuk-label govuk-radios__label" for="first-name-a">
                   <strong>439353</strong>
                 </label>
+                 <!-- Add this hidden input just after it to pass 'disabled' -->
+                 <input type="hidden" name="retainTRN" value="439353">
+
               </div>
               <div class="govuk-radios__item align-record-b">
-                <input class="govuk-radios__input" id="trn-b" name="retainTRN" type="radio" value="339353">
+                <input class="govuk-radios__input" id="trn-b" name="retainTRN" type="radio" value="339353" disabled>
                 <label class="govuk-label govuk-radios__label" for="first-name-a">
                   <strong>339353</strong>
                 </label>

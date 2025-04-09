@@ -20,9 +20,16 @@
   <div class="govuk-grid-column-two-thirds">
 
     {{ data.firstNameA | log }}
+
+    {{ data.retainMiddleName | log }}
+    {{ data.retainDOB  | log }}
+    {{ data.retainEmail  | log }}
+    {{ data.retainnationalInsuranceNumber  | log }}
+    {{ data.retainTRN  | log }}
+    {{ data.makeMergeComment  | log }}
+    {{ data.combineTheseSelections  | log }}
   
 
-    {{ task | log }}
 
     <span class="govuk-caption-l">{{captionName}}</span>
     <h1 class="govuk-heading-l">{{pageName}}</h1>
