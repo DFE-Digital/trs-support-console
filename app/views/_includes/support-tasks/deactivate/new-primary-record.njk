@@ -1,10 +1,11 @@
-{{ data.firstNameA | log }}
-{{ data.middleNameA | log }}
-{{ data.lastNameA | log }}
-{{ data.dateOfBirthA | log }}
-{{ data.emailA | log }}
-{{ data.nationalInsuranceNumberA | log }}
-{{ data.trnA | log }}
+{{data.retainFirstName | log}}
+{{data.retainMiddleName | log}}
+{{data.retainDOB | log}}
+{{data.retainEmail | log}}
+{{data.retainnationalInsuranceNumber | log}}
+{{data.retainTRN | log}}
+{{data.makeMergeComment | log}}
+{{data.combineTheseSelections | log}}
 
 {{ govukSummaryList({
       card: {
@@ -49,10 +50,6 @@
     {
       key: { text: "TRN" },
       value: { html: data.retainTRN or "Not selected" }
-    },
-    {
-      key: { text: "Comments" },
-      value: { html: data.makeMergeComment or "None added" }
     }
   ]
 }) }}
