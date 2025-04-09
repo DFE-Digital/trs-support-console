@@ -6,9 +6,6 @@
 
 
 
-
-
-
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -17,6 +14,7 @@
 {% endblock %}
 
 {% block content %}
+
 
 {% if flashMessage %}
   {% if flashMessage == "Record created successfully" %}
@@ -27,9 +25,7 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
             ' ~ fullName ~ ' was created successfully
           </h2>
-          
-            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">view record</a>
-          
+            <a href="/support-tasks/create-record/from-trn-request/get-a-trn/new?recordId={{ recordId }}">view record</a>
         </div>'
     }) }}
   
@@ -41,19 +37,12 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
             Records merged successfully for ' ~ fullName ~ '
           </h2>
-          
-            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">view record</a>
-          
+            <a href="/support-tasks/create-record/from-trn-request/get-a-trn/updated?recordId={{ recordId }}">view record</a>
         </div>'
     }) }}
   {% endif %}
 {% endif %}
 
-<pre>
-  flashMessage: {{ flashMessage }}
-  recordId: {{ recordId }}
-  fullName: {{ fullName }}
-</pre>
 
 
 <div class="govuk-grid-row">
@@ -65,7 +54,6 @@
     <span class="govuk-caption-l">{{captionName}}</span>
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
-    <p>{{ record.id }}</p>
     
   
   </div>
@@ -98,5 +86,3 @@
 }) }}
 
 {% endblock %}
-
-{# value: data.findRecord #}

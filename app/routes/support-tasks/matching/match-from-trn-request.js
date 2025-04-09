@@ -78,14 +78,34 @@ router.get('/support-tasks/create-record/from-trn-request/get-a-trn/updated/:rec
   res.render('support-tasks/create-record/from-trn-request/get-a-trn/updated', {
   ///back up for testing data below
   record: {
-    id: 'abc-123',
-    fullName: 'Jane Test',
-    dateOfBirth: '1 Jan 1990',
-    gender: 'Female',
-    trn: '1234567',
-    nationalInsuranceNumber: 'QQ123456C',
-    email: 'jane@example.com',
-    mobile: '07700 900123'
+    firstName: "Olivia",
+    middleName: "Not given",
+    lastName: "Johnson",
+    dateOfBirth: "8 August 1988",
+    nationalInsuranceNumber: "TR 78 56 12 C",
+    dateOfTrnRequest: "25 January 2024",
+    supportTaskType: "Get a TRN",
+    reference: "TRN-QW45HGY6",
+    potentialRecordMatch: "No",
+    sourceOfMatch: "Get a TRN",
+    id: "6474500c-9604-476a-b4d8-a4cd2d915b80",
+    email: "Olivia.Johnson@gmail.com",
+    gender: "Female",
+    hasAlerts: "None",
+    trn: "None",
+    completed: "no",
+    providedEvidence: "passport.jpg",
+    caseStatus: "Open",
+    fullName: "Olivia Johnson",
+    trainingProviderAddress: "20 High Street",
+    town: "Southampton",
+    postcode: "LS1 1UR",
+    country: "United Kingdom",
+    workingAlready: "No",
+    workEmail: "olivia.johnson@oakgrove.sch.uk",
+    npqApplicationId: "27431268",
+    npqName: "Leading teacher development",
+    trainingProvider: "Teach First"
   }
 })
 })

@@ -35,10 +35,14 @@
     {% if record.sourceOfMatch == "Get a TRN" %}
       {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
     {% endif %}
+
     {% if record.sourceOfMatch == "Register" %}
       {% include "_includes/support-tasks/create-from-trn/register-request-details.njk" %}
     {% endif %}
-    {# {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %} #}
+   
+    {% if record.sourceOfMatch == "AfQTS" %}
+       {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %}
+    {% endif %}
 
     
     <div class="govuk-button-group">
@@ -56,7 +60,7 @@
         <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/show/{{record.id}}" novalidate>
           <input type="hidden" name="recordId" value="{{record.id}}">
           <div class="govuk-button-group">
-            <button type="submit" class="govuk-button">Create a record from TRN request</button>
+            <button type="submit" class="govuk-button">Create a record from AfQTS request</button>
             <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
           </div>
         </form>

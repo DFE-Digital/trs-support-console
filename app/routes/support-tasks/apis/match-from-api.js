@@ -2,15 +2,6 @@ const _ = require('lodash')
 
 module.exports = (router) => {
 
-   ////Check for data.user in session
-   router.get('/support-tasks/create-record/from-trn-request/match-create-record/list', (req, res) => {
-    console.log("user in session:", req.session.data.user)
-  
-    res.render('support-tasks/create-record/from-trn-request/match-create-record/list', {
-      data: req.session.data
-    })
-  })
-
 ////////// Show a single teacher (John Doe) on deactivate journey //////////
 //// Route passes {record} so must call that in the template
 router.get('/support-tasks/create-record/from-trn-request/match-create-record/show/:recordId', (req, res) => {
@@ -36,6 +27,12 @@ router.get('/support-tasks/create-record/from-trn-request/match-create-record/me
   res.render('support-tasks/create-record/from-trn-request/match-create-record/merge', { record })
 })
 
+//////// Post from SHOW to list wit Flash msg ////////
+router.post('/support-tasks/create-record/from-trn-request/match-create-record/show/:recordId', (req, res) => {
+  const recordId = req.body.recordId
+  res.redirect(`/support-tasks/create-record/from-trn-request/match-create-record/list?message=Record+created+successfully&recordId=${recordId}`)
+})
+
 
 //////// Post from MERGE to list wit Flash msg ////////
 router.post('/support-tasks/create-record/from-trn-request/match-create-record/merge/:recordId', (req, res) => {
@@ -44,31 +41,38 @@ router.post('/support-tasks/create-record/from-trn-request/match-create-record/m
 })
 
 
-//////// Post from SHOW to list wit Flash msg ////////
-router.post('/support-tasks/create-record/from-trn-request/match-create-record/show/:recordId', (req, res) => {
+
+router.post('/support-tasks/create-record/from-trn-request/match-create-record/list', (req, res) => {
   const recordId = req.body.recordId
-  res.redirect(`/support-tasks/create-record/from-trn-request/match-create-record/list?message=Record+created+successfully&recordId=${recordId}`)
+  res.redirect(`/support-tasks/create-record/from-trn-request/match-create-record/list?recordId=${recordId}`)
 })
 
 
+//// Render list and remove merged item from array
 router.get('/support-tasks/create-record/from-trn-request/match-create-record/list', (req, res) => {
-  const flashMessage = req.query.message || ''
-  const recordId = req.query.recordId || ''
+  const { message, recordId } = req.query
+  const trnRequests = req.session.data.trnreq || []
 
-  const record = req.session.data.trnreq?.find(r => r.id === recordId)
+  // Find and remove the merged record from the list
+  const recordIndex = trnRequests.findIndex(r => r.id === recordId)
+  const record = trnRequests[recordIndex]
 
-  // Filter the record OUT of the list before passing to the view
-  const filteredTrnreq = req.session.data.trnreq?.filter(r => r.id !== recordId)
+  if (recordIndex !== -1) {
+    trnRequests.splice(recordIndex, 1)
+    console.log(`✅ Removed record with ID ${recordId} from trnreq`)
+  } else {
+    console.warn(`⚠️ Could not find record with ID ${recordId} in trnreq`)
+  }
 
   res.render('support-tasks/create-record/from-trn-request/match-create-record/list', {
-    flashMessage,
+    flashMessage: message,
     recordId,
-    fullName: record?.fullName || '',
-    data: {
-      trnreq: filteredTrnreq // 👈 this is what your Nunjucks will loop over
-    }
+    fullName: record ? record.fullName : "Unknown",
+    record,
+    data: req.session.data
   })
 })
+
 
 
 
