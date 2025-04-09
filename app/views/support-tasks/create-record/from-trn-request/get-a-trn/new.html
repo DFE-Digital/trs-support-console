@@ -3,111 +3,69 @@
 {% set serviceNavId = "findRecord" %}
 
 
-{% set pageName = task.firstName + " " + task.lastName %}
+{% set pageName =  record.fullName %}
 
 
-{# {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-{% endblock %} #}
-
-
-{% set html %}
-  <p class="govuk-notification-banner__heading">
-   Merged records with TRN:
-    <a class="govuk-notification-banner__link" href="#">{{data.trn}}</a>.
-  </p>
-{% endset %}
 
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      {{ govukNotificationBanner({
-        html: html,
-        type: "success"
-      }) }}
-
-      {{ task.supportTaskType | log }}
-      {{ task.reference | log }}
-      {{ task.dateOfTrnRequest | log }}
-      {{ data.createRecordFirstName | log }}
-      {{ task.middleName | log }}
-      {{ task.lastName | log }}
-      {{ task.dateOfBirth | log }}
-      {{ task.email | log }}
-      {{ task.nationalInsuranceNumber | log }}
 
       <span class="govuk-caption-l">{{ captionName }}</span>
       <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-      {# <h2 class="govuk-heading-m">Personal details</h2> #}
-
-      {{ govukSummaryList({
-        card: {
-                title: {
-                  text: "Personal details"
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/create-record/add/reason",
-                      text: "Change",
-                      visuallyHiddenText: "Why I am creating this record"
-                    }
-                  ]
+        {{ govukSummaryList({
+          card: {
+            title: {
+              text: "Personal Details"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "personal details"
                 }
-              },
-              rows: [
-              {
-                key: { text: "First name" },
-                value: { html: task.firstName }
-              },
-              {
-                key: { text: "Middle name (optional)" },
-                value: { html: task.middleName }
-              } if task.middleName,
-              {
-                key: { text: "Last Name" },
-                value: { html: task.lastName }
-              },
-              {
-                key: { text: "Date of birth" },
-                value: { text: task.dateOfBirth }
-              },
-              {
-                key: { text: "Email address" },
-                value: { text: task.email }
-              },
-              {
-                key: { text: "National Insurance number" },
-                value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
-              } if data.duplicates[3].nationalInsuranceNumber,
-              {
-                key: { text: "Sex" },
-                value: { text: data.duplicates[3].gender }
-              },
-              {
-                key: { text: "TRN" },
-                value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].trn + '</strong></mark>' }
+              ]
+            }
+          },
+          rows: [
+            {
+              key: { text: "Name" },
+              value: { text: record.fullName }
+            },
+            {
+              key: { text: "Date of birth" },
+              value: { text: record.dateOfBirth }
+            },
+            {
+              key: { text: "Email" },
+              value: {
+                html: '<ul class="govuk-list govuk-list--bullet"><li>' + record.email + '</li></ul>'
               }
-            ]
-      }) }}
-
-     
-
-      {# <form method="post">
-        {{ govukButton({
-          text: "Confirm and create record"
+            },
+            {
+              key: { text: "National Insurance number" },
+              value: { text: record.nationalInsuranceNumber or "Not provided" }
+            },
+            {
+              key: { text: "Teacher reference number (TRN)" },
+              value: { text: record.trn or "Not assigned" }
+            },
+            {
+              key: { text: "Gender" },
+              value: { text: record.gender or "Not provided" }
+            },
+            {
+              key: { text: "Mobile number" },
+              value: { text: record.mobile or "Not provided" }
+            }
+          ]
         }) }}
-      </form>    
 
-      <p class="govuk-body">
-        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
-      </p> #}
+
     </div>
   </div>
 {% endblock %}
