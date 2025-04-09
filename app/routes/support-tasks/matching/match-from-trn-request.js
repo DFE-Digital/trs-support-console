@@ -54,9 +54,7 @@ router.get('/support-tasks/create-record/from-trn-request/get-a-trn/list', (req,
 
   // If found, remove it from the list
   if (recordIndex !== -1) {
-    const mergedRecord = trnRequests.splice(recordIndex, 1)[0]
-    req.session.data.mergedRecords = req.session.data.mergedRecords || []
-    req.session.data.mergedRecords.push(mergedRecord)
+    trnRequests.splice(recordIndex, 1)
     console.log(`✅ Removed record with ID ${recordId} from trnreq`)
   } else {
     console.warn(`⚠️ Could not find record with ID ${recordId} in trnreq`)
@@ -73,46 +71,23 @@ router.get('/support-tasks/create-record/from-trn-request/get-a-trn/list', (req,
 
 
 
-router.get('/support-tasks/create-record/from-trn-request/get-a-trn/updated', (req, res) => {
-  const recordId = req.query.recordId
-  const record = req.session.data.mergedRecords?.find(r => r.id === recordId)
+router.get('/support-tasks/create-record/from-trn-request/get-a-trn/updated/:recordId', (req, res) => {
+  const recordId = req.params.recordId
+  const record = req.session.data.trnreq.find(r => r.id === recordId)
 
   res.render('support-tasks/create-record/from-trn-request/get-a-trn/updated', {
-    record,
-    recordId,
-    fullName: record?.fullName,
-    data: req.session.data
-  })
+  ///back up for testing data below
+  record: {
+    id: 'abc-123',
+    fullName: 'Jane Test',
+    dateOfBirth: '1 Jan 1990',
+    gender: 'Female',
+    trn: '1234567',
+    nationalInsuranceNumber: 'QQ123456C',
+    email: 'jane@example.com',
+    mobile: '07700 900123'
+  }
 })
-
-
-
-router.get('/support-tasks/create-record/from-trn-request/get-a-trn/new', (req, res) => {
-  const recordId = req.query.recordId
-  const record = req.session.data.trnreq?.find(r => r.id === recordId)
-
-  res.render('support-tasks/create-record/from-trn-request/get-a-trn/new', {
-    record,
-    recordId,
-    fullName: record?.fullName,
-    data: req.session.data
-  })
-})
-
-
-
-router.get('/debug-session', (req, res) => {
-  res.send(req.session.data)
-})
-
-router.get('/seed', (req, res) => {
-  const fs = require('fs')
-  const path = require('path')
-
-  const seededData = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../data/trnreq.json')))
-  req.session.data.trnreq = seededData
-
-  res.send('Seeded trnreq into session. Go back and try again.')
 })
 
 }

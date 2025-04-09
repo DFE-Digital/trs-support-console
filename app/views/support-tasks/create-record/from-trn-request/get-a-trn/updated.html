@@ -15,19 +15,12 @@
 
 {% block content %}
 
-<pre>
-  
-  recordId: {{ recordId }}
-  
-</pre>
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">{{ record.fullName }}</h1>
+      <h1 class="govuk-heading-l">{{ data.trnreq[0].fullName }}</h1>
 
-      {{ record | log }}
-      <p>{{ record.id }}</p>
+      {{ req.id | log }}
       <p>{{ record.id }}</p>
 
       {% include "_includes/secondary-navigation.njk" %}  
@@ -49,38 +42,60 @@
         },
         rows: [
           {
-            key: { text: "Name" },
-            value: { html: record.fullName }
-          },
-          {
-            key: { text: "Date of birth" },
-            value: { text: record.dateOfBirth }
-          },
-          {
-            key: { text: "Email" },
+            key: {
+              text: "Name"
+            },
             value: {
-              html: '<ul class="govuk-list govuk-list--bullet"><li>' + record.email + '</li></ul>'
+              html: data.trnreq[0].fullName
             }
           },
           {
-            key: { text: "National Insurance number" },
-            value: { text: record.nationalInsuranceNumber }
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: data.trnreq[0].dateOfBirth
+            }
           },
           {
-            key: { text: "Teacher reference number (TRN)" },
-            value: { text: record.trn }
+            key: { text: "Email" },
+            value: { html: '<ul class="govuk-list govuk-list--bullet"><li>' +data.trnreq[0].email+ '</li><li>' +data.duplicates[3].email+ '</li></ul>'  }
           },
           {
-            key: { text: "Gender" },
-            value: { text: record.gender }
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: data.duplicates[3].nationalInsuranceNumber
+            }
           },
           {
-            key: { text: "Mobile number" },
-            value: { text: record.mobile or "Not provided" }
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: data.duplicates[3].trn
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: data.duplicates[3].gender
+            }
+          },
+         
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+              text: data.duplicates[3].mobile or "Not provided"
+            }
           }
         ]
       }) }}
-      
       
     
 

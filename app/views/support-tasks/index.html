@@ -5,10 +5,11 @@
 {% set pageName = "Support tasks" %}
 
 
-{% set taskType = data.trnreq | selectattr("sourceOfMatch", "equalto", "Get a TRN") | list %}
-{% set taskTypeCount = taskType | length %}
-
-
+{% if data.trn %}
+  <p>Generated TRN: {{ data.trn }}</p>
+{% else %}
+  <p>No TRN generated yet.</p>
+{% endif %}
 
 
 {% block content %}
@@ -59,7 +60,7 @@
 
           {# Get a TRN requests #}
           <a href="/support-tasks/create-record/from-trn-request/get-a-trn/list" class="status-card status-card--in-training">
-            <span class="status-card__count">{{ taskTypeCount }}</span>
+            <span class="status-card__count">4</span>
             <span class="status-card__status">Get a TRN requests</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
   

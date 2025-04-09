@@ -5,7 +5,6 @@
 {% set serviceNavId = "supportTasks" %}
 
 
-{% set visibleRecords = data.trnreq | rejectattr("status", "equalto", "merged") | list %}
 
 
 
@@ -19,8 +18,6 @@
 
 {% block content %}
 
-<pre>recordId = {{ recordId }}</pre>
-
 {% if flashMessage %}
   {% if flashMessage == "Record created successfully" %}
     {{ govukNotificationBanner({
@@ -30,7 +27,9 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
             ' ~ fullName ~ ' was created successfully
           </h2>
-            <a href="/support-tasks/create-record/from-trn-request/get-a-trn/new?recordId={{ recordId }}">view record</a>
+          
+            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">view record</a>
+          
         </div>'
     }) }}
   
@@ -42,17 +41,19 @@
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
             Records merged successfully for ' ~ fullName ~ '
           </h2>
-            <a href="/support-tasks/create-record/from-trn-request/get-a-trn/updated?recordId={{ recordId }}">view record</a>
+          
+            <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">view record</a>
+          
         </div>'
     }) }}
   {% endif %}
 {% endif %}
 
-{# <pre>
+<pre>
   flashMessage: {{ flashMessage }}
   recordId: {{ recordId }}
   fullName: {{ fullName }}
-</pre> #}
+</pre>
 
 
 <div class="govuk-grid-row">
