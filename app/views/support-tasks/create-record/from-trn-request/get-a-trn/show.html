@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Incoming from " + record.sourceOfMatch + " API" %}
+{% set pageName = "Incoming " + record.sourceOfMatch + " request" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -54,7 +54,7 @@
         }) }}
         {% else %} 
         <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/show/{{record.id}}" novalidate>
-          <input type="hidden" name="recordId" value="{{record.id}}">
+          <input type="hidden" name="recordId" value="{{ record.id }}">
           <div class="govuk-button-group">
             <button type="submit" class="govuk-button">Create a record from TRN request</button>
             <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>

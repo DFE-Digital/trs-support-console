@@ -43,7 +43,7 @@
       iconFallbackText: "Warning"
     }) }}
     
-    <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/merge/{{ record.id }}" novalidate>
+    <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/merge/{{ record.id }}">
       <input type="hidden" name="recordId" value="{{ record.id }}">
       <div class="govuk-button-group">
         {{ govukButton({ text: "Confirm and merge records" }) }}
