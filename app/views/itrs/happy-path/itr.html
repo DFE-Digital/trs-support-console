@@ -66,17 +66,20 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
           </nav>
          
           <span class="govuk-caption-l">Integration Transactions</span>
-          <h1 class="govuk-heading-l">Capita Import</h1>
+          <h1 class="govuk-heading-l">Capita Import, ID 115141</h1>
 
           <h2 class="govuk-heading-m">
             Record information
           </h2>
 
           <p class="govuk-body govuk-!-padding-bottom-4">
+            Created on: <b>17 March 2025</b>
+            <br>
             File name: <b>	traout-210615.txt</b>
             <br>
             Interface ID: <b>115141</b>
             <br>
+          
             Total count: <b>100</b>
             <br>
             Success count: <b>100 </b>
@@ -88,7 +91,7 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
           </p>
           
           <button type="submit" class="govuk-button" data-module="govuk-button">
-            Export errors
+            Export fails
           </button>
           <div class="govuk-!-padding-bottom-2"></div>
 
@@ -101,16 +104,15 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
                 <th scope="col" class="govuk-table__header" aria-sort="none">Person</th>
                 <th scope="col" class="govuk-table__header" aria-sort="none">Duplicate</th>
                 <th scope="col" class="govuk-table__header moj-sortable-table__header" aria-sort="descending">Status</th>
-                <th scope="col" class="govuk-table__header" aria-sort="none">Created on</th>
               </tr>
             </thead>
             <tbody id="table-body">
               <tr class="govuk-table__row govuk-task-list__item--with-link">
-                <td class="govuk-table__cell"><a href="detail">1</a></td>
+                <td class="govuk-table__cell">1</td>
                 <td class="govuk-table__cell"><a href="detail">John Doe</a></td>
-                <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--orange">Duplicate</strong></a></td>
-                <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--red">Fail</strong></a></td>
-                <td class="govuk-table__cell"><a href="detail">17 March 2025</a></td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">Duplicate</strong></td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Fail</strong></td>
+               
               </tr>
               <!-- Rows will be populated by JavaScript -->
             </tbody>
@@ -132,8 +134,7 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
                   id: i,
                   person: `${randomFirstName} ${randomLastName}`,
                   duplicateStatus: duplicateStatus,
-                  statusReason: statusReason,
-                  createdOn: "17 March 2025"
+                  statusReason: statusReason
                 });
               }
      
@@ -145,15 +146,14 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
             <td class="govuk-table__cell"><a href="detail">Linda Fernandez </a></td>
             <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--orange">Duplicate</strong> </td>
             <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag govuk-tag--green">Success</strong></a></td>
-            <td class="govuk-table__cell"><a href="detail">17 March 2025</a></td>
+
           </tr>
               ` + sortedRows.map(row => `
                 <tr class="govuk-table__row govuk-task-list__item--with-link">
-                  <td class="govuk-table__cell"><a href="detail">${row.id}</a></td>
+                  <td class="govuk-table__cell">${row.id}</td>
                   <td class="govuk-table__cell"><a href="detail">${row.person}</a></td>
-                  <td class="govuk-table__cell"><a href="detail">${row.duplicateStatus ? '<strong class="govuk-tag govuk-tag--orange">Duplicate</strong>' : ''}</a></td>
-                  <td class="govuk-table__cell"><a href="detail"><strong class="govuk-tag ${row.statusReason === 'Fail' ? 'govuk-tag--red' : 'govuk-tag--green'}">${row.statusReason}</strong></a></td>
-                  <td class="govuk-table__cell"><a href="detail">${row.createdOn}</a></td>
+                  <td class="govuk-table__cell">${row.duplicateStatus ? '<strong class="govuk-tag govuk-tag--orange">Duplicate</strong>' : ''}</td>
+                  <td class="govuk-table__cell"><strong class="govuk-tag ${row.statusReason === 'Fail' ? 'govuk-tag--red' : 'govuk-tag--green'}">${row.statusReason}</strong></td>
                 </tr>
               `).join("");
 }
