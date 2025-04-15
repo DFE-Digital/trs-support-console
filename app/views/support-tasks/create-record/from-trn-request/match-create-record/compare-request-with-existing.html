@@ -15,9 +15,9 @@
 
 {% set summaryCardTitle %}
   {% if data.trnreq.potentialRecordMatch == "Yes" %}
-    From {{ record.sourceOfMatch }} 
+     {{ record.sourceOfMatch }} request
   {% else %}
-  From {{ record.sourceOfMatch }}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--red">Potential duplicate</span>
+   {{ record.sourceOfMatch }} request&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--red">Potential duplicate</span>
   {% endif %}
 {% endset %}
 
