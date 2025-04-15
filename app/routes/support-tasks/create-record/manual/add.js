@@ -9,23 +9,41 @@ module.exports = (router) => {
 	})
 
 
+  //// POST from check page
   router.post('/support-tasks/create-record/manual/check', (req, res) => {
     let data = req.session.data || {}
-
-    if (data.createRecordEmail === "Susan.Arrowsmith@gmail.com" || data.createRecordFirstName === "Susan" || data.createRecordLastName === "Arrowsmith") {
-      res.redirect('/support-tasks/create-record/manual/duplicates')
+  
+    // Redirect to duplicates if matching a known duplicate name/email
+    if (
+      data.createRecordEmail === "Susan.Arrowsmith@gmail.com" ||
+      data.createRecordFirstName === "Susan" ||
+      data.createRecordLastName === "Arrowsmith"
+    ) {
+      return res.redirect('/support-tasks/create-record/manual/duplicates')
     }
-
-    // Generate TRN
+  
+    // Generate TRN and store it
     const generateTRN = () => Math.floor(100000 + Math.random() * 900000).toString()
-
-    // Store the generated TRN in session data
     data.trn = generateTRN()
+  
+    // Set full name in session (optional, makes it easy to reuse)
+    data.createRecordFullName = `${data.createRecordFirstName} ${data.createRecordLastName}`
+  
     req.session.data = data
+  
+    // Redirect to list with flash message in query string
+    res.redirect(`/support-tasks/create-record/manual/new?flash=Record+created+successfully+for+${encodeURIComponent(data.createRecordFullName)}`)
+  })
 
-    req.flash('success', 'Record created with TRN: ')
-		res.redirect('/support-tasks/create-record/manual/new')  
-	})
+
+  router.get('/support-tasks/create-record/manual/new', (req, res) => {
+    const flash = req.query.flash || ''
+    res.render('support-tasks/create-record/manual/new', {
+      flash,
+      data: req.session.data
+    })
+  })
+  
 
   router.post('/support-tasks/create-record/manual/duplicates', (req, res) => {
     let data = req.session.data
