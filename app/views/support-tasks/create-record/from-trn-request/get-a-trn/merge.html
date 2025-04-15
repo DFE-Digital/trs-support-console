@@ -48,10 +48,12 @@
     <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/merge/{{ record.id }}">
       <input type="hidden" name="recordId" value="{{ record.id }}">
       <div class="govuk-button-group">
-        {{ govukButton({ text: "Confirm and merge records" }) }}
-        {{ govukButton({ text: "Cancel", classes: "govuk-button--secondary" }) }}
+        <button class="govuk-button" type="submit">Confirm and merge records</button>
+        <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
       </div>
     </form>
+
+    
 
 
   </div>

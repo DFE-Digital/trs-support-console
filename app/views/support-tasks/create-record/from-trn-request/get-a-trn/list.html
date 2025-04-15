@@ -23,9 +23,8 @@
       html: '
         <div class="banner-flex">
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
-            ' ~ fullName ~ ' was created successfully
+            ' ~ record.fullName ~ ' was created successfully<br><a href="/support-tasks/create-record/from-trn-request/get-a-trn/new?recordId={{ recordId }}">View record</a>
           </h2>
-            <a href="/support-tasks/create-record/from-trn-request/get-a-trn/new?recordId={{ recordId }}">view record</a>
         </div>'
     }) }}
   
@@ -35,9 +34,8 @@
       html: '
         <div class="banner-flex">
           <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
-            Records merged successfully for ' ~ fullName ~ '
+            Records merged successfully for ' ~ record.fullName ~ ' <br><a href="/support-tasks/create-record/from-trn-request/get-a-trn/updated?recordId={{ recordId }}">View record</a>
           </h2>
-            <a href="/support-tasks/create-record/from-trn-request/get-a-trn/updated?recordId={{ recordId }}">view record</a>
         </div>'
     }) }}
   {% endif %}
