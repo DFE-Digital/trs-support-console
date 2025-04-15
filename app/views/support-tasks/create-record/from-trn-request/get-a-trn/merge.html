@@ -3,8 +3,10 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = "Create a record" %}
-{% set pageName = "Check details before merging with " + record.sourceOfMatch + " request" %}
+{% set captionName = "Support tasks" %}
+{# {% set pageName = "Check details before merging with " + record.sourceOfMatch + " request" %} #}
+{% set pageName = "Check details before merging records" %}
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -37,11 +39,11 @@
       {% include "_includes/support-tasks/create-from-trn/check-merge-afqts.njk" %}
     {% endif %} 
 
+
+    <p class="govuk-body govuk-!-margin-bottom-7">
+      <a href="/support-tasks/create-record/from-trn-request/get-a-trn/show/{{record.id}}" class="govuk-link">View incoming TRN request (opens in a new window)</a>.
+    </p>
     
-    {{ govukWarningText({
-      text: "Some content around reassurance that they have merged the correct things.",
-      iconFallbackText: "Warning"
-    }) }}
     
     <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/merge/{{ record.id }}">
       <input type="hidden" name="recordId" value="{{ record.id }}">
