@@ -1,6 +1,6 @@
 <p class="govuk-body">These include the details you selected from the secondary record.</p>
 
-<h2 class="govuk-heading-m">Primary record</h2>
+{# <h2 class="govuk-heading-m">Primary record</h2> #}
 
     {{data.retainFirstName | log}}
     {{data.retainMiddleName | log}}
@@ -12,9 +12,22 @@
     {{data.combineTheseSelections | log}}
 
     
-
 {{ govukSummaryList({
-  classes: "govuk-!-margin-bottom-7",
+  card: {
+    title: {
+      text: "Primary record"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "primary record"
+        }
+      ]
+    }
+  },
+  classes: "govuk-!-margin-bottom-0",
   rows: [
     {
       key: { text: "First name" },
@@ -50,6 +63,17 @@
     }
   ]
 }) }}
+
+
+{# Hidden inputs to POST those values #}
+  <input type="hidden" name="retainFirstName" value="{{ data.retainFirstName }}">
+  <input type="hidden" name="retainMiddleName" value="{{ data.retainMiddleName }}">
+  <input type="hidden" name="retainLastName" value="{{ data.retainLastName }}">
+  <input type="hidden" name="retainDOB" value="{{ data.retainDOB }}">
+  <input type="hidden" name="retainEmail" value="{{ data.retainEmail }}">
+  <input type="hidden" name="retainnationalInsuranceNumber" value="{{ data.retainnationalInsuranceNumber }}">
+  <input type="hidden" name="retainTRN" value="{{ data.retainTRN }}">
+  <input type="hidden" name="makeMergeComment" value="{{ data.makeMergeComment }}">
 
 
 

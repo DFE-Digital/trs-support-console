@@ -29,37 +29,60 @@ module.exports = (router) => {
   
     res.redirect('/support-tasks/deactivate/confirm-retain')
   })
+  
 
-  ///GET for select-data template
-  router.get('/support-tasks/deactivate/confirm-retain', (req, res) => {
-    res.render('support-tasks/deactivate/confirm-retain', {
-      data: req.session.data
-    })
-  })
-
+  ///POST for confirm-retain template
   router.post('/support-tasks/deactivate/confirm-retain', (req, res) => {
+    let data = req.session.data
+  
+    data.retainFirstName = req.body.retainFirstName
+    data.retainMiddleName = req.body.retainMiddleName
+    data.retainLastName = req.body.retainLastName
+    data.retainDOB = req.body.retainDOB
+    data.retainEmail = req.body.retainEmail
+    data.retainnationalInsuranceNumber = req.body.retainnationalInsuranceNumber
+    data.retainTRN = req.body.retainTRN
+    data.makeMergeComment = req.body.makeMergeComment
+  
+    // Add full name for banner
+    const fullName = `${data.retainFirstName} ${data.retainMiddleName || ''} ${data.retainLastName}`.replace(/\s+/g, ' ').trim()
+    const recordId = data.retainTRN || 'merged-record'
+  
+    res.redirect(`/support-tasks/deactivate/new/${recordId}?flash=Primary+record+updated&fullName=${encodeURIComponent(fullName)}`)
+  })
+  
+
+  ///GET for confirm-retian template
+  router.get('/support-tasks/deactivate/new/:recordId', (req, res) => {
+    const { flash, fullName } = req.query
     const data = req.session.data
   
-    data.retainFirstName = req.body.retainFirstName || data.retainFirstName
-    data.retainMiddleName = req.body.retainMiddleName || data.retainMiddleName
-  
-    console.log("✅ Confirm-retain POST — updated session data:", data)
-  
-    if (data.combineTheseSelections === 'Yes') {
-      req.flash(
-        'success',
-        'Primary record updated for ' +
-          data.deactivate?.[0]?.firstName + ' ' +
-          data.deactivate?.[1]?.middleName + ' ' +
-          data.deactivate?.[0]?.lastName +
-          ' with TRN: ' + data.deactivate?.[0]?.trn
-      )
-  
-      res.redirect('/support-tasks/deactivate/primary-new')
-    } else {
-      res.redirect('/support-tasks/deactivate/select-data')
+    // Create a merged task object from retained values
+    const person = {
+      id: req.params.recordId,
+      firstName: data.retainFirstName,
+      middleName: data.retainMiddleName,
+      lastName: data.retainLastName,
+      fullName: data.retainFirstName + ' ' + (data.retainMiddleName || '') + ' ' + data.retainLastName,
+      dateOfBirth: data.retainDOB,
+      email: data.retainEmail,
+      nationalInsuranceNumber: data.retainnationalInsuranceNumber,
+      gender: data.retainSex || 'Not provided',
+      trn: data.retainTRN
     }
-  })  
+  
+  
+    res.render('support-tasks/deactivate/new', {
+      flashMessage: flash,
+      fullName,
+      recordId: req.params.recordId,
+      person,
+      data
+    })
+  })
+  
+
+  
   
 }
 
