@@ -1,53 +1,80 @@
 <p class="govuk-body">These include the details you selected from the secondary record.</p>
 
-<h2 class="govuk-heading-m">Primary record</h2>
+{# <h2 class="govuk-heading-m">Primary record</h2> #}
 
-{{ data.firstNameA | log }}
-{{ data.middleNameA | log }}
-{{ data.lastNameA | log }}
-{{ data.dateOfBirthA | log }}
-{{ data.emailA | log }}
-{{ data.nationalInsuranceNumberA | log }}
-{{ data.trnA | log }}
+    {{data.retainFirstName | log}}
+    {{data.retainMiddleName | log}}
+    {{data.retainDOB | log}}
+    {{data.retainEmail | log}}
+    {{data.retainnationalInsuranceNumber | log}}
+    {{data.retainTRN | log}}
+    {{data.makeMergeComment | log}}
+    {{data.combineTheseSelections | log}}
 
+    
 {{ govukSummaryList({
-  classes: "govuk-!-margin-bottom-7",
+  card: {
+    title: {
+      text: "Primary record"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "primary record"
+        }
+      ]
+    }
+  },
+  classes: "govuk-!-margin-bottom-0",
   rows: [
     {
       key: { text: "First name" },
-      value: { html: data.deactivate[0].firstName }
+      value: { html: data.retainFirstName or "Not selected" }
     },
     {
       key: { text: "Middle name" },
-      value: { html: data.retainMiddleName }
+      value: { html: data.retainMiddleName or "Not selected" }
     },
     {
-      key: { text: "Last Name" },
-      value: { html: data.deactivate[0].lastName }
+      key: { text: "Last name" },
+      value: { html: data.retainLastName or "Not selected" }
     },
     {
       key: { text: "Date of birth" },
-      value: { html: data.retainDOB }
+      value: { html: data.retainDOB or "Not selected" }
     },
     {
       key: { text: "Email address" },
-      value: { html: data.retainEmail }
+      value: { html: data.retainEmail or "Not selected" }
     },
     {
       key: { text: "National Insurance number" },
-      value: { html: data.retainnationalInsuranceNumber }
+      value: { html: data.retainnationalInsuranceNumber or "Not selected" }
     },
-
     {
       key: { text: "TRN" },
-      value: { html: data.retainTRN }
+      value: { html: data.retainTRN or "Not selected" }
     },
-     {
+    {
       key: { text: "Comments" },
-      value: { html: data.makeMergeComment }
+      value: { html: data.makeMergeComment or "None added" }
     }
   ]
 }) }}
+
+
+{# Hidden inputs to POST those values #}
+  <input type="hidden" name="retainFirstName" value="{{ data.retainFirstName }}">
+  <input type="hidden" name="retainMiddleName" value="{{ data.retainMiddleName }}">
+  <input type="hidden" name="retainLastName" value="{{ data.retainLastName }}">
+  <input type="hidden" name="retainDOB" value="{{ data.retainDOB }}">
+  <input type="hidden" name="retainEmail" value="{{ data.retainEmail }}">
+  <input type="hidden" name="retainnationalInsuranceNumber" value="{{ data.retainnationalInsuranceNumber }}">
+  <input type="hidden" name="retainTRN" value="{{ data.retainTRN }}">
+  <input type="hidden" name="makeMergeComment" value="{{ data.makeMergeComment }}">
+
 
 
 

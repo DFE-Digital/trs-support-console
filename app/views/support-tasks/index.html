@@ -1,9 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set serviceNavId = "supportTasks" %} 
-{% set secondaryNavId = "allTasks" %}
 
-{% set captionName = " " %}
 {% set pageName = "Support tasks" %}
 
 
@@ -28,25 +26,14 @@
   }) if flash.length }}
 {% endif%}
 
-
-    {{ task.supportTaskType | log }}
-    {{ task.reference | log }}
-    {{ task.dateOfTrnRequest | log }}
-    {{ task.firstName | log }}
-    {{ task.middleName | log }}
-    {{ task.lastName | log }}
-    {{ task.dateOfBirth | log }}
-    {{ task.email | log }}
-    {{ task.nationalInsuranceNumber | log }}
-
-  
+    {{ data.user | log }}
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
         <h1 class="govuk-heading-l">{{ pageName }}</h1>
       </div>
     </div>
-  
+    
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
         <h2 class="govuk-heading-m">Stuff with records Support might do</h2>
@@ -71,39 +58,34 @@
           
           
 
-          {# Draft #}
-          <a href="#" class="status-card status-card--in-training">
-            <span class="status-card__count"> 35</span>
+          {# Get a TRN requests #}
+          <a href="/support-tasks/create-record/from-trn-request/get-a-trn/list" class="status-card status-card--in-training">
+            <span class="status-card__count">10</span>
             <span class="status-card__status">Get a TRN requests</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
   
-          {# Upcoming #}
-          
+          {# Change details requests #}   
           <a href="#" class="status-card status-card--in-training">
             <span class="status-card__count">27</span>
-            <span class="status-card__status">Change details requests</span><span class="govuk-visually-hidden">View these records.</span>
+            <span class="status-card__status">One login requests</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
   
-          {# Actively training #}
-          
+          {# Connect GOV.UK One Login requests #} 
           <a href="#" class="status-card status-card--in-training">
             <span class="status-card__count">14</span>
-            <span class="status-card__status">	Connect GOV.UK One Login requests</span><span class="govuk-visually-hidden">View these records.</span>
+            <span class="status-card__status">Change date of birth requests</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
   
-          {# Awarded this year #}
-          
-          <a href="#" class="status-card status-card--withdrawn">
-            <span class="status-card__count">10</span>
-            <span class="status-card__status">Potential duplicate records</span><span class="govuk-visually-hidden">View these records.</span>
+          {# APIs Register / AFQTS / Potential duplicate records #}    
+          <a href="/support-tasks/create-record/from-trn-request/match-create-record/list" class="status-card status-card--withdrawn">
+            <span class="status-card__count">20</span>
+            <span class="status-card__status">Potential duplicates from APIs</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
   
-          {# Currently deferred #}
-          
-  
+          {# Records with alerts #}
           <a href="#" class="status-card status-card--deferred">
             <span class="status-card__count">3</span>
-            <span class="status-card__status">Records with alerts</span><span class="govuk-visually-hidden">View these records.</span>
+            <span class="status-card__status">Change name requests</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
   
           {# Incomplete #}
@@ -121,25 +103,4 @@
   {% endblock %}
 
 
-{% block scripts %}
-  {{super()}}
-  <script>
-    new AppFrontend.FilterToggleButton({
-      bigModeMediaQuery: '(min-width: 48.063em)',
-      startHidden: false,
-      toggleButton: {
-        container: $('.app-action-bar__filter'),
-        showText: 'Show filter',
-        hideText: 'Hide filter',
-        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
-      },
-      closeButton: {
-        container: $('.app-filter__header-action'),
-        text: 'Close'
-      },
-      filter: {
-        container: $('.app-filter-layout__filter')
-      }
-    })
-  </script>
-{% endblock %}
+

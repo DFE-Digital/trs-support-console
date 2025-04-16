@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "general" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">{{ data.trnreq[0].fullName }}</h1>
+
+      {{ req.id | log }}
+      <p>{{ record.id }}</p>
+
+      {% include "_includes/secondary-navigation.njk" %}  
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal Details"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "personal details"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              html: data.trnreq[0].fullName
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: data.trnreq[0].dateOfBirth
+            }
+          },
+          {
+            key: { text: "Email" },
+            value: { html: '<ul class="govuk-list govuk-list--bullet"><li>' +data.trnreq[0].email+ '</li><li>' +data.duplicates[3].email+ '</li></ul>'  }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: data.duplicates[3].nationalInsuranceNumber
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: data.duplicates[3].trn
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: data.duplicates[3].gender
+            }
+          },
+         
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+              text: data.duplicates[3].mobile or "Not provided"
+            }
+          }
+        ]
+      }) }}
+      
+    
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "general" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">{{ record.fullName }}</h1>
+
+      {{ data.deactivate | log }}
+
+      
+
+
+      {% include "_includes/secondary-navigation.njk" %}  
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal Details"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "personal details"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              html: record.fullName
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: record.dateOfBirth
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: record.gender
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: record.trn
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: record.nationalInsuranceNumber
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+              text: record.email
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+              text: record.mobile or "Not provided"
+            }
+          }
+        ]
+      }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}

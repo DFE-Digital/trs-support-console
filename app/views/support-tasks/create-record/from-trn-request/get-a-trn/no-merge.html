@@ -3,8 +3,8 @@
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
-{% set captionName = "Create a record" %}
-{% set pageName = "Merge TRN request with existing record" %}
+{% set captionName = task.supportTaskType %}
+{% set pageName = task.reference %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -35,15 +35,29 @@
     <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     
-    {% include "_includes/support-tasks/create-from-trn/merge-request-details.njk" %}
+    {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
 
     <div class="govuk-button-group">
-      
+      {% if task.supportTaskType == "TRN request" and task.potentialRecordMatch == "No" %}
+      {{ govukButton({
+        text: "Create a record from TRN request",
+        href: "/support-tasks/create-record/from-trn-request/no-match/" + task.id + "/reason"
+      }) }}
+
+      {% elseif task.supportTaskType == "TRN request" and task.potentialRecordMatch == "Yes" %}
+
         {{ govukButton({
-          text: "Merge records",
-          href: "/support-tasks/create-record/from-trn-request/" + task.id + "/duplicates"
+          text: "Compare potential duplicates",
+          href: "/support-tasks/create-record/from-trn-request/match/" + task.id + "/duplicates"
         }) }}
 
+      {% elseif task.supportTaskType == "Change name request"  %}
+        {{ govukButton({
+          text: "Compare potential duplicates",
+          href: "/support-tasks/create-record/deactivate/" + task.id + "/duplicates"
+        }) }}
+
+      {% endif %}
     </div>
 
     <p class="govuk-body">

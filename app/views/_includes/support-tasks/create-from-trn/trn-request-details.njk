@@ -1,49 +1,83 @@
 
+  <div class="govuk-summary-card">
+    <div class="govuk-summary-card__title-wrapper">
+      <h2 class="govuk-summary-card__title">Requested on {{record.dateOfTrnRequest}} from &nbsp;&nbsp;<strong class="govuk-tag">{{ record.sourceOfMatch }}</strong></h2>
+      {# <p>{{record.id}}</p> #}
+    </div>
+<div class="govuk-summary-card__content">
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Name</dt>
+      <dd class="govuk-summary-list__value">{{ record.fullName }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Previous name</dt>
+      <dd class="govuk-summary-list__value">{{ record.previousName or "none" }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Date of birth</dt>
+      <dd class="govuk-summary-list__value">{{ record.dateOfBirth }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Personal email</dt>
+      <dd class="govuk-summary-list__value">{{ record.email }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">National Insurance number</dt>
+      <dd class="govuk-summary-list__value">{{ record.nationalInsuranceNumber }}</dd>
+    </div>
 
-{# { key: { text: "Potential duplicate" }, value: { html: '<span class="govuk-tag govuk-!-font-size-16 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.potentialRecordMatch + '</span>'} } if task.potentialRecordMatch == "Yes" #}
+    {% if record.nationalInsuranceNumber == "Not provided" or record.nationalInsuranceNumber == "" or record.nationalInsuranceNumber == null %}
 
-<h2 class="govuk-heading-m">Incoming {{task.supportTaskType}}</h2>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Address</dt>
+        <dd class="govuk-summary-list__value">{{ record.trainingProviderAddress }}</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Town or city</dt>
+        <dd class="govuk-summary-list__value">{{ record.town }}</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Postal code</dt>
+        <dd class="govuk-summary-list__value">{{ record.postcode }}</dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Country</dt>
+        <dd class="govuk-summary-list__value">{{ record.country }}</dd>
+      </div>
+    {% endif %}
 
-{{ govukSummaryList({
-  classes: "govuk-!-margin-bottom-6",
-  rows: [
-    { key: 
-      { text: "Source of duplicate" },
-      value: { html: '<span class="govuk-tag govuk-!-font-size-19 ' + task.potentialRecordMatch | statusColour + ' "> ' +  task.sourceOfMatch + ' </span>'  } } if task.potentialRecordMatch == "Yes",
-    {
-      key: { text: "First name" },
-      value: { html: task.firstName }
-    },
-    {
-      key: { text: "Middle name" },
-      value: { html: task.middleName }
-    } if task.middleName,
-    {
-      key: { text: "Last Name" },
-      value: { html: task.lastName }
-    },
-    {
-      key: { text: "Date of birth" },
-      value: { text: task.dateOfBirth }
-    },
-    {
-      key: { text: "Email address" },
-      value: { text: task.email }
-    },
-    {
-      key: { text: "National Insurance number" },
-      value: { text: task.nationalInsuranceNumber }
-    } if task.nationalInsuranceNumber,
-    {
-      key: { text: "Date of request" },
-      value: { text: task.dateOfTrnRequest }
-    },
-    {
-      key: { text: "Evidence" },
-      value: { html: '<a href="#" class="govuk-link">' + task.providedEvidence + '</a>' }
-    }
-  ]
-}) }}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Working in school or educational setting</dt>
+      <dd class="govuk-summary-list__value">{{ record.workingAlready }}</dd>
+    </div>
+
+    {% if record.workingAlready == "Yes" %}
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Work email</dt>
+      <dd class="govuk-summary-list__value">{{ record.workEmail }}</dd>
+    </div>
+    {% endif %}
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">NPQ application ID</dt>
+      <dd class="govuk-summary-list__value">{{ record.npqApplicationId }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">NPQ name</dt>
+      <dd class="govuk-summary-list__value">{{ record.npqName }}</dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">NPQ training provider</dt>
+      <dd class="govuk-summary-list__value">{{ record.trainingProvider }}</dd>
+    </div>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Evidence</dt>
+      <dd class="govuk-summary-list__value"><a href="#" class="govuk-link">{{ record.providedEvidence }} (opens in new tab)</a>.</dd>
+    </div>
+  </dl>
+</div>
 
 
-
+  </div>

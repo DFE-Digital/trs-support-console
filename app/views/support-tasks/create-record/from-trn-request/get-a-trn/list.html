@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName="Get a TRN requests" %}
+{% set serviceNavId = "supportTasks" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+{% if flashMessage %}
+  {% if flashMessage == "Record created successfully" %}
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '
+        <div class="banner-flex">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+            ' ~ record.fullName ~ ' was created successfully<br><a href="/support-tasks/create-record/from-trn-request/get-a-trn/new?recordId={{ recordId }}">View record</a>
+          </h2>
+        </div>'
+    }) }}
+  
+  {% elif flashMessage == "Records merged successfully" %}
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '
+        <div class="banner-flex">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+            Records merged successfully for ' ~ record.fullName ~ ' <br><a href="/support-tasks/create-record/from-trn-request/get-a-trn/updated?recordId={{ recordId }}">View record</a>
+          </h2>
+        </div>'
+    }) }}
+  {% endif %}
+{% endif %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ record | log }}
+    {{ data.user | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    
+  
+  </div>
+</div>
+
+{% include "_includes/support-tasks/create-from-trn/search-form.njk" %}
+
+
+{% include "_includes/support-tasks/create-from-trn/get-a-trn-list.njk" %}
+
+{{ govukPagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}

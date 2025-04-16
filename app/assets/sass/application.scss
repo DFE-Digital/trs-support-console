@@ -44,3 +44,14 @@ body {
   align-items: center;
   gap: 3rem;
 }
+
+
+.banner-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-right: 0; /* ensures link isn't cut off */
+}
+

@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Incoming request from " + record.sourceOfMatch + " API" %}
+{% set pageName = "Incoming " + record.sourceOfMatch + " request" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
 
     {# We call record here from the route `/support-tasks/create-record/from-trn-request/match-create-record/show/:id` #}
-
+    {{ data.user | log }}
     {{ record.id | log }}
 
     <span class="govuk-caption-l">{{captionName}}</span>
@@ -35,21 +35,17 @@
     {% if record.sourceOfMatch == "Get a TRN" %}
       {% include "_includes/support-tasks/create-from-trn/trn-request-details.njk" %}
     {% endif %}
-
     {% if record.sourceOfMatch == "Register" %}
       {% include "_includes/support-tasks/create-from-trn/register-request-details.njk" %}
     {% endif %}
-   
-    {% if record.sourceOfMatch == "AfQTS" %}
-       {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %}
-    {% endif %}
+    {# {% include "_includes/support-tasks/create-from-trn/afqts-request-details.njk" %} #}
 
     
     <div class="govuk-button-group">
       {% if record.potentialRecordMatch == "Yes" %}
         {{ govukButton({
           text: "Compare potential duplicates",
-          href: "/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/" + record.id
+          href: "/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/" + record.id
         }) }}
         {{ govukButton({
           text: "Cancel",
@@ -57,11 +53,10 @@
           classes: "govuk-button--secondary"
         }) }}
         {% else %} 
-
-        <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/{{ record.id }}">
-        <input type="hidden" name="recordId" value="{{ record.id }}">
+        <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/show/{{record.id}}" novalidate>
+          <input type="hidden" name="recordId" value="{{ record.id }}">
           <div class="govuk-button-group">
-            <button type="submit" class="govuk-button">Create a record from AfQTS request</button>
+            <button type="submit" class="govuk-button">Create a record from TRN request</button>
             <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
           </div>
         </form>

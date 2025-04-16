@@ -4,7 +4,7 @@
 {% set secondaryNavId = "createRecord" %}
 
 {% set captionName = "Create a record" %}
-{% set pageName = "Enter the person's personal details" %}
+{% set pageName = "Enter the teacher's personal details" %}
 
 
 {% block beforeContent %}
@@ -137,11 +137,11 @@
         
         {{ govukInput({
           label: {
-            text: "National Insurance number",
+            text: "National Insurance number (optional)",
             classes: "govuk-label--s"
           },
           hint: {
-            text: "For example, 'QQ 12 34 56 C'"
+            text: "For example, ‘QQ 12 34 56 C’"
           },
           value: data.createRecordNationalInsuranceNumber,
           classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
@@ -149,29 +149,6 @@
           name: "createRecordNationalInsuranceNumber",
           spellcheck: false
         }) }}
-
-
-        {{ govukRadios({
-          name: "createRecordSex",
-          fieldset: {
-            legend: {
-              text: "Sex",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-          items: [
-            {
-              value: "Male",
-              text: "Male"
-            },
-            {
-              value: "Female",
-              text: "Female"
-            }
-          ], value: data.createRecordSex
-        }) }}
-
 
         <h2 class="govuk-heading-m">Why are you creating this record?</h2>
         {{ govukRadios({
@@ -184,16 +161,12 @@
           },
           items: [
             {
-              value: "They were awarded a mandatory qualification",
-              text: "They were awarded a mandatory qualification"
+              value: "Some reason",
+              text: "Some reason"
             },
             {
-              value: "They received an alert",
-              text: "They received an alert"
-            },
-            {
-              value: "They started university late",
-              text: "They started university late"
+              value: "A different reason",
+              text: "A different reason"
             },
             {
               value: "Another reason",
@@ -233,16 +206,9 @@
 
 
 
-        <div class="govuk-button-group">
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-        
-          {{ govukButton({
-            text: "Cancel",
-            classes: "govuk-button--secondary"
-          }) }}
-        </div>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
 
       </form>
 

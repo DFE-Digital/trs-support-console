@@ -1,10 +1,11 @@
-{{ data.firstNameA | log }}
-{{ data.middleNameA | log }}
-{{ data.lastNameA | log }}
-{{ data.dateOfBirthA | log }}
-{{ data.emailA | log }}
-{{ data.nationalInsuranceNumberA | log }}
-{{ data.trnA | log }}
+{{data.retainFirstName | log}}
+{{data.retainMiddleName | log}}
+{{data.retainDOB | log}}
+{{data.retainEmail | log}}
+{{data.retainnationalInsuranceNumber | log}}
+{{data.retainTRN | log}}
+{{data.makeMergeComment | log}}
+{{data.combineTheseSelections | log}}
 
 {{ govukSummaryList({
       card: {
@@ -24,36 +25,31 @@
   rows: [
     {
       key: { text: "First name" },
-      value: { html: data.deactivate[0].firstName }
+      value: { html: data.retainFirstName or "Not selected" }
     },
     {
       key: { text: "Middle name" },
-      value: { html: data.retainMiddleName }
+      value: { html: data.retainMiddleName or "Not selected" }
     },
     {
-      key: { text: "Last Name" },
-      value: { html: data.deactivate[0].lastName }
+      key: { text: "Last name" },
+      value: { html: data.retainLastName or "Not selected" }
     },
     {
       key: { text: "Date of birth" },
-      value: { html: data.retainDOB }
+      value: { html: data.retainDOB or "Not selected" }
     },
     {
       key: { text: "Email address" },
-      value: { html: data.retainEmail }
+      value: { html: data.retainEmail or "Not selected" }
     },
     {
       key: { text: "National Insurance number" },
-      value: { html: data.retainnationalInsuranceNumber }
+      value: { html: data.retainnationalInsuranceNumber or "Not selected" }
     },
-
     {
       key: { text: "TRN" },
-      value: { html: data.retainTRN }
-    },
-    {
-      key: { text: "Deactivated record" },
-      value: { html: '<p class="govuk-body"><a href="#" class="govuk-link">1 April 2024</a></p>' }
+      value: { html: data.retainTRN or "Not selected" }
     }
   ]
 }) }}

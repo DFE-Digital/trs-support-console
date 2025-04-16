@@ -1,0 +1,46 @@
+{{ govukSummaryList({
+  card: {
+    title: {
+      html: "Existing record"
+    },
+    actions: {
+      items: [
+        {
+          href: "/deactivate/show/"+record.id,
+          text: "View record",
+          visuallyHiddenText: "view record"
+        }
+      ]
+    }
+  },
+  rows: [
+    {
+      key: { text: "First name" },
+      value: { html: data.duplicates[7].firstName }
+    },
+    {
+      key: { text: "Middle name" },
+      value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[7].middleName + '</strong></mark>' }
+    } if data.duplicates[7].middleName,
+    {
+      key: { text: "Last Name" },
+      value: { html: data.duplicates[7].lastName }
+    },
+    {
+      key: { text: "Date of birth" },
+      value: { text: data.duplicates[7].dateOfBirth }
+    },
+    {
+      key: { text: "Email address" },
+      value: { html: data.duplicates[7].email  }
+    },
+    {
+      key: { text: "NI number" },
+      value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[7].nationalInsuranceNumber + '</strong></mark>' }
+    } if data.duplicates[7].nationalInsuranceNumber,
+    {
+      key: { text: "TRN" },
+      value: { html:  data.duplicates[7].trn  }
+    }
+  ]
+}) }}
