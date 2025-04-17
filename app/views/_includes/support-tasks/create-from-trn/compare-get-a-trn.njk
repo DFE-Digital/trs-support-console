@@ -6,7 +6,7 @@
     actions: {
       items: [
         {
-          href: "/deactivate/show/"+record.id,
+          href: "/deactivate/show/" + match.id,
           text: "View record",
           visuallyHiddenText: "view record"
         }
@@ -16,31 +16,31 @@
   rows: [
     {
       key: { text: "First name" },
-      value: { html: data.duplicates[3].firstName }
+      value: { html: match.firstName }
     },
     {
       key: { text: "Middle name" },
-      value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].middleName + '</strong></mark>' }
-    } if data.duplicates[3].middleName,
+      value:  { html: '<mark class="hods-highlight"><strong>' + match.middleName + '</strong></mark>' }
+    } if match.middleName,
     {
       key: { text: "Last Name" },
-      value: { html: data.duplicates[3].lastName }
+      value: { html: match.lastName }
     },
     {
       key: { text: "Date of birth" },
-      value: { text: data.duplicates[3].dateOfBirth }
+      value: { text: match.dateOfBirth }
     },
     {
       key: { text: "Email address" },
-      value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].email + '</strong></mark>' }
+      value: { html: '<mark class="hods-highlight"><strong>' + match.email + '</strong></mark>' }
     },
     {
       key: { text: "NI number" },
-      value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[3].nationalInsuranceNumber + '</strong></mark>' }
-    } if data.duplicates[3].nationalInsuranceNumber,
+      value: { html: '<mark class="hods-highlight"><strong>' + match.nationalInsuranceNumber + '</strong></mark>' }
+    } if match.nationalInsuranceNumber,
     {
       key: { text: "TRN" },
-      value: { html:  data.duplicates[3].trn  }
+      value: { html: match.trn }
     }
   ]
 }) }}

@@ -2,7 +2,8 @@ const _ = require('lodash')
 
 module.exports = (router) => {
 
-////////// Show a single teacher (John Doe) on deactivate journey //////////
+
+
 //// Route passes {record} so must call that in the template
 router.get('/support-tasks/create-record/from-trn-request/get-a-trn/show/:recordId', (req, res) => {
   let record = req.session.data.trnreq.find(record => record.id === req.params.recordId)
@@ -10,11 +11,32 @@ router.get('/support-tasks/create-record/from-trn-request/get-a-trn/show/:record
   res.render('support-tasks/create-record/from-trn-request/get-a-trn/show', { record })
 })
 
-
+///Interrogate the record to see if it is a duplicate in trnreq.json & duplivcates.json
 router.get('/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/:recordId', (req, res) => {
-  let record = req.session.data.trnreq.find(record => record.id === req.params.recordId)
-  res.render('support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing', { record })
+  const trnRequests = req.session.data.trnreq || []
+  const duplicates = req.session.data.duplicates || []
+
+  const record = trnRequests.find(r => r.id === req.params.recordId)
+
+  if (!record) {
+    return res.status(404).send('Record not found in trnreq.json')
+  }
+
+  // Try to find a match in duplicates.json
+  const match = duplicates.find(d =>
+    d.id === record.id &&
+    d.firstName?.toLowerCase() === record.firstName?.toLowerCase() &&
+    d.lastName?.toLowerCase() === record.lastName?.toLowerCase()
+  )
+
+  res.render('support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing', {
+    record,         // from trnreq
+    match,          // from duplicates (may be undefined)
+    data: req.session.data
+  })
 })
+
+
 
 router.post('/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/:recordId', (req, res) => {
   res.redirect('/support-tasks/create-record/from-trn-request/get-a-trn/merge/:recordId')
