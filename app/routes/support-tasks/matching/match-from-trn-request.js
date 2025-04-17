@@ -37,10 +37,54 @@ router.get('/support-tasks/create-record/from-trn-request/get-a-trn/compare-requ
 })
 
 
+/// GET data from compare-request-with-existing to select-data
+router.get('/support-tasks/create-record/from-trn-request/get-a-trn/select-data/:recordId', (req, res) => {
+  const recordId = req.params.recordId
+  const trnRequests = req.session.data.trnreq || []
+  const duplicates = req.session.data.duplicates || []
 
-router.post('/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/:recordId', (req, res) => {
-  res.redirect('/support-tasks/create-record/from-trn-request/get-a-trn/merge/:recordId')
+  const record = trnRequests.find(r => r.id === recordId)
+  const match = duplicates.find(d =>
+    d.id === recordId &&
+    d.firstName?.toLowerCase() === record.firstName?.toLowerCase() &&
+    d.lastName?.toLowerCase() === record.lastName?.toLowerCase()
+  )
+
+  res.render('support-tasks/create-record/from-trn-request/get-a-trn/select-data', {
+    record,
+    match,
+    data: req.session.data
+  })
 })
+
+
+// POST data from select-data to merge
+router.post('/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/:recordId', (req, res) => {
+  const recordId = req.params.recordId
+  const body = req.body
+  const data = req.session.data
+
+  const trnRequests = data.trnreq || []
+  const record = trnRequests.find(r => r.id === recordId)
+
+  // Store selected values from the form, including sourceOfMatch from original record
+  data.mergedRecord = {
+    id: recordId,
+    firstName: body.retainFirstName,
+    middleName: body.retainMiddleName,
+    lastName: body.retainLastName,
+    dateOfBirth: body.retainDateOfBirth,
+    email: body.retainEmail,
+    nationalInsuranceNumber: body.retainNationalInsuranceNumber,
+    trn: body.retainTrn,
+    comment: body.makeMergeComment,
+    sourceOfMatch: record?.sourceOfMatch || "Get a TRN" // fallback just in case
+  }
+
+  res.redirect(`/support-tasks/create-record/from-trn-request/get-a-trn/merge/${recordId}`)
+})
+
+
 
 
 
@@ -54,8 +98,12 @@ router.post('/support-tasks/create-record/from-trn-request/get-a-trn/merge/:reco
 })
 
 router.get('/support-tasks/create-record/from-trn-request/get-a-trn/merge/:recordId', (req, res) => {
-  let record = req.session.data.trnreq.find(record => record.id === req.params.recordId)
-  res.render('support-tasks/create-record/from-trn-request/get-a-trn/merge', { record })
+  const mergedRecord = req.session.data.mergedRecord || {}
+
+  res.render('support-tasks/create-record/from-trn-request/get-a-trn/merge', {
+    record: mergedRecord,
+    data: req.session.data
+  })
 })
 
 
@@ -90,47 +138,6 @@ router.get('/support-tasks/create-record/from-trn-request/get-a-trn/list', (req,
     record,
     data: req.session.data
   })
-})
-
-
-
-router.get('/support-tasks/create-record/from-trn-request/get-a-trn/updated/:recordId', (req, res) => {
-  const recordId = req.params.recordId
-  const record = req.session.data.trnreq.find(r => r.id === recordId)
-
-  res.render('support-tasks/create-record/from-trn-request/get-a-trn/updated', {
-  ///back up for testing data below
-  record: {
-    firstName: "Olivia",
-    middleName: "Not given",
-    lastName: "Johnson",
-    dateOfBirth: "8 August 1988",
-    nationalInsuranceNumber: "TR 78 56 12 C",
-    dateOfTrnRequest: "25 January 2024",
-    supportTaskType: "Get a TRN",
-    reference: "TRN-QW45HGY6",
-    potentialRecordMatch: "No",
-    sourceOfMatch: "Get a TRN",
-    id: "6474500c-9604-476a-b4d8-a4cd2d915b80",
-    email: "Olivia.Johnson@gmail.com",
-    gender: "Female",
-    hasAlerts: "None",
-    trn: "None",
-    completed: "no",
-    providedEvidence: "passport.jpg",
-    caseStatus: "Open",
-    fullName: "Olivia Johnson",
-    trainingProviderAddress: "20 High Street",
-    town: "Southampton",
-    postcode: "LS1 1UR",
-    country: "United Kingdom",
-    workingAlready: "No",
-    workEmail: "olivia.johnson@oakgrove.sch.uk",
-    npqApplicationId: "27431268",
-    npqName: "Leading teacher development",
-    trainingProvider: "Teach First"
-  }
-})
 })
 
 }
