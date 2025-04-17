@@ -6,41 +6,41 @@
     actions: {
       items: [
         {
-          href: "/support-tasks/create-record/from-trn-request/match-create-record/show"+data.duplicates[6].id,
+          href: "/deactivate/show/" + match.id,
           text: "View record",
           visuallyHiddenText: "view record"
         }
       ]
     }
-  }, 
+  },
   rows: [
     {
       key: { text: "First name" },
-      value: { html: data.duplicates[6].firstName }
+      value: { html: match.firstName }
     },
     {
       key: { text: "Middle name" },
-      value:  { html: '<mark class="hods-highlight"><strong>' + data.duplicates[6].middleName + '</strong></mark>' }
-    } if data.duplicates[6].middleName,
+      value:  { html: '<mark class="hods-highlight"><strong>' + match.middleName + '</strong></mark>' }
+    } if match.middleName,
     {
       key: { text: "Last Name" },
-      value: { html: data.duplicates[6].lastName }
+      value: { html: match.lastName }
     },
     {
       key: { text: "Date of birth" },
-      value: { text: data.duplicates[6].dateOfBirth }
+      value: { text: match.dateOfBirth }
     },
     {
       key: { text: "Email address" },
-      value: { html: '<mark class="hods-highlight"><strong>' + data.duplicates[6].email + '</strong></mark>' }
+      value: { html: '<mark class="hods-highlight"><strong>' + match.email + '</strong></mark>' }
     },
     {
       key: { text: "NI number" },
-      value: { html:  data.duplicates[6].nationalInsuranceNumber }
-    } if data.duplicates[6].nationalInsuranceNumber,
+      value: { html: '<mark class="hods-highlight"><strong>' + match.nationalInsuranceNumber + '</strong></mark>' }
+    } if match.nationalInsuranceNumber,
     {
       key: { text: "TRN" },
-      value: { html:  data.duplicates[6].trn  }
+      value: { html: match.trn }
     }
   ]
 }) }}

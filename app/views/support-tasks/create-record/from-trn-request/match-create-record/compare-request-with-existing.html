@@ -59,7 +59,7 @@
                 {
                   key: { text: "Middle name" },
                   value: { html: record.middleName }
-                } if not record.middleName === "Not given",
+                } if record.middleName or "Not provided",
                 {
                   key: { text: "Last Name" },
                   value: { html: record.lastName }
@@ -79,10 +79,11 @@
                 {
                   key: { text: "Evidence" },
                   value: { html: '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' or "None"} 
-                } if not record.hasEvidence === "None"
+                } if not record.providedEvidence
               ]
             }) }}
           </div>
+  
   
       
 
@@ -123,7 +124,7 @@
           ]
         }) }}
         
-        <form method="get" action="/support-tasks/create-record/from-trn-request/match-create-record/merge/{{ record.id }}">
+        <form method="get" action="/support-tasks/create-record/from-trn-request/match-create-record/select-data/{{ record.id }}">
           <div class="govuk-button-group">
             <button class="govuk-button" data-module="govuk-button" type="submit">Continue</button>
         

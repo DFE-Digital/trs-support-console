@@ -1,46 +1,57 @@
-
-{# <p class="govuk-body">Information being retained from the existing record is <mark class="hods-highlight"><strong>highlighted</strong></mark></p> #}
-<h2 class="govuk-heading-m">Details of the merged record</h2>
-
-{# <p>{{ record.id }}</p> #}
-
-{{ govukSummaryList({
-  classes: "govuk-!-margin-bottom-7",
-  rows: [
-    {
-      key: { text: "First name" },
-      value: { html: record.firstName }
+{% if record %}
+  {{ govukSummaryList({
+    card: {
+      title: {
+        text: "Details of the merged record"
+      },
+      actions: {
+        items: [
+          {
+            href: "/support-tasks/create-record/from-trn-request/match-create-record/select-data/" + record.id,
+            text: "Change",
+            visuallyHiddenText: "merged record details"
+          }
+        ]
+      }
     },
-    {
-      key: { text: "Middle name" },
-      value: { html: record.middleName }
-    } if record.middleName,
-    {
-      key: { text: "Last Name" },
-      value: { html: record.lastName }
-    },
-    {
-      key: { text: "Date of birth" },
-      value: { text: record.dateOfBirth }
-    },
-    {
-      key: { text: "Email address" },
-      value: { html: '<ul class="govuk-list"><li>' +record.email+ '</li></ul>'  }
-    },
-    {
-      key: { text: "National Insurance number" },
-      value: { html: record.nationalInsuranceNumber }
-    },
-     {
-      key: { text: "Gender" },
-      value: { html: record.gender }
-    },
-    {
-      key: { text: "TRN" },
-      value: { html: data.duplicates[6].trn }
-    }
-  ]
-}) }}
+    rows: [
+      {
+        key: { text: "First name" },
+        value: { html: record.firstName or "Not provided" }
+      },
+      {
+        key: { text: "Middle name" },
+        value: { html: record.middleName or "Not provided" }
+      } if record.middleName,
+      {
+        key: { text: "Last name" },
+        value: { html: record.lastName or "Not provided" }
+      },
+      {
+        key: { text: "Date of birth" },
+        value: { html: record.dateOfBirth or "Not provided" }
+      },
+      {
+        key: { text: "Email address" },
+        value: { html: '<ul class="govuk-list"><li>' + record.email + '</li></ul>' }
+      },
+      {
+        key: { text: "National Insurance number" },
+        value: { html: record.nationalInsuranceNumber or "Not provided" }
+      },
+      {
+        key: { text: "TRN" },
+        value: { html: record.trn or "Not provided" }
+      },
+      {
+        key: { text: "Comments" },
+        value: { html: record.comment or "None added" }
+      }
+    ]
+  }) }}
+{% else %}
+  <p class="govuk-body">No merged record data found.</p>
+{% endif %}
 
 
 

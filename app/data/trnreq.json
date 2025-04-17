@@ -121,7 +121,7 @@
   }  ,
   {
     "firstName": "Emily",
-    "middleName": "Not given",
+    "middleName": "Not provided",
     "lastName": "Taylor",
     "dateOfBirth": "30 November 1995",
     "nationalInsuranceNumber": "XZ 45 78 32 A",

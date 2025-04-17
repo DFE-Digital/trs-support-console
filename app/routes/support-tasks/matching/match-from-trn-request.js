@@ -11,30 +11,6 @@ router.get('/support-tasks/create-record/from-trn-request/get-a-trn/show/:record
   res.render('support-tasks/create-record/from-trn-request/get-a-trn/show', { record })
 })
 
-///Interrogate the record to see if it is a duplicate in trnreq.json & duplivcates.json
-router.get('/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/:recordId', (req, res) => {
-  const trnRequests = req.session.data.trnreq || []
-  const duplicates = req.session.data.duplicates || []
-
-  const record = trnRequests.find(r => r.id === req.params.recordId)
-
-  if (!record) {
-    return res.status(404).send('Record not found in trnreq.json')
-  }
-
-  // Try to find a match in duplicates.json
-  const match = duplicates.find(d =>
-    d.id === record.id &&
-    d.firstName?.toLowerCase() === record.firstName?.toLowerCase() &&
-    d.lastName?.toLowerCase() === record.lastName?.toLowerCase()
-  )
-
-  res.render('support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing', {
-    record,         // from trnreq
-    match,          // from duplicates (may be undefined)
-    data: req.session.data
-  })
-})
 
 
 /// GET data from compare-request-with-existing to select-data
@@ -83,6 +59,32 @@ router.post('/support-tasks/create-record/from-trn-request/get-a-trn/compare-req
 
   res.redirect(`/support-tasks/create-record/from-trn-request/get-a-trn/merge/${recordId}`)
 })
+
+///Interrogate the record to see if it is a duplicate in trnreq.json & duplivcates.json
+router.get('/support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing/:recordId', (req, res) => {
+  const trnRequests = req.session.data.trnreq || []
+  const duplicates = req.session.data.duplicates || []
+
+  const record = trnRequests.find(r => r.id === req.params.recordId)
+
+  if (!record) {
+    return res.status(404).send('Record not found in trnreq.json')
+  }
+
+  // Try to find a match in duplicates.json
+  const match = duplicates.find(d =>
+    d.id === record.id &&
+    d.firstName?.toLowerCase() === record.firstName?.toLowerCase() &&
+    d.lastName?.toLowerCase() === record.lastName?.toLowerCase()
+  )
+
+  res.render('support-tasks/create-record/from-trn-request/get-a-trn/compare-request-with-existing', {
+    record,         // from trnreq
+    match,          // from duplicates (may be undefined)
+    data: req.session.data
+  })
+})
+
 
 
 
