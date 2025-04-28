@@ -1,0 +1,164 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Select the details to merge" %}
+
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> Select the details to merge into the primary record</h1>
+  </div>
+      <div class="govuk-grid-column-full">
+        <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/compare-request-with-existing/{{ record.id }}" novalidate>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Register API request&nbsp;&nbsp;<span class="govuk-tag govuk-tag--green">Match</span></h2>
+            </div>
+            <div class="govuk-grid-column-one-half">
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Existing record</h2>
+            </div>
+          </div>
+        
+          <div class="govuk-form-group flex-radios">
+            <fieldset class="govuk-fieldset" aria-describedby="primary-record-hint">
+          
+              {% set fields = [
+                { name: "First name", id: "firstName", key: "FirstName", recordKey: "firstName" },
+                { name: "Middle name", id: "middleName", key: "MiddleName", recordKey: "middleName" },
+                { name: "Last name", id: "lastName", key: "LastName", recordKey: "lastName" },
+                { name: "Date of birth", id: "dateOfBirth", key: "DateOfBirth", recordKey: "dateOfBirth" },
+                { name: "Email", id: "email", key: "Email", recordKey: "email" },
+                { name: "National Insurance number", id: "ni", key: "NationalInsuranceNumber", recordKey: "nationalInsuranceNumber" },
+                { name: "TRN", id: "trn", key: "Trn", recordKey: "trn" }
+              ] %}
+          
+              {% for field in fields %}
+                <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">{{ field.name }}</label>
+                <div class="govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+          
+                  <!-- Primary -->
+                  <div class="govuk-radios__item align-record-a">
+                    <input class="govuk-radios__input"
+                          id="{{ field.id }}-a"
+                          name="retain{{ field.key }}"
+                          type="radio"
+                          value="{{ record[field.recordKey] }}"
+                          checked>
+                    <label class="govuk-label govuk-radios__label" for="{{ field.id }}-a">
+                      <strong>{{ record[field.recordKey] or "Not provided" }}</strong>
+                    </label>
+                  </div>
+          
+                  <!-- Secondary -->
+                  <div class="govuk-radios__item align-record-b">
+                    <input class="govuk-radios__input"
+                          id="{{ field.id }}-b"
+                          name="retain{{ field.key }}"
+                          type="radio"
+                          value="{{ match[field.recordKey] }}">
+                    <label class="govuk-label govuk-radios__label" for="{{ field.id }}-b">
+                      {% if match[field.recordKey] !== record[field.recordKey] %}
+                        <mark class="hods-highlight"><strong>{{ match[field.recordKey] or "Not provided" }}</strong></mark>
+                      {% else %}
+                        <strong>{{ match[field.recordKey] or "Not provided" }}</strong>
+                      {% endif %}
+                    </label>
+                  </div>
+          
+                </div>
+          
+                <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+              {% endfor %}
+          
+            </fieldset>
+          </div>
+          
+        
+          {{ govukTextarea({
+            name: "makeMergeComment",
+            id: "merge-comment",
+            classes: "govuk-input--width-30",
+            label: {
+              text: "Add comments (optional)",
+              classes: "govuk-label--s",
+              isPageHeading: false
+            }
+          }) }}
+        
+        
+        
+       
+
+          <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+ 
+          {{ govukRadios({
+    name: "evidenceUploaded",
+    fieldset: {
+      legend: {
+        text: "Do you have evidence to upload?",
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        value: "Yes",
+        text: "Yes",
+        conditional: {
+          html: evidenceYes
+        }
+      },
+      {
+        value: "No",
+        text: "No"
+      }
+    ],
+    value: data.evidenceUploaded
+  }) }}
+
+   {{ govukWarningText({
+            text: "The API request will be marked as complete after the primary record has been updated.",
+            classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-6",
+            iconFallbackText: "Warning"
+          }) }}
+    
+</form>
+        
+          <div class="govuk-button-group">
+            {{ govukButton({ text: "Continue" }) }}
+            {{ govukButton({
+              text: "Cancel",
+              classes: "govuk-button--secondary",
+              href: "javascript:window.history.back()"
+            }) }}
+          </div>
+        </form>
+        
+        
+    
+    
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/javascripts/components/radios-merge.js"></script>
+{% endblock %}
+

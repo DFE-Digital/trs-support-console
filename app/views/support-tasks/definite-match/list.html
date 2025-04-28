@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName="Get a TRN requests" %}
+{% set serviceNavId = "supportTasks" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ record | log }}
+    {{ data.user | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">Matches from register</h1>
+
+    
+  
+  </div>
+</div>
+
+{% include "_includes/support-tasks/create-from-trn/search-form.njk" %}
+
+
+{% include "_includes/support-tasks/create-from-trn/get-a-trn-list.njk" %}
+
+{{ govukPagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    }
+  ]
+}) }}
+
+{% endblock %}
