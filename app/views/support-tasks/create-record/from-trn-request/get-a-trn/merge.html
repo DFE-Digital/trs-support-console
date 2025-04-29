@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Support tasks" %}
-{# {% set pageName = "Check details before merging with " + record.sourceOfMatch + " request" %} #}
+{# {% set pageName = "Check details before updating primary record %} #}
 {% set pageName = "Check details before merging records" %}
 
 
@@ -24,7 +24,7 @@
     {{ record | log }}
 
     <span class="govuk-caption-l">{{captionName}}</span>
-    <h1 class="govuk-heading-l">{{pageName}}</h1>
+    <h1 class="govuk-heading-l">Check details before updating primary record</h1>
 
     
     
@@ -48,7 +48,7 @@
     <form method="post" action="/support-tasks/create-record/from-trn-request/get-a-trn/merge/{{ record.id }}">
       <input type="hidden" name="recordId" value="{{ record.id }}">
       <div class="govuk-button-group">
-        <button class="govuk-button" type="submit">Confirm and merge records</button>
+        <button class="govuk-button" type="submit">Confirm and update primary record</button>
         <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
       </div>
     </form>

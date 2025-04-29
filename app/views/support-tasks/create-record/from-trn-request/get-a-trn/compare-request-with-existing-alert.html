@@ -1,0 +1,168 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Compare potential duplicate records" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% set summaryCardTitle %}
+ 
+  Get a TRN request  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--red">Potential duplicate</span>
+
+{% endset %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ record | log }}
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {{ govukWarningText({
+        text: "One of these records has an alert so you cannot merge them yet. Refer this to the Teaching Regulation Agency (TRA).",
+        classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-6",
+        iconFallbackText: "Warning"
+      }) }}
+
+      {# <p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> on the right hand side</p> #}
+      
+      {{ govukInsetText({
+        html: '<p class="govuk-body">Differences are <mark class="hods-highlight"><strong>highlighted</strong></mark> in the existing record</p>',
+        classes: "govuk-!-width-two-thirds"
+      }) }}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+
+
+            {{ govukSummaryList({
+              card: {
+                title: {
+                  html: summaryCardTitle
+                }
+              },
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { text: "Pamela" }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: {text: "Not provided" }
+                },
+                {
+                  key: { text: "Last Name" },
+                  value: { text: "Rowe" }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: "	20 November 1982" }
+                },
+                {
+                  key: { text: "Email" },
+                  value: { text: "pammy.Rowe@yahoo.com" }
+                },
+                {
+                  key: { text: "NI number" },
+                  value: { text: "	GE 35 05 46 A" }
+                },
+                {
+                  key: { text: "Evidence" },
+                  value: { html: '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' or "None"} 
+                } if record.providedEvidence,
+                {
+                  key: { text: "Alert" },
+                  value: { html: '<a href="#" class="govuk-link"> (1) open alert</a>' }
+                }
+              ]
+            }) }}
+          </div>
+  
+      
+
+          <div class="govuk-grid-column-one-half">
+            {{ govukSummaryList({
+              card: {
+                title: {
+                  text: "Existing record"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/deactivate/show/" + match.id,
+                      text: "View record",
+                      visuallyHiddenText: "view record"
+                    }
+                  ]
+                }
+              },
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { text: "Pamela" }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: {html: '<mark class="hods-highlight"><strong>' + 'Kimberly' + '</strong></mark>' }
+                },
+                {
+                  key: { text: "Last Name" },
+                  value: { text: "Rowe" }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: "	20 November 1982" }
+                },
+                {
+                  key: { text: "Email" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + 'pamela.rowe@example.com' + '</strong></mark>' }
+                },
+                {
+                  key: { text: "NI number" },
+                  value: { html: '<mark class="hods-highlight"><strong>' + 'Not provided' + '</strong></mark>' }
+                },
+                {
+                  key: { text: "Evidence" },
+                  value: { html: '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' or "None"} 
+                } if record.providedEvidence
+                
+              ]
+            }) }}
+          </div>
+        </div>
+
+        {# <p>{{ record.id }}</p> #}
+     
+
+       
+
+        <form method="get" action="#">
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button" type="submit">Return to support tasks</button>
+        
+            {{ govukButton({
+              text: "Cancel",
+              classes: "govuk-button--secondary",
+              href: "javascript:window.history.back()"
+            }) }}
+          </div>
+        </form>
+    
+  </div>
+</div>
+
+{% endblock %}

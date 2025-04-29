@@ -4,7 +4,7 @@
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Create a record" %}
-{% set pageName = "Check details before merging with " + record.sourceOfMatch + " request" %}
+
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -22,7 +22,7 @@
     {{ record | log }}
 
     <span class="govuk-caption-l">{{captionName}}</span>
-    <h1 class="govuk-heading-l">{{pageName}}</h1>
+    <h1 class="govuk-heading-l">Check details before updating primary record</h1>
 
     
     
@@ -38,15 +38,12 @@
     {% endif %} 
 
     
-    {{ govukWarningText({
-      text: "Some content around reassurance that they have merged the correct things.",
-      iconFallbackText: "Warning"
-    }) }}
+
     
     <form method="post" action="/support-tasks/create-record/from-trn-request/match-create-record/merge/{{ record.id }}" novalidate>
       <input type="hidden" name="recordId" value="{{ record.id }}">
       <div class="govuk-button-group">
-        {{ govukButton({ text: "Confirm and merge records" }) }}
+        {{ govukButton({ text: "Confirm and update primary record" }) }}
         {{ govukButton({ text: "Cancel", classes: "govuk-button--secondary" }) }}
       </div>
     </form>

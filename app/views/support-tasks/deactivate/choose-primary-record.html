@@ -17,7 +17,7 @@
   {% if data.deactivate.govUkId == "No" %}
     Record A
   {% else %}
-    Record A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--blue">Gov.uk ID</span>
+    Record A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="govuk-tag govuk-tag--blue">GOV.UK ID</span>
   {% endif %}
 {% endset %}
 
@@ -91,10 +91,6 @@
                 {
                   key: { text: "TRN" },
                   value: { html:  data.deactivate[0].trn  }
-                },
-                {
-                  key: { text: "Alerts" },
-                  value: { text: data.deactivate[0].hasAlerts }
                 }
               ]
             }) }}
@@ -127,7 +123,7 @@
                   },
                   {
                     key: { text: "Middle name" },
-                    value:  { html: data.deactivate[1].middleName }
+                    value:  { html: '<mark class="hods-highlight"><strong>' + 'Henry' + '</strong></mark>' }
                   } if data.deactivate[1].middleName,
                   {
                     key: { text: "Last Name" },
@@ -135,24 +131,20 @@
                   },
                   {
                     key: { text: "Date of birth" },
-                    value: { text: data.deactivate[1].dateOfBirth }
+                    value: { html:  '<mark class="hods-highlight"><strong>' + 'Not provided' + '</strong></mark>' }
                   },
                   {
                     key: { text: "Email address" },
-                    value: { html: data.deactivate[1].email }
+                    value: { html:  '<mark class="hods-highlight"><strong>' + 'john.doe@gmail.com' + '</strong></mark>' }
                   },
                   {
                     key: { text: "National Insurance number" },
-                    value: { html: data.deactivate[1].nationalInsuranceNumber }
+                    value: { html: '<mark class="hods-highlight"><strong>' + 'Not provided' + '</strong></mark>' }
                   } if data.deactivate[1].nationalInsuranceNumber,
             
                   {
                     key: { text: "TRN" },
-                    value: { html: data.deactivate[1].trn }
-                  },
-                  {
-                    key: { text: "Alerts" },
-                    value: { text: data.deactivate[1].hasAlerts }
+                    value: { html:  '<mark class="hods-highlight"><strong>' + '339353' + '</strong></mark>' }
                   }
                 ]
               }) }}
