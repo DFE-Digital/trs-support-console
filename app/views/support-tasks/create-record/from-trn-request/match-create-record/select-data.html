@@ -96,16 +96,38 @@
             id: "merge-comment",
             classes: "govuk-input--width-30",
             label: {
-              text: "Add comments",
+              text: "Add comments (optional)",
               classes: "govuk-label--s",
               isPageHeading: false
             }
           }) }}
         
-          <h2 class="govuk-heading-m govuk-!-width-full">Do you want to use these details in the primary record?</h2>
+          {{ govukRadios({
+            name: "evidenceUploaded",
+            fieldset: {
+              legend: {
+                text: "Do you want to upload evidence?",
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                conditional: {
+                  html: evidenceYes
+                }
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ],
+            value: data.evidenceUploaded
+          }) }}
         
           {{ govukWarningText({
-            text: "The secondary record will be deactivated once it's merged with the primary record, but you'll still be able to view it.",
+            text: "The API request will be marked as complete after the primary record has been updated.",
             classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-6",
             iconFallbackText: "Warning"
           }) }}

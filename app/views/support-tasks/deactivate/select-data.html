@@ -194,13 +194,13 @@
           id: "merge-comment",
           classes: "govuk-input--width-30",
           label: {
-            text: "Add comments",
+            text: "Add comments (optional)",
             classes: "govuk-label--s",
             isPageHeading: false
           }
         }) }}
 
-        <h2 class="govuk-heading-m govuk-!-width-full">Do you want to use these details in the primary record?</h2>
+    
 
         {{ govukWarningText({
           text: "The secondary record will be deactivated once it's merged with the primary record, but you'll still be able to view it.",
@@ -208,19 +208,7 @@
           iconFallbackText: "Warning"
         }) }}
   
-        {{ govukRadios({
-          name: "combineTheseSelections",
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
+       
 
         
         <div class="govuk-button-group">

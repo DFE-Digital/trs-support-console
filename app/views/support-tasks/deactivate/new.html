@@ -19,15 +19,21 @@
 
 
       {% if flashMessage %}
-        {{ govukNotificationBanner({
-          type: "success",
-          html: '
-            <div class="banner-flex">
-              <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
-                Records merged successfully for ' ~ person.fullName ~ '<br> <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">View record</a>
-              </h2>             
-            </div>'
-        }) }}
+      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            Primary record updated for John Henry Doe
+          </h3>
+          <p class="govuk-body">Details from the secondary record were merged. The secondary record has been deactivated.</p>
+          <!-- 
+          <a href="/support-tasks/create-record/from-trn-request/match-create-record/updated/' ~ recordId ~ '" class="govuk-link">View record</a>-->
+        </div>
+      </div>
       {% endif %}
 
       <span class="govuk-caption-l">{{ captionName }}</span>
@@ -98,12 +104,11 @@
             ]
       }) }}
 
+      <div class="govuk-inset-text">
+        <a href="#" class="govuk-link">View the deactivated record (opens in a new tab)</a>
+      </div>
 
-      {{ govukInsetText({
-        html: "You can see the " + '<a href="#" class="govuk-link">deactivated record</a>' + " here."
-      }) }}
-
-
+     
      
 
       {# <form method="post">
