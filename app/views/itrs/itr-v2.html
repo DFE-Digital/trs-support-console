@@ -207,24 +207,31 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
               }
      
               function renderTable(sortedRows) {
-              tableBody.innerHTML = `
-                <tr class="govuk-table__row govuk-task-list__item--with-link">
-                  <td class="govuk-table__cell">1</td>
-                  <td class="govuk-table__cell"><a href="detail">Joseph Stubbersfield</a></td>
-                  <td class="govuk-table__cell"></td>
-                  <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Failure</strong></td>
-
-                </tr>
-              ` + sortedRows.map(row => `
-                <tr class="govuk-table__row govuk-task-list__item--with-link">
-                  <td class="govuk-table__cell">${row.id}</td>
-                  <td class="govuk-table__cell"><a href="detail">${row.person}</a></td>
-                  <td class="govuk-table__cell">${row.duplicateStatus ? '<strong class="govuk-tag govuk-tag--orange">Duplicate</strong>' : ''}</td>
-                  <td class="govuk-table__cell"><strong class="govuk-tag ${row.statusReason === 'Failure' ? 'govuk-tag--red' : 'govuk-tag--green'}">${row.statusReason}</strong></td>
-                
-                </tr>
-              `).join("");
+  tableBody.innerHTML = `
+    <tr class="govuk-table__row govuk-task-list__item--with-link">
+      <td class="govuk-table__cell">1</td>
+      <td class="govuk-table__cell"><a href="detail">Joseph Stubbersfield</a></td>
+      <td class="govuk-table__cell"></td>
+      <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Failure</strong></td>
+    </tr>
+  ` + sortedRows.map(row => `
+    <tr class="govuk-table__row govuk-task-list__item--with-link">
+      <td class="govuk-table__cell">${row.id}</td>
+      <td class="govuk-table__cell">
+        ${row.statusReason === 'Failure' ? `<a href="detail">${row.person}</a>` : row.person}
+      </td>
+      <td class="govuk-table__cell">
+        ${row.duplicateStatus ? '<strong class="govuk-tag govuk-tag--orange">Duplicate</strong>' : ''}
+      </td>
+      <td class="govuk-table__cell">
+        ${row.statusReason === 'Failure'
+          ? `<strong class="govuk-tag govuk-tag--red">Failure</strong>`
+          : `<strong class="govuk-tag govuk-tag--green">Success</strong>`}
+      </td>
+    </tr>
+  `).join("");
 }
+
               
               // Sort by Status Reason by default
               rows.sort((a, b) => a.statusReason.localeCompare(b.statusReason));

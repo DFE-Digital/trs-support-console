@@ -1,0 +1,174 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+{% block header %}
+  {{ govukHeader({
+    homepageUrl: "/",
+    serviceUrl: "/",
+    classes: "govuk-header__container--full-width",
+    containerClasses: "govuk-width-container"
+  }) }}
+{% endblock %}
+
+
+
+{% block main %}
+
+{{ govukServiceNavigation({
+  serviceName: "Teaching Records System",
+  serviceUrl: "#",
+  navigation: [
+    {
+      href: "general/index",
+      text: "Find a record"
+    },
+    {
+      href: "../support-tasks",
+      text: "Support tasks",
+      active: true
+    },
+    {
+      href: "permissions/overview",
+      text: "Add and manage users"
+    }
+  ]
+}) }}
+<div class="govuk-width-container">
+<a href="#" class="govuk-back-link">Back</a>
+</div>
+ 
+
+  
+{% block content %}
+ <div class="govuk-width-container">
+
+
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+          <!-- 
+          <nav class="govuk-breadcrumbs govuk-!-padding-bottom-4" aria-label="Breadcrumb">
+            <ol class="govuk-breadcrumbs__list">
+              <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="../support-tasks">Support tasks</a>
+              </li>
+              <li class="govuk-breadcrumbs__list-item">
+                <a class="govuk-breadcrumbs__link" href="interfaces">Interfaces</a>
+              </li>
+              
+            </ol>
+          </nav>
+         -->
+         
+          <span class="govuk-caption-l">Integration Transactions</span>
+          <h1 class="govuk-heading-l">Capita Import &ndash; File details</h1>
+          </div>
+         <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-error-summary" data-module="govuk-error-summary">
+            <div role="alert">
+              <h2 class="govuk-error-summary__title">
+                There is a problem
+              </h2>
+              <div class="govuk-error-summary__body">
+                <ul class="govuk-list govuk-error-summary__list">
+                  <li>
+                    <p>The file loaded incorrectly due to invalid formatting</p>
+                  </li>
+                  <li>
+                   <p>You have to fix the file headers and re-upload the file.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+              Record information
+              </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Date and time
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    17 March 2025 4:30am
+                  </dd>
+                
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   File name
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    traout-210615.txt
+                  </dd>
+                 
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Interface ID
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    115141
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                 Total count
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                   --
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   Successes
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    --
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   Failures
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                  --
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   Duplicates
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                   --
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          </div>
+          
+ 
+
+          
+          
+    </div>
+  </div>
+</main>
+</div>
+{% endblock %}
+{% endblock %}
