@@ -1,0 +1,203 @@
+{% extends "layouts/nav-test.html" %}
+
+
+{% block header_content %}
+  {{ govukHeader({
+      serviceUrl: serviceUrl,
+      navigationClasses: "govuk-header__navigation--end",
+      navigation: [
+        {
+          href: '/account/sign-out',
+          text: 'Sign out',
+          current: (headerNavId == "signOut")
+        }
+      ]
+  }) }}
+
+  {{ govukServiceNavigation({
+      serviceName: "Teaching Records System",
+      serviceUrl: "#",
+      navigation: [
+        {
+          href: "../../support-tasks-index",
+          text: "Records",
+          active: true
+        },
+        {
+          href: "../../not-in-prototype",
+            text: "Add and manage users"
+        }
+      ]
+  }) }}
+{% endblock %}
+
+ 
+{% set pageName = data.createRecordFirstName + " " + data.createRecordLastName %}
+
+
+
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+  
+      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+          Record created for {{ data.createRecordFirstName }} {{ data.createRecordLastName }}
+          
+          <br><a href="#">View record</a></h2>
+        </div>
+      </div>
+    
+
+
+      {{ task.supportTaskType | log }}
+      {{ task.reference | log }}
+      {{ task.dateOfTrnRequest | log }}
+      {{ data.createRecordFirstName | log }}
+      {{ task.middleName | log }}
+      {{ task.lastName | log }}
+      {{ task.dateOfBirth | log }}
+      {{ task.email | log }}
+      {{ task.nationalInsuranceNumber | log }}
+      </div>
+      <div class="govuk-grid-column-full">
+
+      <span class="govuk-caption-l">{{ captionName }}</span>
+      <h1 class="govuk-heading-l">{{ pageName }}</h1>
+      <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+        <ul class="x-govuk-secondary-navigation__list">
+          <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+            <a class="x-govuk-secondary-navigation__link" href="../../not-in-prototype">
+              Personal details
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="../../not-in-prototype">
+             Routes and qualifications
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="../../not-in-prototype">
+             Induction
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="../../not-in-prototype">
+             Alerts
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="../../not-in-prototype">
+           Notes
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="../../not-in-prototype">
+             Change history
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <br><br>
+
+      {# <h2 class="govuk-heading-m">Personal details</h2> #}
+
+      {{ govukSummaryList({
+        card: {
+                title: {
+                  text: "Personal details"
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/create-record/add/reason",
+                      text: "Change",
+                      visuallyHiddenText: "Why I am creating this record"
+                    }
+                  ]
+                }
+              },
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: data.createRecordFirstName
+            }
+          },
+          {
+            key: {
+              text: "Middle name"
+            },
+            value: {
+              text: data.createRecordMiddleName
+            }
+          } if data.createRecordMiddleName,
+          {
+            key: {
+              text: "Last name "
+            },
+            value: {
+              text: data.createRecordLastName
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text:  data.createRecordEmail
+            }
+          },
+          {
+            key: {
+              text: "National insurance number"
+            },
+            value: {
+              text: data.createRecordNationalInsuranceNumber
+            }
+          },
+          {
+            key: {
+              text: "Sex"
+            },
+            value: {
+              text: data.createRecordSex
+            }
+          },
+          {
+            key: {
+              text: "TRN"
+            },
+            value: {
+              text: data.trn
+            }
+          }
+        ]
+      }) }}
+
+     
+
+     
+    </div>
+  </div>
+{% endblock %}

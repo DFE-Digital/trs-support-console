@@ -1,0 +1,156 @@
+{% extends "layouts/main.html" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName="Get a TRN requests" %}
+{% set serviceNavId = "supportTasks" %}
+
+
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+  
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">Change details requests</h1>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <div class="flex-sort-by">
+          <h2 class="govuk-heading-m flex-start">12 requests</h2>
+        <p class="govuk-body">
+            <strong>Sort by type: </strong>
+            <a href="change-details-requests" class="govuk-link">Show all</a> |
+            <a href="change-details-requests-name" class="govuk-link">Name</a> | 
+            <a href="change-details-requests-dob" class="govuk-link">DOB</a> | 
+            <a href="change-details-requests-email" class="govuk-link">Email</a> |
+            <a href="#" class="govuk-link">Mobile number</a>
+          </p>
+        </div>
+
+
+
+
+
+
+
+
+    <table class="govuk-table" data-module="moj-sortable-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Name</th>
+          <th scope="col" class="govuk-table__header" aria-sort="none">Email</th>
+          <th scope="col" class="govuk-table__header" aria-sort="none">Date requested</th>
+          <th scope="col" class="govuk-table__header" aria-sort="none">Type</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+      
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">James Patel</a></td>
+          <td class="govuk-table__cell">james.patel@example.com</td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
+            03 Feb 2025
+          </td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Noah Singh</a></td>
+          <td class="govuk-table__cell">noah.singh@example.com</td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
+            29 Jan 2025
+          </td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Sophia Murphy</a></td>
+          <td class="govuk-table__cell">sophia.murphy@example.com</td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
+            11 Apr 2025
+          </td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Henry Walker</a></td>
+          <td class="govuk-table__cell">henry.walker@example.com</td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
+            31 Mar 2025
+          </td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Daniel Brooks</a></td>
+          <td class="govuk-table__cell">daniel.brooks@example.com</td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
+            07 Feb 2025
+          </td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Ethan Wood</a></td>
+          <td class="govuk-table__cell">ethan.wood@example.com</td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
+            17 Feb 2025
+          </td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Freddie Baker</a></td>
+          <td class="govuk-table__cell">freddie.baker@example.com</td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">
+            06 May 2025
+          </td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+</div>
+ <!-- pagination -->
+ <nav class="govuk-pagination" role="navigation" aria-label="results">
+  <div class="govuk-pagination__prev">
+      <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+          <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+          </svg>
+          <span class="govuk-pagination__link-title">Previous</span></a>
+  </div>
+  <ul class="govuk-pagination__list">
+      <li class="govuk-pagination__item">
+          <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1">
+              1
+          </a>
+      </li>
+      <li class="govuk-pagination__item govuk-pagination__item--current">
+          <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2" aria-current="page">
+              2
+          </a>
+      </li>
+      <li class="govuk-pagination__item">
+          <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 3">
+              3
+          </a>
+      </li>
+  </ul>
+  <div class="govuk-pagination__next">
+      <a class="govuk-link govuk-pagination__link" href="#" rel="next"> <span class="govuk-pagination__link-title">Next</span> <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+          <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+      </svg></a>
+  </div>
+</nav>
+</div>
+
+ 
+  {% endblock %}
