@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "induction" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set newInductionCompletionDate  = data['newInductionCompletionDate']  %}
+{% set newInductionStartDate = data['newInductionStartDate']  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1 class="govuk-heading-l">Harry Taylor</h1>
+
+<nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+  <ul class="x-govuk-secondary-navigation__list">
+    <li class="x-govuk-secondary-navigation__list-item">
+      <a class="x-govuk-secondary-navigation__link" href="personal-details">
+        Personal details
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="routes" >
+       Routes and qualifications
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item">
+      <a class="x-govuk-secondary-navigation__link" href="induction" aria-current=page>
+       Induction
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+      <a class="x-govuk-secondary-navigation__link" href="alerts">
+       Alerts
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="#">
+     Notes
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="change-history">
+       Change history
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<br><br>
+
+<div>
+  <h2 class="govuk-heading-m">Open alerts</h2>
+
+
+          <p class="govuk-body" data-testid="no-open-alerts">No open alerts</p>
+
+          <button type="submit" class="govuk-button" data-module="govuk-button">Add an alert</button>
+</div>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-!-padding-top-2">
+  <h2 class="govuk-heading-m">Closed alerts</h2>
+
+      <p class="govuk-body" data-testid="no-closed-alerts">No closed alerts</p>
+</div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "layouts/nav-test.html" %}
+
+
+{% block header_content %}
+  {{ govukHeader({
+      serviceUrl: serviceUrl,
+      navigationClasses: "govuk-header__navigation--end",
+      navigation: [
+        {
+          href: '/account/sign-out',
+          text: 'Sign out',
+          current: (headerNavId == "signOut")
+        }
+      ]
+  }) }}
+
+  {{ govukServiceNavigation({
+      serviceName: "Teaching Records System",
+      serviceUrl: "#",
+      navigation: [
+        {
+          href: "../../support-tasks-index",
+          text: "Records",
+          active: true
+        },
+        {
+          href: "../../not-in-prototype",
+            text: "Add and manage users"
+        }
+      ]
+  }) }}
+{% endblock %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <span class="govuk-caption-l">Create a record</span>
+      <h1 class="govuk-heading-l"> Enter the person's personal details</h1>
+  
+      <h2 class="govuk-heading-m">Personal details</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: { text: "First name" },
+            value: { html: data.createRecordFirstName },
+            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "record details" }] }
+          },
+          {
+            key: { text: "Middle name" },
+            value: { html: data.createRecordMiddleName }
+          } if data.createRecordMiddleName,
+          {
+            key: { text: "Last name" },
+            value: { html: data.createRecordLastName }
+          },
+          {
+            key: { text: "Date of birth" },
+            value: { text: data | isoDateFromDateInput('createRecordDateOfBirth') | govukDate }
+          },
+          {
+            key: { text: "Email address" },
+            value: { text: data.createRecordEmail }
+          },
+          {
+            key: { text: "National Insurance number" },
+            value: { text: data.createRecordNationalInsuranceNumber }
+          } if data.createRecordNationalInsuranceNumber,
+          {
+            key: { text: "Sex" },
+            value: { text: data.createRecordSex }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: { text: "Reason for creating record" },
+            value: { text: data.createRecordReason },
+            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "reason details" }] }
+          } if not moreDetailsTextArea,
+          {
+            key: { text: "Evidence" },
+            value: {
+              html: '<p class="govuk-body"><a href="#" class="govuk-link">' + data.evidenceFile + '</a>.</p>'
+            }
+          } if data.evidenceFile
+        ]
+      }) }}
+
+      <form action="success" method="post">
+        <div class="govuk-button-group">
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Confirm and create record"
+            }) }}
+          
+            {{ govukButton({
+              text: "Cancel",
+              classes: "govuk-button--secondary",
+               href: "javascript:window.history.back()"
+            }) }}
+          </div>
+        </div>
+      </form>    
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends "layouts/nav-test.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "general" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data.teachers %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/find-teacher"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">Amber Lola Tronson</h1>
+
+      <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+        <ul class="x-govuk-secondary-navigation__list">
+          <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+            <a class="x-govuk-secondary-navigation__link" href="#" aria-current=page>
+              Personal details
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="routes" >
+             Routes and qualifications
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="induction">
+             Induction
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="alerts">
+             Alerts
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="notes">
+           Notes
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="change-history">
+             Change history
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    <br><br>
+  
+
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal Details"
+          },
+          actions: {
+            items: [
+              {
+                href: "/personal-details/details?returnUrl",
+                text: "Change",
+                visuallyHiddenText: "personal details"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "Amber Lola Tronson"
+            }
+          },
+          {
+            key: {
+              text: "Previous name"
+            },
+            value: {
+              html: '<p>Amber Lola McDonald</p>
+              <p><b>Change reason:</b> Name change due to marriage</p>'
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: data.person[0].dateOfBirthDay + " " + data.person[0].dateOfBirthMonth + " " + data.person[0].dateOfBirthYear
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: data.person[0].gender
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: data.person[0].trn
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: data.person[0].nationalInsurance
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+               text: data.person[0].email
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+               text: data.person[0].mobile
+            }
+          }
+        ]
+      }) }}
+
+     
+      
+    
+
+  </div>
+</div>
+
+{% endblock %}
