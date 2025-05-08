@@ -1,36 +1,17 @@
-{% extends "layouts/nav-test.html" %}
+{% extends "layouts/main.html" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName="Get a TRN requests" %}
+{% set serviceNavId = "supportTasks" %}
 
 
-{% block header_content %}
-  {{ govukHeader({
-      serviceUrl: serviceUrl,
-      navigationClasses: "govuk-header__navigation--end",
-      navigation: [
-        {
-          href: '/account/sign-out',
-          text: 'Sign out',
-          current: (headerNavId == "signOut")
-        }
-      ]
-  }) }}
 
-  {{ govukServiceNavigation({
-      serviceName: "Teaching Records System",
-      serviceUrl: "#",
-      navigation: [
-        {
-          href: "../support-tasks-index",
-          text: "Records",
-          active: true
-        },
-        {
-          href: "../not-in-prototype",
-            text: "Add and manage users"
-        }
-      ]
-  }) }}
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
-
 
 {% block content %}
 
