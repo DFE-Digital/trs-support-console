@@ -80,3 +80,10 @@ router.get('/deactivate/show/:recordId', (req, res) => {
   let record = req.session.data.deactivate.find(record => record.id === req.params.recordId)
   res.render('support-tasks/deactivate/show', { record })
 })
+
+
+router.post('/select-role', function (req, res) {
+  req.session.data.roleSelect = req.body.roleSelect
+  res.redirect('navigation/support-tasks-index')
+}
+)

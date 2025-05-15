@@ -1,0 +1,39 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.html" %}
+
+{% block pageTitle %}
+  Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+  <h1 class="govuk-heading-xl">
+    Select your role
+ </h1>
+
+ <form method="post" action="/select-role">
+ {{ govukRadios({
+     name: "roleSelect",
+     fieldset: {
+     },
+     items: [
+       {
+         value: "viewer",
+         text: "Viewer"
+       },
+       {
+         value: "record manager",
+         text: "Record manager"
+       },
+       {
+         value: "service excellence team",
+         text: "Service excellence team"
+       }
+     ]
+   }) }}
+
+   <button type="submit" class="govuk-button" data-module="govuk-button">
+   Select and launch prototype
+  </button>
+  </form>
+{% endblock %}
