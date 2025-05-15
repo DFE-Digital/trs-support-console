@@ -11,14 +11,14 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">Find a record</h1>
-  
-    {{ govukButton({
-      text: "Create a record",
-      href: "records/new/create-new-record"
-    }) }}
+    {% if data.roleSelect != "viewer" %}
+    <form action="records/new/create-new-record" novalidate>
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+      Create a record
+    </button>
+    {% endif %}
 
-
-<div class="app-search-form">
+<div class="app-search-form" style="display: flex; align-items: flex-end";>
   <form id="searchForm">
     <div class="govuk-form-group">
       <label class="govuk-label govuk-label--s app-search-form__label" for="find-record">

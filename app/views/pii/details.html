@@ -228,39 +228,30 @@
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="reason-2" name="createRecordReason" type="radio" value="New information recovered" data-aria-controls="conditional-new-info">
             <label class="govuk-label govuk-radios__label" for="reason-2">
-              New information recovered
+              New information received
             </label>
           </div>
       
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-new-info">
             <fieldset class="govuk-fieldset">
               <legend class="govuk-visually-hidden">Type of new information</legend>
-              <div id="signIn-hint" class="govuk-hint">
-                Selecty the type of information that has been recovered
-              </div>
               <div class="govuk-radios">
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="sub-reason-1" name="newInfoType" type="radio" value="Change of name: marriage">
                   <label class="govuk-label govuk-radios__label" for="sub-reason-1">
-                    Change of name: marriage
+                    Name change (marriage or civil partnership)
                   </label>
                 </div>
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="sub-reason-2" name="newInfoType" type="radio" value="Change of name: legal name change">
                   <label class="govuk-label govuk-radios__label" for="sub-reason-2">
-                    Change of name: legal name change
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="sub-reason-3" name="newInfoType" type="radio" value="Resolving errors">
-                  <label class="govuk-label govuk-radios__label" for="sub-reason-3">
-                    Resolving an error
+                    Name change (deed poll or other legal process)
                   </label>
                 </div>
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="other-reason-2" name="newInfoType" type="radio" value="Other with info" data-aria-controls="conditional-other-info">
                   <label class="govuk-label govuk-radios__label" for="other-reason-2">
-                    Other
+                    Something else
                   </label>
                 </div>
       
@@ -275,6 +266,14 @@
               </div>
             </fieldset>
           </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reason-1" name="createRecordReason" type="radio" value="Data loss or incomplete information">
+              <label class="govuk-label govuk-radios__label" for="reason-1">
+                Updating incorrect details
+              </label>
+            </div>
       
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="reason-3" name="createRecordReason" type="radio" value="Another reason" data-aria-controls="conditional-reason">
@@ -288,7 +287,7 @@
               <label class="govuk-label" for="more-details">
                 Please provide more details
               </label>
-              <textarea class="govuk-textarea" id="more-details" name="moreDetails" rows="4"></textarea>
+              <textarea class="govuk-textarea govuk-!-width-one-half" id="more-details" name="moreDetails" rows="4"></textarea>
             </div>
           </div>
         </div>

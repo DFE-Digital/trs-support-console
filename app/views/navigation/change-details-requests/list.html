@@ -1,0 +1,362 @@
+{% extends "layouts/nav-test.html" %}
+
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+  
+    <span class="govuk-caption-l">Support tasks</span>
+    <h1 class="govuk-heading-l">Change details requests</h1>
+
+
+<div class="moj-filter-layout">
+
+  <div class="moj-filter-layout__filter" style="width:280px!important;">
+
+    <div class="moj-filter">
+
+      <div class="moj-filter__header">
+
+        <div class="moj-filter__header-title">
+          <h2 class="govuk-heading-m">Filter</h2>
+        </div>
+
+        <div class="moj-filter__header-action">
+
+        </div>
+
+      </div>
+
+      <div class="moj-filter__options">
+
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="keywords">
+            Search
+          </label>
+
+          <input class="govuk-input" id="keywords" name="keywords" type="text">
+
+        </div>
+
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+
+             Type of request
+
+            </legend>
+
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1">
+                <label class="govuk-label govuk-checkboxes__label" for="type">
+                 Mobile number (10)
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2">
+                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                Email (28)
+                </label>
+              </div>
+              
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1">
+                <label class="govuk-label govuk-checkboxes__label" for="type">
+                DOB (14)
+                </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1">
+                <label class="govuk-label govuk-checkboxes__label" for="type">
+                Name (15)
+                </label>
+              </div>
+
+          </fieldset>
+        </div>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="appt-date-hint">
+            
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+            
+              <h1 class="govuk-fieldset__heading">
+                Date range
+              </h1>
+            
+            </legend>
+          
+            <div class="govuk-date-input" id="appt-date">
+              
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="appt-date-day">
+                    Day
+                  </label>
+                
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 " id="appt-date-day" name="appt-date-day" type="text" value=" " inputmode="numeric">
+                
+                </div>
+              </div>
+            
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="appt-date-month">
+                    Month
+                  </label>
+                
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="appt-date-month" name="appt-date-month" type="text" value=" " inputmode="numeric">
+                
+                </div>
+              </div>
+            
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="appt-date-year">
+                    Year
+                  </label>
+                
+                <input class="govuk-input govuk-date-input__input govuk-input--width-3" id="appt-date-year" name="appt-date-year" type="text" value="" inputmode="numeric">
+                
+                </div>
+              </div>
+            
+            </div>
+            
+          
+          </fieldset>
+          
+          
+          <br>
+          <h1 class="govuk-fieldset__heading">
+           to
+          </h1>
+          <div class="govuk-date-input" id="appt-date">
+              
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="appt-date-day">
+                  Day
+                </label>
+              
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2 " id="appt-date-day" name="appt-date-day" type="text" value="" inputmode="numeric">
+              
+              </div>
+            </div>
+          
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="appt-date-month">
+                  Month
+                </label>
+              
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="appt-date-month" name="appt-date-month" type="text" value="" inputmode="numeric">
+              
+              </div>
+            </div>
+          
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="appt-date-year">
+                  Year
+                </label>
+              
+              <input class="govuk-input govuk-date-input__input govuk-input--width-3" id="appt-date-year" name="appt-date-year" type="text" value="" inputmode="numeric">
+              
+              </div>
+            </div>
+          
+          </div>
+          
+        
+        </fieldset>
+        
+        
+        </div>
+   
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+           Apply filters
+          </button>
+
+          <div class="moj-filter__heading-action">
+            <p><a class="govuk-link govuk-link--no-visited-state" href="">Clear filters</a></p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="moj-filter-layout__content">
+
+    <table class="govuk-table" data-module="moj-sortable-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Name</th>
+          <th scope="col" class="govuk-table__header" aria-sort="none">Requested on</th>
+          <th scope="col" class="govuk-table__header" aria-sort="none">Type</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+    
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Richard Porter</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">27 Nov 2024</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Emilie Jean Autumn</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">15 Jan 2025</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">James Patel</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">03 Feb 2025</td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Olivia Chen</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">19 Dec 2024</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Liam O'Reilly</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">08 Mar 2025</td>
+          <td class="govuk-table__cell">Name</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Chloe Ahmed</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">22 Apr 2025</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Noah Singh</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">29 Jan 2025</td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Ava Thompson</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">17 Feb 2025</td>
+          <td class="govuk-table__cell">Mobile number</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Benjamin Lee</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">05 May 2025</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Sophia Murphy</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">11 Apr 2025</td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Henry Walker</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">31 Mar 2025</td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Charlotte Evans</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">12 Mar 2025</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Daniel Brooks</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">07 Feb 2025</td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Isla Watson</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">21 Jan 2025</td>
+          <td class="govuk-table__cell">Mobile number</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Jacob Moore</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">09 Apr 2025</td>
+          <td class="govuk-table__cell">Name</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Grace Hall</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">03 May 2025</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Ethan Wood</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">17 Feb 2025</td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Mia Turner</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">28 Jan 2025</td>
+          <td class="govuk-table__cell">Mobile number</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Logan White</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">11 Mar 2025</td>
+          <td class="govuk-table__cell">Name</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Ella Green</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">26 Apr 2025</td>
+          <td class="govuk-table__cell">DOB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="" class="govuk-link">Freddie Baker</a></td>
+          <td class="govuk-table__cell" data-sort-value="{{req.dateOfTrnRequest}}">06 May 2025</td>
+          <td class="govuk-table__cell">Email</td>
+        </tr>
+    
+      </tbody>
+    </table>
+
+</div>
+</div>
+
+{{ govukPagination({
+  next: {
+    href: "#"
+  },
+  items: [
+    {
+      number: 1,
+      current: true,
+      href: "#"
+    },
+    {
+      number: 2,
+      href: "#"
+    },
+    {
+      number: 3,
+      href: "#"
+    }
+  ]
+}) }}
+ 
+  {% endblock %}

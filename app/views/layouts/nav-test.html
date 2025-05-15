@@ -20,19 +20,28 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
         ]
     }) }}
 
+    {% set navItems = [
+      {
+        href: "support-tasks-index",
+        text: "Records",
+        current: (currentPage == "records")
+      }
+    ] %}
+    
+    {% if data.roleSelect != "viewer" %}
+      {% set navItems = navItems.concat([
+        {
+          href: "permissions-overview",
+          text: "Add and manage users",
+          current: (currentPage == "addManageUsers")
+        }
+      ]) %}
+    {% endif %}
+    
     {{ govukServiceNavigation({
-        serviceName: "Teaching Records System",
-        serviceUrl: "#",
-        navigation: [
-          {
-            href: "support-tasks-index",
-            text: "Records"
-          },
-          {
-            href: "permissions/overview",
-            text: "Add and manage users"
-          }
-        ]
+      serviceName: "Teaching Records System",
+      serviceUrl: "#",
+      navigation: navItems
     }) }}
   {% endblock %}
 {% endblock %}

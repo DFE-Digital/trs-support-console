@@ -21,7 +21,22 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukNotificationBanner({
+      type: "success",
+      html: '
+      <div class="banner-flex">
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+          Record updated for Amber Lola Tronson<br><a
+            href="/support-tasks/create-record/from-trn-request/get-a-trn/new?recordId={{ recordId }}">View record</a>
+        </h2>
+      </div>'
+      }) }}
+
+      </div>
+
+      <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l">Amber Lola Tronson</h1>
 
@@ -92,8 +107,7 @@
               text: "Previous name"
             },
             value: {
-              html: '<p>Amber Lola McDonald</p>
-              <p><b>Change reason:</b> Name change due to marriage</p>'
+              html: '<p>Amber Lola McDonald</p>'
             }
           },
           {
