@@ -87,3 +87,30 @@ router.post('/select-role', function (req, res) {
   res.redirect('navigation/support-tasks-index')
 }
 )
+
+router.post('/check', (req, res) => {
+  const data = {
+    changeRecordReason: req.body.changeRecordReason,
+    moreDetails: req.body.moreDetails,
+    evidenceChangeReasons: req.body.evidenceChangeReasons,
+    evidenceChangeReasonsFile: req.file ? req.file.originalname : null,
+  };
+
+  res.render('pii/check', { data });
+});
+
+
+/// get a TRN design revisions: reject/accept route
+router.post('/accept-reject', (req, res) => {
+  const userChoice = req.body.acceptRejectRequest;
+
+  if (userChoice === 'reject') {
+    // Redirect to the TRN request list page
+    res.redirect('/support-tasks/create-record/from-trn-request/get-a-trn/reject-reasons');
+  } 
+  else if (userChoice === 'accept') {
+    res.redirect('/support-tasks/create-record/from-trn-request/get-a-trn/compare');
+  } else {
+    res.redirect('/support-tasks/create-record/from-trn-request/get-a-trn/accept-reject'); // fallback
+  }
+});

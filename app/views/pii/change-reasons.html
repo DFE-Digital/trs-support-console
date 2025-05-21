@@ -1,0 +1,123 @@
+{% extends "layouts/nav-test.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set headingName = "Edit personal details" %}
+{% set captionName = data.person[0].fullName %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<span class="govuk-caption-l">Change personal details - {{ data.person[0].fullName }}</span>
+ <h2 class="govuk-heading-l">Why are you changing this record?</h2>
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-visually-hidden">Reason for change</legend>
+      
+         <form action="check" method="post" novalidate>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-1" name="changeRecordReason" type="radio" value="Data loss or incomplete information">
+            <label class="govuk-label govuk-radios__label" for="reason-1">
+              Information was missing or incomplete
+            </label>
+          </div>
+      
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-2" name="changeRecordReason" type="radio" value="New information recovered" data-aria-controls="conditional-new-info">
+            <label class="govuk-label govuk-radios__label" for="reason-2">
+              New information received
+            </label>
+          </div>
+      
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reason-3" name="changeRecordReason" type="radio" value="Data loss or incomplete information">
+              <label class="govuk-label govuk-radios__label" for="reason-3">
+                Updating incorrect details
+              </label>
+            </div>
+      
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-4" name="changeRecordReason" type="radio" value="Another reason" data-aria-controls="conditional-reason">
+            <label class="govuk-label govuk-radios__label" for="reason-4">
+              Another reason
+            </label>
+          </div>
+      
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-details">
+                Please provide more details
+              </label>
+              <textarea class="govuk-textarea govuk-!-width-one-half" id="more-details" name="moreDetails" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+  {% set evidenceYes %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="evidence-upload">
+            Upload a file
+          </label>
+          <input class="govuk-file-upload" id="evidence-upload" name="evidenceFile" type="file">
+        </div>
+      {% endset %}
+
+      <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+
+{{ govukRadios({
+        name: "evidenceUploaded",
+        fieldset: {
+          legend: {
+            text: "Do you have evidence to upload?",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            conditional: {
+              html: evidenceYes
+            }
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ],
+        value: data.evidenceUploaded
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body">
+      <a href="overview" class="govuk-link">Cancel and return to users</a>
+    </p>
+  </main>
+  </div>
+</div>
+{% endblock %}
+

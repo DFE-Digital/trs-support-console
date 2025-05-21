@@ -1,0 +1,245 @@
+{% extends "layouts/nav-test.html" %}
+
+{% set serviceNavId = "supportTasks" %}
+{% set secondaryNavId = "createRecord" %}
+{% set captionName = "Create record from TRN request" %}
+{% set pageName = "Check details and merge records" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      
+
+      <span class="govuk-caption-l">Personal details change - {{ data.person[0].fullName }}</span>
+      <h1 class="govuk-heading-l">Check details and update record</h1>
+
+
+            <h2 class="govuk-heading-m">Personal details</h2>
+ {% if data.person and data.person[0] %}
+  {% set fullName = [
+    data.person[0].firstName,
+    data.person[0].middleName,
+    data.person[0].lastName
+  ] | reject("equalto", "") | join(" ") %}
+
+  {% if record.providedEvidence %}
+  {% set evidenceHtml = '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' %}
+{% else %}
+  {% set evidenceHtml = "None" %}
+{% endif %}
+  
+
+  {% set fullDateOfBirth = [
+    data.person[0].dateOfBirthDay,
+    data.person[0].dateOfBirthMonth,
+   data.person[0].dateOfBirthYear
+  ] | reject("equalto", "") | join(" ") %}
+
+  {% set summaryRows = [
+    {
+      key: { text: "Full name" },
+      value: { text: fullName },
+      actions: {
+        items: [{
+          href: "/edit-personal-details",
+          text: "Change",
+          visuallyHiddenText: "full name"
+        }]
+      }
+    },
+    {
+      key: { text: "Date of birth" },
+      value: { text: fullDateOfBirth or "Not provided" },
+      actions: {
+        items: [{
+          href: "/edit-date-of-birth",
+          text: "Change",
+          visuallyHiddenText: "date of birth"
+        }]
+      }
+    },
+    {
+      key: { text: "Email address" },
+      value: { text: data.person[0].email or "Not provided" },
+      actions: {
+        items: [{
+          href: "/edit-email",
+          text: "Change",
+          visuallyHiddenText: "email address"
+        }]
+      }
+    },
+     {
+      key: { text: "Mobile number" },
+      value: { text: data.person[0].mobile or "Not provided" },
+      actions: {
+        items: [{
+          href: "/edit-email",
+          text: "Change",
+          visuallyHiddenText: "email address"
+        }]
+      }
+    },
+     {
+      key: { text: "National Insurance Number" },
+      value: { text:   data.person[0].nationalInsurance or "Not provided" },
+      actions: {
+        items: [{
+          href: "/edit-email",
+          text: "Change",
+          visuallyHiddenText: "email address"
+        }]
+      }
+    },
+     {
+      key: { text: "Sex" },
+      value: { text: data.person[0].gender or "Not provided" },
+      actions: {
+        items: [{
+          href: "/edit-email",
+          text: "Change",
+          visuallyHiddenText: "email address"
+        }]
+      }
+    },
+    {
+    key: { text: "Evidence" },
+    value: { html: evidenceHtml }
+  }
+  ] %}
+
+
+  {{ govukSummaryList({ rows: summaryRows }) }}
+  
+{% else %}
+  <p>No person data available</p>
+{% endif %}
+
+        {{ govukSummaryList({
+  rows: nameSummaryRows })
+        }} 
+
+
+         <h2 class="govuk-heading-m">Reasons for change</h1>
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Name change
+    </dt>
+      <dd class="govuk-summary-list__value">
+      {% if data.createRecordReason == "Change of name: marriage" %}
+        Name change (marriage or civil partnership)
+      {% elseif data.createRecordReason == "Change of name: legal name change" %}
+        Name change (deed poll or other legal process)
+      {% elseif data.createRecordReason == "Data loss or incomplete information" %}
+        Updating incorrect details
+      {% elseif data.createRecordReason == "Another reason" %}
+        Another reason:
+         {% if NameChangeMoreDetails %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">Additional details</dt>
+    <dd class="govuk-summary-list__value">{{ data.NameChangeMoreDetails }}</dd>
+  </div>
+  {% endif %}
+      {% else %}
+        Not provided
+      {% endif %}
+    </dd>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Evidence
+    </dt>
+      <dd class="govuk-summary-list__value">
+    {% if data.evidenceUploaded == "Yes" %}
+    <p><a href="#" class="govuk-link" target="_blank" rel="noopener noreferrer">
+    {{ data.evidenceFile }}</a></p>
+  {% else %}
+    <p>None provided</p>
+  {% endif %}
+    </dd>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+
+</dl>
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Other change
+    </dt>
+      <dd class="govuk-summary-list__value">
+      {% if data.changeRecordReason == "Data loss or incomplete information" %}
+        Data loss or incomplete information
+      {% elseif data.changeRecordReason == "New information received" %}
+       New information received
+      {% elseif data.changeRecordReason == "Updating incorrect details" %}
+        Updating incorrect details
+      {% elseif data.changeRecordReason == "Another reason" %}
+        Another reason:
+         {% if moreDetails %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">Additional details</dt>
+    <dd class="govuk-summary-list__value">{{ data.moreDetails }}</dd>
+  </div>
+  {% endif %}
+      {% else %}
+        Not provided
+      {% endif %}
+    </dd>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Evidence
+    </dt>
+      <dd class="govuk-summary-list__value">
+    {% if data.evidenceUploaded == "Yes" %}
+    <p><a href="#" class="govuk-link" target="_blank" rel="noopener noreferrer">
+    {{ data.evidenceFile }}</a></p>
+  {% else %}
+    <p>None provided</p>
+  {% endif %}
+    </dd>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+    </dd>
+  </div>
+</dl>
+
+      <form method="post" action="personal-details-after">
+        {{ govukButton({
+          text: "Confirm and commit changes"
+        }) }}
+      </form>  
+       
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

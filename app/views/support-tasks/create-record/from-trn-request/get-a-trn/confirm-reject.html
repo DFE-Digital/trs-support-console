@@ -1,0 +1,78 @@
+{% extends "layouts/nav-test.html" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      {{ task.supportTaskType | log }}
+      {{ task.reference | log }}
+      {{ task.dateOfTrnRequest | log }}
+      {{ task.firstName | log }}
+      {{ task.middleName | log }}
+      {{ task.lastName | log }}
+      {{ task.dateOfBirth | log }}
+      {{ task.email | log }}
+      {{ task.nationalInsuranceNumber | log }}
+      
+      
+      {{ data.evidenceUploaded | log }}
+
+      
+
+      <span class="govuk-caption-l">Incoming Get a TRN request - Richard Sara Porter</span>
+      <h1 class="govuk-heading-l">Confirm rejection of the Get a TRN request</h1>
+
+
+      <h2 class="govuk-heading-m">Why are you rejecting this request?</h2>
+
+
+      <dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Reason for rejection
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {% if data.rejectReason == "Evidence does not match" %}
+        Evidence does not match
+      {% elseif data.rejectReason == "Evidence is not sufficient" %}
+        Evidence is not sufficient
+      {% elseif data.rejectReason == "NPQ data does not match" %}
+        NPQ data does not match
+      {% elseif data.rejectReason == "Another reason" %}
+        Another reason
+        {% if data.moreDetails %}
+          <br><br><i>{{ data.moreDetails }}</i>
+        {% endif %}
+      {% else %}
+        Not provided
+      {% endif %}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> rejection reason</span></a>
+    </dd>
+  </div>
+</dl>
+
+<br><br>
+      <form method="post" action="list-rejected">
+        {{ govukButton({
+          text: "Confirm and reject request"
+        }) }}
+      </form>  
+       
+
+      <p class="govuk-body">
+        <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
