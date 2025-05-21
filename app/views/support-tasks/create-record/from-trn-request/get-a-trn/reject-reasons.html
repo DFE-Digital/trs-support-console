@@ -1,0 +1,90 @@
+{% extends "layouts/nav-test.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set headingName = "Edit personal details" %}
+{% set captionName = data.person[0].fullName %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+<span class="govuk-caption-l">Incoming Get a TRN request - Richard Sara Porter</span>
+ <h2 class="govuk-heading-l">Why are you rejecting this request?</h2>
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-visually-hidden">Reason for rejection</legend>
+      
+         <form action="confirm-reject" method="post" novalidate>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-1" name="rejectReason" type="radio" value="Evidence does not match">
+            <label class="govuk-label govuk-radios__label" for="reason-1">
+              Evidence does not match
+            </label>
+          </div>
+      
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-2" name="rejectReason" type="radio" value="Evidence is not sufficient" data-aria-controls="conditional-new-info">
+            <label class="govuk-label govuk-radios__label" for="reason-2">
+              Evidence is not sufficient
+            </label>
+          </div>
+      
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reason-3" name="rejectReason" type="radio" value="NPQ data does not match">
+              <label class="govuk-label govuk-radios__label" for="reason-3">
+                NPQ data does not match
+              </label>
+            </div>
+      
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-4" name="rejectReason" type="radio" value="Another reason" data-aria-controls="conditional-reason">
+            <label class="govuk-label govuk-radios__label" for="reason-4">
+              Another reason
+            </label>
+          </div>
+      
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-details">
+                Please provide more details
+              </label>
+              <textarea class="govuk-textarea govuk-!-width-one-half" id="more-details" name="moreDetails" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+  
+      <br><br>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body">
+      <a href="overview" class="govuk-link">Cancel and return to users</a>
+    </p>
+  </main>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,215 @@
+{% extends "layouts/nav-test.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set headingName = "Edit personal details" %}
+{% set captionName = data.person[0].fullName %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Personal details change - {{ data.person[0].fullName }}</span>
+    <h2 class="govuk-heading-l">Why are you changing this record?</h2>
+
+    <form action="change-reasons" method="post" novalidate>
+
+      <h3 class="govuk-heading-m">Reason for name change</h3>
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-visually-hidden">Reason for name change</legend>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-name-marriage" name="createRecordReason" type="radio" value="Change of name: marriage">
+            <label class="govuk-label govuk-radios__label" for="reason-name-marriage">
+              Marriage or civil partnership
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-name-legal" name="createRecordReason" type="radio" value="Change of name: legal name change">
+            <label class="govuk-label govuk-radios__label" for="reason-name-legal">
+              Deed poll or other legal process
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-1" name="createRecordReason" type="radio" value="Data loss or incomplete information">
+            <label class="govuk-label govuk-radios__label" for="reason-1">
+              Correcting an error
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-3" name="createRecordReason" type="radio" value="Another reason" data-aria-controls="conditional-reason">
+            <label class="govuk-label govuk-radios__label" for="reason-3">
+              Another reason
+            </label>
+          </div>
+
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-details">
+                Please provide more details
+              </label>
+              <textarea class="govuk-textarea" id="more-details" name="createRecordReason" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <br>
+
+      {% set evidenceYes %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="evidence-upload">
+            Upload a file
+          </label>
+          <input class="govuk-file-upload" id="evidence-upload" name="evidenceFile" type="file">
+        </div>
+      {% endset %}
+
+      <h2 class="govuk-heading-m">Do you want to provide evidence for this name change?</h2>
+
+      {{ govukRadios({
+        name: "evidenceUploaded",
+        fieldset: {
+          legend: {
+            text: "Do you have evidence to upload?",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes, upload evidence",
+            conditional: {
+              html: evidenceYes
+            }
+          },
+          {
+            value: "Yes, add supporting information",
+            text: "Yes, add supporting information"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ],
+        value: data.evidenceUploaded
+      }) }}
+
+
+        <h2 class="govuk-heading-l">Why are you updating this record?</h2>
+   
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-1" name="changeRecordReason" type="radio" value="Data loss or incomplete information">
+            <label class="govuk-label govuk-radios__label" for="reason-1">
+              Data loss or incomplete information
+            </label>
+          </div>
+      
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-2" name="changeRecordReason" type="radio" value="New information recovered" data-aria-controls="conditional-new-info">
+            <label class="govuk-label govuk-radios__label" for="reason-2">
+              New information received
+            </label>
+          </div>
+      
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="reason-3" name="changeRecordReason" type="radio" value="Data loss or incomplete information">
+              <label class="govuk-label govuk-radios__label" for="reason-3">
+                Updating incorrect details
+              </label>
+            </div>
+      
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reason-4" name="changeRecordReason" type="radio" value="Another reason" data-aria-controls="conditional-reason">
+            <label class="govuk-label govuk-radios__label" for="reason-4">
+              Another reason
+            </label>
+          </div>
+      
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-reason">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-details">
+                Please provide more details
+              </label>
+              <textarea class="govuk-textarea govuk-!-width-one-half" id="more-details" name="moreDetails" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <br>
+  {% set evidenceYes %}
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="evidence-upload">
+            Upload a file
+          </label>
+          <input class="govuk-file-upload" id="evidence-upload" name="evidenceFile" type="file">
+        </div>
+      {% endset %}
+
+      <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+
+{{ govukRadios({
+        name: "evidenceUploaded",
+        fieldset: {
+          legend: {
+            text: "Do you have evidence to upload?",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            conditional: {
+              html: evidenceYes
+            }
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ],
+        value: data.evidenceUploaded
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>window.GOVUKFrontend.initAll()</script>
+{% endblock %}
+
+

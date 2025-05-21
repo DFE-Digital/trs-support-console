@@ -1,0 +1,121 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">
+PII screen index
+  </h1>
+
+  <p>
+    <a href="https://lucid.app/lucidspark/302819b0-d1fd-4f72-b6e7-c4e0f114215a/edit?viewport_loc=-5749%2C17534%2C30864%2C15014%2C0_0&invitationId=inv_26265912-8f79-4e71-b519-22937e7fbccd" target="_blank">Lucid board showing finalised designs</a>
+  </p>
+
+
+  <table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="personal-details-before">Personal details (before any changes).</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         The existing screen
+         
+          </p>
+        </td>
+      </tr>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="details">Change details</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+        The existing screen. Change reasons moved to next page.
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="name-change-reasons">Name change reasons</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+        New screen - Name change reasons
+          </p>
+          <p>To be shown if any of the name fields have been edited</p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="change-reasons">Generic/standard change reasons</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+        New screen
+          </p>
+          <p>Separated out into its own page, revised content</p>
+        </td>
+      </tr>
+     
+
+        <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="check">Summary screen - multiple changes</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+       New screen
+          </p>
+          <p>Added into this journey - a page where the user can review what information they commit into the record.</p>
+          <p>Note that the change reasons aren't dynamic in this prototype and show 'none' by default.</p>
+        </td>
+      </tr>
+
+        <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="check">Summary screen - name change only</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+       New screen
+          </p>
+         <p>Variation of the above screen, demo'ing what this page looks like if there was only one single change.</p>
+          <p>Note that the change reasons aren't dynamic in this prototype and show 'none' by default.</p>
+        </td>
+      </tr>
+
+       
+      
+    </tbody>
+  </table>
+
+         
+  
+{% endblock %}
