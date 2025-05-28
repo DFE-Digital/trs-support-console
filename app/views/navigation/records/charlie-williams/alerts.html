@@ -1,0 +1,154 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "induction" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set newInductionCompletionDate  = data['newInductionCompletionDate']  %}
+{% set newInductionStartDate = data['newInductionStartDate']  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1 class="govuk-heading-l">Charlie Williams</h1>
+
+<nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+  <ul class="x-govuk-secondary-navigation__list">
+    <li class="x-govuk-secondary-navigation__list-item">
+      <a class="x-govuk-secondary-navigation__link" href="personal-details">
+        Personal details
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="routes" >
+       Routes and qualifications
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item">
+      <a class="x-govuk-secondary-navigation__link" href="induction" aria-current=page>
+       Induction
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+      <a class="x-govuk-secondary-navigation__link" href="alerts">
+       Alerts
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="notes">
+     Notes
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="change-history">
+       Change history
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<br><br>
+
+<div>
+  <h2 class="govuk-heading-m">Open alerts</h2>
+
+
+ <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h2 class="govuk-summary-card__title">
+  Teacher sanctioned in other EEA member state
+    </h2>
+    <ul class="govuk-summary-card__actions">
+  {% if data.roleSelect == "service excellence team" %}
+      <li class="govuk-summary-card__action">
+        <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"></span></a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Details
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Not provided
+        </dd>
+         {% if data.roleSelect == "service excellence team" %}
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> age (Lead tenant)</span></a>
+        </dd>
+         {% endif %}
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Link
+        </dt>
+        <dd class="govuk-summary-list__value">
+        Not provided
+        </dd>
+       {% if data.roleSelect == "service excellence team" %}
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> nationality (Lead tenant)</span></a>
+        </dd>
+         {% endif %}
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+        Start date
+        </dt>
+        <dd class="govuk-summary-list__value">
+      27 May 2024
+        </dd>
+          {% if data.roleSelect == "service excellence team" %}
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> working situation (Lead tenant)</span></a>
+        </dd>
+              {% endif %}
+        </div>
+       <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+       End date
+        </dt>
+        <dd class="govuk-summary-list__value">
+        Not provided
+        </dd>
+          {% if data.roleSelect == "service excellence team" %}
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> working situation (Lead tenant)</span></a>
+        </dd>
+         {% endif %}
+      </div>
+    </dl>
+  </div>
+</div> 
+    {% if data.roleSelect == "service excellence team" %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">Add an alert</button>
+          {% endif %}
+</div>
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+<div class="govuk-!-padding-top-2">
+  <h2 class="govuk-heading-m">Closed alerts</h2>
+
+      <p class="govuk-body" data-testid="no-closed-alerts">No closed alerts</p>
+</div>
+  </div>
+</div>
+
+{% endblock %}

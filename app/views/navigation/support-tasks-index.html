@@ -42,15 +42,15 @@
       <div class="govuk-grid-column-full">
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-        <h2 class="govuk-heading-m">Support tasks</h2>
+        <h2 class="govuk-heading-m">Tasks to complete</h2>
         <div class="app-home-statuses app-home-statuses--3-up govuk-!-margin-bottom-4">
           
           
 
-          {# Get a TRN request #}
+          {# TRN request #}
           <a href="get-a-trn-request/get-a-trn-list" class="status-card status-card--in-training">
             <span class="status-card__count"> 35</span>
-            <span class="status-card__status">Get a TRN requests</span><span class="govuk-visually-hidden">View these records.</span>
+            <span class="status-card__status">TRN requests</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
   
           {# Change details request #}
@@ -68,20 +68,23 @@
             <span class="status-card__status">Duplicates from APIs</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
 
-          <!-- 
-          {# Register #}
+           {# Definite matches #}
           
-          <a href="definite-match/list" class="status-card status-card--withdrawn">
-            <span class="status-card__count">3</span>
-            <span class="status-card__status">Definite matches from Register</span><span class="govuk-visually-hidden">View these records.</span>
+          <a href="definite-match/list" class="status-card status-card--in-training">
+            <span class="status-card__count">28</span>
+            <span class="status-card__status">Definite matches</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
-          -->
+          </div>
   
-          {# Incomplete #}
+          <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+           <h2 class="govuk-heading-m">Third party tasks</h2>
+        <div class="app-home-statuses app-home-statuses--3-up govuk-!-margin-bottom-4">
           
+
+          {# ITRs #}
   
           <a href="interfaces" class="status-card status-card--incomplete">
-           <!-- <span class="status-card__count">40</span>-->
             <span class="status-card__status">Intergration transaction records (ITRs)</span><span class="govuk-visually-hidden">View these records.</span>
           </a>
         </div>
@@ -122,8 +125,15 @@
     const input = document.getElementById("find-record").value.trim().toLowerCase();
 
     if (input === "harry taylor") {
-      window.location.href = "search-results.html";
-    } else {
+      window.location.href = "search-results-a.html";
+    }
+    else if (input === "charlie williams") {
+      window.location.href = "search-results-b.html";
+    }
+    else if (input === "olivia evans") {
+      window.location.href = "search-results-c.html";
+    }
+     else {
       window.location.href = "search-results-none.html";
     }
   });

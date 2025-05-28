@@ -1,37 +1,18 @@
 {% extends "layouts/nav-search.html" %}
 
-{% block pageTitle %}
-Interfaces – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
 {% block beforeContent %}
   {{ govukBackLink({
+    text: "Back",
     href: "javascript:window.history.back()"
   }) }}
 {% endblock %}
-
-
+{% block content %}
+    {% if data.roleSelect != "viewer" %}
   
 <div class="govuk-width-container">
-  <a href="#" class="govuk-back-link">Back</a>
-  </div>
-  
-
-  <div class="govuk-width-container">
-
-
     
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
-
-          <!-- 
-          <nav class="govuk-breadcrumbs govuk-!-padding-bottom-4" aria-label="Breadcrumb">
-            <ol class="govuk-breadcrumbs__list">
-              <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="#">Support tasks</a>
-              </li>
-            </ol>
-          </nav>-->
          
           <span class="govuk-caption-l">Integration transactions</span>
           <h1 class="govuk-heading-l">Interfaces</h1>
@@ -303,5 +284,7 @@ Interfaces – {{ serviceName }} – GOV.UK Prototype Kit
 
     </div>
   </div>
-
+      {% endif %}
 </div>
+
+{% endblock %}

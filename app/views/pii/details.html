@@ -110,6 +110,10 @@
       }) }}
 
 
+
+      
+
+
       {{ govukDateInput({
         id: "personal-details-dob",
         namePrefix: "personalDetailsDateOfBirth",
@@ -137,59 +141,10 @@
             value: data.person[0].dateOfBirthYear
           }
         ]
-      }) }}
-
-      {# -------- Start of EMAIL & PHONE   -------------- #}
-
-      {{ govukInput({
-        label: {
-          text: "Email address",
-          classes: "govuk-label--s"
-        },
-        id: "personalDetailsEmail",
-        name: "personalDetailsEmail",
-        type: "email",
-        autocomplete: "email",
-        spellcheck: false,
-        classes: "govuk-input--width-20",
-        value: data.person[0].email
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Phone number",
-          classes: "govuk-label--s"
-        },
-        hint: {
-          text: "For international numbers include the country code"
-        },
-        id: "personalDetailsPhoneNumber",
-        name: "personalDetailsPhoneNumber",
-        type: "email",
-        autocomplete: "email",
-        spellcheck: false,
-        classes: "govuk-input--width-20",
-        value: data.person[0].mobile
-      }) }}
-
-      {# -------- Start of NiNO & SEX   -------------- #}
-
-      {{ govukInput({
-        label: {
-          text: "National Insurance number",
-          classes: "govuk-label--s"
-        },
-        hint: {
-          text: "For example, 'QQ 12 34 56 C'"
-        },
-        value:  data.person[0].nationalInsurance,
-        classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
-        id: "create-record-national-insurance-number",
-        name: "personalDetailsNationalInsuranceNumber",
-        spellcheck: false
-      }) }}
-
-
+      }) }}   
+      
+      
+      
       {{ govukRadios({
         name: "personalDetailsSex",
         fieldset: {
@@ -210,6 +165,61 @@
           }
         ], value: data.person[0].gender
       }) }}
+
+
+          {# -------- Start of NiNO & SEX   -------------- #}
+
+      {{ govukInput({
+        label: {
+          text: "National Insurance number",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "For example, 'QQ 12 34 56 C'"
+        },
+        value:  data.person[0].nationalInsurance,
+        classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
+        id: "create-record-national-insurance-number",
+        name: "personalDetailsNationalInsuranceNumber",
+        spellcheck: false
+      }) }}
+
+
+
+
+      {# -------- Start of EMAIL & PHONE   -------------- #}
+
+      {{ govukInput({
+        label: {
+          text: "Email address",
+          classes: "govuk-label--s"
+        },
+        id: "personalDetailsEmail",
+        name: "personalDetailsEmail",
+        type: "email",
+        autocomplete: "email",
+        spellcheck: false,
+        classes: "govuk-input--width-20",
+        value: data.person[0].email
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Mobile number",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "For international numbers include the country code"
+        },
+        id: "personalDetailsPhoneNumber",
+        name: "personalDetailsPhoneNumber",
+        type: "email",
+        autocomplete: "email",
+        spellcheck: false,
+        classes: "govuk-input--width-20",
+        value: data.person[0].mobile
+      }) }}
+
 
 
      

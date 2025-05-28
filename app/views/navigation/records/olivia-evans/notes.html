@@ -1,0 +1,237 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "notes" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <h1 class="govuk-heading-l">Olivia Evans</h1>
+
+    <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+      <ul class="x-govuk-secondary-navigation__list">
+        <li class="x-govuk-secondary-navigation__list-item">
+          <a class="x-govuk-secondary-navigation__link" href="personal-details">
+            Personal details
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item ">
+          <a class="x-govuk-secondary-navigation__link" href="routes" >
+           Routes and qualifications
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item">
+          <a class="x-govuk-secondary-navigation__link" href="induction">
+           Induction
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item">
+          <a class="x-govuk-secondary-navigation__link" href="alerts">
+           Alerts
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+          <a class="x-govuk-secondary-navigation__link" href="notes">
+         Notes
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item ">
+          <a class="x-govuk-secondary-navigation__link" href="change-history">
+           Change history
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <br><br>
+
+        <h2 class="govuk-heading-m">Notes</h2>
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+
+        <h3 class="govuk-heading-s">Added by Callie Becker on 30 March 2011 at 12:27</h3>
+        <div class="govuk-inset-text">
+          DD87720 - Selected for DD Notification Letter - DD Claim Date 01/04/2011 - Amount to be claimed: £36.50 - Data Extracted 11/02/2011 - Notification Letter Sent to 22 Dorchester Road, DT2 9ND On 01/03/2011
+        </div>
+       
+  
+          <div class="govuk-!-padding-bottom-3"></div>
+
+          <h3 class="govuk-heading-s">Added by Callie Becker on 30 March 2011 at 12:27</h3>
+          <div class="govuk-inset-text">
+            <p>020608 JMULCARE</p>
+            
+            
+            <p><b>Attached file</b>
+              <br>
+            <a class="govuk-link" href="#">
+          <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+            <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+          </svg>
+          TES-Blank_letter_Template.pdf (opens in a new tab)
+        </a> 
+          </p>
+          </div>
+
+          <div class="govuk-!-padding-bottom-3"></div>
+
+          <h3 class="govuk-heading-s">Added by Freya Bernard on 2 January 2010 at 11:47</h3>
+        <div class="govuk-inset-text">
+          DiversityDataMailing2010 - Details extracted on  15th Dec 2009  - Address used  69 Mitcham Road ...  CR0 3RR ** Party_id 1993367
+
+        </div>
+       
+  
+          <div class="govuk-!-padding-bottom-3"></div>
+  
+
+
+
+          <h3 class="govuk-heading-s">Added by Callie Becker on 30 March 2011 at 12:27</h3>
+          <div class="govuk-inset-text">
+            <p>020608 JMULCARE</p>
+            
+            
+            <p><b>Attached file</b>
+              <br>
+            <a class="govuk-link" href="#">
+          <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+            <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+          </svg>
+          TES-Blank_letter_Template.pdf (opens in a new tab)
+        </a> 
+          </p>
+          </div>
+
+                  <div class="govuk-!-padding-bottom-3"></div>
+        <!-- 
+
+        <div class="govuk-inset-text">
+          DD87720 - Selected for DD Notification Letter - DD Claim Date 01/04/2011 - Amount to be claimed: £36.50 - Data Extracted 11/02/2011 - Notification Letter Sent to 22 Dorchester Road, DT2 9ND On 01/03/2011
+          <br>
+          <br>
+          <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Added by
+              </dt>
+              <dd class="govuk-summary-list__value" style="text-align:right!important";>
+                Callie Becker on 30 March 2011 at 12:27            
+              </dd>
+            </div>
+         </dl>
+        </div>
+
+        <div class="govuk-!-padding-bottom-3"></div>
+
+          <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Added by Callie Becker on 30 March 2011 at 12:27
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <p>
+              DD87720 - Selected for DD Notification Letter - DD Claim Date 01/04/2011 - Amount to be claimed: £36.50 - Data Extracted 11/02/2011 - Notification Letter Sent to 22 Dorchester Road, DT2 9ND On 01/03/2011
+
+            </p>
+              </div>
+            </dl>
+          </div>       
+          
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+                Added by Callie Becker on 30 March 2011 at 12:27
+              </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+              <p>
+                <p>020608 JMULCARE</p>
+              
+              
+                <p><b>Attached file</b>
+                  <br>
+                <a class="govuk-link" href="#">
+              <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+                <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+              </svg>
+              TES-Blank_letter_Template.pdf (opens in a new tab)
+            </a> 
+              </p>
+              </p>
+                </div>
+              </dl>
+            </div>
+
+                      <div class="govuk-!-padding-bottom-3"></div>
+
+            <div class="govuk-inset-text">
+              <p>020608 JMULCARE</p>
+              
+              
+              <p><b>Attached file</b>
+                <br>
+              <a class="govuk-link" href="#">
+            <svg class="moj-timeline__document-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20" width="20" height="16">
+              <path d="M9 7V1.5L14.5 7H9zM2 0C.9 0 0 .9 0 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6l-6-6H2z" />
+            </svg>
+            TES-Blank_letter_Template.pdf (opens in a new tab)
+          </a> 
+            </p>
+            <br>
+            <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Added by
+                </dt>
+                <dd class="govuk-summary-list__value" style="text-align:right!important";>
+                  Callie Becker on 30 March 2011 at 12:27            
+                </dd>
+              </div>
+           </dl>
+          </div>
+
+            <div class="govuk-!-padding-bottom-3"></div>
+
+        <div class="govuk-summary-card">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+              Added by Callie Becker on 30 March 2011 at 12:27
+            </h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <p>
+              DD87720 - Selected for DD Notification Letter - DD Claim Date 01/04/2011 - Amount to be claimed: £36.50 - Data Extracted 11/02/2011 - Notification Letter Sent to 22 Dorchester Road, DT2 9ND On 01/03/2011
+
+            </p>
+              </div>
+            </dl>
+          </div>
+        -->
+
+        
+      </div>
+  </div>
+</div>
+
+{% endblock %}

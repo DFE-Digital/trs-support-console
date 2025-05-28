@@ -24,7 +24,7 @@
 {% block content %}
 
 
-<h1 class="govuk-heading-l">Harry Taylor</h1>
+<h1 class="govuk-heading-l">Olivia Evans</h1>
 
 <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
   <ul class="x-govuk-secondary-navigation__list">
@@ -69,7 +69,7 @@
 
           <p class="govuk-body" data-testid="no-open-alerts">No open alerts</p>
 
-          {% if data.roleSelect == "service excellence team" %}
+          {% if data.roleSelect != "viewer" %}
           <button type="submit" class="govuk-button" data-module="govuk-button">Add an alert</button>
           {% endif %}
 </div>

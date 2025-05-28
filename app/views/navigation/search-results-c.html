@@ -1,0 +1,113 @@
+{% extends "layouts/nav-search.html" %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Find a record</h1>
+    {% if data.roleSelect != "viewer" %}
+    <form action="records/new/create-new-record" novalidate>
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+      Create a record
+    </button>
+    {% endif %}
+
+<div class="app-search-form" style="display: flex; align-items: flex-end";>
+  <form id="searchForm">
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s app-search-form__label" for="find-record">
+        Search
+      </label>
+      <div id="find-record-hint" class="govuk-hint">
+        For example TRN, name or date of birth
+      </div>
+      <input class="govuk-input" id="find-record" name="findRecord" type="text" aria-describedby="find-record-hint" value="">
+    </div>
+    
+    <button class="govuk-button app-search-form__button" data-module="govuk-button">
+      Search
+    </button>
+  </form>
+</div>
+</div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div class="flex-sort-by">
+      <h2 class="govuk-heading-m flex-start">1 record found</h2>
+    <p class="govuk-body">
+        <strong>Sort by: </strong>
+        <a href="#" class="govuk-link">Last name</a> | 
+        <a href="#" class="govuk-link">First name</a> | 
+        <a href="#" class="govuk-link">Date of birth</a>
+      </p>
+    </div>
+
+    <form method="post" novalidate>
+      <table 
+        class="govuk-table" 
+        data-module="moj-multi-select" 
+        data-multi-select-checkbox="#select-all" 
+        data-multi-select-idprefix="mountains-"
+      >
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col" id="select-all"></th>
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header" scope="col">Date of birth</th>
+            <th class="govuk-table__header" scope="col">TRN</th>
+            <th class="govuk-table__header" scope="col">National Insurance number</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+         
+          <tr class="govuk-table__row govuk-table__row--selected">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input 
+                  type="checkbox" 
+                  class="govuk-checkboxes__input" 
+                  id="duplicate-records" 
+                  name="duplicate-records" 
+                  value="123456"
+                >
+                <label 
+                  class="govuk-label govuk-checkboxes__label" 
+                  for="duplicate-records"
+                >
+                  <span class="govuk-visually-hidden">Select this row</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell"><a href="records/olivia-evans/personal-details" class="govuk-link">Olivia Evans</a></td>
+            <td class="govuk-table__cell">	22 February 1988</td>
+            <td class="govuk-table__cell">4321769</td>
+            <td class="govuk-table__cell">CC 456789 E</td>
+          </tr>
+
+
+    
+        </tbody>
+      </table>
+    </form>
+    {% if data.roleSelect != "viewer" %}
+    
+     {{ govukButton({
+      text: "Compare records",
+      href: "not-in-prototype"
+    }) }}
+
+    {% endif %}
+    
+  </div>
+</div>
+
+{% endblock %}

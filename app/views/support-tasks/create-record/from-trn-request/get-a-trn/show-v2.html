@@ -1,10 +1,10 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/nav-test.html" %}
 
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "allTasks" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName = "Incoming " + record.sourceOfMatch + " request" %}
+{% set pageName = "TRN request for Richard Sara Porter" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -19,7 +19,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <span class="govuk-caption-l">Support tasks</span>
-   <h2 class="govuk-heading-l">Incoming Get a TRN request</h2>
+   <h2 class="govuk-heading-l">{{ pageName }}</h2>
 
 
 <div class="govuk-summary-card govuk-!-margin-top-3">
@@ -82,7 +82,7 @@
   name: "acceptRejectRequest",
   fieldset: {
     legend: {
-      text: "How do you want to proceed?",
+      text: "Create a record from this request?",
       isPageHeading: false,
       classes: "govuk-fieldset__legend--m"
     }
@@ -90,11 +90,11 @@
   items: [
     {
       value: "accept",
-      text: "Accept request"
+      text: "Yes"
     },
     {
       value: "reject",
-      text: "Reject request"
+      text: "No, reject this request "
     }
   ]
 }) }}
