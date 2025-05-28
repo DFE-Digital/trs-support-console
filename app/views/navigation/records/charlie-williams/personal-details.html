@@ -1,0 +1,161 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "general" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data.teachers %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/find-teacher"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">Charlie Williams</h1>
+
+      <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+        <ul class="x-govuk-secondary-navigation__list">
+          <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+            <a class="x-govuk-secondary-navigation__link" href="#" aria-current=page>
+              Personal details
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="routes" >
+             Routes and qualifications
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="induction">
+             Induction
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="alerts">
+             Alerts
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="notes">
+           Notes
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="change-history">
+             Change history
+            </a>
+          </li>
+        </ul>
+      </nav>
+    <br><br>
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      Alert on record. 
+      <a class="govuk-notification-banner__link" href="alerts">View alerts</a>.
+    </p>
+  </div>
+</div>
+
+
+  
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal details"
+          },
+          actions: {
+            items: [
+              {
+                href: "/create-record/add/reason",
+                text: "Change",
+                visuallyHiddenText: "Why I am creating this record"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: 'Charlie Williams'
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: "15 March 1991"
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: 'Male'
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: '4128368'
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: "AB 678910 Q"
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+               text: 'charlie.williams@gmail.com'
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+               text: "07151716301"
+            }
+          }
+        ]
+      }) }}
+
+     
+      
+    
+
+  </div>
+</div>
+
+{% endblock %}

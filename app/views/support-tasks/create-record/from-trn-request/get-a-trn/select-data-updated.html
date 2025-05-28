@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/nav-test.html" %}
 
 {% set serviceNavId = "supportTasks" %} 
 {% set secondaryNavId = "createRecord" %}
@@ -35,7 +35,7 @@
         <form method="post" action="merge-new" novalidate>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <h2 class="govuk-heading-m">Get a TRN request</h2>
+      <h2 class="govuk-heading-m">TRN request</h2>
     </div>
     <div class="govuk-grid-column-one-half">
       <h2 class="govuk-heading-m">Existing record</h2>
@@ -213,7 +213,7 @@
   <div class="govuk-!-padding-bottom-2"></div>
 
   {{ govukWarningText({
-    text: "The Get a TRN request will be marked as complete after the primary record has been updated.",
+    text: "The TRN request will be marked as complete after the primary record has been updated.",
     classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-6",
     iconFallbackText: "Warning"
   }) }}

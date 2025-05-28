@@ -1,0 +1,323 @@
+{% extends "layouts/nav-test.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+    {% if data.roleSelect != "viewer" %}
+  
+  <div class="govuk-width-container">
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            Change Callie Becker's role
+          </h1>
+
+          <form class="form" action="overview-updated-success" method="post" novalidate>
+
+
+            <fieldset class="govuk-fieldset">
+           
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="email">
+                  Email address
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="email" name="email" type="text" autocomplete="email" value="calliebecker@example.com" disabled>
+              </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="name">
+                  Name
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="name" name="name" type="text" autocomplete="name" value="Callie Becker">
+              </div>
+              
+            </fieldset>
+
+         
+        
+
+         
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="role-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Role
+                </h2>
+              </legend>
+              
+            
+
+              <div class="govuk-radios govuk-!-padding-bottom-3" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england" checked>
+                  <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                    Viewer
+                  </label>
+                  
+                </div>
+
+             
+
+              <div id="indentation" style="margin-left:60px!important;">
+                    <table class="govuk-table" style="table-layout: fixed;">
+                      <caption class="govuk-table__caption govuk-table__caption--s">Permissions</caption>
+                     
+                      <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                          <th scope="col" class="govuk-table__header">Teaching records</th>
+                          <th scope="col" class="govuk-table__header">Alerts</th>
+                          <th scope="col" class="govuk-table__header">DBS alerts</th>
+                          <th scope="col" class="govuk-table__header">Manage users</th>
+                          <th scope="col" class="govuk-table__header">Support tasks</th>
+                        </tr>
+                      </thead>
+                      <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                          <td class="govuk-table__cell">
+                         <strong class="govuk-tag govuk-tag--yellow">
+                           VIEW
+                           </strong>
+                        </td>
+                         
+                          <td class="govuk-table__cell">
+                            <strong class="govuk-tag govuk-tag--yellow">
+                           VIEW
+                           </strong>
+                          </td> 
+                          <td class="govuk-table__cell">
+                            <strong class="govuk-tag govuk-tag--yellow">
+                           VIEW
+                           </strong>
+                          </td> 
+                         
+                          <td class="govuk-table__cell">
+                            <strong class="govuk-tag govuk-tag--red">
+                             NO
+                             </strong>
+                          </td> 
+                          <td class="govuk-table__cell">
+                          <strong class="govuk-tag govuk-tag--red">
+                             NO
+                             </strong>
+                          </td> 
+                       
+                        </tr>
+                      </tbody>
+                    </table>
+            </div>
+
+
+            <div class="govuk-radios govuk-!-padding-bottom-3" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  Records manager
+                </label>
+               
+              </div>
+
+           
+
+            <div id="indentation" style="margin-left:60px!important;">
+                  <table class="govuk-table" style="table-layout: fixed;">
+                    <caption class="govuk-table__caption govuk-table__caption--s">Permissions</caption>
+                   
+                    <thead class="govuk-table__head">
+                      <tr class="govuk-table__row">
+                        <th scope="col" class="govuk-table__header">Teaching records</th>
+                        <th scope="col" class="govuk-table__header">Alerts</th>
+                        <th scope="col" class="govuk-table__header">DBS alerts</th>
+                        <th scope="col" class="govuk-table__header">Manage users</th>
+                        <th scope="col" class="govuk-table__header">Support tasks</th>
+                      </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                       
+                        <td class="govuk-table__cell">
+                           <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                        </td>
+                        <td class="govuk-table__cell">
+                          <strong class="govuk-tag govuk-tag--yellow">
+                           VIEW
+                           </strong>
+                        </td> 
+                        <td class="govuk-table__cell">
+                         <strong class="govuk-tag govuk-tag--yellow">
+                           VIEW
+                           </strong>
+                        </td> 
+                       
+                        <td class="govuk-table__cell">
+                         <strong class="govuk-tag govuk-tag--red">
+                             NO
+                             </strong>
+                        </td> 
+                        <td class="govuk-table__cell">
+                          <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                        </td> 
+                     
+                      </tr>
+                    </tbody>
+                  </table>
+          </div>
+
+
+          <div class="govuk-radios govuk-!-padding-bottom-3" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+              Alerts manager
+              </label>
+             
+            </div>
+
+         
+
+          <div id="indentation" style="margin-left:60px!important;">
+                <table class="govuk-table" style="table-layout: fixed;">
+                  <caption class="govuk-table__caption govuk-table__caption--s">Permissions</caption>
+                 
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header">Teaching records</th>
+                      <th scope="col" class="govuk-table__header">Alerts</th>
+                      <th scope="col" class="govuk-table__header">DBS alerts</th>
+                      <th scope="col" class="govuk-table__header">Manage users</th>
+                      <th scope="col" class="govuk-table__header">Support tasks</th>
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      
+                      
+                      <td class="govuk-table__cell">
+                       <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                      </td>
+                      <td class="govuk-table__cell">
+                        <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                      </td> 
+                      <td class="govuk-table__cell">
+                       <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                      </td> 
+                      
+                      <td class="govuk-table__cell">
+                      <strong class="govuk-tag govuk-tag--red">
+                             NO
+                             </strong>
+                      </td> 
+                      <td class="govuk-table__cell">
+                         <strong class="govuk-tag govuk-tag--red">
+                             NO
+                             </strong>
+                      </td> 
+                   
+                    </tr>
+                  </tbody>
+                </table>
+        </div>
+    
+    
+        <div class="govuk-radios govuk-!-padding-bottom-3" Teaching records-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+            <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+             Access manager
+            </label>
+           
+          </div>
+
+       
+
+        <div id="indentation" style="margin-left:60px!important;">
+              <table class="govuk-table" style="table-layout: fixed;">
+                <caption class="govuk-table__caption govuk-table__caption--s">Permissions</caption>
+               
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <th scope="col" class="govuk-table__header">Teaching records</th>
+                    <th scope="col" class="govuk-table__header">Alerts</th>
+                    <th scope="col" class="govuk-table__header">DBS alerts</th>
+                    <th scope="col" class="govuk-table__header">Manage users</th>
+                    <th scope="col" class="govuk-table__header">Support tasks</th>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    
+                    <td class="govuk-table__cell">
+                      <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                    </td>
+                    <td class="govuk-table__cell">
+                      <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                    </td> 
+                    <td class="govuk-table__cell">
+                      <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                    </td> 
+                  
+                    <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                    </td> 
+                    <td class="govuk-table__cell">
+                     <strong class="govuk-tag govuk-tag--green">
+                             EDIT
+                             </strong>
+                    </td> 
+                 
+                  </tr>
+                </tbody>
+              </table>
+      </div>
+  
+      
+        
+                      <div class="govuk-!-padding-bottom-3"></div>
+                      <div class="govuk-button-group">
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                          Save changes
+                        </button>
+        
+                     
+                        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" href="delete-reason">
+                          Deactivate user
+                        </button>
+                      </div>
+                      <p class="govuk-body">
+                      <a class="govuk-link" href="#">Cancel and return to users</a>
+                    </p>
+      
+
+        </div>
+      </div>
+         </div>
+            </div>
+    
+
+    </form>
+      {% endif %}
+  </div>
+{% endblock %}

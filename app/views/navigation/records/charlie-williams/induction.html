@@ -1,0 +1,153 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "induction" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set newInductionCompletionDate  = data['newInductionCompletionDate']  %}
+{% set newInductionStartDate = data['newInductionStartDate']  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1 class="govuk-heading-l">Charlie Williams</h1>
+
+<nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+  <ul class="x-govuk-secondary-navigation__list">
+    <li class="x-govuk-secondary-navigation__list-item">
+      <a class="x-govuk-secondary-navigation__link" href="personal-details">
+        Personal details
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="routes" >
+       Routes and qualifications
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+      <a class="x-govuk-secondary-navigation__link" href="induction">
+       Induction
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="alerts">
+       Alerts
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="#">
+     Notes
+      </a>
+    </li>
+    <li class="x-govuk-secondary-navigation__list-item ">
+      <a class="x-govuk-secondary-navigation__link" href="#">
+       Change history
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<br><br>
+
+{{ govukSummaryList({
+  card: {
+      title: {
+      text: "Induction details"
+      }
+  },
+  rows: [
+      {
+        key: {
+          text: "Induction status"
+        },
+        value: {
+            text: teacher['inductionStatus']
+        },
+        actions: {
+            items: [
+            {
+                href: "/induction/status",
+                text: "Change",
+                visuallyHiddenText: "name"
+            }
+            ]
+        } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed in Wales"
+      },
+
+      {
+        key: {
+            text: "Exemption reason"
+        },
+        value: {
+            text: data.inductionExemptionReason or "Some exemption reason"
+        },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "induction start date"
+            }
+            ]
+          } if not teacher.inductionStatus == "Exempt"
+      } if teacher.inductionStatus == "Exempt",
+
+      {
+        key: {
+            text: "Induction start date"
+        },
+        value: {
+            text: teacher['inductionStartDate'] or "Not applicable"
+        },
+        actions: {
+            items: [
+            {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "induction start date"
+            }
+            ]
+          } if teacher.inductionStatus == "Exempt" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
+
+      } if teacher.inductionStatus == "Required to complete" or teacher.inductionStatus == "In progress" or teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales",
+
+    	{
+				key: {
+					text: "Induction completion date"
+				},
+				value: {
+					text: teacher['inductionCompletionDAte'] or "Not applicable"
+				},
+				actions: {
+					items: [
+						{
+							href: "/induction/completion-date?returnUrl=/induction/check",
+							text: "Change",
+							visuallyHiddenText: "induction completion date"
+						}
+					]
+				} if teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales"
+
+    } if teacher.inductionStatus == "Passed" or teacher.inductionStatus == "Failed" or teacher.inductionStatus == "Failed in Wales" or teacher.inductionStatus == "In progress"
+  ] 
+
+}) }}
+
+  </div>
+</div>
+
+{% endblock %}

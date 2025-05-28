@@ -1,0 +1,87 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "changelog" %}
+
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Olivia Evans</h1>
+
+    <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+      <ul class="x-govuk-secondary-navigation__list">
+        <li class="x-govuk-secondary-navigation__list-item">
+          <a class="x-govuk-secondary-navigation__link" href="personal-details">
+            Personal details
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item ">
+          <a class="x-govuk-secondary-navigation__link" href="routes" >
+           Routes and qualifications
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item">
+          <a class="x-govuk-secondary-navigation__link" href="induction" aria-current=page>
+           Induction
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item">
+          <a class="x-govuk-secondary-navigation__link" href="alerts">
+           Alerts
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item ">
+          <a class="x-govuk-secondary-navigation__link" href="notes">
+         Notes
+          </a>
+        </li>
+        <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+          <a class="x-govuk-secondary-navigation__link" href="change-history">
+           Change history
+          </a>
+        </li>
+      </ul>
+    </nav>
+    
+    <br><br>
+    <div class="hods-timeline">
+      <div class="hods-timeline__item">
+        <h2 class="hods-timeline__title">
+          Name change request
+        </h2>
+        <p class="hods-timeline__date">
+          <time
+            class="hods-date-time"
+            datetime="2021-03-15T16:27:00.000Z"
+          >
+            by Erica Francoise-Smith on {{ "now" | govukDateTime }} at  {{ "now" | govukTime }}
+          </time>
+          <p>Name changed from "Ollivia Evans" to "Olivia Evans"</p>
+        </p>
+    
+       
+    
+
+      
+  </div>
+</div>
+
+{% endblock %}

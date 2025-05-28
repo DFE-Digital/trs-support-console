@@ -1,7 +1,7 @@
 {% extends "layouts/nav-test.html" %}
 
 {% set captionName = "Support tasks" %}
-{% set pageName="Get a TRN requests" %}
+{% set pageName="TRN requests" %}
 {% set serviceNavId = "supportTasks" %}
 
 
@@ -20,15 +20,22 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
   
-    {{ govukNotificationBanner({
-      type: "success",
-      html: '
-        <div class="banner-flex">
-          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
-            Record updated for Richard Sara Porter.<br><a href="/support-tasks/create-record/from-trn-request/get-a-trn/updated?recordId={{ recordId }}">View record</a>
-          </h2>
-        </div>'
-    }) }}
+  <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+     TRN request completed
+    </h3>
+    <p class="govuk-body">Record updated for Richard Sara Porter. <a class="govuk-link" href="/support-tasks/create-record/from-trn-request/get-a-trn/updated?recordId={{ recordId }}">View record</a>.</p>
+  </div>
+</div>
+
+
 
     
 
