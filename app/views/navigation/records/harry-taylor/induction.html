@@ -1,5 +1,5 @@
 {% extends "layouts/nav-search.html" %}
-
+{% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "induction" %}
 
@@ -49,12 +49,12 @@
       </a>
     </li>
     <li class="x-govuk-secondary-navigation__list-item ">
-      <a class="x-govuk-secondary-navigation__link" href="#">
+      <a class="x-govuk-secondary-navigation__link" href="notes">
      Notes
       </a>
     </li>
     <li class="x-govuk-secondary-navigation__list-item ">
-      <a class="x-govuk-secondary-navigation__link" href="#">
+      <a class="x-govuk-secondary-navigation__link" href="change-history">
        Change history
       </a>
     </li>

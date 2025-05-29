@@ -1,6 +1,6 @@
 {% extends "layouts/nav-search.html" %}
 
-
+{% set currentPage = "records" %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -20,11 +20,7 @@
 
   
     <span class="govuk-caption-l">Support tasks</span>
-    <h1 class="govuk-heading-l">Potential duplicates</h1>
-
-
-
-
+    <h1 class="govuk-heading-l">Duplicates via API</h1>
 
 <div class="moj-filter-layout">
 
@@ -89,7 +85,7 @@
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
             
               <h1 class="govuk-fieldset__heading">
-                Date range
+                Date created
               </h1>
             
             </legend>
@@ -102,7 +98,7 @@
                     Day
                   </label>
                 
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2 " id="appt-date-day" name="appt-date-day" type="text" value="03" inputmode="numeric">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 " id="appt-date-day" name="appt-date-day" type="text" value=" " inputmode="numeric">
                 
                 </div>
               </div>
@@ -113,7 +109,7 @@
                     Month
                   </label>
                 
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="appt-date-month" name="appt-date-month" type="text" value="10" inputmode="numeric">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="appt-date-month" name="appt-date-month" type="text" value=" " inputmode="numeric">
                 
                 </div>
               </div>
@@ -124,7 +120,7 @@
                     Year
                   </label>
                 
-                <input class="govuk-input govuk-date-input__input govuk-input--width-3" id="appt-date-year" name="appt-date-year" type="text" value="2023" inputmode="numeric">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-3" id="appt-date-year" name="appt-date-year" type="text" value=" " inputmode="numeric">
                 
                 </div>
               </div>
@@ -166,12 +162,18 @@
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header" aria-sort="none">Name</th>
-          <th scope="col" class="govuk-table__header" aria-sort="none">Date</th>
+          <th scope="col" class="govuk-table__header" aria-sort="none">Date created</th>
           <th scope="col" class="govuk-table__header" aria-sort="descending">Source</th>
         </tr>
       </thead>
       <tbody class="govuk-table__body">
     
+ <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="compare" class="govuk-link">Charlie Williams</a></td>
+          <td class="govuk-table__cell">30 Nov 2024</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Register</strong></td>
+        </tr>
+
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a href="#" class="govuk-link">Emma Jane Lane</a></td>
           <td class="govuk-table__cell">27 Nov 2024</td>

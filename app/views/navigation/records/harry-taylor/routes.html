@@ -1,5 +1,5 @@
 {% extends "layouts/nav-search.html" %}
-
+{% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "route" %}
 
@@ -44,17 +44,17 @@
           </a>
         </li>
         <li class="x-govuk-secondary-navigation__list-item ">
-          <a class="x-govuk-secondary-navigation__link" href="#">
+          <a class="x-govuk-secondary-navigation__link" href="alerts">
            Alerts
           </a>
         </li>
         <li class="x-govuk-secondary-navigation__list-item ">
-          <a class="x-govuk-secondary-navigation__link" href="#">
+          <a class="x-govuk-secondary-navigation__link" href="notes">
          Notes
           </a>
         </li>
         <li class="x-govuk-secondary-navigation__list-item ">
-          <a class="x-govuk-secondary-navigation__link" href="#">
+          <a class="x-govuk-secondary-navigation__link" href="change-history">
            Change history
           </a>
         </li>
@@ -66,7 +66,7 @@
   
           <h2 class="govuk-heading-m">Routes to professional statuses</h2>
           <p class="govuk-body">No routes added yet</p>
- {% if data.roleSelect == "service excellence team" %}
+ {% if data.roleSelect != "viewer" %}
          
           {{ govukButton({
             text: "Add a route",
@@ -80,7 +80,7 @@
       <h2 class="govuk-heading-m">Mandatory qualifications</h2>
       <p class="govuk-body">No mandatory qualifications added yet</p>
 
-       {% if data.roleSelect == "service excellence team" %}
+       {% if data.roleSelect != "viewer" %}
       
       {{ govukButton({
         text: "Add a mandatory qualification",

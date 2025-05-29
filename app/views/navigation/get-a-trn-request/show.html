@@ -1,0 +1,114 @@
+{% extends "layouts/nav-search.html" %}
+{% set currentPage = "records" %}
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "TRN request for Harry Taylor" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+        <form method="post" action="../not-in-prototype" novalidate>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">Support tasks</span>
+   <h2 class="govuk-heading-l">{{ pageName }}</h2>
+
+
+<div class="govuk-summary-card govuk-!-margin-top-3">
+  <div class="govuk-summary-card__title-wrapper">
+    <h3 class="govuk-summary-card__title">Requested on 27 November 2024</h3>
+  </div>
+
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+
+        <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Source</dt>
+        <dd class="govuk-summary-list__value">    <strong class="govuk-tag govuk-tag--blue">Get a TRN</strong></dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Name</dt>
+        <dd class="govuk-summary-list__value">Harry Taylor</dd>
+      </div>
+
+     
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Date of birth</dt>
+        <dd class="govuk-summary-list__value">19 April 1990</dd>
+      </div>
+
+     
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Working in school or educational setting</dt>
+        <dd class="govuk-summary-list__value">Yes</dd>
+      </div>
+
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">NPQ application ID</dt>
+        <dd class="govuk-summary-list__value">26609043</dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">NPQ name</dt>
+        <dd class="govuk-summary-list__value">Leading literacy</dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">NPQ training provider</dt>
+        <dd class="govuk-summary-list__value">Best Practice Network</dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Evidence</dt>
+        <dd class="govuk-summary-list__value">
+          <a href="#" class="govuk-link" target="_blank" rel="noopener noreferrer">birth_certificate.png (opens in new tab)</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+{{ govukRadios({
+  name: "acceptRejectRequest",
+  fieldset: {
+    legend: {
+      text: "Create a record from this request?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "accept",
+      text: "Yes"
+    },
+    {
+      value: "reject",
+      text: "No, reject this request "
+    }
+  ]
+}) }}
+
+
+ <div class="govuk-button-group">
+      
+
+          <input type="hidden" name="recordId" value="{{ record.id }}">
+          <div class="govuk-button-group">
+            <button type="submit" class="govuk-button">Continue</button>
+            <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
+          </div>
+        </form>
+    </div>
+{% endblock %}
+

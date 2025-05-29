@@ -1,5 +1,5 @@
 {% extends "layouts/nav-search.html" %}
-
+{% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "notes" %}
 
@@ -66,6 +66,13 @@
         </div>
         <div class="govuk-grid-column-two-thirds">
 
+                     {% if data.roleSelect != "viewer" %}
+         <button type="submit" class="govuk-button" data-module="govuk-button">
+        Add a new note
+      </button>
+      {% endif %}
+
+<div class="govuk-!-padding-bottom-3"></div>
         <h3 class="govuk-heading-s">Added by Callie Becker on 30 March 2011 at 12:27</h3>
         <div class="govuk-inset-text">
           DD87720 - Selected for DD Notification Letter - DD Claim Date 01/04/2011 - Amount to be claimed: £36.50 - Data Extracted 11/02/2011 - Notification Letter Sent to 22 Dorchester Road, DT2 9ND On 01/03/2011

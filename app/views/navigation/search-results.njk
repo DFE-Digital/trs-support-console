@@ -1,0 +1,183 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set records = [
+  {
+    "id": "123",
+    "name": "Harry Taylor",
+    "dob": "19 April 1990",
+    "trn": "4063484",
+    "nino": "QQ 123456 B",
+    "link": "records/harry-taylor/personal-details"
+  },
+  {
+    "id": "124",
+    "name": "Harry James Taylor",
+    "dob": "22 October 1994",
+    "trn": "3083414",
+    "nino": "AB 67890 Q",
+    "link": "not-in-prototype"
+  },
+  {
+    "id": "125",
+    "name": "Taylor Harry Smithson",
+    "dob": "1 February 1950",
+    "trn": "2101199",
+    "nino": "ST 182470 Y",
+    "link": "not-in-prototype"
+  },
+  {
+    "id": "126",
+    "name": "Olivia Evans",
+    "dob": "22 February 1988",
+    "trn": "4321769",
+    "nino": "CC 456789 E",
+    "link": "records/olivia-evans/personal-details"
+  },
+  {
+    "id": "127",
+    "name": "Charlie Williams",
+    "dob": "15 March 1991",
+    "trn": "4128368",
+    "nino": "AB 678910 Q",
+    "link": "records/charlie-williams/personal-details"
+  },
+  {
+    "id": "128",
+    "name": "Charlie Lloyd Williams",
+    "dob": "15 March 1991",
+    "trn": "4128368",
+    "nino": "AB 678910 Q",
+    "link": "not-in-prototype"
+  }
+] %}
+
+{% set filteredRecords = [] %}
+{% for record in records %}
+  {% if not searchQuery or record.name | lower == searchQuery | lower %}
+    {% set filteredRecords = filteredRecords.concat([record]) %}
+  {% endif %}
+{% endfor %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block pageTitle %}
+  Search results for "{{ searchQuery }}"
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Find a record</h1>
+
+    {% if data.roleSelect != "viewer" %}
+    <form action="records/new/create-new-record" novalidate>
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Create a record
+      </button>
+    </form>
+    {% endif %}    
+    
+    <div class="app-search-form" style="display: flex; align-items: flex-end;">
+      <form id="searchForm">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s app-search-form__label" for="find-record">
+            Search
+          </label>
+          <div id="find-record-hint" class="govuk-hint">
+            For example TRN, name or date of birth
+          </div>
+          <input class="govuk-input" id="find-record" name="searchQuery" type="text" aria-describedby="find-record-hint" value="{{ searchQuery | default('') }}">
+        </div>
+        <button class="govuk-button app-search-form__button" data-module="govuk-button">
+          Search
+        </button>
+      </form>
+    </div>
+    <br>
+
+    <div class="flex-sort-by">
+<h2 class="govuk-heading-m flex-start">
+  {{ filteredRecords.length }} record{% if filteredRecords.length != 1 %}s{% endif %} found
+</h2>
+      <p class="govuk-body">
+        <strong>Sort by: </strong>
+        <a href="#" class="govuk-link">Last name</a> | 
+        <a href="#" class="govuk-link">First name</a> | 
+        <a href="#" class="govuk-link">Date of birth</a>
+      </p>
+ 
+
+    {% if data.roleSelect != "viewer" and count > 0 %}
+      {{ govukButton({
+        text: "Compare records",
+        href: "not-in-prototype"
+      }) }}
+    {% endif %}
+  </div>
+
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% set count = 0 %}
+    <table class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all" data-multi-select-idprefix="records-">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col"></th>
+          <th class="govuk-table__header" scope="col">Name</th>
+          <th class="govuk-table__header" scope="col">Date of birth</th>
+          <th class="govuk-table__header" scope="col">TRN</th>
+          <th class="govuk-table__header" scope="col">National Insurance number</th>
+        </tr>
+      </thead>
+   <tbody class="govuk-table__body">
+  {% if filteredRecords.length == 0 %}
+    <tr>
+      <td colspan="5" class="govuk-body govuk-!-text-align-centre">
+       <br>
+        No records found for "{{ searchQuery }}"
+      </td>
+    </tr>
+  {% else %}
+    {% for record in filteredRecords %}
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+            <input
+              type="checkbox"
+              class="govuk-checkboxes__input"
+              id="duplicate-records-{{ loop.index }}"
+              name="duplicate-records"
+              value="{{ record.id }}"
+            >
+            <label
+              class="govuk-label govuk-checkboxes__label"
+              for="duplicate-records-{{ loop.index }}"
+            >
+              <span class="govuk-visually-hidden">Select this row</span>
+            </label>
+          </div>
+        </td>
+        <td class="govuk-table__cell">
+          <a href="{{ record.link }}" class="govuk-link">{{ record.name }}</a>
+        </td>
+        <td class="govuk-table__cell">{{ record.dob }}</td>
+        <td class="govuk-table__cell">{{ record.trn }}</td>
+        <td class="govuk-table__cell">{{ record.nino }}</td>
+      </tr>
+    {% endfor %}
+  {% endif %}
+</tbody>
+    </table>
+   </div>
+
+</div>
+{% endblock %}
