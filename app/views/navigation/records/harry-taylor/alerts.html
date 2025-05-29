@@ -1,5 +1,5 @@
 {% extends "layouts/nav-search.html" %}
-
+{% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "induction" %}
 
@@ -69,7 +69,7 @@
 
           <p class="govuk-body" data-testid="no-open-alerts">No open alerts</p>
 
-          {% if data.roleSelect == "service excellence team" %}
+           {% if data.roleSelect != "viewer" %}
           <button type="submit" class="govuk-button" data-module="govuk-button">Add an alert</button>
           {% endif %}
 </div>

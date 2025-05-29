@@ -1,12 +1,14 @@
 {% extends "layouts/nav-search.html" %}
 
+{% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "induction" %}
+
+
 
 {% set trn = data["findRecord"] %}
 {% set teacherArray = data["teachers"] %}
 {% set teacher = trn | find(teacherArray)  %}
-
 {% set newInductionCompletionDate  = data['newInductionCompletionDate']  %}
 {% set newInductionStartDate = data['newInductionStartDate']  %}
 

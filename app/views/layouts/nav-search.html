@@ -19,31 +19,41 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
             </a>
         </div>
     
-        <div class="govuk-header__navigation custom-header__nav">
-          <ul class="govuk-header__navigation-list">
-            <li class="govuk-header__navigation-item">
-              <form action="../navigation/search-results" method="get" class="custom-header__search-form">
-                <label for="search" class="govuk-visually-hidden">Search</label>
-                <input
-                  class="govuk-input custom-header__search-input"
-                  id="search"
-                  name="q"
-                  type="text"
-                  placeholder="Search"
-                >
-              </form>
-            </li>
-            <li class="govuk-header__navigation-item">
-              <a class="govuk-header__link" href="/account/sign-out">Sign out</a>
-            </li>
-          </ul>
-        </div>
+        <div class="govuk-header__navigation custom-header__nav" role="navigation">
+  <ul class="govuk-header__navigation-list">
+    {% for item in navItems %}
+      <li class="govuk-header__navigation-item">
+        <a
+          href="{{ item.href | url }}"
+          class="govuk-header__link {% if item.current %}govuk-header__link--selected{% endif %}"
+        >
+          {{ item.text }}
+        </a>
+      </li>
+    {% endfor %}
+    <li class="govuk-header__navigation-item">
+      <form action="../navigation/search-results" method="get" class="custom-header__search-form">
+        <label for="search" class="govuk-visually-hidden">Search</label>
+        <input
+          class="govuk-input custom-header__search-input"
+          id="search"
+          name="q"
+          type="text"
+          placeholder="Search"
+        >
+      </form>
+    </li>
+    <li class="govuk-header__navigation-item">
+      <a class="govuk-header__link" href="/account/sign-out">Sign out</a>
+    </li>
+  </ul>
+</div>
       </div>
     </header>
     {% endblock %}
     {% set navItems = [
       {
-        href: "support-tasks-index",
+        href: "/navigation/support-tasks-index",
         text: "Records",
         current: (currentPage == "records")
       }
@@ -52,7 +62,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     {% if data.roleSelect == "service excellence team" %}
       {% set navItems = navItems.concat([
         {
-          href: "permissions-overview",
+          href: "/navigation/permissions-overview",
           text: "Add and manage users",
           current: (currentPage == "addManageUsers")
         }
@@ -61,7 +71,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     
     {{ govukServiceNavigation({
       serviceName: "Teaching Records System",
-      serviceUrl: "#",
+      serviceUrl: "/navigation/support-tasks-index",
       navigation: navItems
     }) }}
 
@@ -71,7 +81,37 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% block scripts %}
   {{ super() }}
   <script>
+    // Wait for the page to fully load
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchForm = document.querySelector('.custom-header__search-form');
+      const searchInput = document.querySelector('.custom-header__search-input');
+
+      if (searchForm && searchInput) {
+        // Handle form submission
+        searchForm.addEventListener('submit', function (e) {
+          e.preventDefault(); // prevent default form submit
+
+          const query = searchInput.value.trim();
+          if (query) {
+            // redirect to search-results with ?q= query
+            const encodedQuery = encodeURIComponent(query);
+            window.location.href = `/navigation/search-results?q=${encodedQuery}`;
+          }
+        });
+
+        // Optional: allow pressing Enter in input to trigger submission
+        searchInput.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            searchForm.dispatchEvent(new Event('submit'));
+          }
+        });
+      }
+    });
+  </script>
+
+  <script>
     var AppFrontend = {}
   </script>
   <script src="/public/javascripts/components/filter-toggle-button.js"></script>
-{% endblock %} 
+{% endblock %}

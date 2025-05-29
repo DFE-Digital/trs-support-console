@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "notes" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    
+<form action="new-note-added" novalidate>
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="more-detail">
+      Add a new note for Susan Arrowsmith
+    </label>
+  </h1>
+  
+  <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="file-upload-1">
+    Upload a file (optional)
+  </label>
+  <input class="govuk-file-upload" id="file-upload-1" name="fileUpload1" type="file">
+</div>
+        
+<div class="govuk-button-group">
+  <button type="submit" class="govuk-button" data-module="govuk-button">
+   Confirm
+  </button>
+  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+   Cancel and return to record
+  </button>
+</div>
+</form>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

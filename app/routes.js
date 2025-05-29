@@ -114,3 +114,19 @@ router.post('/accept-reject', (req, res) => {
     res.redirect('/support-tasks/create-record/from-trn-request/get-a-trn/accept-reject'); // fallback
   }
 });
+
+/// navigation search results top bar
+
+router.get('/navigation/search-results', function (req, res) {
+  const searchQuery = req.query.q // This gets the "q" from the form
+  res.render('navigation/search-results', { searchQuery })
+})
+
+
+router.get('/navigation/support-tasks-index', function (req, res) {
+  res.render('/navigation/support-tasks-index')
+})
+
+router.get('/navigation/permissions-overview', function (req, res) {
+  res.render('/navigation/permissions-overview')
+})

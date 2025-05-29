@@ -22,19 +22,30 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-
     <h1 class="govuk-heading-l">{{ teacher.fullName or 'Susan Arrowsmith'}}</h1>
 
         {% include "_includes/secondary-navigation.njk" %}
 
+
         <h2 class="govuk-heading-m">Notes</h2>
         </div>
-        <div class="govuk-grid-column-two-thirds">
-<form action="notes/new-note" novalidate>
-          <button type="submit" class="govuk-button" data-module="govuk-button">
-  Add a new note
-</button>
-  <div class="govuk-!-padding-bottom-3"></div>
+    
+  <div class="govuk-grid-column-two-thirds">
+      <form action="notes/new-note" novalidate>
+                <button type="submit" class="govuk-button" data-module="govuk-button">
+        Add a new note
+      </button>
+
+        <div class="govuk-!-padding-bottom-3"></div>
+
+
+          <h3 class="govuk-heading-s">Added by Richard Lane on 7 May 2025 at 16:05</h3>
+        <div class="govuk-inset-text">
+          This is a new note demo
+        </div>
+
+
+          <div class="govuk-!-padding-bottom-3"></div>
 
         <h3 class="govuk-heading-s">Added by Callie Becker on 30 March 2011 at 12:27</h3>
         <div class="govuk-inset-text">
