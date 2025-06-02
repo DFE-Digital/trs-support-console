@@ -10,9 +10,13 @@
 Navigation screen index
   </h1>
 
-  <p>
-    <a href="https://lucid.app/lucidspark/060c1c00-7ea3-469e-9dfa-a971098d6140/edit?invitationId=inv_e5f0b655-1d11-436a-8449-bca080cc947b&page=0_0#" target="_blank">Design & UR planning board</a>
-  </p>
+
+    {{ govukButton({
+  text: "Launch prototype",
+  href: "start",
+  isStartButton: true
+}) }}
+ <p class="govuk-body govuk-!-margin-bottom-4">Role select page</p>
 
 
   <table class="govuk-table">
@@ -39,15 +43,45 @@ Navigation screen index
           </p>
         </td>
       </tr>
+</tbody>
+  </table>
+
+
+  <h1 class="govuk-heading-s">Tasks to be completed</h1>
+<table class="govuk-table">
+<thead class="govuk-table__head">
       <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
         <td class="govuk-table__cell">
           
-          <p><a href="itr">Individual transaction record</a></p>
+          <p><a href="get-a-trn-request/get-a-trn-list">TRN requests</a></p>
           
         </td>
         <td class="govuk-table__cell">
           <p>
-          Shows all rows within a file.
+          List view with filters.
+         
+          </p>
+        </td>
+      </tr>
+      
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="get-a-trn-request/show">Incoming request</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+        Entry point into duplicates journey.
           </p>
         </td>
       </tr>
@@ -55,60 +89,229 @@ Navigation screen index
       <tr class="govuk-table__row">
         <td class="govuk-table__cell">
           
-          <p><a href="itr-v2-error-2">Individual transaction record - failure state</a></p>
+          <p><a href="duplicates/list">Duplicates via API</a></p>
           
         </td>
         <td class="govuk-table__cell">
           <p>
-          When a whole file upload fails.
+           List view with filters.
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="duplicates/compare">Compare</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+           Entry point into duplicate journey.
+          </p>
+        </td>
+      </tr>
+
+
+       <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="further-checks/list">Further checks required</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+           New screen - list view with filters.
+          </p>
+        </td>
+      </tr>
+
+       <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="change-details-requests/list">Change details</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          List with filters.
+          </p>
+        </td>
+      </tr>
+
+       <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="change-details-requests/name-change">Name change request</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+        Individual name change request.
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          
+          <p><a href="interfaces">ITRs</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         Interfaces - the existing screen.
           </p>
         </td>
       </tr>
      
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            
-            <p><a href="detail">Detail (failure)</a></p>
-            
-          </td>
-          <td class="govuk-table__cell">
-            <p>
-            Details screen, shows failure message or indicates duplicate.
-            </p>
-          </td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            
-            <p><a href="detail-multiple">Detail (multiple failures)</a></p>
-            
-          </td>
-          <td class="govuk-table__cell">
-            <p>
-            Details screen, shows  multiple failure messages.
-            </p>
-          </td>
-        </tr>
-
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            
-            <p><a href="happy-path/detail">Detail (success)</a></p>
-            
-          </td>
-          <td class="govuk-table__cell">
-            <p>
-            Details screen when the row import was successful.
-            </p>
-          </td>
-        </tr>
-      
     </tbody>
   </table>
 
+
+  <h1 class="govuk-heading-s">Permissions</h1>
+<table class="govuk-table">
+<thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="permissions-overview">Permissions overview</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          The existing screen.
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="edit-user">Edit user</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          The existing screen - this is where you can deactivate a user as well.
+          </p>
+        </td>
+      </tr>
+        </tbody>
+  </table>
+
+
+  <h1 class="govuk-heading-s">Records set up for UR</h1>
+<table class="govuk-table">
+<thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="search-results-a">Search results: Harry Taylor</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          Can also be found via search for 'harry taylor'
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="records/harry-taylor/personal-details">Record for Harry Taylor</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          The existing screen.
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="search-results-b">Search results: Charlie Williams</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          Can also be found via search for 'charlie williams'
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="records/charlie-williams/personal-details">Record for Charlie Williams</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          The existing screen.
+          </p>
+        </td>
+      </tr>
+
+
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="search-results-c">Search results: Olivia Evans</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          Can also be found via search for 'olivia evans'
+          </p>
+        </td>
+      </tr>
+
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="records/olivia-evans/personal-details">Record for Olivia Evans</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+          The existing screen.
+          </p>
+        </td>
+      </tr>
+        </tbody>
+  </table>
+
+<p>
+    <a href="https://lucid.app/lucidspark/060c1c00-7ea3-469e-9dfa-a971098d6140/edit?invitationId=inv_e5f0b655-1d11-436a-8449-bca080cc947b&page=0_0#" target="_blank">Design & UR planning board</a>
+  </p>
+
+ 
          
   
 {% endblock %}
