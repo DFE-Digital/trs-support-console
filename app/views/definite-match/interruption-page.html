@@ -1,0 +1,53 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Compare potential duplicate records" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% set summaryCardTitle %}
+ 
+  Get a TRN request </span>
+
+{% endset %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ record | log }}
+
+     
+
+      <div class="moj-interruption-card">
+  <div class="moj-interruption-card__content">
+    <h1 class="govuk-heading-l moj-interruption-card__heading">Are you sure you want to progress this request?</h1>
+    <div class="govuk-body-l moj-interruption-card__body">
+      <p>This means you have completed all offline checks needed and are now able to process this request.</p>
+      <p>You can go back to undo this change.</p>
+    </div>
+    <div class="govuk-button-group moj-interruption-card__actions">
+
+      <a href="#" role="button" draggable="false" class="govuk-button govuk-button--inverse" data-module="govuk-button">
+        Continue
+      </a>
+
+      <a class="govuk-link govuk-link--inverse" href="#">Go back to request overview</a>
+
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+{% endblock %}

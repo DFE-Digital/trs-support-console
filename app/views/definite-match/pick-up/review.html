@@ -1,0 +1,136 @@
+{% extends "layouts/nav-search.html" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "createRecord" %}
+
+{% set captionName = "Support tasks" %}
+{% set pageName = "Review request" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% set summaryCardTitle %}
+ 
+  Get a TRN request </span>
+
+{% endset %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ record | log }}
+
+      <span class="govuk-caption-l">{{captionName}}</span>
+      <h1 class="govuk-heading-l"> {{pageName}}</h1>
+
+      {{ govukWarningText({
+        text: "This request has an alert so you cannot merge it yet. Please ensure you have performed all necessary offline checks before returning to this page.",
+        classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-6",
+        iconFallbackText: "Warning"
+      }) }}
+
+      
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            
+            {# <p class="govuk-body">This is a paragraph inside a one half column</p> #}
+
+
+            {{ govukSummaryList({
+              card: {
+                title: {
+                  html: summaryCardTitle
+                }
+              },
+              rows: [
+                {
+                  key: { text: "First name" },
+                  value: { text: "Zara" }
+                },
+                {
+                  key: { text: "Middle name" },
+                  value: {text: "Not provided" }
+                },
+                {
+                  key: { text: "Last Name" },
+                  value: { text: "Patel" }
+                },
+                {
+                  key: { text: "Date of birth" },
+                  value: { text: "	20 November 1982" }
+                },
+                {
+                  key: { text: "Email" },
+                  value: { text: "z.patel@yahoo.com" }
+                },
+                {
+                  key: { text: "NI number" },
+                  value: { text: "	GE 35 05 46 A" }
+                },
+                {
+                  key: { text: "Evidence" },
+                  value: { html: '<a href="#" class="govuk-link">' + record.providedEvidence + ' (opens in a new tab)</a>' or "None"} 
+                } if record.providedEvidence,
+                {
+                  key: { text: "Flag" },
+                  value: { html: '<a href="#" class="govuk-link"> 1 open alert</a>' }
+                }
+              ]
+            }) }}
+          </div>
+  
+      
+
+          <div class="govuk-grid-column-one-half">
+           
+          </div>
+        </div>
+
+        {# <p>{{ record.id }}</p> #}
+     
+
+       {{ govukRadios({
+  name: "acceptRejectRequest",
+  fieldset: {
+    legend: {
+      text: "Change request status to 'pending' while you complete offline checks?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "accept",
+      text: "Yes"
+    },
+    {
+      value: "reject",
+      text: "No, keep this request open"
+    }
+  ]
+}) }}
+
+
+        <form method="get" action="list-after" novalidate>
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button" type="submit">Confirm</button>
+        
+            {{ govukButton({
+              text: "Cancel",
+              classes: "govuk-button--secondary",
+              href: "javascript:window.history.back()"
+            }) }}
+          </div>
+        </form>
+    
+  </div>
+</div>
+
+{% endblock %}
