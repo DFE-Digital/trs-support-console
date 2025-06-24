@@ -149,7 +149,7 @@
         name: "personalDetailsSex",
         fieldset: {
           legend: {
-            text: "Sex",
+            text: "Gender",
             isPageHeading: false,
             classes: "govuk-fieldset__legend--s"
           }
@@ -162,6 +162,18 @@
           {
             value: "Female",
             text: "Female"
+          },
+          {
+            value: "Other",
+            text: "Other"
+          },
+          {
+            value: "Prefer not to say",
+            text: "Prefer not to say"
+          },
+            {
+            value: "Not provided",
+            text: "Not provided"
           }
         ], value: data.person[0].gender
       }) }}
