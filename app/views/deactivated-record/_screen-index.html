@@ -1,0 +1,174 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-xl">
+Deactivate/reactivate records
+  </h1>
+
+  <p>
+    <a href="https://lucid.app/lucidspark/ec98fd3a-11f4-47d8-93c8-bc720b09bbfe/edit?beaconFlowId=D5502C6980999AC7&invitationId=inv_8d91f52b-bee5-4d09-b292-cc3174889fdc&page=0_0#" target="_blank">Design board</a>
+  </p>
+
+<h2 class="govuk-heading-s">
+Active records
+  </h2>
+
+<table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="active/personal-details-v1">Record v1</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         Updated record page
+         <br>
+         Version with tag. New button at the bottom showing option to deactivate.
+         
+          </p>
+        </td>
+      </tr>
+
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="active/personal-details-v2">Record v2</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         Updated record page
+         <br>
+       Button only.
+         
+          </p>
+        </td>
+      </tr>
+
+      
+   </tbody>
+  </table>
+
+  <h2 class="govuk-heading-s">
+Deactivated records
+  </h2>
+
+  <table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="deactivated/personal-details-v1">Record v1</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         Updated record page
+         <br>
+         Version with a deactivated tag. New button at the bottom showing option to reactivate.
+         
+          </p>
+        </td>
+      </tr>
+
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="deactivated/personal-details-v2">Record v2</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         Updated record page
+         <br>
+         Simple version with supplementary text for deactivation.
+         
+          </p>
+        </td>
+      </tr>
+      
+   </tbody>
+  </table>
+
+
+
+      <h2 class="govuk-heading-s">
+Deactivation pages
+  </h2>
+
+ <table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="deactivate-reasons">Deactivation reasons</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+       New screen
+         <br>
+         Showing reasons for deactivation.
+         
+          </p>
+        </td>
+      </tr>
+
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="reactivate-reasons">Reactivation reasons</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+       New screen
+         <br>
+      Reason for reactivation
+         
+          </p>
+        </td>
+      </tr>
+      
+   </tbody>
+  </table>
+         
+  
+{% endblock %}
