@@ -1,0 +1,146 @@
+{% extends "layouts/nav-search.html" %}
+{% set currentPage = "records" %}
+{% set serviceNavId = "findRecord" %} 
+{% set secondaryNavId = "general" %}
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data.teachers %}
+{% set teacher = trn | find(teacherArray)  %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/find-teacher"
+  }) }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">Harry Taylor</h1>
+    
+       {{govukTag({
+          text: "Active",
+          classes: "govuk-tag--green"
+        })}}
+ <div class="govuk-!-padding-bottom-3"></div>
+        
+      <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+        <ul class="x-govuk-secondary-navigation__list">
+          <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+            <a class="x-govuk-secondary-navigation__link" href="#" aria-current=page>
+              Personal details
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="routes" >
+             Routes and qualifications
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="induction">
+             Induction
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="alerts">
+             Alerts
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="notes">
+           Notes
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="change-history">
+             Change history
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    <br><br>
+  
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal details"
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: 'Harry Taylor'
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: "19 April 1990"
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: 'Male'
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: '4063484'
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: "QQ 123456 B"
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+               text: 'h.taylor@gmail.com'
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+               text: "07151716301"
+            }
+          }
+        ]
+      }) }}
+
+     
+      
+    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+  Deactivate record
+</button>
+
+  </div>
+</div>
+
+{% endblock %}
