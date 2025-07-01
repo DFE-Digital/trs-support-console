@@ -63,11 +63,19 @@
       </nav>
 
     <br><br>
-  
-      {{ govukSummaryList({
+  {{ govukSummaryList({
         card: {
           title: {
             text: "Personal details"
+          },
+          actions: {
+            items: [
+              {
+                href: "/create-record/add/reason",
+                text: "Change",
+                visuallyHiddenText: "Why I am creating this record"
+              }
+            ]
           }
         },
         rows: [
@@ -76,7 +84,7 @@
               text: "Name"
             },
             value: {
-              text: 'Harry Taylor'
+              text: 'John Doe'
             }
           },
           {
@@ -116,7 +124,7 @@
               text: "Email"
             },
             value: {
-               text: 'h.taylor@gmail.com'
+               text: 'john.doe@gmail.com'
             }
           },
           {
@@ -129,7 +137,6 @@
           }
         ]
       }) }}
-
      
       
     <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
