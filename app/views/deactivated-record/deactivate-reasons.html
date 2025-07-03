@@ -1,4 +1,4 @@
-{% extends "layouts/nav-test.html" %}
+{% extends "layouts/new-nav.html" %}
 
 {% set serviceNavId = "findRecord" %} 
 
@@ -29,14 +29,8 @@
       <fieldset class="govuk-fieldset">
         <legend class="govuk-visually-hidden">Reason for change</legend>
       
-         <form action="" method="post" novalidate>
-        <div class="govuk-radios" data-module="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="reason-1" name="changeRecordReason" type="radio" value="Data loss or incomplete information">
-            <label class="govuk-label govuk-radios__label" for="reason-1">
-             This record was flagged as a duplicate
-            </label>
-          </div>
+         <form action="active/personal-details-after" method="post" novalidate>
+       
 
            <div class="govuk-radios" data-module="govuk-radios">
           <div class="govuk-radios__item">

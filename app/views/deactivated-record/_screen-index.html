@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/new-nav.html" %}
 
 {% block pageTitle %}
   GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -39,7 +39,7 @@ Active records
           <p>
          Updated record page
          <br>
-         Version with tag. New button at the bottom showing option to deactivate.
+         Version with tag. New button at the bottom showing option to deactivate. Alternate design, not taken forward for MVP.
          
           </p>
         </td>
@@ -56,11 +56,30 @@ Active records
           <p>
          Updated record page
          <br>
-       Button only.
+       Button only. <b>Finalised design</b>
          
           </p>
         </td>
       </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="active/personal-details-after">Record v2 - with banner</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+        Record page after reactivating record.
+         <br>
+       Showing the success banner.
+         
+          </p>
+        </td>
+      </tr>
+
+      
 
       
    </tbody>
@@ -91,7 +110,7 @@ Deactivated records
           <p>
          Updated record page
          <br>
-         Version with a deactivated tag. New button at the bottom showing option to reactivate.
+         Version with a deactivated tag. New button at the bottom showing option to reactivate. Alternate design, not taken forward for MVP.
          
           </p>
         </td>
@@ -108,8 +127,53 @@ Deactivated records
           <p>
          Updated record page
          <br>
-         Simple version with supplementary text for deactivation.
+         Simple version with supplementary text for deactivation. <b>Finalised design</b>
          
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="deactivated/from-merge">Deactivated record from merge</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+         View of a record deactivated via merge support task.
+         <br>
+         No button.
+         
+          </p>
+        </td>
+      </tr>
+
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="deactivated/change-history">Change history on deactivated account</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+            Deactivation reasons view.
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="deactivated/change-history-merge">Change history on deactivated account via merge</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+           Deactivated via merge.
           </p>
         </td>
       </tr>
@@ -163,6 +227,72 @@ Deactivation pages
          <br>
       Reason for reactivation
          
+          </p>
+        </td>
+      </tr>
+      
+   </tbody>
+  </table>
+         
+   <h2 class="govuk-heading-s">
+Search results
+  </h2>
+
+ <table class="govuk-table">
+    
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+       
+        <th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Link</th>
+        <th scope="col" class="govuk-table__header app-custom-class">Description</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="search-results">Search results</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+      Updated screen
+         <br>
+       Updated to include a filter. View shows active records.
+         
+          </p>
+        </td>
+      </tr>
+
+      <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="search-results-deactivated">Search results including deactivated records</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+      Updated screen
+         <br>
+       Shows deactivated record.
+         
+          </p>
+        </td>
+      </tr>
+
+        <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="search-results-alt">Old search results</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+     Alternate design, not taken forward. Just for reference.
+      
           </p>
         </td>
       </tr>

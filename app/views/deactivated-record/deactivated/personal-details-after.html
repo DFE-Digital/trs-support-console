@@ -22,12 +22,26 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+   
 
-      <h1 class="govuk-heading-l">Harry Taylor (deactivated)</h1>
+         <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+   This record has been reactivated.
+    </h3>
+  </div>
+</div>
+
+      <h1 class="govuk-heading-l">Harry Taylor</h1>
     
-       <form action="../deactivate-reasons">
  <div class="govuk-!-padding-bottom-3"></div>
-        
+        <form action="../deactivate-reasons">
       <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
         <ul class="x-govuk-secondary-navigation__list">
           <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
@@ -64,11 +78,19 @@
       </nav>
 
     <br><br>
-  
-      {{ govukSummaryList({
+{{ govukSummaryList({
         card: {
           title: {
             text: "Personal details"
+          },
+          actions: {
+            items: [
+              {
+                href: "/create-record/add/reason",
+                text: "Change",
+                visuallyHiddenText: "Why I am creating this record"
+              }
+            ]
           }
         },
         rows: [
@@ -77,7 +99,7 @@
               text: "Name"
             },
             value: {
-              text: 'Harry Taylor'
+              text: 'John Doe'
             }
           },
           {
@@ -117,7 +139,7 @@
               text: "Email"
             },
             value: {
-               text: 'h.taylor@gmail.com'
+               text: 'john.doe@gmail.com'
             }
           },
           {
@@ -130,11 +152,10 @@
           }
         ]
       }) }}
-
      
       
     <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-  Reactivate record
+  Deactivate record
 </button>
 </form>
   </div>

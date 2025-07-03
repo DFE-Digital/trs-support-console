@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/new-nav.html" %}
 
 {% block pageTitle %}
 Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
@@ -10,99 +10,108 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
   }) }}
 {% endblock %}
 
-{% block header %}
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceUrl: "/",
-    classes: "govuk-header__container--full-width",
-    containerClasses: "govuk-width-container"
-  }) }}
-{% endblock %}
 
 {% block main %}
 
-{{ govukServiceNavigation({
-  serviceName: "Teaching Records System",
-  serviceUrl: "#",
-  navigation: [
-    {
-      href: "general/index",
-      text: "Find a record"
-    },
-    {
-      href: "../support-tasks",
-      text: "Support tasks",
-      active: true
-    },
-    {
-      href: "permissions/overview",
-      text: "Add and manage users"
-    }
-  ]
-}) }}
-
-
-  
-
-  
-
   <div class="govuk-width-container">
-
-
     <main class="govuk-main-wrapper" id="main-content" role="main">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
-          <nav class="govuk-breadcrumbs govuk-!-padding-bottom-4" aria-label="Breadcrumb">
-            <ol class="govuk-breadcrumbs__list">
-              <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="../support-tasks">Support tasks</a>
-              </li>
-              <li class="govuk-breadcrumbs__list-item">
-                <a class="govuk-breadcrumbs__link" href="interfaces">Interfaces</a>
-              </li>
-              
-            </ol>
-          </nav>
          
+     
           <span class="govuk-caption-l">Integration Transactions</span>
-          <h1 class="govuk-heading-l">Capita Import, ID 115141</h1>
+          <h1 class="govuk-heading-l">Capita Import</h1>
+          </div>
+          <div class="govuk-grid-column-two-thirds">
 
-          <h2 class="govuk-heading-m">
-            Record information
-          </h2>
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+              Record information
+              </h2>
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Date and time
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    17 March 2025
+                  </dd>
+                
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   File name
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    traout-210615.txt
+                  </dd>
+                 
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    Interface ID
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    115141
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                 Total count
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                   100
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   Successes
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    100
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   Failures
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                   0
+                  </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                   Duplicates
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                 1
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          </div>
 
-          <p class="govuk-body govuk-!-padding-bottom-4">
-            Created on: <b>17 March 2025</b>
-            <br>
-            File name: <b>	traout-210615.txt</b>
-            <br>
-            Interface ID: <b>115141</b>
-            <br>
-          
-            Total count: <b>100</b>
-            <br>
-            Success count: <b>100 </b>
-            <br>
-            Failure count: <b>0</b>
-            <br>
-            Duplicate count: <b>1</b>
-            
-          </p>
+          <div class="govuk-grid-column-full">
+        
           
           <button type="submit" class="govuk-button" data-module="govuk-button">
-            Export fails
+            Export failures
           </button>
           <div class="govuk-!-padding-bottom-2"></div>
 
-          <table class="govuk-table" data-module="moj-sortable-table" style="table-layout: autp; govuk-table__row:hover {
+          <table class="govuk-table" data-module="moj-sortable-table" style="govuk-table__row:hover {
             background-color: #f3f2f1;
           }" >
             <thead>
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header" aria-sort="none">Row ID</th>
-                <th scope="col" class="govuk-table__header" aria-sort="none">Person</th>
-                <th scope="col" class="govuk-table__header" aria-sort="none">Duplicate</th>
+                <th scope="col" class="govuk-table__header" aria-sort="none" style="width: 400px">Person</th>
+                <th scope="col" class="govuk-table__header" aria-sort="descending">Duplicate</th>
                 <th scope="col" class="govuk-table__header moj-sortable-table__header" aria-sort="descending">Status</th>
               </tr>
             </thead>
@@ -111,7 +120,7 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
                 <td class="govuk-table__cell">1</td>
                 <td class="govuk-table__cell"><a href="detail">John Doe</a></td>
                 <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">Duplicate</strong></td>
-                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Fail</strong></td>
+                <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">Failure</strong></td>
                
               </tr>
               <!-- Rows will be populated by JavaScript -->
@@ -156,6 +165,7 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
                   <td class="govuk-table__cell"><strong class="govuk-tag ${row.statusReason === 'Fail' ? 'govuk-tag--red' : 'govuk-tag--green'}">${row.statusReason}</strong></td>
                 </tr>
               `).join("");
+
 }
               
               // Sort by Status Reason by default
@@ -176,6 +186,6 @@ Integration Transaction Records – {{ serviceName }} – GOV.UK Prototype Kit
           
     </div>
   </div>
-</main>
-</div>
+
+</div></main>
 {% endblock %}

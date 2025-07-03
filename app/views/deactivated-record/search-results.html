@@ -1,0 +1,172 @@
+
+{% extends "layouts/new-nav.html" %}
+{% set currentPage = "records" %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Find a record</h1>
+   
+    <form action="records/new/create-new-record" novalidate>
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+      Create a record
+    </button>
+
+
+    <div class="moj-filter-layout">
+
+  <div class="moj-filter-layout__filter" style="width:280px!important;">
+
+    <div class="moj-filter">
+
+      <div class="moj-filter__header">
+
+        <div class="moj-filter__header-title">
+          <h2 class="govuk-heading-m">Filter</h2>
+        </div>
+
+        <div class="moj-filter__header-action">
+
+        </div>
+
+      </div>
+
+      <div class="moj-filter__options">
+
+
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-label--s" for="keywords">
+            Search
+          </label>
+
+          <input class="govuk-input" id="keywords" name="keywords" type="text">
+
+        </div>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              Record status
+            </legend>
+        
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+        
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="source-afqts" name="source" type="checkbox" value="afqts" checked>
+                <label class="govuk-label govuk-checkboxes__label" for="source-afqts">
+                  Active (3)
+                </label>
+              </div>
+        
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="source-register" name="source" type="checkbox" value="register">
+                <label class="govuk-label govuk-checkboxes__label" for="source-register">
+                  Deactivated (1)
+                </label>
+              </div>
+        
+            </div>
+          </fieldset>
+        </div>
+
+
+        <div class="govuk-form-group">
+  <label class="govuk-label" for="sort">
+    Sort by
+  </label>
+  <select class="govuk-select" id="sort" name="sort">
+    <option value="published selected">Last name (A-Z)</option>
+    <option value="updated">Last name (Z-A)</option>
+       <option value="views">First name (A-Z)</option>
+    <option value="views">First name (Z-A)</option>
+    <option value="comments">Date of birth (ascending)</option>
+     <option value="comments">Date of birth (descending)</option>
+  </select>
+</div>
+
+   
+        <div class="govuk-button-group">
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+           Apply filters
+          </button>
+
+          <div class="moj-filter__heading-action">
+            <p><a class="govuk-link govuk-link--no-visited-state" href="">Clear filters</a></p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+<div class="moj-filter-layout__content">
+   <table class="govuk-table" data-module="moj-sortable-table">
+ <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+          
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header" scope="col">Date of birth</th>
+            <th class="govuk-table__header" scope="col">TRN</th>
+            <th class="govuk-table__header" scope="col">National Insurance number</th>
+            <th class="govuk-table__header" scope="col">Record status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+         
+          <tr class="govuk-table__row govuk-table__row--selected">
+
+            <td class="govuk-table__cell"><a href="active/personal-details-v2" class="govuk-link">Harry Taylor</a></td>
+            <td class="govuk-table__cell">19 April 1990</td>
+            <td class="govuk-table__cell">4063484</td>
+            <td class="govuk-table__cell">QQ 123456 B</td>
+            <td class="govuk-table__cell">Active</td>
+          </tr>
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+          
+            <td class="govuk-table__cell"><a href="not-in-prototype" class="govuk-link">Harry James Taylor</a></td>
+            <td class="govuk-table__cell">22 October 1994</td>
+            <td class="govuk-table__cell">3083414</td>
+            <td class="govuk-table__cell">AB 67890 Q</td>
+             <td class="govuk-table__cell">Active</td>
+          </tr>
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+            
+            <td class="govuk-table__cell"><a href="not-in-prototype" class="govuk-link">Taylor Harry Smithson</a></td>
+            <td class="govuk-table__cell">1 February 1950</td>
+            <td class="govuk-table__cell">2101199</td>
+            <td class="govuk-table__cell">ST 182470 Y</td>
+             <td class="govuk-table__cell">Active</td>
+          </tr>
+    
+        </tbody>
+      </table>  
+</div>
+</div>  
+
+
+
+
+
+    </form>
+    
+    
+  </div>
+</div>
+
+{% endblock %}
