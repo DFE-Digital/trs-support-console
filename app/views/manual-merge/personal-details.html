@@ -1,4 +1,4 @@
-{% extends "layouts/nav-search.html" %}
+{% extends "layouts/new-nav.html" %}
 {% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "general" %}
@@ -22,8 +22,9 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+    <form action="merge-manual" novalidate>
 
-      <h1 class="govuk-heading-l">Harry Taylor</h1>
+      <h1 class="govuk-heading-l">John Doe</h1>
 
       <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
         <ul class="x-govuk-secondary-navigation__list">
@@ -138,9 +139,22 @@
       }) }}
 
      
-      
-    
+ <div class="govuk-button-group">
+   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Merge with another record
+      </button>
+  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+   Deactivate record
+  </button>
+</div>
 
+      
+     
+   </form>
+
+
+    
+     </div>
   </div>
 </div>
 

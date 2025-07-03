@@ -1,4 +1,4 @@
-{% extends "layouts/nav-search.html" %}
+{% extends "layouts/new-nav.html" %}
 {% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "general" %}
@@ -22,9 +22,23 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+          <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+   Primary record updated for John Henry Doe
+    </h3>
+     <p class="govuk-body">Details from the secondary record have been merged. The secondary record is now deactivated.</p>
+  </div>
+</div>
     <form action="merge-manual" novalidate>
 
-      <h1 class="govuk-heading-l">John Doe</h1>
+      <h1 class="govuk-heading-l">John Henry Doe</h1>
 
       <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
         <ul class="x-govuk-secondary-navigation__list">
@@ -84,7 +98,7 @@
               text: "Name"
             },
             value: {
-              text: 'John Doe'
+              text: 'John Henry Doe'
             }
           },
           {
@@ -139,12 +153,17 @@
       }) }}
 
      
- 
-
-      
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+ <div class="govuk-button-group">
+   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
       Merge with another record
       </button>
+  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+   Deactivate record
+  </button>
+</div>
+
+      
+     
    </form>
 
 

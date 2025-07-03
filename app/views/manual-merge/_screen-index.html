@@ -1,4 +1,4 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/new-nav.html" %}
 
 {% block pageTitle %}
   GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -12,6 +12,10 @@ Manual merge screen index
 
   <p>
     <a href="https://lucid.app/lucidspark/4329ab97-f9f8-428f-bcec-635e8721833b/edit?invitationId=inv_45778f9b-4504-4ffb-9435-da6958bbdcde&page=0_0#" target="blank">Design board</a>
+  </p>
+
+  <p>
+    June/July 2025
   </p>
 
   <table class="govuk-table">
@@ -28,12 +32,14 @@ Manual merge screen index
        
         <td class="govuk-table__cell">
           
-          <p><a href="search-results-v1">Search results</a></p>
+          <p><a href="search-results">Search results</a></p>
           
         </td>
         <td class="govuk-table__cell">
           <p>
-       The existing screen. This screen is for reference as the journey can be triggered through the button at the bottom of the page or by clicking into the record.
+       The existing screen.
+       <br>
+       Updated to match with the updated screen on <a href="../deactivated-record/_screen-index">Deactivated record</a> 
          
           </p>
         </td>
@@ -44,12 +50,30 @@ Manual merge screen index
        
         <td class="govuk-table__cell">
           
-          <p><a href="personal-details-v1">Personal details</a></p>
+          <p><a href="personal-details">Personal details</a></p>
           
         </td>
         <td class="govuk-table__cell">
           <p>
-        Updated personal details tab showing 'merge with another record' button.
+        Updated personal details tab showing 'merge with another record' button. Also showing a button for deactivating the record manually.
+         
+          </p>
+        </td>
+      </tr>
+
+
+        <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="merge-manual">Merge</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+        New screen.
+        <br>
+        Showing an input field to manually kick of the merge journey.
          
           </p>
         </td>
@@ -85,18 +109,49 @@ Manual merge screen index
         </td>
       </tr>
 
-        <tr class="govuk-table__row">
+       <tr class="govuk-table__row">
        
         <td class="govuk-table__cell">
           
-          <p><a href="merge-manual">Enter TRN</a></p>
+          <p><a href="select-data">Select data</a></p>
           
         </td>
         <td class="govuk-table__cell">
           <p>
-       New screen.
-       <br>
-         Allowing users to enter a TRN to manually merge into the record.
+       The existing screen. This screen is for reference.
+         
+          </p>
+        </td>
+      </tr>
+
+
+       <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="check">Check your answers</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+       The existing screen. This screen is for reference.
+         
+          </p>
+        </td>
+      </tr>
+
+
+         <tr class="govuk-table__row">
+       
+        <td class="govuk-table__cell">
+          
+          <p><a href="personal-details-after">Personal details - after update</a></p>
+          
+        </td>
+        <td class="govuk-table__cell">
+          <p>
+      Personal details showing success banner.
+         
           </p>
         </td>
       </tr>
