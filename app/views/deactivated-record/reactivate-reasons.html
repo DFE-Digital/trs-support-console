@@ -1,4 +1,4 @@
-{% extends "layouts/nav-test.html" %}
+{% extends "layouts/new-nav.html" %}
 
 {% set serviceNavId = "findRecord" %} 
 
@@ -25,7 +25,7 @@
 
 <span class="govuk-caption-l">Reactivate record &ndash; Harry Taylor</span>
  <h2 class="govuk-heading-l">Why are you reactivating this record?</h2>
-
+     <form action="deactivated/personal-details-after" method="post" novalidate>
       <fieldset class="govuk-fieldset">
         <legend class="govuk-visually-hidden">Reason for change</legend>
       

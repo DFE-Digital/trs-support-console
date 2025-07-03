@@ -1,4 +1,4 @@
-{% extends "layouts/nav-search.html" %}
+{% extends "layouts/new-nav.html" %}
 {% set currentPage = "records" %}
 {% set serviceNavId = "findRecord" %} 
 {% set secondaryNavId = "general" %}
@@ -26,7 +26,7 @@
       <h1 class="govuk-heading-l">Harry Taylor</h1>
     
  <div class="govuk-!-padding-bottom-3"></div>
-        
+        <form action="../deactivate-reasons">
       <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
         <ul class="x-govuk-secondary-navigation__list">
           <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
@@ -142,7 +142,7 @@
     <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
   Deactivate record
 </button>
-
+</form>
   </div>
 </div>
 
