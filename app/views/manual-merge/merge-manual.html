@@ -1,5 +1,5 @@
 
-{% extends "layouts/nav-test.html" %}
+{% extends "layouts/new-nav.html" %}
 {% set currentPage = "records" %}
 {% block beforeContent %}
   {{ govukBackLink({
@@ -11,7 +11,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-
+<form action="compare" novalidate>
    
    <div class="govuk-form-group">
   <h1 class="govuk-label-wrapper">
@@ -33,7 +33,7 @@
   Cancel and return to record
   </button>
 </div>
-  
+  </form>
 
   </div>
 </div>
