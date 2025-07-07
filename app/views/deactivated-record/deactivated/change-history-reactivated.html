@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Harry Taylor (deactivated)</h1>
+    <h1 class="govuk-heading-l">Harry Taylor</h1>
 
     <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
       <ul class="x-govuk-secondary-navigation__list">
@@ -63,6 +63,44 @@
     
     <br><br>
    <div class="hods-timeline">
+
+    <div class="hods-timeline__item">
+
+    <div class="hods-timeline__header">
+      <h2 class="hods-timeline__title">Record reactivated</h2>
+
+      <p class="hods-timeline__date">
+          <time
+            class="hods-date-time"
+            datetime="2021-03-15T16:27:00.000Z"
+          >
+            by Erica Francoise-Smith on {{ "now" | govukDateTime }} at  {{ "now" | govukTime }}
+          </time>
+    </div>
+
+   <p> 
+     <details class="govuk-details govuk-!-margin-bottom-2" open="">
+            <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Reason</span>
+            </summary>
+            <div class="govuk-details__text">
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Reason for reactivation</dt>
+                        <dd class="govuk-summary-list__value" data-testid="reason">The record was deactivated by mistake</dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Evidence</dt>
+                        <dd class="govuk-summary-list__value">
+                            <a class="govuk-link" href="">evidence.jpg</a>
+                        </dd>
+                    </div>
+
+                </dl>
+            </div>
+        </details>
+   </p>
+  </div>
+
      <div class="hods-timeline__item">
 
     <div class="hods-timeline__header">
@@ -85,7 +123,7 @@
                 <dl class="govuk-summary-list">
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Reason for deactivation</dt>
-                        <dd class="govuk-summary-list__value" data-testid="reason">This record was identified as a duplicate and deactivated after a merge.</dd>
+                        <dd class="govuk-summary-list__value" data-testid="reason">The record holder died</dd>
                     </div>
                     <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">Evidence</dt>
