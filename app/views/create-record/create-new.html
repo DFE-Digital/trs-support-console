@@ -1,0 +1,253 @@
+{% extends "layouts/nav-test.html" %}
+
+{% set serviceNavId = "findRecord" %} 
+
+{% set trn = data["findRecord"] %}
+{% set teacherArray = data["teachers"] %}
+{% set teacher = trn | find(teacherArray)  %}
+
+{% set headingName = "Edit personal details" %}
+{% set captionName = data.person[0].fullName %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l"> {{headingName}}</h1>
+
+    {{ data.teachers | log }}
+    {{ data.newInductionStatus | log }}
+
+    {{ data.person[0] | log }}
+ 
+
+
+    <form action="name-change-reasons" method="post" novalidate>
+
+      {# -------- Set some stuf below -------------- #}
+
+      {% set moreDetailsTextArea %}
+        {{ govukTextarea({
+          id: "yes-additional-info",
+          name: "yesAdditionalInfo",
+          classes: "govuk-!-width-one-half",
+          label: {
+            text: "Enter details",
+            classes: "govuk-label--s"
+          },
+          value: data.yesAdditionalInfo
+        }) }}
+      {% endset %}
+
+      {% set evidenceYes %}
+        {{ govukFileUpload({
+          id: "evidenceFile",
+          name: "evidenceFile",
+          label: {
+            text: "Upload files",
+            classes: "govuk-label--m"
+          },
+          value: data.evidenceFile,
+          hint: {
+            text: "Must be smaller than 100MB"
+          }
+        }) }}
+      {% endset %}
+
+
+      
+      {# -------- Start of name & DOB stuff  -------------- #}
+
+      {{ govukInput({
+        label: {
+          text: "First name",
+          classes: "govuk-label--s govuk-input--width-10"
+        },
+        id: "first-name",
+        name: "personalDetailsFirstName",
+        autocomplete: "given-name",
+        spellcheck: false,
+        classes: "govuk-input--width-20",
+        value: data.person[0].firstName
+      }) }}
+      
+      {{ govukInput({
+        label: {
+          text: "Middle name",
+          classes: "govuk-label--s govuk-input--width-10"
+        },
+        id: "middle-name",
+        name: "personalDetailsMiddleName",
+        autocomplete: "additional-name",
+        spellcheck: false,
+        classes: "govuk-input--width-20",
+        value: data.person[0].middleName
+      }) }}
+      
+      {{ govukInput({
+        label: {
+          text: "Last name",
+          classes: "govuk-label--s govuk-input--width-10"
+        },
+        id: "last-name",
+        name: "personalDetailsLastName",
+        autocomplete: "family-name",
+        spellcheck: false,
+        classes: "govuk-input--width-20",
+        value: data.person[0].lastName
+      }) }}
+
+
+
+      
+
+
+      {{ govukDateInput({
+        id: "personal-details-dob",
+        namePrefix: "personalDetailsDateOfBirth",
+        fieldset: {
+          legend: {
+            text: "Date of birth",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            name: "day",
+            classes: "govuk-input--width-2",
+            value: data.person[0].dateOfBirthDay
+          },
+          {
+            name: "month",
+            classes: "govuk-input--width-2",
+            value: data.person[0].dateOfBirthMonth
+          },
+          {
+            name: "year",
+            classes: "govuk-input--width-4",
+            value: data.person[0].dateOfBirthYear
+          }
+        ]
+      }) }}   
+      
+      
+      
+      {{ govukRadios({
+        name: "personalDetailsSex",
+        fieldset: {
+          legend: {
+            text: "Gender",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "Male",
+            text: "Male"
+          },
+          {
+            value: "Female",
+            text: "Female"
+          },
+          {
+            value: "Other",
+            text: "Other"
+          },
+          {
+            value: "Not available",
+            text: "Not available"
+          },
+            {
+            value: "Not provided",
+            text: "Not provided"
+          }
+        ], value: data.person[0].gender
+      }) }}
+
+
+          {# -------- Start of NiNO & SEX   -------------- #}
+
+      {{ govukInput({
+        label: {
+          text: "National Insurance number",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "For example, 'QQ 12 34 56 C'"
+        },
+        value:  data.person[0].nationalInsurance,
+        classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
+        id: "create-record-national-insurance-number",
+        name: "personalDetailsNationalInsuranceNumber",
+        spellcheck: false
+      }) }}
+
+
+
+
+      {# -------- Start of EMAIL & PHONE   -------------- #}
+
+      {{ govukInput({
+        label: {
+          text: "Email address",
+          classes: "govuk-label--s"
+        },
+        id: "personalDetailsEmail",
+        name: "personalDetailsEmail",
+        type: "email",
+        autocomplete: "email",
+        spellcheck: false,
+        classes: "govuk-input--width-20",
+        value: data.person[0].email
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Mobile number",
+          classes: "govuk-label--s"
+        },
+        hint: {
+          text: "For international numbers include the country code"
+        },
+        id: "personalDetailsPhoneNumber",
+        name: "personalDetailsPhoneNumber",
+        type: "email",
+        autocomplete: "email",
+        spellcheck: false,
+        classes: "govuk-input--width-20",
+        value: data.person[0].mobile
+      }) }}
+
+
+
+     
+
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body">
+      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

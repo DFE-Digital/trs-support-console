@@ -22,29 +22,15 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-          <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  <div class="govuk-notification-banner__header">
-    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Success
-    </h2>
-  </div>
-
-  <div class="govuk-notification-banner__content">
-    <h3 class="govuk-notification-banner__heading">
-   Primary record updated for John Henry Doe
-    </h3>
-     <p class="govuk-body">Details from the secondary record have been merged. The secondary record is now deactivated.</p>
-  </div>
-</div>
     <form action="merge-manual" novalidate>
 
-      <h1 class="govuk-heading-l">John Henry Doe</h1>
+      <h1 class="govuk-heading-l">John Doe</h1>
 
       <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
         <ul class="x-govuk-secondary-navigation__list">
           <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
             <a class="x-govuk-secondary-navigation__link" href="#" aria-current=page>
-              Personal details
+             General
             </a>
           </li>
           <li class="x-govuk-secondary-navigation__list-item ">
@@ -98,7 +84,7 @@
               text: "Name"
             },
             value: {
-              text: 'John Henry Doe'
+              text: 'John Doe'
             }
           },
           {
@@ -119,7 +105,7 @@
           },
           {
             key: {
-              text: "TRN"
+              text: "Teacher reference number (TRN)"
             },
             value: {
               text: '4063484'
@@ -147,6 +133,73 @@
             },
             value: {
                text: "07151716301"
+            }
+          }
+        ]
+      }) }}
+
+ 
+       {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Professional status details"
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Qualified teacher status (QTS)"
+            },
+            value: {
+              text: 'Holds'
+            }
+          },
+          {
+            key: {
+              text: "QTS held since"
+            },
+            value: {
+              text: "14 May 2024"
+            }
+          },
+          {
+            key: {
+              text: "Qualified Teacher Learning and Skills status (QTLS)"
+            },
+            value: {
+              text: 'No'
+            }
+          },
+          {
+            key: {
+              text: "Induction status"
+            },
+            value: {
+              text: '	In progress'
+            }
+          },
+          {
+            key: {
+              text: "Early years teacher status (EYTS)"
+            },
+            value: {
+              text: "No"
+            }
+          },
+          {
+            key: {
+              text: "Early years professional status (EYPS)"
+            },
+            value: {
+               text: 'No'
+            }
+          },
+          {
+            key: {
+              text: "Partial qualified teacher status (PQTS)"
+            },
+            value: {
+               text: "No"
             }
           }
         ]
