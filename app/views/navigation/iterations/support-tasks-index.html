@@ -1,11 +1,10 @@
-{% extends "layouts/nav-test.html" %}
+{% extends "layouts/new-nav.html.html" %}
 {% set currentPage = "records" %}
 {% block content %}
 
 <div class="govuk-grid-row">
 <div class="govuk-grid-column-two-thirds">
 
-  {% if data.roleSelect == "viewer" or data.roleSelect == "record manager" or data.roleSelect == "service excellence team" %}
  <h1 class="govuk-heading-m">Records</h1>
 
 
@@ -29,7 +28,7 @@
 
 </div>
  
-{% if data.roleSelect != "viewer" %}
+
  <h2 class="govuk-heading-s">Create a record</h2>
 
 
@@ -39,12 +38,12 @@
 </button>
 
 </form>
-    {% endif %}
+  
 </div>
 </div>
 
-{% endif %}
-{% if data.roleSelect == "record manager" or data.roleSelect == "service excellence team" %}
+
+
     <div class="govuk-grid-row">
   
       <div class="govuk-grid-column-full">
@@ -113,7 +112,7 @@
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
       </div>
     </div>
-    {% endif %}
+
 
   {% endblock %}
 
