@@ -45,6 +45,24 @@
   <div class="govuk-form-group flex-radios">
     <fieldset class="govuk-fieldset">
 
+        <!-- TRN -->
+      <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">TRN</label>
+<div class="govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
+  <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="ni-a" name="retainNationalInsuranceNumber" type="radio" value="123456" checked>
+    <label class="govuk-label govuk-radios__label" for="ni-a">
+      <strong>4063484</strong>
+    </label>
+  </div>
+  <div class="govuk-radios__item govuk-radios__disabled">
+    <input class="govuk-radios__input" id="ni-b" name="retainNationalInsuranceNumber" type="radio" value="Not provided">
+    <label class="govuk-label govuk-radios__label" for="ni-b">
+      <mark class="hods-highlight"> <strong>3083414</strong></mark>
+    </label>
+  </div>
+</div>
+      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
       <!-- First name -->
 <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">First name</label>
 <div class="govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
@@ -136,7 +154,7 @@
       <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
       <!-- NI number -->
-      <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">NI number</label>
+      <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">National Insurance Number</label>
 <div class="govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
   <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="ni-a" name="retainNationalInsuranceNumber" type="radio" value="QQ 123456 B" checked>
@@ -153,23 +171,7 @@
 </div>
       <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
 
-      <!-- TRN -->
-      <label class="govuk-label govuk-!-font-weight-bold govuk-!-margin-top-2">NI number</label>
-<div class="govuk-radios govuk-radios--inline govuk-!-margin-bottom-2">
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="ni-a" name="retainNationalInsuranceNumber" type="radio" value="123456" checked>
-    <label class="govuk-label govuk-radios__label" for="ni-a">
-      <strong>4063484</strong>
-    </label>
-  </div>
-  <div class="govuk-radios__item govuk-radios__disabled">
-    <input class="govuk-radios__input" id="ni-b" name="retainNationalInsuranceNumber" type="radio" value="Not provided">
-    <label class="govuk-label govuk-radios__label" for="ni-b">
-      <mark class="hods-highlight"> <strong>3083414</strong></mark>
-    </label>
-  </div>
-</div>
-      <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+    
 
     </fieldset>
   </div>
@@ -213,7 +215,7 @@
   <div class="govuk-!-padding-bottom-2"></div>
 
   {{ govukWarningText({
-    text: "The TRN request will be marked as complete after the primary record has been updated.",
+    text: "The primary record will be updated and the secondary record will be deactivated.",
     classes: "govuk-!-width-two-thirds govuk-!-margin-bottom-6",
     iconFallbackText: "Warning"
   }) }}
