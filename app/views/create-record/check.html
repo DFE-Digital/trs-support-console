@@ -1,0 +1,98 @@
+{% extends "layouts/new-nav.html" %}
+{% set currentPage = "records" %}
+
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <span class="govuk-caption-l">Create a record</span>
+      <h1 class="govuk-heading-l">Check details and create record</h1>
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: { text: "First name" },
+            value: { text: "John" },
+            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "record details" }] }
+          },
+          {
+            key: { text: "Middle name" },
+            value: { text: "Henry" }
+          },
+          {
+            key: { text: "Last name" },
+            value: { text: "Doe" }
+          },
+          {
+            key: { text: "Date of birth" },
+            value: { text: "31 April 1990" }
+          },
+          {
+            key: { text: "Gender" },
+            value: { text: "Male" }
+          }, 
+          {
+            key: { text: "National Insurance number" },
+            value: { text: "QQ 12 34 56 C" }
+          },
+          {
+            key: { text: "Email address" },
+            value: { text: "john.doe@email.com" }
+          },
+          {
+            key: { text: "Mobile number" },
+            value: { text: "07458533336" }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: { text: "Reason for creating record" },
+            value: { text: "Another reason" },
+            actions: { items: [{ href: "/create-record/manual/details", text: "Change", visuallyHiddenText: "reason details" }] }
+          } if not moreDetailsTextArea,
+          {
+            key: { text: "Evidence" },
+            value: {
+              html: '<p class="govuk-body"><a href="#" class="govuk-link">' + data.evidenceFile + '</a>.</p>'
+            }
+          } if data.evidenceFile
+        ]
+      }) }}
+
+      <form action="success" method="post">
+        <div class="govuk-button-group">
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Confirm and create record"
+            }) }}
+          
+            {{ govukButton({
+              text: "Cancel",
+              classes: "govuk-button--secondary",
+               href: "javascript:window.history.back()"
+            }) }}
+          </div>
+        </div>
+      </form>    
+
+    </div>
+  </div>
+{% endblock %}

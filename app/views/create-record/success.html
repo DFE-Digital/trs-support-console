@@ -1,0 +1,151 @@
+{% extends "layouts/new-nav.html.html" %}
+{% set currentPage = "records" %}
+ 
+{% set pageName = "John Henry Doe" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+  
+      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">
+          Record created for John Henry Doe</h2>
+        </div>
+      </div>
+    
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">John Henry Doe</h1>
+
+      <nav class="x-govuk-secondary-navigation" aria-label="Secondary menu">
+        <ul class="x-govuk-secondary-navigation__list">
+          <li class="x-govuk-secondary-navigation__list-item x-govuk-secondary-navigation__list-item--current">
+            <a class="x-govuk-secondary-navigation__link" href="#" aria-current=page>
+              Personal details
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="routes" >
+             Routes and qualifications
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="induction">
+             Induction
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="alerts">
+             Alerts
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item">
+            <a class="x-govuk-secondary-navigation__link" href="notes">
+           Notes
+            </a>
+          </li>
+          <li class="x-govuk-secondary-navigation__list-item ">
+            <a class="x-govuk-secondary-navigation__link" href="change-history">
+             Change history
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    <br><br>
+  
+      {{ govukSummaryList({
+        card: {
+          title: {
+            text: "Personal details"
+          },
+          actions: {
+            items: [
+              {
+                href: "/create-record/add/reason",
+                text: "Change",
+                visuallyHiddenText: "Why I am creating this record"
+              }
+            ]
+          }
+        },
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: 'John Henry Doe'
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: "31 April 1990"
+            }
+          },
+          {
+            key: {
+              text: "Gender"
+            },
+            value: {
+              text: 'Male'
+            }
+          },
+          {
+            key: {
+              text: "Teacher reference number (TRN)"
+            },
+            value: {
+              text: '4802480'
+            }
+          },
+          {
+            key: {
+              text: "National Insurance number"
+            },
+            value: {
+              text: "QQ 12 34 56 C"
+            }
+          },
+          {
+            key: {
+              text: "Email"
+            },
+            value: {
+               text: '	john.doe@email.com'
+            }
+          },
+          {
+            key: {
+              text: "Mobile number"
+            },
+            value: {
+               text: "	07458533336"
+            }
+          }
+        ]
+      }) }}
+
+     
+      
+    
+
+  </div>
+</div>
+
+{% endblock %}
