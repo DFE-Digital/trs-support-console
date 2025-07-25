@@ -1,13 +1,6 @@
-{% extends "layouts/nav-test.html" %}
+{% extends "layouts/new-nav.html" %}
+{% set currentPage = "records" %}
 
-{% set serviceNavId = "findRecord" %} 
-
-{% set trn = data["findRecord"] %}
-{% set teacherArray = data["teachers"] %}
-{% set teacher = trn | find(teacherArray)  %}
-
-{% set headingName = "Edit personal details" %}
-{% set captionName = data.person[0].fullName %}
 
 
 
@@ -24,8 +17,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <span class="govuk-caption-l">{{captionName}}</span>
-    <h1 class="govuk-heading-l"> {{headingName}}</h1>
+    <span class="govuk-caption-l">Create a record</span>
+    <h1 class="govuk-heading-l"> Enter the person's personal details</h1>
 
     {{ data.teachers | log }}
     {{ data.newInductionStatus | log }}
@@ -34,7 +27,7 @@
  
 
 
-    <form action="name-change-reasons" method="post" novalidate>
+    <form action="check" method="post" novalidate>
 
       {# -------- Set some stuf below -------------- #}
 
@@ -80,7 +73,7 @@
         autocomplete: "given-name",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.person[0].firstName
+        value: "John"
       }) }}
       
       {{ govukInput({
@@ -93,7 +86,7 @@
         autocomplete: "additional-name",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.person[0].middleName
+        value: "Henry"
       }) }}
       
       {{ govukInput({
@@ -106,7 +99,7 @@
         autocomplete: "family-name",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.person[0].lastName
+        value: "Doe"
       }) }}
 
 
@@ -128,17 +121,17 @@
           {
             name: "day",
             classes: "govuk-input--width-2",
-            value: data.person[0].dateOfBirthDay
+            value: "31"
           },
           {
             name: "month",
             classes: "govuk-input--width-2",
-            value: data.person[0].dateOfBirthMonth
+            value: "4"
           },
           {
             name: "year",
             classes: "govuk-input--width-4",
-            value: data.person[0].dateOfBirthYear
+            value: "1990"
           }
         ]
       }) }}   
@@ -175,7 +168,7 @@
             value: "Not provided",
             text: "Not provided"
           }
-        ], value: data.person[0].gender
+        ], value: "Male"
       }) }}
 
 
@@ -189,7 +182,7 @@
         hint: {
           text: "For example, 'QQ 12 34 56 C'"
         },
-        value:  data.person[0].nationalInsurance,
+        value:  "QQ 12 34 56 C",
         classes: "govuk-input--width-10 govuk-input--extra-letter-spacing",
         id: "create-record-national-insurance-number",
         name: "personalDetailsNationalInsuranceNumber",
@@ -212,7 +205,7 @@
         autocomplete: "email",
         spellcheck: false,
         classes: "govuk-input--width-20",
-        value: data.person[0].email
+        value: "john.doe@email.com"
       }) }}
 
       {{ govukInput({
@@ -232,21 +225,82 @@
         value: data.person[0].mobile
       }) }}
 
+<br>
+
+      <h2 class="govuk-heading-m">Why are you creating this record?</h2>
+        {{ govukRadios({
+          name: "createRecordReason",
+          fieldset: {
+            legend: {
+              text: "Reason for change",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "They were awarded a mandatory qualification",
+              text: "They were awarded a mandatory qualification"
+            },
+            {
+              value: "They received an alert",
+              text: "They received an alert"
+            },
+            {
+              value: "They started university late",
+              text: "They started university late"
+            },
+            {
+              value: "Another reason",
+              text: "Another reason",
+              conditional: {
+                html: moreDetailsTextArea
+              }
+            }
+          ],
+          value: "Another reason"
+        }) }}
+
+        <h2 class="govuk-heading-m">Do you want to upload evidence?</h2>
+        {{ govukRadios({
+          name: "evidenceUploaded",
+          fieldset: {
+            legend: {
+              text: "Do you have evidence to upload?",
+              classes: "govuk-visually-hidden"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: evidenceYes
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ],
+          value: data.evidenceUploaded
+        }) }}
 
 
-     
 
-
-
-      {{ govukButton({
-        text: "Continue"
-      }) }}
+ <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
 
     </form>
 
-    <p class="govuk-body">
-      <a href="/cancel-and-return" class="govuk-link">Cancel and return to record</a>
-    </p>
+    
   </div>
 </div>
 
