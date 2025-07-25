@@ -1,0 +1,97 @@
+{% extends "layouts/new-nav.html" %}
+{% set currentPage = "records" %}
+
+{% set serviceNavId = "supportTasks" %} 
+{% set secondaryNavId = "allTasks" %}
+
+{% set captionName = "Support tasks" %}
+{# {% set pageName = "Check details before updating primary record %} #}
+{% set pageName = "Check details before merging records" %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ record | log }}
+
+    <span class="govuk-caption-l">{{captionName}}</span>
+    <h1 class="govuk-heading-l">Check details before updating primary record</h1>
+ <div class="govuk-summary-card">
+      <div class="govuk-summary-card__title-wrapper">
+        <h2 class="govuk-summary-card__title">Details of the merged record</h2>
+        <ul class="govuk-summary-card__actions">
+          <li class="govuk-summary-card__action">
+            <a class="govuk-link" href="#">
+              Change<span class="govuk-visually-hidden"> merged record</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+       <div class="govuk-summary-card__content">
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">First name</dt>
+            <dd class="govuk-summary-list__value">Emily</dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Middle name</dt>
+            <dd class="govuk-summary-list__value">Mauve</dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Last name</dt>
+            <dd class="govuk-summary-list__value">Taylor</dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Date of birth</dt>
+            <dd class="govuk-summary-list__value">30 November 1995</dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Email address</dt>
+            <dd class="govuk-summary-list__value">EmzTaylor@gmail.com</dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">National Insurance number</dt>
+            <dd class="govuk-summary-list__value">XZ 45 78 32 A</dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">TRN</dt>
+            <dd class="govuk-summary-list__value">123456</dd>
+          </div>
+        </dl>
+      </div>
+      </div>
+    
+
+    
+    <form method="post" action="list-accepted">
+      <input type="hidden" name="recordId" value="{{ record.id }}">
+      <div class="govuk-button-group">
+        <button class="govuk-button" type="submit">Confirm and update primary record</button>
+        <a href="javascript:window.history.back()" class="govuk-button govuk-button--secondary">Cancel</a>
+      </div>
+    </form>
+
+    
+
+
+  </div>
+</div>
+
+{% endblock %}
+
